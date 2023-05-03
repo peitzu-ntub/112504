@@ -1,0 +1,13 @@
+body{
+    background-color: antiquewhite;
+}
+
+div.col-md-6 {
+    padding-top: 10pc;
+    padding-left: 15pc;
+    line-height: 1.5;
+}
+
+.員工{
+    padding-top: 10pc;
+}

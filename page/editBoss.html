@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <!--指定採取UTF8編碼-->
+        <meta charset="utf-8">
+        <!--增加外部的CSS-->
+        <link rel="stylesheet" href="../js/standard.css">
+        <!--增加jQuery套件-->
+        <script src="../js/jquery-3.6.4.min.js"></script>
+    </head>
+    <script>
+        //當網頁準備好的時候，做以下的動作
+        $(document).ready(function(){
+            //form的submit按鈕按下去的動作
+            $("form").on("submit", function(e) {
+                //1.先把準備拋回去的資料「序列化」整理成json格式的字串
+                var dataString = $(this).serialize();
+                
+                //可以把字串顯示出來看看是否正確
+                //alert(dataString);               
+
+                //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
+                $.ajax({
+                    //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+                    type: "POST",
+                    //指定要連接的PHP位址
+                    url: "../bin/editBoss.php",
+                    //要傳送的資料內容
+                    data: dataString,
+                    //獲得正確回應時，要做的事情
+                    success: function (response) {
+                        //alert(response);
+                        var json = $.parseJSON(response); 
+
+                        if (json.result == 'OK') {
+                            $("#message").html('成功：\n' + json.message);
+                        } else {
+                            $("#message").html('失敗：\n' + json.message);
+                        }
+                    },
+                    //獲得不正確的回應時，要做的事情
+                    error: function(response) {
+                        $("#message").html(response);
+                    }
+                });
+
+                e.preventDefault();
+            });
+        });                
+    </script>
+    <body>
+        <!--設定div的id，用來套用CSS的效果-->
+        <div id="contact_form">
+            <form name="contact" action="">
+                <Label>註冊新的老闆</Label>
+                <fieldset>
+                    <div class="input-box">
+                        <label for="lic" id="lic_label">身份證號</label>
+                        <input type="text" name="lic" id="lic" minlength="4" placeholder="A123456789" class="text-input"/>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="name" id="name_label">姓名</label>
+                        <input type="text" name="name" id="name" minlength="3" placeholder="Monty" class="text-input" required/>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="psw" id="psw_label">密碼</label>
+                        <input type="text" name="psw" id="psw" minlength="4" class="text-input" placeholder="123456"/>
+                    </div>
+
+                    <input type="submit" name="submit_ins" class="button" id="submit_btn" value="儲存" />
+                </fieldset>
+                <!--顯示直行結果的位置-->
+                <div id="message">                    
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
