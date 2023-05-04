@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>評價客製化</title>
+
+		<meta name="description" content="Source code generated using layoutit.com">
+		<meta name="author" content="LayoutIt!">
+		
+		<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+			integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> -->
+		<link href="../js/style.css" rel="stylesheet">
+	</head>
+	<script>
+		//當網頁準備好的時候，做以下的動作
+		$(document).ready(function(){
+			//form的submit按鈕按下去的動作
+			$("form").on("submit", function(e) {
+				//1.先把準備拋回去的資料「序列化」整理成json格式的字串
+				var dataString = $(this).serialize();
+				
+				//可以把字串顯示出來看看是否正確
+				//alert(dataString);               
+
+				//2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
+				$.ajax({
+					//HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+					type: "POST",
+					//指定要連接的PHP位址
+					url: "../bin/editBoss.php",
+					//要傳送的資料內容
+					data: dataString,
+					//獲得正確回應時，要做的事情
+					success: function (response) {
+						var json = $.parseJSON(response);                        
+						if (json.result == 'OK') {
+							$("#message").html('成功：\n' + json.message);
+						} else {
+							$("#message").html('失敗：\n' + json.message);
+						}
+					},
+					//獲得不正確的回應時，要做的事情
+					error: function(response) {
+						$("#message").html(response);
+					}
+				});
+
+				e.preventDefault();
+			});
+		});                
+	</script>
+	<body>
+		<div class="container">
+			<!-- 內容 -->
+			<div id="wrap"><!-- wrap -->
+				<div class="section"><!-- menu -->
+					<div class="row myContent">
+						<div class="col-md-5">	
+							<h1 class="myTitle">搜尋方式</h1>
+						</div>
+					</div>
+					<form name="contact" action="">
+						<label>查看全部菜色的評價/查看特定菜色的評價</label><br>
+						<input type="checkbox" value="0" name="Product_all"> 全選<br>
+						<input type="checkbox" value="1" name="Product_1"> 商品 1<br>
+						<input type="checkbox" value="2" name="Product_2"> 商品 2<br>
+						<input type="checkbox" value="3" name="Product_3"> 商品 3<br>
+						<input type="submit" name="submit_ins" class="button" id="submit_btn" value="儲存" />
+					</form>
+				</div>
+				<div class="aside"><!-- content -->
+					<div class="row myContent">
+						<div class="col-md-5">
+							<h1 class="myTitle">顯示方式</h1>	
+						</div>
+					</div>
+					<form name="contact" action="">
+						<label>選擇顯示方式</label><br>
+						<input type="checkbox" value="1" name="Product_1"> 平均 <br>
+						<input type="checkbox" value="2" name="Product_2"> 級距 <br>
+						<input type="checkbox" value="3" name="Product_3"> 文字 <br>
+						<input type="submit" name="submit_ins" class="button" id="submit_btn" value="儲存" />
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<script src="../js/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+		</script>
+
+		<script src="../js/scripts.js"></script>
+	</body>
+
+</html>
