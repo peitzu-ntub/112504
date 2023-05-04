@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Menu customization</title>
+	<link href="../js/menu.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+	<header class="main-header">
+		<div class="header">
+			<h1><a>菜單設計</a></h1>
+			<hr>
+			<button class="registbutton" onclick="location.href='../page/menu_2.html'">
+				<span>下一步</span></button>
+		</div>
+	</header>
+
+	<div class="cabinet">
+		<label>請問您的菜單有些什麼類型?</label>
+		<hr><br>
+		<form action="../bin/menu_1.php" method="POST"> 
+		<label for="type_name">
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">
+					類型：
+				</font>
+			</font>
+		</label>
+		<input type="text" class="form-control" id="type_name" name= 'type_name' placeholder="主菜" required>
+		<button type="submit" onclick="location.href=''">儲存</button>
+		<button type="reset" onclick="location.href='../page/index.html'">返回</button>
+	</div>
+</body>
+
+<!-- <script>
+	function addLabel() {
+		// 創建新的標籤元素
+		var newLabel = document.createElement("label");
+		newLabel.textContent = "類型：";
+		//newLabel.textContent = "類型：";
+
+		// 找到標籤容器元素
+		var labelContainer = document.getElementById("labelContainer");
+
+		// 將新標籤插入到容器元素中
+		labelContainer.insertBefore(newLabel, labelContainer.firstChild);
+	}
+</Script>
+ -->
+<!--<script>
+	function addSelect() {
+		// 获取第一个下拉式选择菜单和添加按钮的元素
+		var select1 = document.getElementById("select1");
+		var addButton = document.getElementById("addButton");
+
+		// 创建一个新的下拉式选择菜单元素
+		var select2 = document.createElement("select");
+
+		// 设置新元素的属性和选项
+		select2.id = "select2";
+		select2.name = "select2";
+		
+
+		// 将新元素添加到文档中
+		addButton.parentNode.insertBefore(select2, addButton);
+
+		// 将与之前选择的选项不同的选项添加到新下拉式选择菜单中
+		for (var i = 0; i < select1.options.length; i++) {
+			if (select1.options[i].selected === false) {
+				var option = document.createElement("option");
+				option.value = select1.options[i].value;
+				option.text = select1.options[i].text;
+				select2.appendChild(option);
+			}
+		}
+		// 将新元素添加到文档中
+	addButton.parentNode.insertBefore(select2, addButton);
+	}-->
+
+</html>
