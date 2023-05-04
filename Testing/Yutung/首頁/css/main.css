@@ -1,0 +1,119 @@
+@charset "utf-8";
+
+/* ------------------- */
+/* html, body          */
+/* ------------------- */
+html,
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: #e5dbd8;
+    margin-top:none ;
+}
+
+/* ------------------- */
+/* container           */
+/* ------------------- */
+div.container {
+    width: 800px;
+}
+
+/* ------------------- */
+/* header              */
+/* ------------------- */
+div.header {
+    height: 700px;
+}
+
+/* ------------------- */
+/* content             */
+/* ------------------- */
+div.content {
+    color: #000;
+    padding: 20px 70px;
+    text-align: justify;
+}
+
+/* ------------------- */
+/* 導覽頁               */
+/* ------------------- */
+li{
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.main-header {
+    opacity: 0.9;
+    /*background-color: #DCC3E3;*/
+    background-color: #9278C5;
+}
+
+.container {
+    margin: auto;
+    display: flex;
+}
+
+.main-menu {
+    display: flex;
+    font-size: 16px;
+}
+
+.main-menu li {
+    position: relative;
+    transition: .5s;
+}
+
+.main-menu li a {
+    padding: 30px 10px;
+    line-height: 60px;
+}
+
+.main-menu li::after {
+    content: '';
+    position: absolute;
+    height: 4px;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    background-color: #fff;
+    transition: .5s;
+}
+
+.main-menu li:hover {
+    background-color: #B27AC2;
+}
+
+.main-menu li:hover::after {
+    left: 0;
+    right: 0;
+}
+
+/* ------------------- */
+/* button             */
+/* ------------------- */
+.shape-ex1{
+    position: relative;
+    font-weight: bold;
+    width: 85px;
+    height: 90px;
+    font-size: 18px;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    line-height: 40px;
+    color: #ffffff;
+    background-color: transparent;
+    border: none;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.shape-ex1:hover{
+    background-color: #876DBC;
+}
+
