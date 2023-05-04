@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>B_REGIST</title>
+
+	<link href="../js/regist.css" rel="stylesheet">
+
+</head>
+<script>
+	//當網頁準備好的時候，做以下的動作(函式)
+	$(document).ready(function () {
+		//form的submit按鈕按下去的動作
+		$("form").on("submit", function (e) {
+			//1.先把準備拋回去的資料「序列化」整理成json格式的字串
+			var dataString = $(this).serialize();
+
+			//可以把字串顯示出來看看是否正確
+			//alert(dataString);               
+
+			//2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
+			$.ajax({
+				//HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+				type: "POST",
+				//指定要連接的PHP位址
+				url: "../bin/...php",
+				//要傳送的資料內容
+				data: dataString,
+				//獲得正確回應時，要做的事情
+				success: function (response) {
+					var json = $.parseJSON(response);
+					if (json.result == 'OK') {
+						$("#message").html('成功：\n' + json.message);
+					} else {
+						$("#message").html('失敗：\n' + json.message);
+					}
+				},
+				//獲得不正確的回應時，要做的事情
+				error: function (response) {
+					$("#message").html(response);
+				}
+			});
+
+			e.preventDefault();
+		});
+	});
+	function validateForm() {
+		var boss_identity = document.forms["cabinet"]["boss_identity"].value;
+		var boss_pwd = document.forms["cabinet"]["boss_pwd"].value;
+
+		if (boss_identity == "" || boss_pwd == "") {
+			alert("請填寫所有必填欄位");
+			return false;
+		}
+	}
+
+	// 獲取兩個密碼欄位的值
+	var password = document.getElementById("password").value;
+	var confirmPassword = document.getElementById("confirm-password").value;
+
+	// 檢查密碼是否匹配
+	if (password != confirmPassword) {
+		document.getElementById("password-match-error").style.display = "block";
+	} else {
+		document.getElementById("password-match-error").style.display = "none";
+	}
+</script>
+
+<body>
+	<header class="main-header">
+		<div class="header">
+			<h1><a>註冊</a></h1>
+			<hr>
+			<button class="registbutton" onclick="location.href='../page/login.html'">
+				<span>註冊過 !</span></button>
+		</div>
+	</header>
+
+	<!--修改(1)：增加 form，把畫面中的欄位、按鈕包起來-->
+	<form action="#">
+		<div class="cabinet">
+			<hr4><label>負責人資料</label></hr4>
+			<hr>
+			<!-- <div class="top">負責人資料</div> -->
+			<div class="form-group">
+				<label for="boss_name">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">
+							名字：
+						</font>
+					</font>
+				</label>
+				<input type="text" class="form-control" name="boss_name" id="boss_name" placeholder="請輸入姓名"required />
+			</div>
+			<div class="form-group">
+				<label for="boss_identity">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">
+							帳號：
+						</font>
+					</font>
+				</label>
+				<input type="text" class="form-control" name="boss_identity" id="boss_identity" placeholder="請輸入身分證字號"
+					minlength="2" required />
+			</div>
+			<div class="form-group">
+				<label for="boss_pwd">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">
+							密碼：
+						</font>
+					</font>
+				</label>
+				<input type="password" required class="form-control" name="boss_pwd" id="boss_pwd"
+					placeholder="請輸入密碼" />
+			</div>
+			<div class="form-group">
+				<label for="boss_pwd">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">
+							確認密碼：
+						</font>
+					</font>
+				</label>
+				<input type="password" required class="form-control" name="boss_pwd" id="boss_pwd"
+					placeholder="請再輸入一次密碼" />
+				<span id="password-match-error" style="color:red; display:none;">密碼不匹配</span>
+			</div>
+		</div>
+		<!--<input type="submit" value="確認">-->
+		<!--<input type="reset" id="#####" value="返回">-->
+		<!--<input type="button" id="####"" value="儲存" onClick=""> -->
+		
+		<!--修改(2)：submit的按鈕，不需設定 onclick 事件，
+			        上面的 $(document).ready(function () 會自動補上按鈕按下時該做的事情-->
+		<button type="submit">儲存</button>
+		<button type="reset" onclick="location.href='../page/index.html'">返回</button>
+	</form>
+
+</body>
+
+</html>
