@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Roboto Slab';
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+  div#contact_form {
+    display: flex;    
+    align-items: stretch;
+    justify-content: space-evenly;
+    border: 2px solid black;
+    padding: 10px;
+  }
+  div form {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  div fieldset {
+    border-color: #F00;
+    border-style: solid;
+    width: 90%;
+  }
+  div.input-box {
+    display: flex;
+    margin: 10px 0;
+    flex-wrap: wrap;
+  }
+  div.input-box label {
+    display: inline-block;
+    margin: 10px 10px 10px 0;
+    width: 30%;
+  }
+  div.input-box input {
+    font-size: 1.5rem;
+    border: 1px solid #ccc;
+    padding: 4px 8px;
+    flex: 1;
+  }
+  input.button {
+    font-size: 1.5rem;
+    background: black;
+    color: white;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 4px 40px;
+  }
+  h1 {
+    font-size: 5rem;
+    text-transform: uppercase;
+    font-family: 'Passion One';
+    font-weight: 400;
+    letter-spacing: 2px;
+    line-height: 0.8;
+  }
+  div.greetings {
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: #d3d3d3;
+    background-image: linear-gradient(15deg, transparent 28%, rgba(255, 255, 255, 0.5) 28%);
+    background-size: 50px;
+  }
+  div.input-box input.error {
+      border: 2px dashed red;
+      background: #fee;
+  }
+  div.input-box label.error {
+      color: red;
+      font-size: 1rem;
+      text-align: right;
+      width: 100%;
+      margin: 10px 0;
+  }

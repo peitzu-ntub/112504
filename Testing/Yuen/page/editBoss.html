@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <!--指定採取UTF8編碼-->
+        <meta charset="utf-8">
+        <!--增加外部的CSS-->
+        <link rel="stylesheet" href="../js/standart.css">
+        <!--增加jQuery套件-->
+        <script src="../js/jquery-3.6.4.min.js"></script>
+    </head>
+    <script>
+        $(document).ready(function(){
+            $("form").on("submit", function(e) {
+                var dataString = $(this).serialize();
+                //alert(dataString);               
+                $.ajax({
+                    type: "POST",
+                    url: "../bin/editBoss.php",
+                    data: dataString,
+                    success: function (response) {
+                        var json = $.parseJSON(response);
+                        if (json.result == 'OK') {
+                            $("#message").html(json.message);
+                        } else {
+                            $("#message").html(json.message);
+                        }
+                    },
+                    error: function(response) {
+                        $("#message").html(response);
+                    }
+                })
+                e.preventDefault();
+            });
+        });                
+    </script>
+    <body>
+        <!--設定div的id，用來套用CSS的效果-->
+        <div id="contact_form">
+            <form name="contact" action="">
+                <Label>註冊新的老闆</Label>
+                <fieldset>
+                    <div class="input-box">
+                        <label for="lic" id="lic_label">身份證號</label>
+                        <input type="text" name="lic" id="lic" minlength="4" placeholder="A123456789" class="text-input"/>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="name" id="name_label">姓名</label>
+                        <input type="text" name="name" id="name" minlength="3" placeholder="Monty" class="text-input" required/>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="psw" id="psw_label">密碼</label>
+                        <input type="text" name="psw" id="psw" minlength="4" class="text-input" placeholder="123456"/>
+                    </div>
+
+                    <input type="submit" name="submit_ins" class="button" id="submit_btn" value="儲存" />
+                </fieldset>
+                <div id="message">
+                    
+                </div>
+            </form>
+            <!--
+            <div class="greetings">
+                <h1>Contact US</h1>
+                <p>We are waiting to hear from you!</p>
+            </div>
+            --> 
+        </div>
+    </body>
+
+
+</html>
