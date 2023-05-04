@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Menu customization</title>
+	<link href="food.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="text-center">
+					選擇餐點類型
+				</h3>
+				<hr>
+
+				</ul>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="dropdown1">
+									<label for="select1">類型A：</label>
+									<select id="select1" name="select1">
+										<option value="option1">主餐</option>
+										<option value="option2">附餐</option>
+										<option value="option3">飲料</option>
+										<option value="option4">甜點</option>
+									</select>
+								<br>
+								<label for="select2">類型B：</label>
+								<select id="select2" name="select2">
+									<option value="option1">主餐</option>
+									<option value="option2">附餐</option>
+									<option value="option3">飲料</option>
+									<option value="option4">甜點</option>
+								</select>
+								<br>
+								<label for="select3">類型C：</label>
+								<select id="select3" name="select3">
+									<option value="option1">主餐</option>
+									<option value="option2">附餐</option>
+									<option value="option3">飲料</option>
+									<option value="option4">甜點</option>
+								</select>
+
+								<br>
+									<button id="addButton" onclick="addLabel()">添加</button>
+									<div id="labelContainer"></div>
+								<br>
+
+
+								<div id="btn_control">
+									<!--<input type="button" id="btn_1" value="儲存" onClick="">-->
+									<input type="submit" value="確認">
+									<input type="reset"  value="返回">
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+</body>
+<script>
+function addLabel() {
+	// 創建新的標籤元素
+	var newLabel = document.createElement("label");
+	newLabel.textContent = "類型：";
+	//newLabel.textContent = "類型：";
+	
+	// 找到標籤容器元素
+	var labelContainer = document.getElementById("labelContainer");
+	
+	// 將新標籤插入到容器元素中
+	labelContainer.insertBefore(newLabel, labelContainer.firstChild);
+  }
+  </Script>
+
+  
+<!--<script>
+	function addSelect() {
+		// 获取第一个下拉式选择菜单和添加按钮的元素
+		var select1 = document.getElementById("select1");
+		var addButton = document.getElementById("addButton");
+
+		// 创建一个新的下拉式选择菜单元素
+		var select2 = document.createElement("select");
+
+		// 设置新元素的属性和选项
+		select2.id = "select2";
+		select2.name = "select2";
+		
+
+		// 将新元素添加到文档中
+		addButton.parentNode.insertBefore(select2, addButton);
+
+		// 将与之前选择的选项不同的选项添加到新下拉式选择菜单中
+		for (var i = 0; i < select1.options.length; i++) {
+			if (select1.options[i].selected === false) {
+				var option = document.createElement("option");
+				option.value = select1.options[i].value;
+				option.text = select1.options[i].text;
+				select2.appendChild(option);
+			}
+		}
+		// 将新元素添加到文档中
+	addButton.parentNode.insertBefore(select2, addButton);
+	}-->
+	
+</script>
+</html>
