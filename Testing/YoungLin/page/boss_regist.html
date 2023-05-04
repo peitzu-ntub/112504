@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>註冊</title>
+  <link rel="stylesheet" href="../js/test.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<script>
+  //當網頁準備好的時候，做以下的動作(函式)
+  $(document).ready(function () {
+    //form的submit按鈕按下去的動作
+    $("form").on("submit", function (e) {
+      //1.先把準備拋回去的資料「序列化」整理成json格式的字串
+      var dataString = $(this).serialize();
+
+      //可以把字串顯示出來看看是否正確
+      //alert(dataString);               
+
+      //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
+      $.ajax({
+        //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+        type: "POST",
+        //指定要連接的PHP位址
+        url: "../bin/...php",
+        //要傳送的資料內容
+        data: dataString,
+        //獲得正確回應時，要做的事情
+        success: function (response) {
+          var json = $.parseJSON(response);
+          if (json.result == 'OK') {
+            $("#message").html('成功：\n' + json.message);
+          } else {
+            $("#message").html('失敗：\n' + json.message);
+          }
+        },
+        //獲得不正確的回應時，要做的事情
+        error: function (response) {
+          $("#message").html(response);
+        }
+      });
+
+      e.preventDefault();
+    });
+  });
+  function validateForm() {
+    var boss_identity = document.forms["cabinet"]["boss_identity"].value;
+    var boss_pwd = document.forms["cabinet"]["boss_pwd"].value;
+
+    if (boss_identity == "" || boss_pwd == "") {
+      alert("請填寫所有必填欄位");
+      return false;
+    }
+  }
+
+</script>
+
+<body>
+  <div class="container">
+    <div class="title">註冊</div><br><hr>
+    <div class="content">
+      <form action="#">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">姓名</span>
+            <input type="text" name="boss_name" id="boss_name" placeholder="請輸入您的名字" required>
+          </div>
+          <div class="input-box">
+            <span class="details">帳號</span>
+            <input type="text" name="boss_identity" id="boss_identity" placeholder="請輸入您的身分證" required>
+          </div>
+          <div class="input-box">
+            <span class="details">密碼</span>
+            <input type="text" name="boss_pwd" id="boss_pwd" placeholder="請輸入您的密碼" required>
+          </div>
+          <div class="input-box">
+            <span class="details">確認密碼</span>
+            <input type="text" name="boss_pwd" id="boss_pwd" placeholder="確認您的密碼" required>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="註冊">
+        </div>
+        <div class="button">
+          <input type="reset" value="返回" onclick="location.href='../page/首頁.html'">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="button-container">
+    <button class="registbutton" onclick="location.href='../page/login.html'">
+      <span>註冊過 !</span>
+    </button>
+  </div>
+</body>
+</html>
