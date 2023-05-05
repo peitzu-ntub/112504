@@ -1,6 +1,4 @@
 <?php
-echo ("OK");
-exit;
     include ("conn.php");
 
     $data= array();
