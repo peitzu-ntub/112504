@@ -54,6 +54,23 @@
       return false;
     }
   }
+  //確認密碼
+  function validate() {
+  var pw1 = document.getElementById("boss_pwd1").value;
+  var pw2 = document.getElementById("boss_pwd2").value;
+  if(pw1 == pw2) {
+  document.getElementById("tishi").innerHTML="兩次密碼相同";
+  document.getElementById("submit").disabled = false;
+  
+  } 
+
+  else {
+  document.getElementById("tishi").innerHTML="兩次密碼不同";
+  document.getElementById("submit").disabled = true;
+
+  }
+
+  }
 
 </script>
 
@@ -73,20 +90,22 @@
           </div>
           <div class="input-box">
             <span class="details">密碼</span>
-            <input type="text" name="boss_pwd" id="boss_pwd" placeholder="請輸入您的密碼" required>
+            <input type="text" name="boss_pwd" id="boss_pwd1" placeholder="請輸入您的密碼" required>
           </div>
           <div class="input-box">
             <span class="details">確認密碼</span>
-            <input type="text" name="boss_pwd" id="boss_pwd" placeholder="確認您的密碼" required>
+            <input type="text" name="boss_pwd" id="boss_pwd2" placeholder="確認您的密碼" required>
           </div>
         </div>
         <div class="button">
-          <input type="submit" value="註冊">
+          <input value="註冊" type="button" onclick = validate() />
         </div>
         <div class="button">
           <input type="reset" value="返回" onclick="location.href='../page/首頁.html'">
         </div>
       </form>
+      <div id="tishi">
+      </div>
     </div>
   </div>
   <div class="button-container">
