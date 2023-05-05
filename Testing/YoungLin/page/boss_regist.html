@@ -18,7 +18,7 @@
       var dataString = $(this).serialize();
 
       //可以把字串顯示出來看看是否正確
-      alert(dataString);               
+      //alert(dataString);               
 
       //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
       $.ajax({
@@ -30,7 +30,7 @@
         data: dataString,
         //獲得正確回應時，要做的事情
         success: function (response) {
-          alert(response);
+          //alert(response);
           var json = $.parseJSON(response);
           if (json.result == 'OK') {
             $("#message").html('成功：\n' + json.message);
