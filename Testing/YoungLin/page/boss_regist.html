@@ -31,7 +31,8 @@
         success: function (response) {
           var json = $.parseJSON(response);
           if (json.result == 'OK') {
-            $("#message").html('成功：\n' + json.message);
+        /*$("#message").html('成功：\n' + json.message win); */
+            window.location="login.html"
           } else {
             $("#message").html('失敗：\n' + json.message);
           }
@@ -104,7 +105,7 @@
           <input type="reset" value="返回" onclick="location.href='../page/首頁.html'">
         </div>
       </form>
-      <div id="tishi"> <!--出現確認密碼密碼是否相同的提醒 -->
+      <div id="message"> <!--出現確認密碼密碼是否相同的提醒 -->
       </div>
     </div>
   </div>
