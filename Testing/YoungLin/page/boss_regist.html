@@ -24,7 +24,7 @@
         //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
         type: "POST",
         //指定要連接的PHP位址
-        url: "../bin/...php",
+        url: "../bin/editBoss.php",
         //要傳送的資料內容
         data: dataString,
         //獲得正確回應時，要做的事情
@@ -98,7 +98,7 @@
           </div>
         </div>
         <div class="button">
-          <input value="註冊" type="button" onclick = validate() />
+          <input value="註冊" type="submit" onclick = validate() />
         </div>
         <div class="button">
           <input type="reset" value="返回" onclick="location.href='../page/首頁.html'">
