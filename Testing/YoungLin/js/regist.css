@@ -5,7 +5,7 @@ body {
     line-height: 1.5;
     color: #292b2c;
     background: linear-gradient(135deg, #71b7e6, #9b59b6);
-    font-weight:bold;
+    font-weight:bold
   }
 
   label {
@@ -23,36 +23,57 @@ body {
   在螢幕寬度小於等於 768px 時套用以下樣式 
 --------------------*/
 @media (max-width: 768px) {
-  h1 {
+  h3 {
   font-size: 16px;
   }
 }
-/* ------------------- */
-/*      menu1          */
-/* ------------------- */
-.cabinet{
+@media (max-width: 768px) {
+  h4 {
+  font-size: 16px;
+  }
+}
+
+/*-----------------
+      store h3
+-------------------*/
+  h3 {
+    font-size: 20px;
     text-align: center;
-    max-width: 500px; 
-    padding: 30px; 
-    background-color: #fff;
+  }
+/*-----------------
+      boss h4
+-------------------*/
+  h4 {
+    font-size: 20px;
+    position:absolute;
+  }
+
+/*-----------------
+    store countainer
+-------------------*/
+  .container{
+    max-width: 1000px; 
+    padding: 50px; 
+    background-color: #ffffff;
     border-radius: 5px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin: 10px auto 5px auto;/*與導覽列的距離跟區塊的左右寬度*/
-    opacity: 0.9;
+
+    margin:15px auto;/*兩個塊的距離跟左右寬度*/
   }
-/* ------------------- */
-/*       menu2         */
-/* ------------------- */
-  .menucabinet{
+/*-----------------
+    boss countainer
+-------------------*/
+  .cabinet{
     text-align: center;
     max-width: 1000px; 
-    padding: 30px; 
+    padding: 100px; 
     background-color: #fff;
     border-radius: 5px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     margin: 10px auto 5px auto;/*與導覽列的距離跟區塊的左右寬度*/
     opacity: 0.9;
   }
+
 /* ------------------- */
 /* 導覽頁               */
 /* ------------------- */
@@ -69,10 +90,11 @@ h1 {
   color: #fff;
 }
 .header {
+
   display: flex;
 }
 
-/* 完成!按鈕 */
+/* 已註冊過!按鈕 */
 .registbutton {
   display: inline-block;
   border-radius: 4px;
@@ -94,7 +116,7 @@ h1 {
   transition: 0.5s;
   opacity: 0.5;/* 透明度 */
 }
-/* 完成! 箭頭鼠標移過去的動畫 */
+/* 已註冊過! 箭頭鼠標移過去的動畫 */
 .registbutton span:after {
   content: '\00bb';
   position: absolute;
@@ -103,7 +125,7 @@ h1 {
   transition: 0.5s;
   opacity: 0.9;
 }
-/* 完成! 鼠標移過去的動畫 */
+/* 已註冊過! 鼠標移過去的動畫 */
 .registbutton:hover span {
   padding-right: 10px;
   opacity: 0.9;
@@ -129,7 +151,7 @@ button[type="submit"] {
   color: block;
   position: absolute;
   bottom: 20px;
-  right: 20px;
+  left: 20px;
 }
 
 button[type="submit"]:hover {
@@ -148,9 +170,58 @@ button[type="reset"] {
   cursor: pointer;
   font-weight: bold;
   bottom: 20px;
-  left: 20px;
+  right: 20px;
 }
 button[type="reset"]:hover {
   background-color: #fb9191;
 }
+
+/* 登入按鈕 */
+.button1{
+  height: 45px;
+  margin: 35px 0
+}
+/* 登入按鈕顏色樣式 */
+.button1 input{
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #FF6969;
+  font-weight:bold
+}
+.button1 input:hover{
+ transform: scale(0.99);
+ background-color: #fb9191;
+ }
+/* 登入按鈕 */
+.button1{
+  height: 45px;
+  margin: 35px 0
+}
+/* 登入按鈕顏色樣式 */
+.button2 input{
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: rgb(110, 208, 110);
+  font-weight:bold
+}
+.button2 input:hover{
+ transform: scale(0.99);
+ background-color: rgb(168, 210, 168);
+ }
 
