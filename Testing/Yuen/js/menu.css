@@ -1,156 +1,156 @@
 body {
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 1rem;
-    font-weight: normal;
-    line-height: 1.5;
-    color: #292b2c;
-    background: #e5dbd8;
-    font-weight:bold;
-  }
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #292b2c;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  font-weight:bold;
+}
 
-  label {
-    display: inline-block;
-    margin-bottom: .5rem;
-  }
-  
-  input,
-  button,
-  select,
-  textarea {
-    line-height: inherit;
-  }
+label {
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+input,
+button,
+select,
+textarea {
+  line-height: inherit;
+}
 /* -----------------
-  在螢幕寬度小於等於 768px 時套用以下樣式 
+在螢幕寬度小於等於 768px 時套用以下樣式 
 --------------------*/
 @media (max-width: 768px) {
-  h1 {
-  font-size: 16px;
-  }
+h1 {
+font-size: 16px;
+}
 }
 /* ------------------- */
 /*      menu1          */
 /* ------------------- */
 .cabinet{
-    text-align: center;
-    max-width: 500px; 
-    padding: 30px; 
-    background-color: #fff;
-    border-radius: 5px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin: 10px auto 5px auto;/*與導覽列的距離跟區塊的左右寬度*/
-    opacity: 0.9;
-  }
+  text-align: center;
+  max-width: 500px; 
+  padding: 30px; 
+  background-color: #fff;
+  border-radius: 5px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin: 10px auto 5px auto;/*與導覽列的距離跟區塊的左右寬度*/
+  opacity: 0.9;
+}
 /* ------------------- */
 /*       menu2         */
 /* ------------------- */
-  .menucabinet{
-    text-align: center;
-    max-width: 1000px; 
-    padding: 30px; 
-    background-color: #fff;
-    border-radius: 5px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin: 10px auto 5px auto;/*與導覽列的距離跟區塊的左右寬度*/
-    opacity: 0.9;
-  }
+.menucabinet{
+  text-align: center;
+  max-width: 1000px; 
+  padding: 30px; 
+  background-color: #fff;
+  border-radius: 5px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin: 10px auto 5px auto;/*與導覽列的距離跟區塊的左右寬度*/
+  opacity: 0.9;
+}
 /* ------------------- */
 /* 導覽頁               */
 /* ------------------- */
 .main-header {
-  opacity: 0.9;
-  /*background-color: #DCC3E3;*/
-  background-color: #9278C5;
-  padding: 3px 10px;
+opacity: 0.9;
+/*background-color: #DCC3E3;*/
+background-color: #9278C5;
+padding: 3px 10px;
 
 }
 h1 {
-  width:1200px;
-  padding-left: 15px;
-  color: #fff;
+width:1200px;
+padding-left: 15px;
+color: #fff;
 }
 .header {
-  display: flex;
+display: flex;
 }
 
 /* 完成!按鈕 */
 .registbutton {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #9278C5;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 18px;
-  padding: 13px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
+display: inline-block;
+border-radius: 4px;
+background-color: #9278C5;
+border: none;
+color: #FFFFFF;
+text-align: center;
+font-size: 18px;
+padding: 13px;
+width: 200px;
+transition: all 0.5s;
+cursor: pointer;
+margin: 5px;
 }
 .registbutton span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-  opacity: 0.5;/* 透明度 */
+cursor: pointer;
+display: inline-block;
+position: relative;
+transition: 0.5s;
+opacity: 0.5;/* 透明度 */
 }
 /* 完成! 箭頭鼠標移過去的動畫 */
 .registbutton span:after {
-  content: '\00bb';
-  position: absolute;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-  opacity: 0.9;
+content: '\00bb';
+position: absolute;
+top: 0;
+right: -20px;
+transition: 0.5s;
+opacity: 0.9;
 }
 /* 完成! 鼠標移過去的動畫 */
 .registbutton:hover span {
-  padding-right: 10px;
-  opacity: 0.9;
+padding-right: 10px;
+opacity: 0.9;
 }
 
 .registbutton:hover span:after {
-  opacity: 1;
-  right: 0;
+opacity: 1;
+right: 0;
 }
 
 /*-----------------
-    儲存 返回按鈕
+  儲存 返回按鈕
 -------------------*/
 button[type="submit"] {
-  display: block;
-  margin: 0 auto;
-  padding: 10px 20px;
-  background-color: rgb(110, 208, 110);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  color: block;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+display: block;
+margin: 0 auto;
+padding: 10px 20px;
+background-color: rgb(110, 208, 110);
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-weight: bold;
+color: block;
+position: absolute;
+bottom: 20px;
+right: 20px;
 }
 
 button[type="submit"]:hover {
-  background-color: rgb(168, 210, 168);
+background-color: rgb(168, 210, 168);
 }
 
 button[type="reset"] {
-  position: absolute;
-  display: flex;
-  margin-top: 2px;
-  padding: 10px 20px;
-  background-color: #FF6969;
-  color: black;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  bottom: 20px;
-  left: 20px;
+position: absolute;
+display: flex;
+margin-top: 2px;
+padding: 10px 20px;
+background-color: #FF6969;
+color: black;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-weight: bold;
+bottom: 20px;
+left: 20px;
 }
 button[type="reset"]:hover {
-  background-color: #fb9191;
+background-color: #fb9191;
 }
 

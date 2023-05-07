@@ -6,7 +6,7 @@
 html,
 body {
     font-family: 'Noto Sans TC', sans-serif;
-    background: #e5dbd8;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
     margin-top:none ;
 }
 
