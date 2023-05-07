@@ -5,6 +5,9 @@
   font-family: 'Poppins',sans-serif;
   font-weight:bold
 }
+.title {
+  text-align: center;
+}
 body{
   height: 100vh;
   display: flex;
@@ -14,6 +17,7 @@ body{
 /*   background: linear-gradient(135deg, #e68871, #88ba80); */
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
+
 .container{
   max-width: 700px;
   width: 100%;
@@ -21,7 +25,8 @@ body{
   padding: 25px 30px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-  font-weight:bold
+  font-weight:bold;
+  height: auto;
 }
 .container .title{
   font-size: 25px;
@@ -122,16 +127,23 @@ form .input-box span.details{
     flex-direction: column;
   }
 }
-
-
-
-
+@media screen and (max-width: 768px) {
+  .button-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .registbutton {
+    width: 100%;
+  }
+}
 /* 已註冊過!按鈕 */
 .button-container {
-    position: absolute;
+    position: relative;
     bottom: 0;
     right: 0;
-    margin: 20px;
+    margin: 20px auto 0;
+    z-index: 1;/* 這沒用 幹 */
   }
 .registbutton {
     display: inline-block;
@@ -150,7 +162,7 @@ form .input-box span.details{
   .registbutton span {
     cursor: pointer;
     display: inline-block;
-    position: relative;
+/*     position: relative; */
     transition: 0.5s;
     opacity: 0.5;/* 透明度 */
   }
@@ -168,7 +180,6 @@ form .input-box span.details{
     padding-right: 10px;
     opacity: 0.9;
   }
-  
   .registbutton:hover span:after {
     opacity: 1;
     right: 0;
