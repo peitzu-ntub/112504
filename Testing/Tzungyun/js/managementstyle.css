@@ -1,0 +1,215 @@
+html, body{
+    font-family: 'Noto Sans TC', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  /*   background: linear-gradient(135deg, #e68871, #88ba80); */
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+div.SIDE {
+    width: 500px; /* <div> 要設定寬度，才能配合 float 做水平靠左或靠右排列 */
+    float: left; /* 使用 float 讓這個 <div> 做水平靠左排列 */
+}
+
+.myTitle{
+    font-size: 35px;
+    padding: 10px;
+    border-bottom: 1px solid #e5dbd8;
+}
+
+/* 左測 */
+.section{ 
+    text-align: center;
+	width: 550px;
+	height: 500px;
+	float: left;
+    background-color: #fff;
+    opacity: 0.8;
+    border: 2px solid #ccc;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+    margin-top: -60px;
+    margin-left: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+/* 右測 */
+.aside{
+    text-align: center;
+	width: 550px;
+	height: 500px;
+	float: right;
+    background-color: #fff;
+    opacity: 0.8;
+    border: 2px solid #ccc;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+    margin-top: -60px;
+    margin-left: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+
+}
+
+.section{
+    vertical-align: middle;
+}
+
+.btn{
+    font-size: 18px;
+    background: transparent; /* 清除背景色 */
+    cursor: pointer;  /* 改變滑鼠游標樣式 */
+    text-decoration: none;
+    display: inline-block; 
+    border: 2px solid #e5dbd8;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    padding: 15px;
+    width: 100%;
+    border-radius: 20px;
+    color: rgb(23, 133, 23);
+}
+
+.btn:hover{
+    display: block;
+    background-color: #ef5c28;
+    color: #fff;
+} 
+
+.dropbtn {
+    font-size: 18px;
+    background: transparent; /* 清除背景色 */
+    cursor: pointer;  /* 改變滑鼠游標樣式 */
+    text-decoration: none;
+    display: inline-block; 
+    border: 2px solid #e5dbd8;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    padding: 15px;
+    width: 100%;
+    border-radius: 20px;
+    color: rgb(23, 133, 23);
+}
+
+.dropdown-content {
+    display: none;
+    position: relative; /*框框會不會跟著移動 absolute*/
+    background-color: #fff;
+    min-width: 100px;
+}
+
+.dropdown-content a {
+    font-weight: bold;
+    color: rgb(23, 133, 23);
+    padding: 12px 12px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+} 
+
+.dropdown-content a:hover { /* 滑鼠滑入按鈕變色*/
+    background-color: #ef5c28;
+    color: #fff;
+}
+
+.logoutbutton {
+    background: transparent; /* 清除背景色 */
+    display: inline-block;
+    border: none;
+    color: red;
+    text-align: center;
+    font-size: 15px;
+    padding: 13px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    z-index:100; /*元素重疊顯示在最上層*/
+    position: relative;
+    left: 300px;
+    top: 30px;
+    
+}
+
+.logoutbutton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    opacity: 0.8;
+    z-index:100;
+}
+
+.logoutbutton span:after {
+    content: '\00bb';
+    position: absolute;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    opacity: 0.9;
+    z-index:100;
+}
+
+.logoutbutton:hover span {
+    padding-right: 10px;
+    opacity: 0.9;
+    z-index:100;
+}
+  
+.logoutbutton:hover span:after {
+    opacity: 1;
+    right: 0;
+    z-index:100;
+}
+
+.backhomebtn {
+    display: inline-block;
+    border-radius: 4px;
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 16px;
+    padding: 13px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    position: relative;
+    top: -100px;
+    left: 1225px;
+}
+
+.backhomebtn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    opacity: 0.8;
+}
+
+.backhomebtn span:after {
+    content: '\00bb';
+    position: absolute;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    opacity: 0.9;
+}
+
+.backhomebtn:hover span {
+    padding-right: 10px;
+    opacity: 0.9;
+}
+  
+.backhomebtn:hover span:after {
+    opacity: 1;
+    right: 0;
+}
