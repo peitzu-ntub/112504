@@ -1,3 +1,14 @@
+<?php
+$user = 'root';
+$pass = '12345678';
+$db = '112504';
+
+$con = mysqli_connect("localhost", $user, $pass, $db);
+
+  $sql = "SELECT type_name FROM food_type;";
+  $car_brands = mysqli_query ($con, $sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +38,12 @@
 			餐點類型：
 			<select name="type_id" id="type_id">
 				<!-- 動態載入的選項會放在這裡 -->
-				<option value="type_id" name="type_id"></option>
+				<option value="">--- Select ---</option>
+				<?php
+                while ($cat = mysqli_fetch_array($car_brands,MYSQLI_ASSOC)) {
+							echo "<option value='" . $cat['type_name'] . "'>" . $cat['type_name'] . "</option>";
+				}
+                ?>
 			</select>
 		</form>
 
@@ -43,6 +59,16 @@
 			<input type="text" class="form-control" id="meal_name" name="meal_name" placeholder="餐點名稱">
 		</div>
 
+		<div class="form-group">
+			<label for="meal_note">
+				<font style="vertical-align: inherit;">
+					<font style="vertical-align: inherit;">
+						餐點介紹：
+					</font>
+				</font>
+			</label>
+			<textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="餐點介紹"></textarea><br>
+		</div>
 
 		<div class="form-group">
 			<label for="meal_note">
