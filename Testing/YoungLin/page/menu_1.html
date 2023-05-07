@@ -1,45 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>Menu customization</title>
-	<link href="../js/menu.css" rel="stylesheet">
-
+	<meta charset="UTF-8">
+	<title>測試</title>
+	<link rel="stylesheet" href="../js/test.css">
+	<script src="../js/jquery-3.6.4.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-
 <body>
-	<header class="main-header">
-		<div class="header">
-			<h1><a>菜單設計</a></h1>
-			<hr>
-			<button class="registbutton" onclick="location.href='../page/menu_2.html'">
-				<span>下一步</span></button>
+	<div class="container">
+		<div class="title">請問您的菜單有些什麼類型?</div><br><hr>
+		<div class="content">
+			<form action="#">
+				<div class="user-details">
+					<div class="input-box">
+						<span class="details">類型：</span>
+						<input type="text" name="" id="" placeholder="主菜、附餐、飲品" required>
+					</div>
+				</div>
+				<div class="button">
+					<input value="確定" type="submit" onclick= />
+				</div>
+				<div class="button">
+					<input type="reset" value="返回" onclick="location.href='../page/首頁.html'">
+				</div>
+			</form>
 		</div>
-	</header>
-
-	<div class="cabinet">
-		<label>請問您的菜單有些什麼類型?</label>
-		<hr><br>
-		<label for="type_id">
-			<font style="vertical-align: inherit;">
-				<font style="vertical-align: inherit;">
-					類型：
-				</font>
-			</font>
-		</label>
-		<div class="button">
-			<input type="text" class="form-control" id="type_id" placeholder="主菜" required>
-			<button type="submit" onclick="location.href=''">儲存</button>
-			<button type="reset" onclick="location.href='../page/index.html'">返回</button>
+		<div class="button-container">
+			<button class="registbutton" onclick="location.href='../page/menu_2.html'">
+				<span>下一步</span>
+			</button>
 		</div>
 	</div>
 </body>
-
 <!-- <script>
 	function addLabel() {
 		// 創建新的標籤元素
