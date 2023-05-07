@@ -1,11 +1,18 @@
-html, body{
+@charset "utf-8";
+
+html{
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+    font-weight: bold
+}
+
+body{
     font-family: 'Noto Sans TC', sans-serif;
-    height: 100vh;
+    height: 95vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
-  /*   background: linear-gradient(135deg, #e68871, #88ba80); */
     background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
@@ -31,7 +38,7 @@ div.SIDE {
     border: 2px solid #ccc;
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
     margin-top: -60px;
-    margin-left: 20px;
+    margin-left: 0px;
     padding-left: 50px;
     padding-right: 50px;
 }
@@ -52,10 +59,6 @@ div.SIDE {
 
 }
 
-.section{
-    vertical-align: middle;
-}
-
 .btn{
     font-size: 18px;
     background: transparent; /* 清除背景色 */
@@ -63,12 +66,11 @@ div.SIDE {
     text-decoration: none;
     display: inline-block; 
     border: 2px solid #e5dbd8;
-    border-radius: 20px;
+    border-radius: 5px;
     font-weight: bold;
     margin-bottom: 30px;
     padding: 15px;
     width: 100%;
-    border-radius: 20px;
     color: rgb(23, 133, 23);
 }
 
@@ -85,12 +87,11 @@ div.SIDE {
     text-decoration: none;
     display: inline-block; 
     border: 2px solid #e5dbd8;
-    border-radius: 20px;
+    border-radius: 5px;
     font-weight: bold;
     margin-bottom: 30px;
     padding: 15px;
     width: 100%;
-    border-radius: 20px;
     color: rgb(23, 133, 23);
 }
 
@@ -130,7 +131,6 @@ div.SIDE {
     width: 100px;
     transition: all 0.5s;
     cursor: pointer;
-    margin: 5px;
     z-index:100; /*元素重疊顯示在最上層*/
     position: relative;
     left: 300px;
@@ -183,8 +183,9 @@ div.SIDE {
     cursor: pointer;
     margin: 5px;
     position: relative;
-    top: -100px;
-    left: 1225px;
+    top: 525px;
+    left: 1250px;
+    z-index: 99;
 }
 
 .backhomebtn span {
