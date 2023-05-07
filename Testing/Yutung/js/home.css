@@ -18,13 +18,6 @@ div.container {
 }
 
 /* ------------------- */
-/* header              */
-/* ------------------- */
-div.header {
-    height: 700px;
-}
-
-/* ------------------- */
 /* content             */
 /* ------------------- */
 div.content {
@@ -47,7 +40,6 @@ a {
 
 .main-header {
     opacity: 0.9;
-    /*background-color: #DCC3E3;*/
     background-color: #9278C5;
 }
 
@@ -66,11 +58,13 @@ a {
     transition: .5s;
 }
 
+/* 關於我們 常見問題 聯絡我們 的格式*/
 .main-menu li a {
     padding: 30px 10px;
     line-height: 60px;
 }
 
+/* 導覽列底線 */
 .main-menu li::after {
     content: '';
     position: absolute;
@@ -113,7 +107,7 @@ a {
     cursor: pointer;
 }
 
+/* 游標在那邊有陰影 */
 .shape-ex1:hover{
     background-color: #876DBC;
 }
-
