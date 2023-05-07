@@ -32,7 +32,7 @@ body {
 /* ------------------- */
 .cabinet{
     text-align: center;
-    max-width: 500px; 
+    max-width: 800px ; 
     padding: 30px; 
     background-color: #fff;
     border-radius: 5px; 
@@ -154,3 +154,27 @@ button[type="reset"]:hover {
   background-color: #fb9191;
 }
 
+/* 登入按鈕 */
+form .button{
+  height: 45px;
+  margin: 35px 0
+}
+/* 登入按鈕顏色樣式 */
+form .button input{
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  font-weight:bold
+}
+form .button input:hover{
+ /* transform: scale(0.99); */
+ background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+ }

@@ -57,19 +57,13 @@ form .user-details .input-box{
   width: calc(100% / 2 - 20px);
 
 }
-
-form .user-details .textarea{
-  margin-bottom: 15px;
-  width: calc(100% / 2 - 20px);
-
-}
 form .input-box span.details{
   display: block;
 /*   font-weight: 500; */
   margin-bottom: 5px;
   font-weight:bold
 }
-/* input輸入格樣式 */
+/* 輸入格樣式 */
 .user-details .input-box input{
   height: 45px;
   width: 100%;
@@ -81,25 +75,9 @@ form .input-box span.details{
   border-bottom-width: 2px;
   transition: all 0.3s ease;
 }
-/* textarea輸入格樣式 */
-.user-details .input-box textarea{
-  height: 45px;
-  width: 100%;
-  outline: none;
-  font-size: 16px;
-  border-radius: 5px;
-  padding-left: 15px;
-  border: 1px solid #ccc;
-  border-bottom-width: 2px;
-  transition: all 0.3s ease;
-}
 
-/* 忘記密碼 */
-a{
-  text-align: center;
-  cursor: pointer;
-  opacity: 0.5;/* 透明度 */
-}
+
+
 
 /* 登入按鈕 */
  form .button{
@@ -165,7 +143,7 @@ a{
     bottom: 0;
     right: 0;
     margin: 20px auto 0;
-    z-index: 1;
+    z-index: 1;/* 這沒用 幹 */
   }
 .registbutton {
     display: inline-block;
