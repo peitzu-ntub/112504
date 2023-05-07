@@ -204,12 +204,12 @@ div.SIDE {
     opacity: 0.9;
 }
 
-.backhomebtn :hover span {
+.backhomebtn:hover span {
     padding-right: 10px;
     opacity: 0.9;
 }
   
-.backhomebtn :hover span:after {
+.backhomebtn:hover span:after {
     opacity: 1;
     right: 0;
 }
