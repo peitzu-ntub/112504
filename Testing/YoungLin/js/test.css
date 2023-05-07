@@ -139,7 +139,7 @@ form .input-box span.details{
 }
 /* 已註冊過!按鈕 */
 .button-container {
-    position: relative;
+    position: absolute;
     bottom: 0;
     right: 0;
     margin: 20px auto 0;
@@ -162,14 +162,14 @@ form .input-box span.details{
   .registbutton span {
     cursor: pointer;
     display: inline-block;
-/*     position: relative; */
+    position: relative;
     transition: 0.5s;
     opacity: 0.5;/* 透明度 */
   }
   /* 已註冊過! 箭頭鼠標移過去的動畫 */
   .registbutton span:after {
     content: '\00bb';
-    position: absolute;
+    position: relative;
     top: 0;
     right: -20px;
     transition: 0.5s;
