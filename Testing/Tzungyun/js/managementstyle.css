@@ -1,5 +1,11 @@
 html, body{
     font-family: 'Noto Sans TC', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  /*   background: linear-gradient(135deg, #e68871, #88ba80); */
     background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
@@ -24,8 +30,10 @@ div.SIDE {
     opacity: 0.8;
     border: 2px solid #ccc;
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
-    margin-left: 150px;
-    
+    margin-top: -60px;
+    margin-left: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 /* 右測 */
 .aside{
@@ -37,7 +45,11 @@ div.SIDE {
     opacity: 0.8;
     border: 2px solid #ccc;
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
-    margin-right: 150px;
+    margin-top: -60px;
+    margin-left: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+
 }
 
 .section{
@@ -121,8 +133,8 @@ div.SIDE {
     margin: 5px;
     z-index:100; /*元素重疊顯示在最上層*/
     position: relative;
-    left: 330px;
-    top: 90px;
+    left: 300px;
+    top: 30px;
     
 }
 
@@ -160,7 +172,7 @@ div.SIDE {
 .backhomebtn {
     display: inline-block;
     border-radius: 4px;
-    background: linear-gradient(135deg, #9b59b6, #71b7e6, #9b59b6);
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
     border: none;
     color: #FFFFFF;
     text-align: center;
@@ -171,7 +183,8 @@ div.SIDE {
     cursor: pointer;
     margin: 5px;
     position: relative;
-    left: 1300px;
+    top: -100px;
+    left: 1225px;
 }
 
 .backhomebtn span {
