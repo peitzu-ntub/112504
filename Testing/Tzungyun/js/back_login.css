@@ -3,11 +3,10 @@
 html{
     box-sizing: border-box;
     font-family: 'Poppins',sans-serif;
-    font-weight: bold
+    font-weight: bold;
 }
 
 body{
-    font-family: 'Noto Sans TC', sans-serif;
     height: 95vh;
     display: flex;
     justify-content: center;
@@ -41,6 +40,7 @@ div.SIDE {
     margin-left: 0px;
     padding-left: 50px;
     padding-right: 50px;
+    
 }
 /* 右測 */
 .aside{
@@ -80,93 +80,67 @@ div.SIDE {
     color: #fff;
 } 
 
-.dropbtn {
-    font-size: 18px;
-    background: transparent; /* 清除背景色 */
-    cursor: pointer;  /* 改變滑鼠游標樣式 */
-    text-decoration: none;
-    display: inline-block; 
-    border: 2px solid #e5dbd8;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    padding: 15px;
+.content form .enter{
+    display: inline-block;
+    margin: 20px 0 12px 0;
     width: 100%;
-    color: rgb(23, 133, 23);
+
 }
 
-.dropdown-content {
-    display: none;
-    position: relative; /*框框會不會跟著移動 absolute*/
-    background-color: #fff;
-    min-width: 100px;
+form .enter .input-box{
+    margin-bottom: 50px;
+    width: 100%; /* calc(100% / 2 - 20px) */
 }
 
-.dropdown-content a {
-    font-weight: bold;
-    color: rgb(23, 133, 23);
-    padding: 12px 12px;
-    text-decoration: none;
+form .input-box span.details{
+    text-align: left;
     display: block;
-    text-align: center;
+    margin-bottom: 5px;
+    font-weight:bold
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-} 
-
-.dropdown-content a:hover { /* 滑鼠滑入按鈕變色*/
-    background-color: #ef5c28;
-    color: #fff;
+/* 輸入格樣式 */
+.enter .input-box input , .verify .input-box input{
+    height: 45px;
+    width: 95%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
 }
 
-.logoutbutton {
-    background: transparent; /* 清除背景色 */
-    display: inline-block;
+form .button{
+    height: 45px;
+    margin: 35px 0
+}
+
+form .button input{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
     border: none;
-    color: red;
-    text-align: center;
-    font-size: 15px;
-    padding: 13px;
-    width: 100px;
-    transition: all 0.5s;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
     cursor: pointer;
-    z-index:100; /*元素重疊顯示在最上層*/
-    position: relative;
-    left: 300px;
-    top: 30px;
-    
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    font-weight:bold
 }
 
-.logoutbutton span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-    opacity: 0.8;
-    z-index:100;
+form .button input:hover{
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
 }
 
-.logoutbutton span:after {
-    content: '\00bb';
+.button-container{
     position: absolute;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-    opacity: 0.9;
-    z-index:100;
-}
-
-.logoutbutton:hover span {
-    padding-right: 10px;
-    opacity: 0.9;
-    z-index:100;
-}
-  
-.logoutbutton:hover span:after {
-    opacity: 1;
+    bottom: 0;
     right: 0;
-    z-index:100;
+    margin: 20px auto 0;
 }
 
 .backhomebtn {
@@ -183,8 +157,8 @@ div.SIDE {
     cursor: pointer;
     margin: 5px;
     position: relative;
-    top: 525px;
-    left: 1250px;
+    top: -30px;
+    left: 70px;
     z-index: 99;
 }
 
@@ -213,4 +187,53 @@ div.SIDE {
 .backhomebtn:hover span:after {
     opacity: 1;
     right: 0;
+}
+
+.neglectbutton {
+    background: transparent; /* 清除背景色 */
+    display: inline-block;
+    border: none;
+    color: red;
+    text-align: center;
+    font-size: 15px;
+    padding: 13px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    z-index:100; /*元素重疊顯示在最上層*/
+    position: relative;
+    left: -900px;
+    top: -380px;
+    
+}
+
+.neglectbutton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    opacity: 0.8;
+    z-index:100;
+}
+
+.neglectbutton span:after {
+    content: '\00bb';
+    position: absolute;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    opacity: 0.9;
+    z-index:100;
+}
+
+.neglectbutton:hover span {
+    padding-right: 10px;
+    opacity: 0.9;
+    z-index:100;
+}
+  
+.neglectbutton:hover span:after {
+    opacity: 1;
+    right: 0;
+    z-index:100;
 }

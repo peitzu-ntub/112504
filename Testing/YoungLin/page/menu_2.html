@@ -7,88 +7,62 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>Food</title>
-	<link href="../js/menu.css" rel="stylesheet">
+	<link href="../js/test.css" rel="stylesheet">
 
 </head>
 
 
 <body>
-	<header class="main-header">
-		<div class="header">
-			<h1><a>輸入所有餐點品項</a></h1>
-			<hr>
-			<button class="registbutton" onclick="location.href='../page/menu_3.html'"> 
-				<span>下一步</span></button>
+	<div class="container">
+		<div class="title">輸入所有餐點類型</div><br>
+		<hr>
+		<div class="content">
+			<form action="#">
+				<div class="user-details">
+					<div class="input-box">
+						<span class="details">餐點類型：</span>
+						<select name="type_id" id="type_id">
+							<option value="type_id" name="type_id"></option>
+						</select>
+					</div>
+					<div class="input-box">
+						<span class="details">餐點名稱：</span>
+						<input type="text" name="meal_name" id="meal_name" placeholder="請輸入餐點名稱" required>
+					</div>
+					<div class="input-box">
+						<span class="details">價格：</span>
+						<input type="number" min="0" name="meal_price" id="meal_price" placeholder="請輸入正確價格" required>
+					</div><br>
+					<div class="input-box">
+						<span class="details">圖片：</span>
+						<input type="file" name="meal_pic" id="meal_pic">
+					</div>
+					<div class="input-box">
+						<span class="details">餐點介紹：</span>
+						<textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="請輸入餐點介紹"
+							style="height: 50px;width: 300px;resize: none;"></textarea>
+					</div>
+					<div class="input-box">
+						<span class="details">注意事項：</span>
+						<!--textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="注意事項"></textarea> -->
+						<textarea id='meal_note' name="meal_note" placeholder="請輸入注意事項"
+							style="height: 50px;width: 300px;resize: none;"></textarea>
+					</div>
+				</div>
+				<div class="button">
+					<input value="確定" type="submit" onclick= />
+				</div>
+				<div class="button">
+					<input type="reset" value="返回" onclick="location.href='../page/menu_1.html'">
+				</div>
+			</form>
+			<div class="button-container">
+				<button class="registbutton" onclick="location.href='../page/menu_3.html'">
+					<span>下一步!</span>
+				</button>
+			</div>
 		</div>
-	</header>
-
-	<div class="menucabinet">
-		<form>
-			餐點類型：
-			<select name="type_id" id="type_id">
-				<!-- 動態載入的選項會放在這裡 -->
-				<option value="type_id" name="type_id"></option>
-			</select>
-		</form>
-
-
-		<div class="form-group">
-			<label for="boss_identity">
-				<font style="vertical-align: inherit;">
-					<font style="vertical-align: inherit;">
-						餐點名稱：
-					</font>
-				</font>
-			</label>
-			<input type="text" class="form-control" id="meal_name" name="meal_name" placeholder="餐點名稱">
-		</div>
-
-
-		<div class="form-group">
-			<label for="meal_note">
-				<font style="vertical-align: inherit;">
-					<font style="vertical-align: inherit;">
-						餐點介紹：
-					</font>
-				</font>
-			</label>
-			<textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="餐點介紹"></textarea><br>
-		</div>
-
-		<div class="form-group">
-			<label for="meal_note">
-				<font style="vertical-align: inherit;">
-					<font style="vertical-align: inherit;">
-						注意事項：
-					</font>
-				</font>
-			</label>
-			<textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="注意事項"></textarea>
-		</div>
-
-		<div class="form-group">
-			<label for="meal_price">
-				<font style="vertical-align: inherit;">
-					<font style="vertical-align: inherit;">
-						價格：
-					</font>
-				</font>
-			</label>
-			<input type="number" min="0" class="form-control" id="meal_price" name="meal_price">
-		</div>
-		<div class="form-group">
-			<label for="meal_pic">
-				<font style="vertical-align: inherit;">
-					<font style="vertical-align: inherit;">
-						圖片：
-					</font>
-				</font>
-			</label>
-			<input type="file" class="form-control" id="meal_pic">
-		</div>
-		<button type="submit" onclick="location.href=''">儲存</button>
-		<button type="reset" onclick="location.href='../page/index.html'">返回</button>
-	</div>
 </body>
+
 
 </html>
