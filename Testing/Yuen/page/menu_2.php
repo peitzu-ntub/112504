@@ -27,8 +27,9 @@ $con = mysqli_connect("localhost", $user, $pass, $db);
 	<div class="container">
 		<div class="title">輸入所有餐點類型</div><br>
 		<hr>
+		
 		<div class="content">
-			<form action="#">
+		<form action="../bin/2.php" method="POST"> 
 				<div class="user-details">
 					<div class="input-box">
 						<span class="details">餐點類型：</span>
