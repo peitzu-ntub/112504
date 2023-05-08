@@ -6,7 +6,7 @@ $db = '112504';
 $con = mysqli_connect("localhost", $user, $pass, $db);
 
   $sql = "SELECT type_name FROM food_type;";
-  $car_brands = mysqli_query ($con, $sql);
+  $food_type = mysqli_query ($con, $sql);
 
 ?>
 <!DOCTYPE html>
@@ -40,10 +40,10 @@ $con = mysqli_connect("localhost", $user, $pass, $db);
 				<!-- 動態載入的選項會放在這裡 -->
 				<option value="">--- Select ---</option>
 				<?php
-                while ($cat = mysqli_fetch_array($car_brands,MYSQLI_ASSOC)) {
-							echo "<option value='" . $cat['type_name'] . "'>" . $cat['type_name'] . "</option>";
-				}
-                ?>
+                        while ($cat = mysqli_fetch_array($car_brands,MYSQLI_ASSOC)) {
+									echo "<option value='" . $cat['type_name'] . "'>" . $cat['type_name'] . "</option>";
+						}
+                        ?>
 			</select>
 		</form>
 
