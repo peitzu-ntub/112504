@@ -24,7 +24,7 @@ if ($con->connect_error) {
 
     //對資料庫執行查訪的動作
     if (mysqli_query($con, $sql)) {
-      header("Location: upload.html");
+      header("Location: ../page/new_succ.html");
   }else {
       echo "Error: " . $sql . "<br>" . mysqli_error($con);
     }
