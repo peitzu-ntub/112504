@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+	<title>後台登入頁面</title>
+    <!-- <link href="../js/bootstrap.min.css" rel="stylesheet"> -->
+	<link href="../js/back_login.css" rel="stylesheet">
+    </head>
+    <script>
+        //當網頁準備好的時候，做以下的動作
+        $(document).ready(function(){
+            //form的submit按鈕按下去的動作
+            $("form").on("submit", function(e) {
+                //1.先把準備拋回去的資料「序列化」整理成json格式的字串
+                var dataString = $(this).serialize();
+                
+                //可以把字串顯示出來看看是否正確
+                //alert(dataString);               
+
+                //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
+                $.ajax({
+                    //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+                    type: "POST",
+                    //指定要連接的PHP位址
+                    url: "../bin/editBoss.php",
+                    //要傳送的資料內容
+                    data: dataString,
+                    //獲得正確回應時，要做的事情
+                    success: function (response) {
+                        var json = $.parseJSON(response);                        
+                        if (json.result == 'OK') {
+                            $("#message").html('成功：\n' + json.message);
+                        } else {
+                            $("#message").html('失敗：\n' + json.message);
+                        }
+                    },
+                    //獲得不正確的回應時，要做的事情
+                    error: function(response) {
+                        $("#message").html(response);
+                    }
+                });
+                e.preventDefault();
+            });
+        });                
+    </script>
+    <body>
+	<div class="container">
+		<div class="button-container">
+            <button class="backhomebtn" onclick="location.href='#'">
+                <span>離開</span>
+            </button>
+            <button class="neglectbutton" onclick="location.href='#'">
+                <span>忘記密碼</span>
+            </button>
+		</div>
+		<div id="wrap">
+			<div class="section">
+				<div class="col-md-5">	
+					<h1 class="myTitle">後台管理</h1>
+				</div>
+                <div class="content">
+                    <form method="post" action="#">
+                        <div class="enter">
+                            <div class="input-box">
+                                <span class="details">輸入密碼</span>
+                                <input type="text" name="back_psw" id="back_psw" placeholder="請輸入您的密碼" required>
+                            </div>
+                        </div>
+                    <div class="button">
+                        <input type="submit" value="確認">
+                    </div>
+                </div>
+			</div>
+			<div class="aside">
+					<h1 class="myTitle">前台管理</h1>
+				<div class="col-md-4">
+					<input type="button" class="btn" value="開桌" onclick="location.href='../page/開桌.html'"></input>
+					<input type="button" class="btn" value="菜單" onclick="location.href='../page/菜單.html'"></input>
+					<input type="button" class="btn" value="訂單查詢" onclick="location.href='../page/訂單查詢.html'"></input>
+					<input type="button" class="btn" value="結帳" onclick="location.href='../page/結帳.html'"></input>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
