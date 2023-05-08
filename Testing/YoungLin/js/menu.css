@@ -161,3 +161,13 @@ form .button input:hover{
  /* transform: scale(0.99); */
  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
  }
+ @media screen and (max-width: 768px) {
+  .button-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .Nextstepbutton {
+    width: 100%;
+  }
+}
