@@ -28,9 +28,7 @@
                     data: dataString,
                     //獲得正確回應時，要做的事情
                     success: function (response) {
-                        //alert(response);
-                        var json = $.parseJSON(response); 
-
+                        var json = $.parseJSON(response);                        
                         if (json.result == 'OK') {
                             $("#message").html('成功：\n' + json.message);
                         } else {
