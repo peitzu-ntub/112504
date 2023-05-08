@@ -114,7 +114,6 @@
 
     <link rel="stylesheet" href="../js/bootstrap.min.css" >
 	<link rel="stylesheet" href="../js/bootstrap.min.4.6.2.css">
-	<link rel="stylesheet" href="../js/style.css" >
 
     <script src="../js/jquery-3.6.4.min.js"></script>
 </head>
