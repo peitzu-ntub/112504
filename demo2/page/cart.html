@@ -1,0 +1,68 @@
+<html>
+
+<head>
+  <title>購物車</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="../js/bootstrap.min.4.6.2.css">
+  <link rel="stylesheet" href="../js/style.css">
+  <link rel="stylesheet" href="../js/cart_style.css">
+
+  <script src="../js/jquery-3.6.4.min.js"></script>
+
+  <style>
+    td {
+      border: 1px solid rgba(113, 109, 109, 0.401);
+      border-collapse: collapse;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <center>
+          <h5>我的購物車</h5>
+        </center>
+      </div>
+    </div>
+    <div>
+      <table width="100%">
+        <tr>
+          <td style="background-color:rgb(188, 195, 100)" align="center"><b>餐點</b></td>
+          <td style="background-color:rgb(188, 195, 100)" align="center" width="15%"><b>單價</b></td>
+          <td style="background-color:rgb(188, 195, 100)" align="center" width="15%"><b>數量</b></td>
+          <td style="background-color:rgb(188, 195, 100)" align="center" width="15%"><b>金額</b></td>
+        </tr>
+        <tr>
+          <td>雞腿飯</td>
+          <td align="right">100</td>
+          <td align="right">3</td>
+          <td align="right">300</td>
+        </tr>
+        <tr>
+          <td>我加牛排的海陸大餐</td>
+          <td align="right">100</td>
+          <td align="right">3</td>
+          <td align="right">300</td>
+        </tr>
+        <tr>
+          <td style="background-color:rgb(172, 176, 110)" align="right" colspan="3"><b>合計</b></td>
+          <td style="background-color:rgb(172, 176, 110)" align="right"><b>600</b></td>
+        </tr>
+      </table>
+    </div>
+      <a href='orderConfirm.html'><button type="button" class="btn btn-success">
+          確認
+        </button></a>
+      <button type="button" class="btn btn-success">
+        我要繼續點
+      </button>
+  </div>
+</body>
+
+</html>

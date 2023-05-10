@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>點餐</title>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../js/bootstrap.min.css" >
+	<link rel="stylesheet" href="../js/bootstrap.min.4.6.2.css">
+	<link rel="stylesheet" href="../js/style.css" >
+
+    <script src="../js/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+    <!--最外層-->
+    <div class='container'>
+
+    <!--功能標題-->
+    <div class="row">
+        <div class="col-md-12">
+            <center><h5 class='card-title'>
+                選擇餐點 (訂單：20230508010819)            </h5></center>
+        </div>
+    </div>    
+
+
+		<div class='row'>
+
+        <div class='col-md-4'>
+            <div class='card'>
+                <a href='confirmFood.php?identity=A123456789&store_id=S01&meal_id=M01&order_no=20230508010819'>
+                    <img class='card-img-top' src='../images/M01.upload.jpg' alt='雞排飯' /></a>
+                <div class='card-block'>
+                    <h5 class='card-title'>雞排飯</h5>
+                    <h5 class='card-title'>$104</h5>
+                </div>
+            </div>
+        </div>
+        
+        <div class='col-md-4'>
+            <div class='card'>
+                <a href='confirmFood.php?identity=A123456789&store_id=S01&meal_id=M02&order_no=20230508010819'>
+                    <img class='card-img-top' src='../images/M02.upload.jpg' alt='蛋包飯' /></a>
+                <div class='card-block'>
+                    <h5 class='card-title'>蛋包飯</h5>
+                    <h5 class='card-title'>$134</h5>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        <div class='col-md-4'>
+            <div class='card'>
+                <a href='confirmFood.php?identity=A123456789&store_id=S01&meal_id=M03&order_no=20230508010819'>
+                    <img class='card-img-top' src='../images/M03.upload.jpg' alt='我家牛排的肉羹湯' /></a>
+                <div class='card-block'>
+                    <h5 class='card-title'>我家牛排的肉羹湯</h5>
+                    <h5 class='card-title'>$49</h5>
+                </div>
+            </div>
+        </div>
+        
+        <div class='col-md-4'>
+            <div class='card'>
+                <a href='confirmFood.php?identity=A123456789&store_id=S01&meal_id=M04&order_no=20230508010819'>
+                    <img class='card-img-top' src='../images/M04.upload.jpg' alt='美味三明治' /></a>
+                <div class='card-block'>
+                    <h5 class='card-title'>美味三明治</h5>
+                    <h5 class='card-title'>$49</h5>
+                </div>
+            </div>
+        </div>
+        
+        <div class='col-md-4'>
+            <div class='card'>
+                <a href='confirmFood.php?identity=A123456789&store_id=S01&meal_id=M05&order_no=20230508010819'>
+                    <img class='card-img-top' src='../images/M05.upload.jpg' alt='好吃的海陸套餐' /></a>
+                <div class='card-block'>
+                    <h5 class='card-title'>好吃的海陸套餐</h5>
+                    <h5 class='card-title'>$2000</h5>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+                <div class='row'>
+                <div class='col-md-12'>
+                    <div style='height:10;'></div>
+                </div>
+                <div class='col-md-12'>
+
+                    <a href='cart.php?identity=A123456789&store_id=S01&order_no=20230508010819'>
+                        <button type='button' class='btn btn-success'>
+                            購物車
+                        </button>
+                    </a>
+                    <a href='orderQuery.php?identity=A123456789&store_id=S01&order_no=20230508010819'>
+                        <button type='button' class='btn btn-success'>
+                            我的訂單
+                        </button>
+                    </a>
+                    
+                    <a href='orderClose.html'><button type="button" class="btn btn-success">
+                    結帳
+                    </button></a>
+                </div>
+            </div>
+
+    <!--最外層，結尾-->
+    </div>
+
+</body>
+
+</html>
