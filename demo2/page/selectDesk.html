@@ -10,7 +10,7 @@
     
         <link rel="stylesheet" href="../js/bootstrap.min.css" >
         <link rel="stylesheet" href="../js/bootstrap.min.4.6.2.css">
-        <link rel="stylesheet" href="../js/style.css" >
+        <link rel="stylesheet" href="../js/selectDesk.css" >
     
         <script src="../js/jquery-3.6.4.min.js"></script>
         <script>
@@ -38,7 +38,7 @@
                 document.getElementById('A19').style.backgroundColor = 'white';
                 document.getElementById('A20').style.backgroundColor = 'white';
                 //將選擇的桌號，改成粉紅色
-                document.getElementById('A'+id).style.backgroundColor = 'pink';
+                document.getElementById('A'+id).style.backgroundColor = '#ef5c28';
                 //將選擇的桌號，記錄在隱藏欄位
                 document.getElementById('desk_selected').value = 'A'+id;
             }
@@ -77,6 +77,11 @@
                 window.location.replace(newUrl);
             }
         </script>
+        <script>
+            function print_value() {
+                document.getElementById("result").innerHTML = document.getElementById("staff_id").value
+            }
+            </script>     
     </head>
     
     <body>
@@ -91,7 +96,7 @@
             <div class='container'>
                 <div class='row'>
                     <div class='col-md-12'>
-                        <center><h5>選擇桌號</h5></center>
+                        <span>選擇桌號</span><hr>
                     </div>
                 </div>
     
@@ -221,14 +226,15 @@
                 
                 <div class='row'>
                     <div class='col-md-12'>
-                        <div style='height:10;'></div>
-                    </div>
-                    <div class='col-md-12'>
-                        <label for="store_name">人數</label>
-                        <input type="text"  name="persons" id="persons" placeholder="用餐人數" required>
-                        <button name="createOrder" type="button" class="btn btn-success" onclick=newOrder()>
-                            開桌
-                        </button>
+                        <div class="section">
+                            <label for="store_name">人數</label>
+                            <input type="text" name="persons" id="persons" placeholder="用餐人數" required>
+                            <label for="store_name">員工</label>
+                            <select name="staff_id" id="staff_id" onchange="print_value();"></select>
+                            <button name="createOrder" type="button" class="btn btn-success" onclick=newOrder()>
+                                開桌
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
