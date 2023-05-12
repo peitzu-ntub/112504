@@ -103,6 +103,7 @@ div.SIDE {
 }
 
 .dropdown-content a {
+    cursor: pointer;
     font-weight: bold;
     color: rgb(23, 133, 23);
     padding: 12px 12px;
@@ -170,9 +171,9 @@ div.SIDE {
 }
 
 .backhomebtn {
+    background: transparent;
     display: inline-block;
     border-radius: 4px;
-    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
     border: none;
     color: #FFFFFF;
     text-align: center;
