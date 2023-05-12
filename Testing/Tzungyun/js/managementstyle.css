@@ -170,6 +170,7 @@ div.SIDE {
 }
 
 .backhomebtn {
+    background: transparent;
     display: inline-block;
     border-radius: 4px;
     background: linear-gradient(-135deg, #71b7e6, #9b59b6);
