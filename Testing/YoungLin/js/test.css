@@ -27,6 +27,7 @@ body{
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
   font-weight:bold;
   height: auto;
+  position: relative;
 }
 .container .title{
   font-size: 25px;
@@ -100,6 +101,13 @@ a{
   cursor: pointer;
   opacity: 0.5;/* 透明度 */
 }
+a:hover {
+  opacity: 1;
+}
+.forgot-password {
+  margin-top: 10px; /* 可根据需要调整顶部间距 */
+  text-align: center;
+}
 
 /* 登入按鈕 */
  form .button{
@@ -133,6 +141,10 @@ a{
     margin-bottom: 15px;
     width: 100%;
   }
+/*   .button-container .registbutton{
+    margin-bottom: 15px;
+    width: 100%;
+  } */
   form .category{
     width: 100%;
   }
@@ -161,11 +173,17 @@ a{
 }
 /* 已註冊過!按鈕 */
 .button-container {
-    position: absolute;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    text-align: center; /* 居中按钮 */
+    padding: 50px 0; /* 可根据需要调整底部间距 */
+    background-color: transparent; /* 设置背景色 */
     bottom: 0;
-    right: 0;
-    margin: 20px auto 0;
-    z-index: 1;
+/*     right: 0;
+    top: 150px; */
+/*     margin: 20px auto 0;
+    z-index: 1; */
   }
 .registbutton {
     display: inline-block;
@@ -191,7 +209,7 @@ a{
   /* 已註冊過! 箭頭鼠標移過去的動畫 */
   .registbutton span:after {
     content: '\00bb';
-    position: relative;
+    position: absolute;/* relative */
     top: 0;
     right: -20px;
     transition: 0.5s;

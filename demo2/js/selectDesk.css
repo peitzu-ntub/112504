@@ -63,6 +63,18 @@ label{
     font-size: 25px;
     padding: 10px;
     margin: 10px;
+    font-weight: bold;
+}
+button{
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    padding: 15px;
+    width: 15%;
+    margin-left: 60px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #000000;
+    border:none;
+    opacity: 0.8;
     font-weight: bold
 }
 
