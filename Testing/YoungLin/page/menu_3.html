@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<!--     <div class="container-fluid">
+    <!--     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <header class="main-header">
@@ -59,54 +59,58 @@
         </div>
     </div>
 </body> -->
-<body>
-    <div class="container">
-        <!-- 內容 -->
-        <div id="wrap"><!-- wrap -->
-            <div class="section"><!-- menu -->
-                <div class="row myContent">
-                    <div class="col-md-5">	
-                        <h1 class="myTitle">呈現方式</h1><hr>
+
+    <body>
+        <div class="container">
+            <!-- 內容 -->
+            <div id="wrap"><!-- wrap -->
+                <div class="section"><!-- menu -->
+                    <div class="row myContent">
+                        <div class="col-md-5">
+                            <h1 class="myTitle">呈現方式</h1>
+                            <hr>
+                        </div>
                     </div>
+                    <form name="contact" action="">
+                        <!-- <input type="checkbox" name="boss_name" id="boss_name" value="0" name="Product_all"> 全選<br> -->
+                        <input type="checkbox" value="0" name="Product_all"> 行列式<br>
+                        <input type="checkbox" value="1" name="Product_1"> 方塊式<br>
+                        <div class="button">
+                            <input value="確定" type="submit" onclick= />
+                        </div>
+                        <div class="button">
+                            <input type="reset" value="返回" onclick="location.href='../page/menu_2.html'">
+                        </div>
+                    </form>
                 </div>
-                <form name="contact" action="">
-                    <!-- <input type="checkbox" name="boss_name" id="boss_name" value="0" name="Product_all"> 全選<br> -->
-                    <input type="checkbox" value="0" name="Product_all"> 行列式<br>
-                    <input type="checkbox" value="1" name="Product_1"> 方塊式<br>
-                    <div class="button">
-                        <input value="確定" type="submit" onclick= />
+                <div class="aside"><!-- content -->
+                    <div class="row myContent">
+                        <div class="col-md-5">
+                            <h1 class="myTitle">選擇需加入菜單的內容</h1>
+                            <hr>
+                        </div>
                     </div>
-                    <div class="button">
-                        <input type="reset" value="返回" onclick="location.href='../page/menu_2.html'">
-                    </div>
-                </form>
-            </div>
-            <div class="aside"><!-- content -->
-                <div class="row myContent">
-                    <div class="col-md-5">
-                        <h1 class="myTitle">選擇需加入菜單的內容</h1><hr>
-                    </div>
+                    <form name="contact" action="">
+                        <input type="checkbox" value="1" name="Product_1"> 餐點介紹 <br>
+                        <input type="checkbox" value="2" name="Product_2"> 注意事項 <br>
+                        <input type="checkbox" value="3" name="Product_3"> 評價 <br>
+                        <input type="checkbox" value="3" name="Product_3"> 圖片 <br>
+                        <input type="checkbox" value="3" name="Product_3"> 依評價高低排列菜單順序 <br>
+                        <div class="button">
+                            <input value="確定" type="submit" onclick= />
+                        </div>
+                        <div class="button">
+                            <input type="reset" value="返回" onclick="location.href='../page/menu_2.html'">
+                        </div>
+                    </form>
                 </div>
-                <form name="contact" action="">
-                    <input type="checkbox" value="1" name="Product_1" > 餐點介紹 <br>
-                    <input type="checkbox" value="2" name="Product_2"> 注意事項 <br>
-                    <input type="checkbox" value="3" name="Product_3"> 評價 <br>
-                    <input type="checkbox" value="3" name="Product_3"> 圖片 <br>
-                    <input type="checkbox" value="3" name="Product_3"> 依評價高低排列菜單順序 <br>
-                    <div class="button">
-                        <input value="確定" type="submit" onclick= />
-                    </div>
-                    <div class="button">
-                        <input type="reset" value="返回" onclick="location.href='../page/menu_2.html'">
-                    </div>
-                </form>
+                <div class="button-container">
+                    <button class="Nextstepbutton" onclick="location.href='#'">
+                        <span>下一步</span>
+                    </button>
+                </div>
             </div>
-            <div class="button-container">
-                <button class="Nextstepbutton" onclick="location.href='#'">
-                  <span>下一步</span>
-                </button>
-              </div>
         </div>
-    </div>
-</body>
+    </body>
+
 </html>

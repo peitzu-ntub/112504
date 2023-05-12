@@ -16,7 +16,7 @@
             $total_records = mysqli_num_rows($result);
 
             
-            echo  "<table border = '1' align='center'>";
+            echo  "<table>";
             echo "<tr>";
                 echo "<th>日期</th>";
                 echo "<th>桌號</th>";
