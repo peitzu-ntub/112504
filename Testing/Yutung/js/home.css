@@ -38,7 +38,7 @@ a {
 }
 
 .main-header {
-    opacity: 0.9;
+    opacity: 0.8;
     background-color: #9278C5;
 }
 
@@ -65,7 +65,6 @@ a {
 
 /* 導覽列底線 */
 .main-menu li::after {
-    content: '';
     position: absolute;
     height: 4px;
     left: 50%;
