@@ -103,6 +103,7 @@ div.SIDE {
 }
 
 .dropdown-content a {
+    cursor: pointer;
     font-weight: bold;
     color: rgb(23, 133, 23);
     padding: 12px 12px;
