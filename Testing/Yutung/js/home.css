@@ -1,11 +1,13 @@
 @charset "utf-8";
+
 /* ------------------- */
 /* html, body          */
 /* ------------------- */
 html,
 body {
     font-family: 'Noto Sans TC', sans-serif;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    background-color: #EBEBFF;
+    opacity: 1;
     margin-top: none;
 }
 
@@ -13,7 +15,7 @@ body {
 /* container           */
 /* ------------------- */
 div.container {
-    width: 800px;
+    width: 900px;
 }
 
 /* ------------------- */
@@ -21,14 +23,45 @@ div.container {
 /* ------------------- */
 div.content {
     color: #000;
-    padding: 20px 70px;
-    text-align: justify;
+    /* padding:上 右 下 左; */
+    padding: 150px 30px;
+    text-align: center;
 }
+
+/* ------------------- */
+/* 按鈕                */
+/* ------------------- */
+input {
+    border: 0;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold
+}
+
+
+input:hover {
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
+
+/* ------------------- */
+/* 分區塊               */
+/* ------------------- */
+.wrapper {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    grid-column-gap: 10px;
+    grid-row-gap: 1em;
+}
+
+
 
 /* ------------------- */
 /* 導覽頁               */
 /* ------------------- */
-li{
+li {
     list-style-type: none;
 }
 
@@ -57,55 +90,28 @@ a {
     transition: .5s;
 }
 
-/* 關於我們 常見問題 聯絡我們 的格式*/
-.main-menu li a {
-    padding: 30px 10px;
-    line-height: 60px;
-}
-
-/* 導覽列底線 */
-.main-menu li::after {
-    position: absolute;
-    height: 4px;
-    left: 50%;
-    right: 50%;
-    bottom: 0;
-    background-color: #fff;
-    transition: .5s;
-}
-
-.main-menu li:hover {
-    background-color: #B27AC2;
-}
-
-.main-menu li:hover::after {
-    left: 0;
-    right: 0;
-}
-
 /* ------------------- */
 /* button             */
 /* ------------------- */
-.shape-ex1{
-    position: relative;
+.shape-ex1 {
     font-weight: bold;
-    width: 85px;
+    width: 270px;
     height: 90px;
-    font-size: 18px;
+    font-size: 20px;
     display: block;
     text-align: center;
     cursor: pointer;
-    line-height: 40px;
-    color: #ffffff;
+    color: #fff;
     background-color: transparent;
     border: none;
     transition-duration: 0.4s;
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
+    transition: all .3s linear;
 }
 
 /* 游標在那邊有陰影 */
-.shape-ex1:hover{
+.shape-ex1:hover {
     background-color: #876DBC;
 }
