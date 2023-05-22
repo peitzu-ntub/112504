@@ -1,0 +1,135 @@
+@charset "utf-8";
+
+html{
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+    font-weight: bold
+}
+
+body{
+    font-family: 'Noto Sans TC', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.container {
+    background-color: #fff;
+    opacity: 0.8;
+    border: 2px solid #ccc;
+    width: 1000px;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+}
+
+div.row{
+    padding: 15px;
+    margin: -10px;
+}
+span{
+    font-size: 36px;
+    font-weight: bold;
+    position: relative;
+    left: 450px;
+}
+
+.card {
+    box-shadow: 0 0 5px 0 #aaa;
+    padding: 5px;
+    margin: 5px;
+
+}
+
+/* 輸入格樣式 */
+input[type="text"] , div.col-md-12.select{
+    margin-left: 5px;
+    height: 45px;
+    width: 15%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 20px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.section{
+    text-align: center;
+}
+
+label{ 
+    font-size: 25px;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold
+}
+
+
+
+
+/* 按鈕 */
+button {
+    height: auto;
+    width: auto;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    font-weight: bold;
+  }
+  
+  form .button input:hover {
+    /* transform: scale(0.99); */
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  }
+
+/* div.col-md-12.select{
+    display: inline-block;
+    width: 300px;
+    position: relative;
+    vertical-align: middle;
+    padding: 0;
+    overflow: hidden;
+    background-color: #fff;
+    color: #555;
+    border: 1px solid #aaa;
+    text-shadow: none;
+    border-radius: 4px;
+    transition: box-shadow 0.25s ease;
+    z-index: 2;
+}
+div.col-md-12.select:hover{
+    box-shadow: 01px 4px rgba(0,0,0,0.15)
+}
+div.col-md-12.select:before{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: #ccc;
+    top: 14px;
+    right: 10px;
+    cursor: pointer;
+    z-index: -2;
+}
+div.col-md-12.select select{
+cursor: pointer;
+padding: 10px;
+width: 100%;
+border: none;
+background: transparent;
+background-image: none;
+-webkit-appearance: none;
+-moz-appearance: none;
+}
+div.col-md-12.select select:focus{
+outline: none;
+} */
