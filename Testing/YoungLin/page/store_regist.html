@@ -49,7 +49,8 @@
                             <option value="基隆市">基隆市</option>
                         </select>
                         <select id="district">
-                        </select><input type="text" name="store_address" id="store_address" placeholder="請輸入正確地址" required>
+                        </select><input type="text" name="store_address" id="store_address" placeholder="請輸入正確地址"
+                            required>
                     </div>
                     <div class="input-box">
                         <span class="details">店家桌數：</span>
@@ -72,31 +73,35 @@
                     <input type="reset" value="返回" onclick="location.href='../page/management.html'">
                 </div>
             </form>
+            <div class="button-container">
+                <button class="registbutton" onclick="location.href='../page/chose_store.html'">
+                    <span>註冊過 !</span>
+                </button>
+            </div>
         </div>
     </div>
     <div id="message"> <!--出現確認密碼密碼是否相同的提醒 --></div>
-    </div>
 </body>
 
 
 <script>
-//確認密碼
-  function validate() {
-    var pw1 = document.getElementById("back_pwd1").value;
-    var pw2 = document.getElementById("back_pwd2").value;
-    if (pw1 == pw2) {
-      document.getElementById("tishi").innerHTML = "兩次密碼相同";
-      document.getElementById("submit").disabled = false;
+    //確認密碼
+    function validate() {
+        var pw1 = document.getElementById("back_pwd1").value;
+        var pw2 = document.getElementById("back_pwd2").value;
+        if (pw1 == pw2) {
+            document.getElementById("tishi").innerHTML = "兩次密碼相同";
+            document.getElementById("submit").disabled = false;
+
+        }
+
+        else {
+            document.getElementById("tishi").innerHTML = "兩次密碼不同";
+            document.getElementById("submit").disabled = true;
+
+        }
 
     }
-
-    else {
-      document.getElementById("tishi").innerHTML = "兩次密碼不同";
-      document.getElementById("submit").disabled = true;
-
-    }
-
-  }
     //選擇縣市
     var districtsByCounty = {
         "台北市": ["中正區", "大同區", "中山區", "松山區", "大安區", "萬華區", "信義區", "士林區", "北投區", "內湖區", "南港區", "文山區"],
