@@ -1,15 +1,5 @@
 <?php
-$user = 'root';
-$pass = '12345678';
-$db = '112504';
-//Replace 'sample tutorial' with the name of your database
-
-$con = mysqli_connect("localhost", $user, $pass, $db);
-
-if ($con->connect_error) {
-  die("Connection failed: " . $con->connect_error);
-
-}
+  include ("conn.php");
 
   $id = $_POST['type_id'];
   $name = $_POST['meal_name'];

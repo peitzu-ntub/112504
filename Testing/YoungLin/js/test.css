@@ -62,14 +62,43 @@ form .user-details .input-box{
 form .user-details .textarea{
   margin-bottom: 15px;
   width: calc(100% / 2 - 20px);
-
+}
+form .user-details .select{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
 }
 form .input-box span.details{
   display: block;
 /*   font-weight: 500; */
   margin-bottom: 5px;
-  font-weight:bold
+  font-weight:bold;
 }
+/* 設定下拉式選單*/
+select {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+/* 當滑鼠移入時變更背景色 */
+select:hover {
+  background-color: #eee;
+}
+
+/* 當元素被選取時變更背景色 */
+select:focus {
+  background-color: #ffffff;
+  border: 1px solid #7d8bc2;
+  outline: none; /* 移除元素聚焦時的輪廓線 */
+}
+
+
 /* input輸入格樣式 */
 .user-details .input-box input{
   height: 45px;
@@ -94,6 +123,7 @@ form .input-box span.details{
   border-bottom-width: 2px;
   transition: all 0.3s ease;
 }
+
 
 /* 忘記密碼 */
 a{
@@ -141,6 +171,7 @@ a:hover {
     margin-bottom: 15px;
     width: 100%;
   }
+  
 /*   .button-container .registbutton{
     margin-bottom: 15px;
     width: 100%;
@@ -221,6 +252,46 @@ a:hover {
     opacity: 0.9;
   }
   .registbutton:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+  .nextbutton {
+    display: inline-block;
+    border-radius: 4px;
+    background: transparent;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 0px;
+  }
+  .nextbutton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    opacity: 0.5;/* 透明度 */
+  }
+  /* ! 箭頭鼠標移過去的動畫 */
+  .nextbutton span:after {
+    content: '\00bb';
+    position: absolute;/* relative */
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    opacity: 0.9;
+  }
+  /* ! 鼠標移過去的動畫 */
+  .nextbutton:hover span {
+    padding-right: 10px;
+    opacity: 0.9;
+  }
+  .nextbutton:hover span:after {
     opacity: 1;
     right: 0;
   }
