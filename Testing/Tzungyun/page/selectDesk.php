@@ -26,7 +26,7 @@
 
     <link rel="stylesheet" href="../js/bootstrap.min.css" >
 	<link rel="stylesheet" href="../js/bootstrap.min.4.6.2.css">
-	<link rel="stylesheet" href="../js/style.css" >
+    <link rel="stylesheet" href="../js/selectDesk.css" >
 
     <script src="../js/jquery-3.6.4.min.js"></script>
     <script>
@@ -80,6 +80,11 @@
             // alert(newUrl);
             window.location.replace(newUrl);
         }
+
+        function print_value() {
+                document.getElementById("result").innerHTML = document.getElementById("staff_id").value
+        }
+
     </script>
 </head>
 
@@ -101,7 +106,7 @@
         <div class='container'>
             <div class='row'>
                 <div class='col-md-12'>
-                    <center><h5>選擇桌號</h5></center>
+                    <img src="../images/selectDesk.png" />　<font size="5"><b>選擇桌號</b></font>
                 </div>
             </div>
 <?php
@@ -120,16 +125,22 @@
             </div>\n";
 ?>            
             <div class='row'>
-                <div class='col-md-12'>
+                <!-- <div class='col-md-12'>
                     <div style='height:10;'></div>
-                </div>
-                <div class='col-md-12'>
-                    <label for="store_name">人數</label>
-					<input type="text"  name="persons" id="persons" placeholder="用餐人數" required>
-                    <label for="store_name">員工</label>
-                    <button name="createOrder" type="button" class="btn btn-success" onclick=newOrder()>
-                        開桌
-                    </button>
+                </div> -->
+                <div class="col-md-12">
+                    <div class='section'>
+                        <label for="store_name">人數</label>
+                        <input type="text"  name="persons" id="persons" placeholder="用餐人數" required>
+                        <label for="store_name">員工</label>
+                            <select name="staff_id" id="staff_id" onchange="print_value();"></select>
+                        <input name="createOrder" type="button" value="開桌" onclick=newOrder() ></input>
+                        <input name="return" type="button"  value="返回"  onclick="location.href='management.html'"></input>    
+<?php
+    //查詢員工資料
+    //逐一把員工資料，放進 select 裡面
+?>                    
+                    </div>
                 </div>
             </div>
         </div>
