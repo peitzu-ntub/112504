@@ -1,0 +1,273 @@
+
+
+<html>
+
+    <head>
+        <title>點餐</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <link rel="stylesheet" href="../js/bootstrap.min.css" >
+        <link rel="stylesheet" href="../js/bootstrap.min.4.6.2.css">
+        <link rel="stylesheet" href="../js/selectDesk.css" >
+    
+        <script src="../js/jquery-3.6.4.min.js"></script>
+        <script>
+            //每個桌號按下時，onClick事件的執行內容
+            function change(id) {
+    
+                document.getElementById('A1').style.backgroundColor = 'white';
+                document.getElementById('A2').style.backgroundColor = 'white';
+                document.getElementById('A3').style.backgroundColor = 'white';
+                document.getElementById('A4').style.backgroundColor = 'white';
+                document.getElementById('A5').style.backgroundColor = 'white';
+                document.getElementById('A6').style.backgroundColor = 'white';
+                document.getElementById('A7').style.backgroundColor = 'white';
+                document.getElementById('A8').style.backgroundColor = 'white';
+                document.getElementById('A9').style.backgroundColor = 'white';
+                document.getElementById('A10').style.backgroundColor = 'white';
+                document.getElementById('A11').style.backgroundColor = 'white';
+                document.getElementById('A12').style.backgroundColor = 'white';
+                document.getElementById('A13').style.backgroundColor = 'white';
+                document.getElementById('A14').style.backgroundColor = 'white';
+                document.getElementById('A15').style.backgroundColor = 'white';
+                document.getElementById('A16').style.backgroundColor = 'white';
+                document.getElementById('A17').style.backgroundColor = 'white';
+                document.getElementById('A18').style.backgroundColor = 'white';
+                document.getElementById('A19').style.backgroundColor = 'white';
+                document.getElementById('A20').style.backgroundColor = 'white';
+                document.getElementById('A21').style.backgroundColor = 'white';
+                document.getElementById('A22').style.backgroundColor = 'white';
+                document.getElementById('A23').style.backgroundColor = 'white';
+                document.getElementById('A24').style.backgroundColor = 'white';
+                //將選擇的桌號，改顏色
+                document.getElementById('A'+id).style.backgroundColor = '#71b7e6';
+                //將選擇的桌號，記錄在隱藏欄位
+                document.getElementById('desk_selected').value = 'A'+id;
+            }
+    
+            //開桌
+            function newOrder() {
+                //以系統時間當作訂單編號內容：yyyyMMddHHmmss
+                var date = new Date();
+                var order_no = 
+                    date.getFullYear().toString() +
+                    ('0' + (date.getMonth() + 1)).slice(-2) +
+                    ('0' + date.getDate()).slice(-2) +
+                    ('0' + date.getHours()).slice(-2) +
+                    ('0' + date.getMinutes()).slice(-2) +
+                    ('0' + date.getSeconds()).slice(-2);
+                //隱藏欄位：身份證號、店代號
+                var identity= $('input[name=identity]').val();
+                var store_id= $('input[name=store_id]').val();
+                //畫面上選擇的桌號、輸入的人數
+                var desk= $('input[name=desk_selected]').val();
+                var persons = $('input[name=persons]').val();
+    
+                //若桌號或者人數沒有值，則顯示錯誤訊息後離開
+                if (!desk) {
+                    alert('請選擇桌號');
+                    exit;
+                }
+                if (!persons) {
+                    alert('請輸入用餐人數');
+                    exit;
+                }
+                
+                //跳到「模擬」列印qrCode的頁面，並且帶入必要的參數資訊
+                var newUrl = "showqrcode.php?identity="+identity+"&store_id="+store_id+"&desk="+desk+"&order_no="+order_no+"&persons="+persons;
+                // alert(newUrl);
+                window.location.replace(newUrl);
+            }
+        </script>
+        <script>
+            function print_value() {
+                document.getElementById("result").innerHTML = document.getElementById("staff_id").value
+            }
+            </script>     
+    </head>
+    
+    <body>
+        <form>        
+            <!--隱藏欄位-->
+            <input type='hidden' id='identity' name='identity' value='A123456789'>
+            <input type='hidden' id='store_id' name='store_id' value='S01'>
+            <input type='hidden' id='desk_count' name='desk_count' value='10'>
+            <input type='hidden' id='desk_selected' name='desk_selected' value=''>
+            <input type='hidden' id='order_no' name='order_no' value=''>
+    
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-md-12'>
+                        <span>選擇桌號</span><hr>
+                    </div>
+                </div>
+    
+                <div class='row'>
+    
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A1' style='height: 80;' onClick=change(1)>A1</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A2' style='height: 80;' onClick=change(2)>A2</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A3' style='height: 80;' onClick=change(3)>A3</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A4' style='height: 80;' onClick=change(4)>A4</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A5' style='height: 80;' onClick=change(5)>A5</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A6' style='height: 80;' onClick=change(6)>A6</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A7' style='height: 80;' onClick=change(7)>A7</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A8' style='height: 80;' onClick=change(8)>A8</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A9' style='height: 80;' onClick=change(9)>A9</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A10' style='height: 80;' onClick=change(10)>A10</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A11' style='height: 80;' onClick=change(11)>A11</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A12' style='height: 80;' onClick=change(12)>A12</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A13' style='height: 80;' onClick=change(13)>A13</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A14' style='height: 80;' onClick=change(14)>A14</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A15' style='height: 80;' onClick=change(15)>A15</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A16' style='height: 80;' onClick=change(16)>A16</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A17' style='height: 80;' onClick=change(17)>A17</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A18' style='height: 80;' onClick=change(18)>A18</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A19' style='height: 80;' onClick=change(19)>A19</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A20' style='height: 80;' onClick=change(20)>A20</div>
+                    </div>
+                </div>
+
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A21' style='height: 80;' onClick=change(21)>A21</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A22' style='height: 80;' onClick=change(22)>A22</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A23' style='height: 80;' onClick=change(23)>A23</div>
+                    </div>
+                </div>
+                
+                <div class='col-md-2'>
+                    <div class='card' >
+                        <div id='A24' style='height: 80;' onClick=change(24)>A24</div>
+                    </div>
+                </div>
+                
+                </div>
+                
+                <div class='row'>
+                    <div class='col-md-12'>
+                        <div class="section">
+                            <label for="store_name">人數</label>
+                            <input type="text" name="persons" id="persons" placeholder="用餐人數" required>
+                            <label for="store_name">員工</label>
+                            <select name="staff_id" id="staff_id" onchange="print_value();"></select>
+                            <button name="createOrder" type="button" onclick=newOrder()>
+                                開桌
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+    
+    
+    </html>
