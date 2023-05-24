@@ -86,15 +86,15 @@ select {
   transition: all 0.3s ease;
 }
 
-/* 當滑鼠移入時變更背景色 */
+/* 設定下拉式選單當滑鼠移入時變更背景色 */
 select:hover {
   background-color: #eee;
 }
 
-/* 當元素被選取時變更背景色 */
+/* 設定下拉式選單當元素被選取時變更背景色 */
 select:focus {
   background-color: #ffffff;
-  border: 1px solid #7d8bc2;
+  border: 1px solid #ff0505;/* 7d8bc2 */
   outline: none; /* 移除元素聚焦時的輪廓線 */
 }
 
@@ -264,7 +264,7 @@ a:hover {
     color: #FFFFFF;
     text-align: center;
     font-size: 18px;
-    padding: 5px;
+    padding: 10px;
     width: 200px;
     transition: all 0.5s;
     cursor: pointer;
@@ -321,6 +321,38 @@ a:hover {
     }
 
 /* 消費紀錄 查詢 */
+.inline-form {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight:bold
+}
+
+.inline-form input[type="date"] {
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight:bold
+}
+.inline-form input[type="submit"]{
+  height: 100%;
+  width: 70px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  font-weight:bold
+}
+.inline-form input:hover{
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  }
+
+  /* 消費紀錄 查詢 */
 .inline-form {
   display: flex;
   align-items: center;
