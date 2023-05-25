@@ -1,14 +1,23 @@
 <?php
-$user = 'root';
-$pass = '12345678';
-$db = '112504';
+    session_start();
+    include "../bin/conn.php";
 
-$con = mysqli_connect("localhost", $user, $pass, $db);
+    //todo, 這是假的資料
+    //預設的資料來源，是從登入而來。登入、選擇店家後，就會把以下這兩個資訊，放進SESSION裡，保留在Server端
+    //讓同一個人的接續連線，可以直接拿來用
+    if (!isset($_SESSION["identity"])) {
+        $_SESSION["identity"] = "A123456789";
+    }
+    if (!isset($_SESSION["store_id"])) {
+        $_SESSION["store_id"] = "S01";
+    }
 
-  $sql = "SELECT type_name FROM food_type;";
-  $meal_type = mysqli_query ($con, $sql);
-
+    //PHP是在後端(Server)運作的程式，Html與JavaScript則是在前端(Client)運作的程式
+    //在Server端，透過PHP將身份證與店代號，保留於隱藏欄位中，以傳到前端，做後續的應用
+    $boss = $_SESSION["identity"];
+    $store = $_SESSION["store_id"];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,29 +26,35 @@ $con = mysqli_connect("localhost", $user, $pass, $db);
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>input food</title>
+	<title>輸入餐點內容</title>
 	<link href="../js/test.css" rel="stylesheet">
-
 </head>
-
 
 <body>
 	<div class="container">
-		<div class="title">輸入所有餐點</div><br>
+	<div align="left"><img src="../images/plate.png" />　<font size="5">輸入餐點內容</font></div>
 		<hr>
 		<div class="content">
-			<form action="../bin/menu2.php" method="POST">
+			<form action="newFood.php" method="POST" enctype="multipart/form-data">
 				<div class="user-details">
+					<input type='hidden' id='nexturl' name='C' value='menu_2.php'>
 					<div class="input-box">
+
 						<span class="details" >餐點類型：</span>
 						<select name="type_id" id="type_id">
 						<!-- 動態載入的選項會放在這裡 -->
-						<option value="">--- Select ---</option>
-                        <?php
-                        while ($cat = mysqli_fetch_array($meal_type,MYSQLI_ASSOC)) {
-									echo "<option value='" . $cat['type_name'] . "'>" . $cat['type_name'] . "</option>";
-						}
-                        ?>
+						<option value="none">(空)</option>
+<?php
+	$sql = "
+		select * from food_type
+		where boss_identity = '$boss' and store_id = '$store'";
+	$meal_type = mysqli_query($con, $sql);
+	while ($cat = mysqli_fetch_array($meal_type,MYSQLI_ASSOC)) {
+		$type_id=$cat['type_id'];
+		$type_name=$cat['type_name'];
+		echo "  <option value='$type_id'>$type_name</option>";
+	}
+?>
 					</select>
 					</div>
 					<div class="input-box">
@@ -61,10 +76,10 @@ $con = mysqli_connect("localhost", $user, $pass, $db);
 					</div>
 				</div>
 				<div class="button">
-					<input value="儲存" type="submit" onclick= />
+					<input value="儲存" type="submit" />
 				</div>
 				<div class="button">
-					<input type="reset" value="返回" onclick="location.href='../page/menu_1.html'">
+					<input type="reset" value="返回" onclick="location.href='management.html'">
 				</div>
 			</form>
 			<div class="button-container">
