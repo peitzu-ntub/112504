@@ -1,0 +1,173 @@
+ html{
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+  font-weight: bold
+}
+
+body{
+  font-family: 'Noto Sans TC', sans-serif;
+  height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.container{
+  text-align: center;
+}
+
+.myContent{
+  padding:20px;
+  text-align: center;
+}
+
+label{
+  font-weight: bold;
+  font-size: large;
+}
+
+div.SIDE {
+width: 170px; /* <div> 要設定寬度，才能配合 float 做水平靠左或靠右排列 */
+float: left; /* 使用 float 讓這個 <div> 做水平靠左排列 */
+}
+
+.wrap{
+width: 1000px;
+margin: 0 auto;
+}
+/* 左測 */
+.section{ 
+width: 570px;
+height: 450px;
+float: left;
+  background-color: #fff;
+  opacity: 0.8;
+  border: 2px solid #ccc;
+  margin-left: 110px;
+  padding: 25px ;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+/* 右測 */
+.aside{
+width: 570px;
+height: 450px;
+float: right;
+  opacity: 0.8;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  margin-right: 110px;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+
+/* 已註冊過!按鈕 */
+.form.button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 20px auto 0;
+  z-index: 1;
+}
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 13px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  opacity: 0.5;/* 透明度 */
+}
+
+.Nextstepbutton {
+  display: inline-block;
+  border-radius: 4px;
+  background: transparent;
+  /* background-color: #9278C5; */
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 13px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  }
+
+.Nextstepbutton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  opacity: 0.8;/* 透明度 */
+}
+
+.Nextstepbutton span:after {
+  content: '\00bb';
+  position: absolute;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  opacity: 0.9;
+}
+
+.Nextstepbutton:hover span {
+  padding-right: 10px;
+  opacity: 0.9;
+}
+
+.Nextstepbutton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* 登入按鈕 */
+form .button{
+  height: 45px;
+  margin: 35px 0
+}
+/* 登入按鈕顏色樣式 */
+form .button input{
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  font-weight:bold
+}
+form .button input:hover{
+ /* transform: scale(0.99); */
+ background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+ }
+ @media screen and (max-width: 768px) {
+  .button-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .Nextstepbutton {
+    width: 100%;
+  }
+}
