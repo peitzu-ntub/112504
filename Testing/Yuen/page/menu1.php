@@ -51,7 +51,7 @@
 		</label>
 	</div><br>
 	<div class="button-container">
-		<button class="Nextstepbutton" onclick="location.href='menu_2.php'">
+		<button class="Nextstepbutton" onclick="location.href='menu_1.php'">
 			<span>繼續</span>
 		</button>
 	</div>

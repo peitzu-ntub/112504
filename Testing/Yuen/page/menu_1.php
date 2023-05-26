@@ -56,49 +56,4 @@
 		</div>
 	</div>
 </body>
-<!-- <script>
-	function addLabel() {
-		// 創建新的標籤元素
-		var newLabel = document.createElement("label");
-		newLabel.textContent = "類型：";
-		//newLabel.textContent = "類型：";
-
-		// 找到標籤容器元素
-		var labelContainer = document.getElementById("labelContainer");
-
-		// 將新標籤插入到容器元素中
-		labelContainer.insertBefore(newLabel, labelContainer.firstChild);
-	}
-</Script>
- -->
-<!--<script>
-	function addSelect() {
-		// 获取第一个下拉式选择菜单和添加按钮的元素
-		var select1 = document.getElementById("select1");
-		var addButton = document.getElementById("addButton");
-
-		// 创建一个新的下拉式选择菜单元素
-		var select2 = document.createElement("select");
-
-		// 设置新元素的属性和选项
-		select2.id = "select2";
-		select2.name = "select2";
-		
-
-		// 将新元素添加到文档中
-		addButton.parentNode.insertBefore(select2, addButton);
-
-		// 将与之前选择的选项不同的选项添加到新下拉式选择菜单中
-		for (var i = 0; i < select1.options.length; i++) {
-			if (select1.options[i].selected === false) {
-				var option = document.createElement("option");
-				option.value = select1.options[i].value;
-				option.text = select1.options[i].text;
-				select2.appendChild(option);
-			}
-		}
-		// 将新元素添加到文档中
-	addButton.parentNode.insertBefore(select2, addButton);
-	}-->
-
 </html>
