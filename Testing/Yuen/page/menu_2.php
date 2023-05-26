@@ -35,7 +35,7 @@
 	<div align="left"><img src="../images/plate.png" />　<font size="5">輸入餐點內容</font></div>
 		<hr>
 		<div class="content">
-			<form action="newFood.php" method="POST" enctype="multipart/form-data">
+			<form action="menu2.php" method="POST" enctype="multipart/form-data">
 				<div class="user-details">
 					<input type='hidden' id='nexturl' name='C' value='menu_2.php'>
 					<div class="input-box">
