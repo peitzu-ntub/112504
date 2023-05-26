@@ -27,7 +27,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>輸入餐點內容</title>
-	<link href="../js/test.css" rel="stylesheet">
+	<link href="../js/test2.css" rel="stylesheet">
 </head>
 
 <body>
@@ -35,16 +35,15 @@
 	<div align="left"><img src="../images/plate.png" />　<font size="5">輸入餐點內容</font></div>
 		<hr>
 		<div class="content">
-			<form action="menu2.php" method="POST" enctype="multipart/form-data">
+			<form action="newFood.php" method="POST" enctype="multipart/form-data">
 				<div class="user-details">
-					<input type='hidden' id='nexturl' name='C' value='menu_2.php'>
 					<div class="input-box">
 
 						<span class="details" >餐點類型：</span>
 						<select name="type_id" id="type_id">
 						<!-- 動態載入的選項會放在這裡 -->
 						<option value="none">(空)</option>
-<?php
+<!-- <?php
 	$sql = "
 		select * from food_type
 		where boss_identity = '$boss' and store_id = '$store'";
@@ -54,7 +53,7 @@
 		$type_name=$cat['type_name'];
 		echo "  <option value='$type_id'>$type_name</option>";
 	}
-?>
+?> -->
 					</select>
 					</div>
 					<div class="input-box">
