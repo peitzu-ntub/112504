@@ -145,7 +145,7 @@
                         <input type="text"  name="persons" id="persons" placeholder="用餐人數" required>
                         <label for="store_name">員工</label>
                             <select name="staff_id" id="staff_id" onchange="print_value();">
-                                <option value='non'>(空)</option>
+                                <option value='none'>(空)</option>
 <?php
         //查詢店舖的員工資料
         $sql = "
@@ -160,9 +160,9 @@
         }
 ?>                            
                             </select>
-                            <button name="createOrder" type="button"  onclick=newOrder()>
+                        <button name="createOrder" type="button"  onclick=newOrder()>
                             開桌
-                        </button>　　　
+                        </button>
                         <button name="createOrder" type="button"  onclick="location.href='management.html'">
                             返回
                         </button>

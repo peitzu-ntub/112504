@@ -259,9 +259,8 @@
                             <input type="text" name="persons" id="persons" placeholder="用餐人數" required>
                             <label for="store_name">員工</label>
                             <select name="staff_id" id="staff_id" onchange="print_value();"></select>
-                            <button name="createOrder" type="button" onclick=newOrder()>
-                                開桌
-                            </button>
+                            <input name="createOrder" type="button" value="開桌" onclick=newOrder()></input>
+                            <input name="back" type="button"  value="返回" onclick="location.href='management.html'"></input>
                         </div>
                     </div>
                 </div>

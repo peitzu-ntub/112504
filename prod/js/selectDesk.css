@@ -66,6 +66,22 @@ label{
     font-weight: bold
 }
 
+input[type="button"] {
+    height: 45%;
+    width: 10%;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    font-weight: bold;
+    margin-left: 35px;
+}
+
 /* div.col-md-12.select{
     display: inline-block;
     width: 300px;
