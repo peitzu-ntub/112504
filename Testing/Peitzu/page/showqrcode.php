@@ -7,6 +7,7 @@
     $order_no = $_GET["order_no"];
     $desk = $_GET['desk']; 
     $persons = $_GET['persons'];
+    $emp = $_GET['emp'];
 
     //取得目前URL的「目錄」結構
     $appRoot = __DIR__;
@@ -50,11 +51,12 @@
                 <?php echo "<img src='newqrcode.php?data=$curQrcodeUrl' />"; ?>
             </center>
         </td></tr>
-        <tr><td align="right">
+
+        <tr><td>
 <?php
     $date = new DateTime();
     $result = $date->format('Y-m-d H:i:s');
-        echo "<hr>印單時間：$result";
+        echo "<hr>服務人員：$emp <br>印單時間：$result";
 ?>            
         </td></tr>
 
