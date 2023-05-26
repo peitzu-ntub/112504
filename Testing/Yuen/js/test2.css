@@ -1,0 +1,385 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+  font-weight:bold
+}
+.title {
+  text-align: center;
+}
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+/*   background: linear-gradient(135deg, #e68871, #88ba80); */
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.container{
+  max-width: 700px;
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  font-weight:bold;
+  height: auto;
+  position: relative;
+}
+.container .title{
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+  font-weight:bold
+}
+/* 註冊底下小線 */
+/* .container .title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+} */
+.content form .user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+
+}
+form .user-details .input-box{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+
+}
+
+form .user-details .textarea{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+form .user-details .select{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+form .input-box span.details{
+  display: block;
+/*   font-weight: 500; */
+  margin-bottom: 5px;
+  font-weight:bold;
+}
+/* 設定下拉式選單*/
+select {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+/* 設定下拉式選單當滑鼠移入時變更背景色 */
+select:hover {
+  background-color: #eee;
+}
+
+/* 設定下拉式選單當元素被選取時變更背景色 */
+select:focus {
+  background-color: #ffffff;
+  border: 1px solid #ff0505;/* 7d8bc2 */
+  outline: none; /* 移除元素聚焦時的輪廓線 */
+}
+
+
+/* input輸入格樣式 */
+.user-details .input-box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+/* textarea輸入格樣式 */
+.user-details .input-box textarea{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+
+/* 忘記密碼 */
+a{
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.5;/* 透明度 */
+}
+a:hover {
+  opacity: 1;
+}
+.forgot-password {
+  margin-top: 10px; /* 可根据需要调整顶部间距 */
+  text-align: center;
+}
+
+/* 登入按鈕 */
+ form .button{
+   height: 45px;
+   margin: 35px 0
+ }
+ /* 登入按鈕顏色樣式 */
+ form .button input{
+   height: 100%;
+   width: 100%;
+   border-radius: 5px;
+   border: none;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background: linear-gradient(135deg, #71b7e6, #9b59b6);
+   font-weight:bold
+ }
+ form .button input:hover{
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  }
+ @media(max-width: 584px){
+ .container{
+  max-width: 100%;
+  }
+  form .user-details .input-box{
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+/*   .button-container .registbutton{
+    margin-bottom: 15px;
+    width: 100%;
+  } */
+  form .category{
+    width: 100%;
+  }
+  .content form .user-details{
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar{
+    width: 5px;
+  }
+  }
+  @media(max-width: 459px){
+  .container .content .category{
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 768px) {
+  .button-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .registbutton {
+    width: 100%;
+  }
+}
+/* 已註冊過!按鈕 */
+.button-container {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    text-align: center; /* 居中按钮 */
+    padding: 50px 0; /* 可根据需要调整底部间距 */
+    background-color: transparent; /* 设置背景色 */
+    bottom: 0;
+/*     right: 0;
+    top: 150px; */
+/*     margin: 20px auto 0;
+    z-index: 1; */
+  }
+.registbutton {
+    display: inline-block;
+    border-radius: 4px;
+    background: transparent;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 13px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  .registbutton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    opacity: 0.5;/* 透明度 */
+  }
+  /* 已註冊過! 箭頭鼠標移過去的動畫 */
+  .registbutton span:after {
+    content: '\00bb';
+    position: absolute;/* relative */
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    opacity: 0.9;
+  }
+  /* 已註冊過! 鼠標移過去的動畫 */
+  .registbutton:hover span {
+    padding-right: 10px;
+    opacity: 0.9;
+  }
+  .registbutton:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+  .nextbutton {
+    display: inline-block;
+    border-radius: 4px;
+    background: transparent;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 0px;
+  }
+  .nextbutton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    opacity: 0.5;/* 透明度 */
+  }
+  /* ! 箭頭鼠標移過去的動畫 */
+  .nextbutton span:after {
+    content: '\00bb';
+    position: absolute;/* relative */
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    opacity: 0.9;
+  }
+  /* ! 鼠標移過去的動畫 */
+  .nextbutton:hover span {
+    padding-right: 10px;
+    opacity: 0.9;
+  }
+  .nextbutton:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+ /* 消費紀錄表格 */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    th, td {
+        padding: 13px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+        background-color: #f2f2f2;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    
+    tr:hover {
+        background-color: #e9e9e9;
+    }
+
+/* 消費紀錄 查詢 */
+.inline-form {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight:bold
+}
+
+.inline-form input[type="date"] {
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight:bold
+}
+.inline-form input[type="submit"]{
+  height: 100%;
+  width: 70px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  font-weight:bold
+}
+.inline-form input:hover{
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  }
+
+  /* 消費紀錄 查詢 */
+.inline-form {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight:bold
+}
+
+.inline-form input[type="date"] {
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight:bold
+}
+.inline-form input[type="submit"]{
+  height: 100%;
+  width: 70px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  font-weight:bold
+}
+.inline-form input:hover{
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  }
