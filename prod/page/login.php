@@ -1,0 +1,1 @@
+<?php header("location: chose_store.html")?>

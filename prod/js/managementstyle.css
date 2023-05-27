@@ -30,7 +30,7 @@ div.SIDE {
 /* 左測 */
 .section{ 
     text-align: center;
-	width: 550px;
+	width: 400px;
 	height: 500px;
 	float: left;
     background-color: #fff;
@@ -45,7 +45,7 @@ div.SIDE {
 /* 右測 */
 .aside{
     text-align: center;
-	width: 550px;
+	width: 400px;
 	height: 500px;
 	float: right;
     background-color: #fff;
@@ -121,21 +121,42 @@ div.SIDE {
     color: #fff;
 }
 
+/* 老闆與店舖資訊 */
+.bossinfo {
+    background: transparent; /* 清除背景色 */
+    display: inline-block;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 22px;
+    padding: 13px;
+    width: 800px;
+    transition: all 0.5s;
+    cursor: pointer;
+    z-index:200; /*元素重疊顯示在最上層*/
+    position: absolute;
+    left: 210px;
+    text-align: left;
+    top: 30px;
+    
+}
+
+
 .logoutbutton {
     background: transparent; /* 清除背景色 */
     display: inline-block;
     border: none;
-    color: red;
+    color: white;
     text-align: center;
-    font-size: 15px;
+    font-size: 20px;
     padding: 13px;
-    width: 100px;
+    width: 500px;
     transition: all 0.5s;
     cursor: pointer;
     z-index:100; /*元素重疊顯示在最上層*/
-    position: relative;
-    left: 300px;
-    top: 30px;
+    position: absolute;
+    left: 1000px;
+    top: 60px;
     
 }
 
