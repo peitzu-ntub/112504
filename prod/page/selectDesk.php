@@ -160,12 +160,12 @@
         }
 ?>                            
                             </select>
-                        <button name="createOrder" type="button"  onclick=newOrder()>
+                        <input name="createOrder" type="button"  onclick=newOrder()>
                             開桌
-                        </button>
-                        <button name="createOrder" type="button"  onclick="location.href='management.html'">
+                        </input>
+                        <input name="createOrder" type="button"  onclick="location.href='management.html'">
                             返回
-                        </button>
+                        </input>
                     </div>
                 </div>
             </div>
