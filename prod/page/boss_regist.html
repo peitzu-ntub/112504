@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <title>註冊</title>
   <link rel="stylesheet" href="../js/test3.css">
-<!--   <script src="../js/jquery-3.6.4.min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <script src="../js/jquery-3.6.4.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -34,13 +34,12 @@
           </div>
         </div>
         <div class="button">
-          <input value="註冊" type="submit" onclick=validate()  onclick="location.href='../page/login.html'"/><!--  -->
+          <input value="註冊" type="submit" onclick=validate() />
         </div>
         <div class="button">
           <input type="reset" value="返回" onclick="location.href='login.html'">
         </div>
       </form>
-      <div id="message"> <!--出現確認密碼密碼是否相同的提醒 --></div>
     </div>
   </div>
 </body>
@@ -55,7 +54,7 @@
       var dataString = $(this).serialize();
 
       //可以把字串顯示出來看看是否正確
-      //alert(dataString);               
+      alert(dataString);
 
       //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
       $.ajax({
@@ -67,13 +66,18 @@
         data: dataString,
         //獲得正確回應時，要做的事情
         success: function (response) {
-          //alert(response);
+          alert(response);
           var json = $.parseJSON(response);
           if (json.result == 'OK') {
-            $("#message").html('成功：\n' + json.message);
-            window.location = "login.html"
+            alert(json.message);
+            $('input[id=boss_name]').val('');
+            $('input[id=boss_identity]').val('');
+            $('input[id=boss_psw1]').val('');
+            $('input[id=boss_psw2]').val('');
+
+            //window.location = "login.html"
           } else {
-            $("#message").html('失敗：\n' + json.message);
+            alert('儲存失敗：\n' + json.message);
           }
         },
         //獲得不正確的回應時，要做的事情
