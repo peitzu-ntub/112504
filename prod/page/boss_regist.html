@@ -39,6 +39,7 @@
         <div class="button">
           <input type="reset" value="返回" onclick="location.href='login.html'">
         </div>
+        <div id="message"></div>
       </form>
     </div>
   </div>
@@ -54,7 +55,7 @@
       var dataString = $(this).serialize();
 
       //可以把字串顯示出來看看是否正確
-      alert(dataString);
+      //alert(dataString);
 
       //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
       $.ajax({
@@ -66,10 +67,9 @@
         data: dataString,
         //獲得正確回應時，要做的事情
         success: function (response) {
-          //alert(response);
           var json = $.parseJSON(response);
           if (json.result == 'OK') {
-            //alert(json.message);
+            $("#message").html("註冊成功");
             $('input[id=boss_name]').val('');
             $('input[id=boss_identity]').val('');
             $('input[id=boss_psw1]').val('');
