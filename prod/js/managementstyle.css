@@ -41,6 +41,11 @@ div.SIDE {
     margin-left: 0px;
     padding-left: 50px;
     padding-right: 50px;
+
+    position: absolute;
+    left: 210px;
+    top: 165px;
+
 }
 /* 右測 */
 .aside{
@@ -52,11 +57,14 @@ div.SIDE {
     opacity: 0.8;
     border: 2px solid #ccc;
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
-    margin-top: -60px;
-    margin-left: 100px;
-    padding-left: 50px;
+    margin-top: -60px; 
+    margin-left: 100px; 
+    padding-left: 50px; 
     padding-right: 50px;
 
+    position: absolute;
+    left: 700px;
+    top: 165px;
 }
 
 .btn{
