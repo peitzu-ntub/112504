@@ -66,10 +66,10 @@
         data: dataString,
         //獲得正確回應時，要做的事情
         success: function (response) {
-          alert(response);
+          //alert(response);
           var json = $.parseJSON(response);
           if (json.result == 'OK') {
-            alert(json.message);
+            //alert(json.message);
             $('input[id=boss_name]').val('');
             $('input[id=boss_identity]').val('');
             $('input[id=boss_psw1]').val('');
