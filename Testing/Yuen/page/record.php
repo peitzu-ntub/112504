@@ -13,7 +13,7 @@
 
     $查詢 = $_POST["查詢日期"];
 
-        include ("conn.php");
+        include ("../bin/conn.php");
 
             $sql = "select date(b.start_time) as date, b.table_number, b.start_time, b.customer_count, b.end_time, a.meal_id
             FROM store_order_item as a 
