@@ -55,7 +55,7 @@
     <div class="row">
       <div class="col-md-4">
         <center>
-          <h5>我的購物車</h5>
+        <div align="left"><img src="../images/購物車.png" />　<font size="5">購物車</font></div>
         </center>
       </div>
     </div>

@@ -127,6 +127,7 @@
     <div class="row">
         <div class="col-md-12">
             <center><h5 class='card-title'>
+            <div align="left"><img src="../images/菜單.png" />
                 <?php echo "選擇餐點 (訂單：$order_no)"; ?>
             </h5></center>
         </div>
