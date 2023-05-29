@@ -35,7 +35,7 @@
 	<div align="left"><img src="../images/plate.png" />　<font size="5">輸入餐點內容</font></div>
 		<hr>
 		<div class="content">
-			<form action="menu2.php" method="POST" enctype="multipart/form-data">
+			<form action="newfood.php" method="POST" enctype="multipart/form-data">
 				<div class="user-details">
 					<div class="input-box">
 
