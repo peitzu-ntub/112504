@@ -456,3 +456,26 @@ aside .button input:hover{
   /* transform: scale(0.99); */
   background: linear-gradient(-135deg, #71b7e6, #9b59b6);
   }
+
+/* menu_3複選按鈕 */
+  input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  }
+  
+  input[type="checkbox"]:checked {
+    background-color: #ccc;
+  }
+/* menu_3單選按鈕 */
+  input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    }
+    
+    input[type="radio"]:checked {
+      background-color: #ccc;
+    }
