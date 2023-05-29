@@ -45,7 +45,7 @@
 					<input value="儲存" type="submit" onclick= />
 				</div>
 				<div class="button">
-					<input type="reset" value="返回" onclick="location.href='../page/前台管理介面3-3.html'">
+					<input type="reset" value="返回" onclick="location.href='../page/management.html'">
 				</div>
 			</form>
 		</div>

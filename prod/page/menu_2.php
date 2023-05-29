@@ -79,7 +79,7 @@
 					<input value="儲存" type="submit" />
 				</div>
 				<div class="button">
-					<input type="reset" value="返回" onclick="location.href='management.html'">
+					<input type="reset" value="返回" onclick="location.href='menu_1.php'">
 				</div>
 			</form>
 			<div class="button-container">
