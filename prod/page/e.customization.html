@@ -17,7 +17,6 @@
 				
 				//可以把字串顯示出來看看是否正確
 				//alert(dataString);               
-
 				//2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
 				$.ajax({
 					//HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
@@ -47,43 +46,23 @@
 	<body>
 		<div class="container">
 			<!-- 內容 -->
-			<div id="wrap"><!-- wrap -->
-				<div class="section"><!-- menu -->
-					<div class="row myContent">
-						<div class="col-md-5">	
-							<h1 class="myTitle">搜尋方式</h1><hr>
-						</div>
-					</div>
-					<form name="contact" action="">
-						<label>選擇搜尋全部菜色/特定菜色</label><br>
-						<!-- <input type="checkbox" name="boss_name" id="boss_name" value="0" name="Product_all"> 全選<br> -->
-						<input type="checkbox" value="0" name="Product_all"> 全選<br>
-						<input type="checkbox" value="1" name="Product_1"> 商品 1<br>
-						<input type="checkbox" value="2" name="Product_2"> 商品 2<br>
-						<input type="checkbox" value="3" name="Product_3"> 商品 3<br>
-						<input type="submit" name="submit_ins" class="button" id="submit_btn" value="儲存" />
-					</form>
-				</div>
 				<div class="aside"><!-- content -->
 					<div class="row myContent">
-						<div class="col-md-5">
-							<h1 class="myTitle">顯示方式</h1><hr>
-						</div>
+							<div class="mytitle">評價設計</div><br><hr>
 					</div>
-					<form name="contact" action="">
-						<label>選擇顯示方式</label><br>
-						<input type="checkbox" value="1" name="Product_1"> 平均 <br>
-						<input type="checkbox" value="2" name="Product_2"> 級距 <br>
-						<input type="checkbox" value="3" name="Product_3"> 文字 <br>
+					<form method="post" action="#">
+						<label>選擇顯示方式</label><br><br> 
+						<input class="tick" type="checkbox" value="1" name="Product_1"> 平均 <br>
+						<input class="tick" type="checkbox" value="2" name="Product_2"> 級距 <br>
+						<input class="tick" type="checkbox" value="3" name="Product_3"> 文字 <br>
 						<input type="submit" name="submit_ins" class="button" id="submit_btn" value="儲存" />
 					</form>
 				</div>
 				<div class="button-container">
-					<button class="Nextstepbutton" onclick="location.href='#'">
-					  <span>下一步</span>
+					<button class="Nextstepbutton" onclick="location.href='../page.management.html'">
+					  <span>返回</span>
 					</button>
 				  </div>
-			</div>
 		</div>
 	</body>
 </html>
