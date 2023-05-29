@@ -8,7 +8,7 @@ html{
 
 body{
     font-family: 'Noto Sans TC', sans-serif;
-    /* height: 95vh; */
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -198,7 +198,7 @@ div.SIDE {
     right: 0;
     z-index:100;
 }
-
+/* 
 .backhomebtn {
     background: transparent;
     display: inline-block;
@@ -243,4 +243,4 @@ div.SIDE {
 .backhomebtn:hover span:after {
     opacity: 1;
     right: 0;
-}
+} */
