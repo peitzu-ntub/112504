@@ -142,7 +142,7 @@ select:hover {
 /* 設定下拉式選單當元素被選取時變更背景色 */
 select:focus {
   background-color: #ffffff;
-  border: 1px solid #ff0505;/* 7d8bc2 */
+  border: 1px solid #7d8bc2;/* 7d8bc2 */
   outline: none; /* 移除元素聚焦時的輪廓線 */
 }
 
