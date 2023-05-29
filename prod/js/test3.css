@@ -17,6 +17,54 @@ body{
 /*   background: linear-gradient(135deg, #e68871, #88ba80); */
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
+div.SIDE {
+  width: 500px; /* <div> 要設定寬度，才能配合 float 做水平靠左或靠右排列 */
+  float: left; /* 使用 float 讓這個 <div> 做水平靠左排列 */
+}
+/* 左測 */
+.section{ 
+  text-align: center;
+  width: 500px;
+  height: 500px;
+  float: left;
+  background-color: #fff;
+  opacity: 0.8;
+  border: 2px solid #ccc;
+  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+  margin-top: -60px;
+  margin-left: 0px;
+  padding-left: 50px;
+  padding-right: 50px;
+
+  position: absolute;
+  left: 210px;
+  top: 165px;
+
+}
+/* 右測 */
+.aside{
+  text-align: center;
+width: 500px;
+height: 500px;
+float: right;
+  background-color: #fff;
+  opacity: 0.8;
+  border: 2px solid #ccc;
+  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+  margin-top: -60px; 
+  margin-left: 100px; 
+  padding-left: 50px; 
+  padding-right: 50px;
+
+  position: absolute;
+  left: 700px;
+  top: 165px;
+}
+.myTitle{
+  font-size: 35px;
+  padding: 10px;
+  border-bottom: 1px solid #e5dbd8;
+}
 
 .container{
   max-width: 700px;
@@ -163,6 +211,31 @@ a:hover {
   /* transform: scale(0.99); */
   background: linear-gradient(-135deg, #71b7e6, #9b59b6);
   }
+
+  /* 登入按鈕 */
+ form .button{
+  height: 45px;
+  margin: 35px 0
+}
+/* 登入按鈕顏色樣式 */
+aside .button input{
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  font-weight:bold
+}
+aside .button input:hover{
+ /* transform: scale(0.99); */
+ background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+ }
  @media(max-width: 584px){
  .container{
   max-width: 100%;
