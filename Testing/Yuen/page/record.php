@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <link href="../js/test3.css" rel="stylesheet">
+    <link href="../js/test.css" rel="stylesheet">
     <script src="../js/jquery-3.6.4.min.js"></script>
     <title>消費紀錄</title>
 </head>
