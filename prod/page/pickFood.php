@@ -121,15 +121,23 @@
 
 <body>
     <!--最外層-->
-    <div class='container'>
+    <div >
 
     <!--功能標題-->
     <div class="row">
         <div class="col-md-12">
-            <center><h5 class='card-title'>
-            <div align="left"><img src="../images/菜單.png" />
-                <?php echo "選擇餐點 (訂單：$order_no)"; ?>
-            </h5></center>
+            <table>
+                <tr>
+                    <td>
+                        <img src="../images/菜單.png" />            
+                    </td>        
+                    <td>
+                        <font size='5'>
+                            <?php echo "選擇餐點<br>訂單:$order_no"; ?>            
+                        </font>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>    
 
@@ -163,10 +171,16 @@
             <div class='card'>
                 <a href='confirmFood.php?identity=$identity&store_id=$store_id&meal_id=$meal_id&order_no=$order_no'>
                     <img class='card-img-top' src='../images/$meal_id.upload.jpg' alt='$meal_name' /></a>
-                <div class='card-block'>
-                    <h5 class='card-title'>$meal_name</h5>
-                    <h5 class='card-title'>$$meal_price</h5>
-                </div>
+                    <table>
+                        <tr>
+                            <td width='80%'>
+                                <font size=5>$meal_name</font>
+                            </td>
+                            <td align='right'>
+                                <font size=5>$$meal_price</font>
+                            </td>
+                        </tr>
+                    </table>
             </div>
         </div>
         ";
@@ -187,12 +201,12 @@
                         <button type='button' class='registbutton'>
                             購物車
                         </button>
-                    </a>&emsp;&emsp;
+                    </a>&emsp;
                     <a href='orderQuery.php?identity=$identity&store_id=$store_id&order_no=$order_no'>
                         <button type='button' class='registbutton'>
                             我的訂單
                         </button>
-                    </a>&emsp;&emsp;
+                    </a>&emsp;
     ";
 ?>                
                     <a href='orderClose.html'><button type="button" class="registbutton">

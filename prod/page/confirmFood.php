@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 
 <?php 
     include "../bin/conn.php";
@@ -151,7 +151,7 @@
 
 
 		<div class="row" align='right'>
-			<div class="col-md-6">&emsp;&emsp;&emsp;&emsp;
+			<div class="col-md-6">
                 <button name="check" type="button" class="registbutton" onclick=saveQty()>
                     加入購物車
 				</button>

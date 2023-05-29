@@ -1,45 +1,10 @@
-﻿<html>
+<html>
 
 <?php 
   include "../bin/conn.php";
   $identity = $_GET['identity'];
   $store_id = $_GET['store_id'];
   $order_no = $_GET["order_no"];
-  $del = $_GET["del"];
-  $inc = $_GET["inc"];
-  $dec = $_GET["dec"];
-  $qty = $_GET["qty"];
-
-  if (isset($del)) {
-    $sql = "delete from store_cart
-            where boss_identity='$identity'
-            and store_id='$store_id'
-            and order_no='$order_no'
-            and meal_id='$del'";
-    mysqli_query($con, $sql);
-  }
-
-  if (isset($inc)) {
-    $sql = "update store_cart
-            set meal_qty=meal_qty+1
-            where boss_identity='$identity'
-            and store_id='$store_id'
-            and order_no='$order_no'
-            and meal_id='$inc'";
-    mysqli_query($con, $sql);
-  }
-
-  if (isset($dec) && $qty > 1) {
-    $sql = "update store_cart
-            set meal_qty=meal_qty-1
-            where boss_identity='$identity'
-            and store_id='$store_id'
-            and order_no='$order_no'
-            and meal_id='$dec'";
-    mysqli_query($con, $sql);
-  }
-
-  
 
   //查詢購物車內容
   $sql = "select c.*, f.meal_name, f.meal_price
@@ -90,61 +55,38 @@
     <div class="row">
       <div class="col-md-4">
         <center>
-          <div align="left"><img src="../images/購物車.png" />　<font size="5">購物車</font></div>
+        <div align="left"><img src="../images/購物車.png" />　<font size="5">購物車</font></div>
         </center>
       </div>
     </div>
     <div>
       <table width="100%">
         <tr>
-          <td style="background-color:#B27AC2" align="center" width="3%"></td>
           <td style="background-color:#B27AC2" align="center" ><font color="white"><b>餐點</b></font></td>
           <td style="background-color:#B27AC2" align="center" width="15%"><font color="white"><b>單價</b></font></td>
-          <td style="background-color:#B27AC2" align="center" width="35%"><font color="white"><b>數量</b></font></td>
+          <td style="background-color:#B27AC2" align="center" width="15%"><font color="white"><b>數量</b></font></td>
           <td style="background-color:#B27AC2" align="center" width="15%"><font color="white"><b>金額</b></font></td>
         </tr>
 <?php
     $total=0;
     while ($food = mysqli_fetch_array($cart_data, MYSQLI_ASSOC)) {
-        $meal_id = $food['meal_id'];
         $meal_name = $food['meal_name'];
         $qty = $food['meal_qty'];
         $meal_price = $food['meal_price'];
         $subTotal=$meal_price * $qty;
-        $total = $total + $subTotal;      
+        $total = $total + $subTotal;
         echo "
         <tr>
-          <td align='center'>
-            <a href='cart.php?identity=$identity&store_id=$store_id&order_no=$order_no&del=$meal_id'>
-              <img src=../images/trash.png></img>
-            </a>
-          </td>
           <td>$meal_name</td>
           <td align='right'>$meal_price</td>
-          <td align='right'>
-            $qty            
-            <button type='button'>
-              <a href='cart.php?identity=$identity&store_id=$store_id&order_no=$order_no&inc=$meal_id'>
-                <font color='black'>
-                  +
-                </font>
-              </a>
-            </button>
-            <button type='button'>
-              <a href='cart.php?identity=$identity&store_id=$store_id&order_no=$order_no&dec=$meal_id&qty=$qty'>
-                <font color='black'>
-                  -
-                </font>
-              </a>
-            </button>
-          </td>
+          <td align='right'>$qty</td>
           <td align='right'>$subTotal</td>
         </tr>
         ";
     }
     echo "
         <tr>
-            <td style='background-color:#B27AC2' align='right' colspan='4'><b>合計</b></td>
+            <td style='background-color:#B27AC2' align='right' colspan='3'><b>合計</b></td>
             <td style='background-color:#B27AC2' align='right'><b>$total</b></td>
         </tr>
     "
