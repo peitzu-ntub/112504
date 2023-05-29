@@ -196,7 +196,7 @@
     ";
 ?>                
                     <a href='orderClose.html'><button type="button" class="registbutton">
-                    結帳
+                    給評價 
                     </button></a>
                 </div>
             </div>
