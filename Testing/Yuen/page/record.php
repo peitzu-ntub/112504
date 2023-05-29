@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <link href="../js/test.css" rel="stylesheet">
+    <link href="../js/test3.css" rel="stylesheet">
     <script src="../js/jquery-3.6.4.min.js"></script>
     <title>消費紀錄</title>
 </head>
@@ -13,7 +13,7 @@
 
     $查詢 = $_POST["查詢日期"];
 
-        include ("conn.php");
+        include ("../bin/conn.php");
 
             $sql = "select date(b.start_time) as date, b.table_number, b.start_time, b.customer_count, b.end_time, a.meal_id
             FROM store_order_item as a 
