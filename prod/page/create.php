@@ -26,13 +26,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>輸入餐點內容</title>
-	<link href="../js/test3.css" rel="stylesheet">
+	<title>新增員工資料</title>
+	<link href="../js/position.css" rel="stylesheet">
 </head>
 
 <body>
 	<div class="container">
-	<div align="left"><img src="../images/plate.png" />　<font size="5">輸入餐點內容</font></div>
+	<div align="left"><font size="5">新增員工資料</font></div>
 		<hr>
 		<div class="content">
 			<form action="newFood.php" method="POST" enctype="multipart/form-data">
@@ -40,8 +40,8 @@
 					<input type='hidden' id='nexturl' name='C' value='menu_2.php'>
 					<div class="input-box">
 
-						<span class="details" >餐點類型：</span>
-						<select name="type_id" id="type_id">
+						<span class="details" >職位：</span>
+						<select name="staff_identity" id="staff_identity">
 						<!-- 動態載入的選項會放在這裡 -->
 						<option value="none">(空)</option>
 <?php
@@ -52,41 +52,45 @@
 	while ($cat = mysqli_fetch_array($meal_type,MYSQLI_ASSOC)) {
 		$type_id=$cat['type_id'];
 		$type_name=$cat['type_name'];
-		echo "  <option value='$type_id'>$type_name</option>";
+		echo "<option value='$type_id'>$type_name</option>";
 	}
 ?>
 					</select>
 					</div>
 					<div class="input-box">
-						<span class="details">餐點名稱：</span>
-						<input type="text" name="meal_name" id="meal_name" placeholder="請輸入餐點名稱" required>
+						<span class="details">姓名：</span>
+						<input type="text" name="staff_name" id="staff_name" placeholder="請輸入員工姓名" required>
 					</div>
+
+					<p>性別：<br><br>
+						<input type="radio" name="staff_gender" value="male"> 男
+						<input type="radio" name="staff_gender" value="female"> 女
+					</p>
+
 					<div class="input-box">
-						<span class="details">價格：</span>
-						<input type="number" min="0" name="meal_price" id="meal_price" placeholder="請輸入正確價格" required>
-					</div><br>
-					<div class="input-box">
-						<span class="details">圖片：</span>
-						<input type="file" name="meal_pic" id="meal_pic">
+						<span class="details">出生日期：</span>
+						<input type="date" name="staff_birth" id="staff_birth" placeholder="請輸員工出生日期" required>
 					</div>
+
 					<div class="input-box">
-						<span class="details">餐點介紹：</span>
-						<textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="請輸入餐點介紹"
-							style="height: 50px;width: 300px;resize: none;"></textarea>
+						<span class="details">聯絡電話：</span>
+						<input type="text" name="staff_tel" id="staff_tel" placeholder="請輸入員工的聯絡電話" required>
 					</div>
+
+					<div class="input-box">
+						<span class="details">電子郵件：</span>
+						<input type="text" name="staff_address" id="staff_address" placeholder="請輸入員工的電子郵件" required>
+					</div>
+					
 				</div>
 				<div class="button">
-					<input value="儲存" type="submit" />
+					<input value="儲存" type="submit"/>
 				</div>
 				<div class="button">
-					<input type="reset" value="返回" onclick="location.href='menu_1.php'">
+					<input type="reset" value="返回" onclick="location.href='../page/employee.html'">
 				</div>
 			</form>
-			<div class="button-container">
-				<button class="nextbutton" onclick="location.href='../page/menu_3.html'">
-					<span>下一步!</span>
-				</button>
-			</div>
+			
 		</div>
 	</div>
 </body>

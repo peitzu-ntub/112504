@@ -27,6 +27,16 @@
     //所以，在進行url組合時，必要時，得urlencode()
     $curQrcodeUrl = urlencode("$baseUrl/pickFood.php?identity=$identity&store_id=$store_id&order_no=$order_no");
     //echo "$curQrcodeUrl<br>";
+
+    //2023.05.30 完成開桌，等同於新增一張訂單。因此，可以把開桌的相關資訊，當成一張訂單，記錄起來
+    $sql = "insert into store_order (
+                boss_identity, store_id, order_no, table_number, customer_count, employee_no, start_time
+            ) values (
+                '$identity', '$store_id', '$order_no', '$desk', $persons, '$emp', now()
+            )";
+    //echo $sql;
+    mysqli_query($con, $sql);
+
 ?>
 
 <html>

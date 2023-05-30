@@ -21,45 +21,7 @@ div.SIDE {
   width: 500px; /* <div> 要設定寬度，才能配合 float 做水平靠左或靠右排列 */
   float: left; /* 使用 float 讓這個 <div> 做水平靠左排列 */
 }
-/* 左測 */
-.section{ 
-  text-align: center;
-  width: 500px;
-  height: 500px;
-  float: left;
-  background-color: #fff;
-  opacity: 0.8;
-  border: 2px solid #ccc;
-  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
-  margin-top: -60px;
-  margin-left: 0px;
-  padding-left: 50px;
-  padding-right: 50px;
 
-  position: absolute;
-  left: 210px;
-  top: 165px;
-
-}
-/* 右測 */
-.aside{
-  text-align: center;
-width: 500px;
-height: 500px;
-float: right;
-  background-color: #fff;
-  opacity: 0.8;
-  border: 2px solid #ccc;
-  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
-  margin-top: -60px; 
-  margin-left: 100px; 
-  padding-left: 50px; 
-  padding-right: 50px;
-
-  position: absolute;
-  left: 700px;
-  top: 165px;
-}
 .myTitle{
   font-size: 35px;
   padding: 10px;
@@ -83,17 +45,7 @@ float: right;
   position: relative;
   font-weight:bold
 }
-/* 註冊底下小線 */
-/* .container .title::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  width: 30px;
-  border-radius: 5px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
-} */
+
 .content form .user-details{
   display: flex;
   flex-wrap: wrap;

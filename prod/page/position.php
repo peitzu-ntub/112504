@@ -23,34 +23,34 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>input type</title>
-	<link rel="stylesheet" href="../js/test3.css">
+	<title>職位</title>
+	<link rel="stylesheet" href="../js/position.css">
 	<script src="../js/jquery-3.6.4.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 	<div class="container">
-		<div class="title">請問您的菜單有些什麼類型?</div><br>
+		<div class="title">請問您的店家有哪些職位？</div><br>
 <hr>
 		<div class="content">
 			<form action="menu1.php" method="POST">
 				<div class="user-details">
 					<div class="input-box">
-						<span class="details">類型：</span>
-						<input type="text" name="type_name" id="type_name" placeholder="主菜、附餐、飲品" required>
+						<span class="details">職位：</span>
+						<input type="text" name="staff_identity" id="staff_identity" placeholder="正職、兼職" required>
 					</div>
 				</div>
 				<div class="button">
-					<input value="儲存" type="submit" onclick= />
+					<input value="儲存" type="submit"/>
 				</div>
 				<div class="button">
-					<input type="reset" value="返回" onclick="location.href='../page/management.html'">
+					<input type="reset" value="返回" onclick="location.href='../page/employee.html'">
 				</div>
 			</form>
 		</div>
 		<div class="button-container">
-			<button class="registbutton" onclick="location.href='../page/menu_2.php'">
+			<button class="registbutton" onclick="location.href='../page/create.php'">
 				<span>下一步</span>
 			</button>
 		</div>

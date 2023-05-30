@@ -8,7 +8,15 @@
     <title>消費紀錄</title>
 </head>
 <body>
-    
+<div class="container">
+    <div class="title">消費紀錄</div><br>
+        <hr>
+        <div class="content">
+            <form action="record.php" method="POST">
+                <p class="inline-form">
+                    查詢: <input type="date" name="查詢日期">
+                    <input type="submit" value="確認">
+                </p> 
 <?php
 
     $查詢 = $_POST["查詢日期"];
@@ -61,8 +69,11 @@
             
     ?>
 
-<!-- $sql_query = "select date(b.start_time), b.table_number, b.start_time, b.customer_count, b.end_time, a.meal_id
-            FROM store_order_item as a left join store_order as b
-            on a.boss_identity = b.boss_identity,a.store_id = b.store_id,a.order_no = b.order_no
-            where date(b.start_time) = $查詢" -->
+<div class="button-container">
+	<button class="registbutton" onclick="location.href='../page/management.html'">
+		<span>返回</span>
+	</button>
+</div>
+</html>
+
 
