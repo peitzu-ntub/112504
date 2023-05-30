@@ -90,11 +90,7 @@
 					<input type="reset" value="返回" onclick="location.href='../page/position.php'">
 				</div>
 			</form>
-			<div class="button-container">
-				<button class="nextbutton" onclick="location.href='../page/menu_3.html'">
-					<span>下一步!</span>
-				</button>
-			</div>
+			
 		</div>
 	</div>
 </body>
