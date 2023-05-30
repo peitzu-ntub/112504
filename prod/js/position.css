@@ -56,6 +56,7 @@ div.SIDE {
 form .user-details .input-box{
   margin-bottom: 15px;
   width: calc(100% / 2 - 20px);
+
 }
 
 form .user-details .textarea{
@@ -95,6 +96,47 @@ select:focus {
   background-color: #ffffff;
   border: 1px solid #7d8bc2;/* 7d8bc2 */
   outline: none; /* 移除元素聚焦時的輪廓線 */
+}
+
+
+/* input輸入格樣式 */
+.user-details .input-box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+/* textarea輸入格樣式 */
+.user-details .input-box textarea{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+
+/* 忘記密碼 */
+a{
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.5;/* 透明度 */
+}
+a:hover {
+  opacity: 1;
+}
+.forgot-password {
+  margin-top: 10px; /* 可根据需要调整顶部间距 */
+  text-align: center;
 }
 
 /* 登入按鈕 */
@@ -198,6 +240,45 @@ aside .button input:hover{
     top: 150px; */
 /*     margin: 20px auto 0;
     z-index: 1; */
+  }
+.registbutton {
+    display: inline-block;
+    border-radius: 4px;
+    background: transparent;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 13px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  .registbutton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    opacity: 0.5;/* 透明度 */
+  }
+  /* 已註冊過! 箭頭鼠標移過去的動畫 */
+  .registbutton span:after {
+    content: '\00bb';
+    position: absolute;/* relative */
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    opacity: 0.9;
+  }
+  /* 已註冊過! 鼠標移過去的動畫 */
+  .registbutton:hover span {
+    padding-right: 10px;
+    opacity: 0.9;
+  }
+  .registbutton:hover span:after {
+    opacity: 1;
+    right: 0;
   }
 
   .nextbutton {
