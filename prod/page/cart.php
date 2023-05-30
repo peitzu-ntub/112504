@@ -10,6 +10,7 @@
   $dec = $_GET["dec"];
   $qty = $_GET["qty"];
 
+  //刪除指定的商品
   if (isset($del)) {
     $sql = "delete from store_cart
             where boss_identity='$identity'
@@ -19,6 +20,7 @@
     mysqli_query($con, $sql);
   }
 
+  //增加指定商品的數量
   if (isset($inc)) {
     $sql = "update store_cart
             set meal_qty=meal_qty+1
@@ -29,6 +31,7 @@
     mysqli_query($con, $sql);
   }
 
+  //減少指定商品的數量。若數量已經是1，就不能再減少
   if (isset($dec) && $qty > 1) {
     $sql = "update store_cart
             set meal_qty=meal_qty-1
@@ -38,8 +41,6 @@
             and meal_id='$dec'";
     mysqli_query($con, $sql);
   }
-
-  
 
   //查詢購物車內容
   $sql = "select c.*, f.meal_name, f.meal_price
@@ -158,7 +159,7 @@
         <a href='$pickUrl&cart=1'>
             <button type='button' class='registbutton'>
                 確定點餐
-            </button></a>&emsp;&emsp;
+            </button></a>&emsp;
         <a href='$pickUrl'>
             <button type='button' class='registbutton'>
                 我要繼續點
