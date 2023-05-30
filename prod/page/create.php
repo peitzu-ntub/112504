@@ -87,7 +87,7 @@
 					<input value="儲存" type="submit"/>
 				</div>
 				<div class="button">
-					<input type="reset" value="返回" onclick="location.href='../page/position.php'">
+					<input type="reset" value="返回" onclick="location.href='../page/employee.html'">
 				</div>
 			</form>
 			
