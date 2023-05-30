@@ -69,8 +69,11 @@
             
     ?>
 
-<!-- $sql_query = "select date(b.start_time), b.table_number, b.start_time, b.customer_count, b.end_time, a.meal_id
-            FROM store_order_item as a left join store_order as b
-            on a.boss_identity = b.boss_identity,a.store_id = b.store_id,a.order_no = b.order_no
-            where date(b.start_time) = $查詢" -->
+<div class="button-container">
+	<button class="registbutton" onclick="location.href='../page/management.html'">
+		<span>返回</span>
+	</button>
+</div>
+</html>
+
 
