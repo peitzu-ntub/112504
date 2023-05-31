@@ -68,6 +68,9 @@
             echo "</table>";
             
     ?>
+             </form>
+        </div>
+
 
 <div class="button-container">
 	<button class="registbutton" onclick="location.href='../page/management.html'">
