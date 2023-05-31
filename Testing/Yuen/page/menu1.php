@@ -24,8 +24,19 @@
   $sql = "INSERT INTO food_type (boss_identity, store_id, type_id, type_name) 
   VALUES ('$identity', '$store','$name', '$name')";
 
-  mysqli_query($con, $sql);
-	 
+  // mysqli_query($con, $sql);
+  $result = mysqli_query($con,$sql);
+	// 如果有異動到資料庫數量(更新資料庫)
+  if (mysqli_affected_rows($con)>0) {
+  // 如果有一筆以上代表有更新
+  // mysqli_insert_id可以抓到第一筆的id
+  $new_id= mysqli_insert_id ($con);
+  echo "新增成功";
+  }
+  else {
+      echo "類型重複";
+  }
+   mysqli_close($con); 
 ?>
 <html lang="en">
 
@@ -43,11 +54,6 @@
 <body>
 	<div class="cabinet">
 		<label for="type_id">
-			<font style="vertical-align: inherit;">
-				<font style="vertical-align: inherit;">
-					新增成功!
-				</font>
-			</font>
 		</label>
 	</div><br>
 	<div class="button-container">
