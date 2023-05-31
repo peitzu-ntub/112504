@@ -32,7 +32,19 @@
             $meal_price, '$meal_note'
         );    
     ";
-    mysqli_query($con, $sql);
+    // mysqli_query($con, $sql);
+    $result = mysqli_query($con,$sql);
+    // 如果有異動到資料庫數量(更新資料庫)
+    if (mysqli_affected_rows($con)>0) {
+    // 如果有一筆以上代表有更新
+    // mysqli_insert_id可以抓到第一筆的id
+    $new_id= mysqli_insert_id ($con);
+    echo "新增成功";
+    }
+else {
+    echo "新增資料錯誤";
+}
+ mysqli_close($con); 
 
     //上傳的檔案    
     if ($_FILES['meal_pic']['error'] === UPLOAD_ERR_OK){
@@ -58,11 +70,6 @@
 <body>
 	<div class="cabinet">
 		<label for="type_id">
-			<font style="vertical-align: inherit;">
-				<font style="vertical-align: inherit;">
-					新增成功!
-				</font>
-			</font>
 		</label>
 	</div><br>
 	<div class="button-container">
