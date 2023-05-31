@@ -175,9 +175,12 @@ select:focus {
 
 /* 忘記密碼 */
 a{
-  text-align: center;
+  text-align: CENTER;
+  display: block;
+  margin-top: 0px; /* 可根据需要调整顶部间距 */
+  margin-bottom: 9PX;
   cursor: pointer;
-  opacity: 0.5;/* 透明度 */
+  opacity: 0.5; /* 透明度 */
 }
 a:hover {
   opacity: 1;
@@ -212,12 +215,12 @@ a:hover {
   background: linear-gradient(-135deg, #71b7e6, #9b59b6);
   }
 
-  /* 登入按鈕 */
+  /* MENU3按鈕樣式 */
  form .button{
   height: 45px;
   margin: 35px 0
 }
-/* 登入按鈕顏色樣式 */
+/* MENU3按鈕顏色樣式 */
 aside .button input{
   height: 100%;
   width: 100%;
@@ -245,7 +248,7 @@ aside .button input:hover{
     width: 100%;
   }
   
-/*   .button-container .registbutton{
+/*.button-container .registbutton{
     margin-bottom: 15px;
     width: 100%;
   } */
