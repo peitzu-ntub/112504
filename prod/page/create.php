@@ -81,6 +81,26 @@
 						<span class="details">電子郵件：</span>
 						<input type="text" name="staff_address" id="staff_address" placeholder="請輸入員工的電子郵件" required>
 					</div>
+
+					<div class="input-box">
+						<span class="details">緊急聯絡人：</span>
+						<input type="text" name="em_name" id="em_name" placeholder="請輸入員工的緊急聯絡人姓名" required>
+					</div>
+
+					<div class="input-box">
+						<span class="details">緊急連絡人電話：</span>
+						<input type="text" name="em_tel" id="em_tel" placeholder="請輸入員工的緊急聯絡人電話" required>
+					</div>
+
+					<div class="input-box">
+						<span class="details">與緊急連絡人關係：</span>
+						<input type="text" name="relation" id="relation" placeholder="請輸入員工與緊急連絡人的關係" required>
+					</div>
+
+					<div class="input-box">
+						<span class="details">到職日期：</span>
+						<input type="date" name="due_date" id="due_date" placeholder="請輸員工的到職日期" required>
+					</div>
 					
 				</div>
 				<div class="button">

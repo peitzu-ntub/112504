@@ -40,10 +40,11 @@
 					<input type='hidden' id='nexturl' name='C' value='menu_2.php'>
 					<div class="input-box">
 
-						<span class="details" >職位：</span>
+					<span class="details" >員工編號：</span>
 						<select name="staff_identity" id="staff_identity">
 						<!-- 動態載入的選項會放在這裡 -->
 						<option value="none">(空)</option>
+
 <?php
 	$sql = "
 		select * from food_type
@@ -57,6 +58,12 @@
 ?>
 					</select>
 					</div>
+
+					<select size="5">
+						<option>請選擇你最愛的寵物</option>
+						<option>Dog</option>
+					</select>
+
 					<div class="input-box">
 						<span class="details">姓名：</span>
 						<input type="text" name="staff_name" id="staff_name" placeholder="請輸入員工姓名" required>
