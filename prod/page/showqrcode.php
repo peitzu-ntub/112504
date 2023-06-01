@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     include "../bin/conn.php";
 
     //從url傳進來的參數
@@ -64,7 +64,8 @@
 
         <tr><td>
 <?php
-    $date = new DateTime();
+    //$date = new DateTime();
+    $date = new DateTime('now +8 hours');
     $result = $date->format('Y-m-d H:i:s');
         echo "<hr>服務人員：$emp <br>印單時間：$result";
 ?>            
