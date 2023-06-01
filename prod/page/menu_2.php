@@ -82,7 +82,7 @@
 					<input type="reset" value="返回" onclick="location.href='menu_1.php'">
 				</div>
 			</form>
-			<div class="button-container">
+			<div class="button-co">
 				<button class="nextbutton" onclick="location.href='../page/menu_3.html'">
 					<span>下一步!</span>
 				</button>

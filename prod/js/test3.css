@@ -176,8 +176,10 @@ select:focus {
 /* 忘記密碼 */
 a{
   text-align: center;
+  display: block;
+  margin-top: 10px; /* 可根据需要调整顶部间距 */
   cursor: pointer;
-  opacity: 0.5;/* 透明度 */
+  opacity: 0.5; /* 透明度 */
 }
 a:hover {
   opacity: 1;
@@ -212,12 +214,12 @@ a:hover {
   background: linear-gradient(-135deg, #71b7e6, #9b59b6);
   }
 
-  /* 登入按鈕 */
+  /* menu3按鈕 */
  form .button{
   height: 45px;
   margin: 35px 0
 }
-/* 登入按鈕顏色樣式 */
+/* menu3按鈕顏色樣式 */
 aside .button input{
   height: 100%;
   width: 100%;
@@ -328,21 +330,30 @@ aside .button input:hover{
     opacity: 1;
     right: 0;
   }
-
-  .nextbutton {
-    display: inline-block;
-    border-radius: 4px;
-    background: transparent;
-    border: none;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 18px;
-    padding: 10px;
-    width: 200px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 0px;
+  .button-co {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    text-align: right; /* 居中按钮 */
+    padding: 50px 0; /* 可根据需要调整底部间距 */
+    background-color: transparent; /* 设置背景色 */
+    bottom: 0;
   }
+  
+    .nextbutton {
+      display: inline-block;
+      border-radius: 4px;
+      background: transparent;
+      border: none;
+      color: #FFFFFF;
+      text-align: left;
+      font-size: 18px;
+      padding: 10px;
+      width: 200px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 0px;
+    }
   .nextbutton span {
     cursor: pointer;
     display: inline-block;

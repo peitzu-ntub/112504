@@ -256,13 +256,23 @@ a:hover {
     right: 0;
   }
 
+.button-co {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  text-align: right; /* 居中按钮 */
+  padding: 50px 0; /* 可根据需要调整底部间距 */
+  background-color: transparent; /* 设置背景色 */
+  bottom: 0;
+}
+
   .nextbutton {
     display: inline-block;
     border-radius: 4px;
     background: transparent;
     border: none;
     color: #FFFFFF;
-    text-align: center;
+    text-align: left;
     font-size: 18px;
     padding: 10px;
     width: 200px;
