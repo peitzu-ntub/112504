@@ -25,7 +25,7 @@ body{
 
 .container1{
   font-weight: bold;
-  background-color: #fff3bc;
+  background-color: #ffffff;
   width: 100vw;
   max-width: 1200px;
   height: 300px;
@@ -76,33 +76,6 @@ body{
   margin-bottom: 15px;
 }
 
-/* 哪位老闆登入的方框 */
-.who {
-  position: absolute; /* 設置為絕對定位 */
-  top: 60px; /* 距離視窗上方的位置 */
-  right: 10px; /* 距離視窗右側的位置 */
-  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
-  width: 200px;
-  height: 50px;
-  border: 1px solid #8cb87c;
-  background-color:#ffffff;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-}
-.who div {
-  display: flex;
-  align-items: center;
-  color: #000000;
-}
-.who img {
-  margin-right: 3px; /* 調整圖片和文字之間的間距 */
-  margin-bottom: 15px;
-}
-
-
 /* 返回的方框 */
 .logout {
   position: absolute; /* 設置為絕對定位 */
@@ -136,77 +109,71 @@ body{
   cursor: pointer;
 }
 
-/* 確定的方框 */
-.addstore {
+/* 老闆人登入的方框 */
+.work {
   position: absolute; /* 設置為絕對定位 */
-  bottom: 75px; /* 距離視窗上方的位置 */
-  left: 50%; /* 距離視窗左側的位置 */
+  top: 10px; /* 距離視窗上方的位置 */
+  right: 250px; /* 距離視窗左側的位置 */
   transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
-  width: 63px;
-  height: 40px;
-  border: 3px solid #f3cc5f;
-  background-color:#f3cc5f;
+  width: 250px;
+  height: 200px;
+  border: 1px solid #8cb87c;
+  background-color:#ffffff;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 18px;
-  color: #914d39;
+  
 }
-.addstore div {
+.work div {
   display: flex;
   align-items: center;
-  color: rgb(116, 65, 31)
+  color: #000000;
 }
-.addstore img {
-  margin-right: 3px; /* 調整圖片和文字之間的間距 */
+.work img {
+  margin-right: 8px; /* 調整圖片和文字之間的間距 */
+  margin-bottom: 15px;
 }
-/* 確定懸停样式 */
-.addstore:hover {
-  border: 3px solid #a3893f;
-  color: #d36a09;
+.work:hover {
+  border: 4px solid #6a8b5d;
+  color: white;
+  width: 250px;
+  height: 200px;
   cursor: pointer;
 }
-/* .content .button1{
-  width:500px;
-  height:100px;
-  font-size:20px;
-  border:2px blue none;
-}
- */
- .input-box {
-  display: flex; /* 使用flexbox對齊行中的元素 */
-  align-items: center; /* .input-box 內的元素垂直居中 */
-  margin-top: 8px;
-} 
 
- .input-box input{
-  height: 23px;
+/* 員工人登入的方框 */
+.staff {
+  position: absolute; /* 設置為絕對定位 */
+  top: 260px; /* 距離視窗上方的位置 */
+  right: auto; /* 距離視窗右側的位置 */
+  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
   width: 250px;
-  outline: none;
-  font-size: 16px;
-  border-radius: 15px;
-  padding-left: 15px;
+  height: 200px;
   border: 1px solid #8cb87c;
-  margin-bottom: 3px;
-  /* display: inline-block; */ /* 設定為內聯區塊元素 */
+  background-color:#ffffff;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
 }
-.input-box select{
-  height: 25px;
-  width: 123px;
-  outline: none;
-  font-size: 16px;
-  border-radius: 15px;
-  padding-left: 15px;
-  border: 1px solid #8cb87c;
-  margin-bottom: 3px;
- /*  display: inline-block; */ /* 設定為內聯區塊元素 */
+.staff div {
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+.staff img {
+  margin-right: 8px; /* 調整圖片和文字之間的間距 */
+  margin-bottom: 0px;
 }
 
-form .input-box span.details{
-  display: inline-block; /* 將顯示更改為 inline-block 以位於同一行 */
-  font-weight: 500;
-  margin-right: 3px; /*添加一些右邊距以增加間距  */
-  margin-bottom: 3px;
-  font-weight: bold;
+/* 懸停样式 */
+.staff:hover {
+  border: 4px solid #6a8b5d;
+  color: white;
+  width: 250px;
+  height: 200px;
+  cursor: pointer;
 }
