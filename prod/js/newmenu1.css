@@ -26,10 +26,22 @@ body{
 
 .container1{
   font-weight: bold;
-  background-color: #fff3bc;
-  width: 100vw;
-  max-width: 1200px;
-  height: 400px;
+  background-color: #f9e99e;
+  border-radius: 20px;
+  width: 750px;
+  max-width: 750px;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.insidebox{
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 700px;
+  height: 325px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,35 +122,35 @@ body{
   height: 40px;
   cursor: pointer;
 }
+
+
  .input-box {
   display: flex; /* 使用flexbox對齊行中的元素 */
   align-items: center; /* .input-box 內的元素垂直居中 */
   margin-top: 8px;
 } 
-
  .input-box input{
-  height: 23px;
+  height: 33px;
   width: 250px;
   outline: none;
   font-size: 16px;
-  border-radius: 15px;
+  border-radius: 10px;
   padding-left: 15px;
-  border: 1px solid #8cb87c;
+  border: 1px solid #000000;
   margin-bottom: 3px;
   /* display: inline-block; */ /* 設定為內聯區塊元素 */
 }
 .input-box select{
-  height: 25px;
-  width: 123px;
+  height: 33px;
+  width: 250px;
   outline: none;
   font-size: 16px;
-  border-radius: 15px;
+  border-radius: 10px;
   padding-left: 15px;
-  border: 1px solid #8cb87c;
+  border: 1px solid #000000;
   margin-bottom: 3px;
- /*  display: inline-block; */ /* 設定為內聯區塊元素 */
+  /* display: inline-block; */ /* 設定為內聯區塊元素 */
 }
-
 form .input-box span.details{
   display: inline-block; /* 將顯示更改為 inline-block 以位於同一行 */
   font-weight: 500;
@@ -148,63 +160,125 @@ form .input-box span.details{
 }
 
 /* 確定的方框 */
-.addstore {
+.submit {
   position: absolute; /* 設置為絕對定位 */
-  bottom: 25px; /* 距離視窗上方的位置 */
-  left: 56%; /* 距離視窗左側的位置 */
+  bottom: -7px; /* 距離視窗上方的位置 */
+  left: 58%; /* 距離視窗左側的位置 */
   transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
-  width: 63px;
-  height: 40px;
-  border: 3px solid #f3cc5f;
-  background-color:#f3cc5f;
+  width: 70px;
+  height: 37px;
+  border: 3px solid #8cb87c;
+  background-color:#8cb87c;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 18px;
-  color: #914d39;
+  color: #5b7751;
 }
-.addstore div {
+.submit div {
   display: flex;
   align-items: center;
   color: rgb(116, 65, 31)
 }
-.addstore img {
+.submit img {
   margin-right: 3px; /* 調整圖片和文字之間的間距 */
 }
 /* 確定懸停样式 */
-.addstore:hover {
-  border: 3px solid #a3893f;
-  color: #d36a09;
+.submit:hover {
+  border: 3px solid #5b7751;
+  color: #394c32;
   cursor: pointer;
 }
-/* 忘記密碼的方框 */
-.forget {
+/* 上一步的方框 */
+.laststep {
   position: absolute; /* 設置為絕對定位 */
-  bottom: 25px; /* 距離視窗上方的位置 */
-  left: 44%; /* 距離視窗左側的位置 */
+  bottom: -7px; /* 距離視窗上方的位置 */
+  left: 43%; /* 距離視窗左側的位置 */
   transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
-  width: 80px;
-  height: 40px;
-  border: 3px solid #88bde5;
-  background-color:#88bde5;
+  width: 70px;
+  height: 37px;
+  border: 3px solid #deb587;
+  background-color:#deb587;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 18px;
-  color: #000000;
+  color: #d78d38;
 }
-.forget div {
+.laststep div {
   display: flex;
   align-items: center;
-  color: #88bde5;
+  color: #deb587;
 }
-.forget img {
+.laststep img {
   margin-right: 3px; /* 調整圖片和文字之間的間距 */
 }
-.forget:hover {
-  border: 3px solid #125181;
-  color: #144366;
+.laststep:hover {
+  border: 3px solid #9a7e5f;
+  color: #846c51;
+  cursor: pointer;
+}
+
+/* 下一步的方框 */
+.nextstep {
+  position: absolute; /* 設置為絕對定位 */
+  bottom: -7px; /* 距離視窗上方的位置 */
+  left: 91%; /* 距離視窗左側的位置 */
+  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
+  width: 90px;
+  height: 37px;
+  border: 3px solid #d4bb4a;
+  background-color:#d4bb4a;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #99883e;
+}
+.nextstep div {
+  display: flex;
+  align-items: center;
+  color: #d4bb4a;
+}
+.nextstep img {
+  margin-right: 3px; /* 調整圖片和文字之間的間距 */
+}
+.nextstep:hover {
+  border: 3px solid #99883e;
+  color: #857737;
+  cursor: pointer;
+}
+
+/* 查看全部餐點的方框 */
+.checkbutton {
+  position: absolute; /* 設置為絕對定位 */
+  bottom: -7px; /* 距離視窗上方的位置 */
+  left: 11%; /* 距離視窗左側的位置 */
+  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
+  width: 120px;
+  height: 37px;
+  border: 3px solid #ebcc3f;
+  background-color:#ebcc3f;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #8a792b;
+}
+.checkbutton div {
+  display: flex;
+  align-items: center;
+  color: #ebcc3f;
+}
+.checkbutton img {
+  margin-right: 3px; /* 調整圖片和文字之間的間距 */
+}
+.checkbutton:hover {
+  border: 3px solid #d6a138;
+  color: #ab812f;
   cursor: pointer;
 }
