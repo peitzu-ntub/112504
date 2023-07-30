@@ -28,7 +28,7 @@ body{
   background-color: #fff3bc;
   width: 100vw;
   max-width: 1200px;
-  height: 300px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,10 +53,10 @@ body{
 
 .title {
   position: absolute; /* 設置為絕對定位 */
-  top: 18%; /* 距離視窗上方的位置 */
+  top: 28%; /* 距離視窗上方的位置 */
   left: 50%; /* 距離視窗左側的位置 */
   transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
-  width: 300px;
+  width: 320px;
   height: 50px;
   border: 3px solid #acce79;
   background-color:#acce79;
@@ -72,8 +72,8 @@ body{
   color: #35522b;
 }
 .title img {
-  margin-right: 15px; /* 調整圖片和文字之間的間距 */
-  margin-bottom: 15px;
+  margin-right: 6px; /* 調整圖片和文字之間的間距 */
+  margin-bottom: 75px;
 }
 
 /* 哪位老闆登入的方框 */
@@ -139,11 +139,11 @@ body{
 /* 確定的方框 */
 .addstore {
   position: absolute; /* 設置為絕對定位 */
-  bottom: 75px; /* 距離視窗上方的位置 */
+  bottom: 100px; /* 距離視窗上方的位置 */
   left: 50%; /* 距離視窗左側的位置 */
   transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
-  width: 63px;
-  height: 40px;
+  width: 90px;
+  height: 35px;
   border: 3px solid #f3cc5f;
   background-color:#f3cc5f;
   border-radius: 20px;
@@ -159,7 +159,9 @@ body{
   color: rgb(116, 65, 31)
 }
 .addstore img {
-  margin-right: 3px; /* 調整圖片和文字之間的間距 */
+  margin-right: -45px; 
+  margin-left: 15px; 
+  margin-top: -25px;
 }
 /* 確定懸停样式 */
 .addstore:hover {
@@ -167,13 +169,7 @@ body{
   color: #d36a09;
   cursor: pointer;
 }
-/* .content .button1{
-  width:500px;
-  height:100px;
-  font-size:20px;
-  border:2px blue none;
-}
- */
+
  .input-box {
   display: flex; /* 使用flexbox對齊行中的元素 */
   align-items: center; /* .input-box 內的元素垂直居中 */

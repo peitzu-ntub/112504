@@ -34,6 +34,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .insidebox{
@@ -47,20 +48,17 @@ body{
   align-items: center;
 }
 
-.left-button, .right-button {
-  position: absolute; /* 設置按鈕為絕對定位 */
-  width: 100px;
-  height: 40px;
-  background-color: #ccc;
-  border: 1px solid #999;
-  top: 50%; /* 將按鈕垂直居中 */
-  transform: translateY(-50%);
-}
-.left-button {
-  left: 0; /* 左邊按鈕定位在左側 */
-}
-.right-button {
-  right: 0; /* 右邊按鈕定位在右側 */
+.ininsidebox{
+  font-weight: bold;
+  background-color: #ac3d3d;
+  border-radius: 20px;
+  width: 680px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+
 }
 
 .title {
@@ -114,7 +112,6 @@ body{
 .logout img {
   margin-right: 3px; /* 調整圖片和文字之間的間距 */
 }
-/* 返回懸停样式 */
 .logout:hover {
   border: 4px solid #b55f45;
   color: white;
@@ -123,24 +120,20 @@ body{
   cursor: pointer;
 }
 
-
- .input-box {
-  display: flex; /* 使用flexbox對齊行中的元素 */
-  align-items: center; /* .input-box 內的元素垂直居中 */
-  margin-top: 8px;
-} 
- .input-box input{
-  height: 33px;
-  width: 250px;
-  outline: none;
-  font-size: 16px;
-  border-radius: 10px;
-  padding-left: 15px;
-  border: 1px solid #000000;
-  margin-bottom: 3px;
-  /* display: inline-block; */ /* 設定為內聯區塊元素 */
+.content .user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
 }
-.input-box select{
+
+/*  .input-box {
+  display: flex; 
+  align-items: center; 
+  margin-top: 8px;
+}  */
+.input-box input,
+.input-box select {
   height: 33px;
   width: 250px;
   outline: none;
@@ -149,7 +142,6 @@ body{
   padding-left: 15px;
   border: 1px solid #000000;
   margin-bottom: 3px;
-  /* display: inline-block; */ /* 設定為內聯區塊元素 */
 }
 form .input-box span.details{
   display: inline-block; /* 將顯示更改為 inline-block 以位於同一行 */
@@ -184,7 +176,6 @@ form .input-box span.details{
 .submit img {
   margin-right: 3px; /* 調整圖片和文字之間的間距 */
 }
-/* 確定懸停样式 */
 .submit:hover {
   border: 3px solid #5b7751;
   color: #394c32;
