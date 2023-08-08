@@ -47,12 +47,10 @@
 			
 					<div class="col-md-4">
 						<div class="input-box">
-							<span class="details">員工編號：</span>
-							<input type="text" name="staff_no" id="staff_no" placeholder="請輸入員工編號" required>
+							<span class="details">員工編號：</span><input type="text" name="staff_no" id="staff_no" placeholder="請輸入員工編號" required>
 						</div>
 						<div class="input-box">
-							<span class="details">員工姓名：</span>
-							<input type="text" name="staff_name" id="staff_name" placeholder="請輸入員工姓名" required>
+							<span class="details">員工姓名：</span><input type="text" name="staff_name" id="staff_name" placeholder="請輸入員工姓名" required>
 						</div>
 			
 						<div>
