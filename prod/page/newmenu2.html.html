@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>客製化2</title>
+
+    <link href="../js/newmenu2.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
+        <div align="left">
+            <img src="../images/back.png" alt="返回icon" />
+            <span style="font-size: 5px;">返回</span>
+        </div>
+    </div>
+
+    <div class="container-wrapper">
+        <form action="#">
+            <div class="container1">
+                <div class="insidebox">
+                    <div class="ininsidebox">
+                        <div class="input-box">
+                            <span class="details">餐點類型：</span>
+                            <select name="type_id" id="type_id">
+                                <span class="details">價格：</span>
+                                <input type="number" min="0" name="meal_price" id="meal_price" placeholder="請輸入正確價格"
+                                    required>
+                                <span class="details">餐點介紹：</span>
+                                <textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="請輸入餐點介紹"
+                                    style="height: 50px;width: 300px;resize: none;"></textarea>
+                                <span class="details">圖片：</span>
+                                <input type="file" name="meal_pic" id="meal_pic">
+                                <span class="details">餐點名稱：</span>
+                                <input type="text" name="meal_name" id="meal_name" placeholder="請輸入餐點名稱" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="submit" type="submit" name="按鈕名稱" onclick="location.href='#.html'" onclick=validate()>
+            <span style="font-size: 5px;">儲存</span>
+        </div>
+        <div class="laststep" type="return" name="按鈕名稱" onclick="location.href='newmenu1.html'">
+            <span style="font-size: 5px;">上一步</span>
+        </div>
+        <div class="nextstep" type="next" name="按鈕名稱" onclick="location.href='newmenu3.html'">
+            <span style="font-size: 5px;">下一步</span>
+        </div>
+        <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='#.html'">
+            <span style="font-size: 5px;">查看全部餐點</span>
+        </div>
+    </div>
+    </div>
+</body>
+
+
+<script>
+    //當網頁準備好的時候，做以下的動作(函式)
+    $(document).ready(function () {
+        //form的submit按鈕按下去的動作
+        $("form").on("submit", function (e) {
+            //1.先把準備拋回去的資料「序列化」整理成json格式的字串
+            var dataString = $(this).serialize();
+
+            //可以把字串顯示出來看看是否正確
+            //alert(dataString);               
+
+            //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
+            $.ajax({
+                //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+                type: "POST",
+                //指定要連接的PHP位址
+                url: "../bin/editStore.php",
+                //要傳送的資料內容
+                data: dataString,
+                //獲得正確回應時，要做的事情
+                success: function (response) {
+                    var json = $.parseJSON(response);
+                    if (json.result == 'OK') {
+                        $("#message").html('成功：\n' + json.message);
+                    } else {
+                        $("#message").html('失敗：\n' + json.message);
+                    }
+                },
+                //獲得不正確的回應時，要做的事情
+                error: function (response) {
+                    $("#message").html(response);
+                }
+            });
+
+            e.preventDefault();
+        });
+    });
+</script>
+
+</html>
