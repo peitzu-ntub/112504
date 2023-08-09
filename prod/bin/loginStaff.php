@@ -4,12 +4,12 @@
     $data= array();
   
     try {
-        $id = $_POST['lic'];
-        $psw = $_POST['psw'];
+        $id = $_POST['staff_id'];
+        $psw = $_POST['staff_psw'];
 
         //檢查此員工是否已經存在
         //1.產生查詢字串
-        $sql = "SELECT * FROM store_staff WHERE staff_identity='$id' and staff_psw='$psw'";
+        $sql = "SELECT * FROM store_staff WHERE staff_id='$id' and staff_psw='$psw'";
         //2.查下去，並取得查詢結果
         $result = mysqli_query($con, $sql);
         //3.查詢結果的筆數
@@ -23,7 +23,8 @@
 
         else {
             $data['result'] = 'NG';
-            $data['message'] = "帳號或密碼輸入錯誤，請重新登入";
+            $data['message'] = $sql;
+            // $data['message'] = "帳號或密碼輸入錯誤，請重新登入"+;
             echo json_encode($data);
         }
 
