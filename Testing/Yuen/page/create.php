@@ -41,7 +41,7 @@
 		<div align="center"><font size="5">員工資料管理</font></div>
 		<hr>
 		<div class="content">
-			<form action="newFood.php" method="POST" enctype="multipart/form-data">
+			<form action="employee.php" method="POST" enctype="multipart/form-data">
 				<div class="user-details">
 					<input type='hidden' id='nexturl' name='C' value='menu_2.php'>
 			

@@ -18,18 +18,25 @@
     $identity = $_SESSION["identity"];
     $store = $_SESSION['store_id'];
 
-    $meal_type = $_POST['type_id'];
-    $meal_name = $_POST['meal_name'];
-    $meal_price = $_POST['meal_price'];
-    $meal_note = $_POST['meal_note'];
+    $staff_id = $_POST['staff_id'];
+    $staff_name = $_POST['staff_name'];
+    $staff_birth = $_POST['staff_birth'];
+    $staff_gender = $_POST['staff_gender'];
+    $staff_tel = $_POST['staff_tel'];
+    $staff_identity = $_POST['staff_address'];
+    $em_name = $_POST['em_name'];
+    $em_tel = $_POST['em_tel'];
+    $relation = $_POST['relation'];
+    $due_date = $_POST['due_date'];
 
     $sql = "
-        insert into store_food (
-            boss_identity, store_id, meal_id, type_id, meal_name,
-            meal_price, meal_note
-        ) values (
-            '$identity', '$store', '$meal_name', '$meal_type', '$meal_name',
-            $meal_price, '$meal_note'
+    insert into `112504`.store_staff (
+        staff_id, boss_identity, store_id, staff_name, staff_birth, staff_gender,
+        staff_tel, staff_address, em_name, em_tel, relation, due_date
+        ) 
+        values (
+        '$staff_id', '$identity', '$store', '$staff_name', '$staff_birth', '$staff_gender', '$staff_tel',
+        '$staff_identity', '$em_name', '$em_tel', '$relation', '$due_date'
         );    
     ";
     // mysqli_query($con, $sql);
@@ -39,19 +46,13 @@
     // 如果有一筆以上代表有更新
     // mysqli_insert_id可以抓到第一筆的id
     $new_id= mysqli_insert_id ($con);
-    echo "<script>alert('新增成功!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
+    echo "新增成功";
     }
 else {
-    echo "<script>alert('新增失敗!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
+    echo "新增資料錯誤";
 }
  mysqli_close($con); 
 
-    //上傳的檔案    
-    if ($_FILES['meal_pic']['error'] === UPLOAD_ERR_OK){
-        $tmpFile = $_FILES['meal_pic']['tmp_name'];
-        $newFile = "../images/$meal_name.upload.jpg";
-        move_uploaded_file($tmpFile, $newFile);
-    }
 ?>
 
 <html lang="en">
