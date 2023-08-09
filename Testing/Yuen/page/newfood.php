@@ -39,10 +39,10 @@
     // 如果有一筆以上代表有更新
     // mysqli_insert_id可以抓到第一筆的id
     $new_id= mysqli_insert_id ($con);
-    echo "新增成功";
+    echo "<script>alert('新增成功!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
     }
 else {
-    echo "新增資料錯誤";
+    echo "<script>alert('新增失敗!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
 }
  mysqli_close($con); 
 
