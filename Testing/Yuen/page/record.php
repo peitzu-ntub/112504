@@ -43,7 +43,11 @@
                 echo "<th>人數</th>";
                 echo "<th>結帳時間</th>";
                 echo "<th>餐點明細</th>";
+                echo "<td>
+                            <a href='dbdeletelist.php?pk=".$datas[$i]['adm_pk']."'><button class='btn btn-success'>刪除</button></a>
+                            </td>";
             echo "</tr>";
+            
             while($row_result = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 echo "<td>".$row_result['date']."</td>";
