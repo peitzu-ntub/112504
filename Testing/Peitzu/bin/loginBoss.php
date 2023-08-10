@@ -30,7 +30,7 @@
     } catch (Exception $e) {
         $data['result'] = 'NG';
         $data['message'] = $e->getMessage();
-        //回傳執行結果test
+        //回傳執行結果
         echo json_encode($data);
     }
 ?>
