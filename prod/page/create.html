@@ -13,7 +13,7 @@
 
 <body>
     <div class="container-wrapper">
-        <form action="#">
+    <form action="staff_in.php" method="POST" enctype="multipart/form-data">
             <div class="container1">
                 <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
                     <div align="left">
@@ -29,7 +29,7 @@
                     <div class="ininsidebox">
                         <div class="input-box">
                             <span class="details">員工編號：</span>
-                            <input type="text" name="staff_no" id="staff_no" placeholder="員工編號" required>
+                            <input type="text" name="staff_id" id="staff_id" placeholder="員工編號" required>
                         </div>
                         <div class="input-box">
                             <span class="details">姓名：</span>
@@ -79,15 +79,18 @@
 
                         <div class="input-box">
                             <span class="details">密碼：</span>
-                            <input type="text" name="relation" id="relation" placeholder="請輸入員工的密碼" required>
+                            <input type="text" name="staff_psw" id="staff_psw" placeholder="請輸入員工的密碼" required>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
-        <div class="submit" type="submit" name="按鈕名稱" onclick=validate()>
-            <span style="font-size: 15px;">儲存</span>
+        
+        <div class="button">
+            <input value="儲存" type="submit" />
         </div>
+        <!-- <div class="submit" type="submit" name="按鈕名稱" >
+            <span style="font-size: 15px;">儲存</span>
+        </div> -->
         <div class="laststep" type="return" name="按鈕名稱" onclick="location.href='newmenu1.html'">
             <span style="font-size: 15px;">上一步</span>
         </div>
@@ -99,46 +102,6 @@
         </div>
     </div>
     </div>
+    </form>
 </body>
-
-
-<script>
-    //當網頁準備好的時候，做以下的動作(函式)
-    $(document).ready(function () {
-        //form的submit按鈕按下去的動作
-        $("form").on("submit", function (e) {
-            //1.先把準備拋回去的資料「序列化」整理成json格式的字串
-            var dataString = $(this).serialize();
-
-            //可以把字串顯示出來看看是否正確
-            //alert(dataString);               
-
-            //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
-            $.ajax({
-                //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
-                type: "POST",
-                //指定要連接的PHP位址
-                url: "../bin/editStore.php",
-                //要傳送的資料內容
-                data: dataString,
-                //獲得正確回應時，要做的事情
-                success: function (response) {
-                    var json = $.parseJSON(response);
-                    if (json.result == 'OK') {
-                        $("#message").html('成功：\n' + json.message);
-                    } else {
-                        $("#message").html('失敗：\n' + json.message);
-                    }
-                },
-                //獲得不正確的回應時，要做的事情
-                error: function (response) {
-                    $("#message").html(response);
-                }
-            });
-
-            e.preventDefault();
-        });
-    });
-</script>
-
 </html>
