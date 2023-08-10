@@ -9,6 +9,7 @@
     <title>loginworker</title>
 
     <link href="../js/newlogin.css" rel="stylesheet">
+    <script src="../js/jquery-3.6.4.min.js"></script>
 
 </head>
 
@@ -40,38 +41,21 @@
                         <input type="password" name="boss_pwd" id="boss_pwd" placeholder="密碼" required>
                     </div>
                 </div>
-            </form>
 
-            <div class="addstore" type="submit" name="按鈕名稱" onclick="location.href='#.html'" onclick=validate()>
+            <input class="addstore" type="submit" name="按鈕名稱">
                 <span style="font-size: 5px;">確定</span>
-            </div>
+            </input>
+
             <div class="forget" type="return" name="按鈕名稱" onclick="location.href='#.html'">
                 <span style="font-size: 5px;">忘記密碼</span>
             </div>
+        </form>
         </div>
     </div>
 </body>
 
 
 <script>
-    //確認密碼
-    function validate() {
-        var pw1 = document.getElementById("back_pwd1").value;
-        var pw2 = document.getElementById("back_pwd2").value;
-        if (pw1 == pw2) {
-            document.getElementById("tishi").innerHTML = "兩次密碼相同";
-            document.getElementById("submit").disabled = false;
-
-        }
-
-        else {
-            document.getElementById("tishi").innerHTML = "兩次密碼不同";
-            document.getElementById("submit").disabled = true;
-
-        }
-
-    }
-
     //當網頁準備好的時候，做以下的動作(函式)
     $(document).ready(function () {
         //form的submit按鈕按下去的動作
@@ -80,28 +64,31 @@
             var dataString = $(this).serialize();
 
             //可以把字串顯示出來看看是否正確
-            //alert(dataString);               
+            alert(dataString);               
 
             //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
             $.ajax({
                 //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
                 type: "POST",
                 //指定要連接的PHP位址
-                url: "../bin/editStore.php",
+                url: "../bin/loginBoss.php",
                 //要傳送的資料內容
                 data: dataString,
                 //獲得正確回應時，要做的事情
                 success: function (response) {
                     var json = $.parseJSON(response);
                     if (json.result == 'OK') {
-                        $("#message").html('成功：\n' + json.message);
+                        alert (json.message);
+                        //$("#message").html('成功：\n' + json.message);
                     } else {
-                        $("#message").html('失敗：\n' + json.message);
+                        alert (json.message);
+                        //$("#message").html('失敗：\n' + json.message);
                     }
                 },
                 //獲得不正確的回應時，要做的事情
                 error: function (response) {
-                    $("#message").html(response);
+                    alert ('錯誤');
+                    //$("#message").html(response);
                 }
             });
 
