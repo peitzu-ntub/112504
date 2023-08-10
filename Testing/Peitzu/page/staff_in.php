@@ -23,22 +23,18 @@
     $staff_birth = $_POST['staff_birth'];
     $staff_gender = $_POST['staff_gender'];
     $staff_tel = $_POST['staff_tel'];
-    $staff_identity = $_POST['staff_address'];
+    $staff_address = $_POST['staff_address'];
     $em_name = $_POST['em_name'];
     $em_tel = $_POST['em_tel'];
     $relation = $_POST['relation'];
     $due_date = $_POST['due_date'];
+    $staff_psw = $_POST['staff_psw'];
 
-    $sql = "
-    insert into `112504`.store_staff (
-        staff_id, boss_identity, store_id, staff_name, staff_birth, staff_gender,
-        staff_tel, staff_address, em_name, em_tel, relation, due_date
-        ) 
+    $sql = "INSERT INTO store_staff (staff_id, boss_identity, store_id, staff_name, staff_gender, staff_birth, 
+        staff_tel, staff_address, em_name, em_tel, relation, due_date, staff_psw) 
         values (
-        '$staff_id', '$identity', '$store', '$staff_name', '$staff_birth', '$staff_gender', '$staff_tel',
-        '$staff_identity', '$em_name', '$em_tel', '$relation', '$due_date'
-        );    
-    ";
+        '$staff_id', '$identity', '$store', '$staff_name', '$staff_gender', '$staff_birth', '$staff_tel',
+        '$staff_address', '$em_name', '$em_tel', '$relation', '$due_date', '$staff_psw')";
     // mysqli_query($con, $sql);
     $result = mysqli_query($con,$sql);
     // 如果有異動到資料庫數量(更新資料庫)
