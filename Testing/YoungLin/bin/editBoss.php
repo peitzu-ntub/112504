@@ -35,7 +35,7 @@
             $data['message'] = '老闆資料儲存成功';
         }else {
             $data['result'] = 'NG';
-            $data['message'] = "Error: " . $sql . "<br>" . mysqli_error($con);
+            //$data['message'] = "Error: " . $sql . mysqli_error($con);
         }
         echo json_encode($data);
 
