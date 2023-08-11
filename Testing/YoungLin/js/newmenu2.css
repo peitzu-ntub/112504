@@ -53,7 +53,7 @@ body{
   background-color: #ffffff;
   border-radius: 20px;
   width: 680px;
-  height: 200px;
+  height: 300px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -93,13 +93,26 @@ body{
   margin: 20px 0 12px 0;
 }
 
+.input-box {
+  display: flex;
+  flex-direction: column;/* center */
+  align-items: flex-start;/* center */
+  margin-top: 8px;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
 /*  .input-box {
   display: flex; 
   align-items: center; 
   margin-top: 8px;
 }  */
 .input-box input,
-.input-box select {
+.input-box select,
+.input-box textarea {
   height: 33px;
   width: 250px;
   outline: none;

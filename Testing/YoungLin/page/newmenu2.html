@@ -13,48 +13,59 @@
 </head>
 
 <body>
-<!--     <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
+    <!--     <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
             <span style="font-size: 5px;">返回</span>
         </div>
     </div> -->
-
     <div class="container-wrapper">
         <form action="#">
             <div class="container1">
                 <div class="insidebox">
                     <div class="ininsidebox">
                         <div class="input-box">
-                            <span class="details">餐點類型：</span>
-                            <select name="type_id" id="type_id">
+                            <div class="input-row">
+                                <span class="details">餐點類型：</span>
+                                <select name="type_id" id="type_id"></select>
+                            </div>
+                            <div class="input-row">
                                 <span class="details">價格：</span>
                                 <input type="number" min="0" name="meal_price" id="meal_price" placeholder="請輸入正確價格"
                                     required>
+                            </div>
+                            <div class="input-row">
                                 <span class="details">餐點介紹：</span>
-                                <textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="請輸入餐點介紹"
-                                    style="height: 50px;width: 300px;resize: none;"></textarea>
+                                <textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="請輸入餐點介紹(上限50字)"
+                                    style="height: 30px;width: 250px;resize: none;"maxlength="50"></textarea>
+                            </div>
+                            <div class="input-row">
                                 <span class="details">圖片：</span>
                                 <input type="file" name="meal_pic" id="meal_pic">
+                            </div>
+                            <div class="input-row">
                                 <span class="details">餐點名稱：</span>
                                 <input type="text" name="meal_name" id="meal_name" placeholder="請輸入餐點名稱" required>
+                            </div>
+                        </div>
+
+                        
+                        <input class="submit" type="submit" value="儲存" style="font-size: 5px;"
+                            onclick="location.href='#.html'">
+                        </input>
+                        <div class="laststep" type="return" name="按鈕名稱" onclick="location.href='newmenu1.html'">
+                            <span style="font-size: 5px;">上一步</span>
+                        </div>
+                        <div class="nextstep" type="next" name="按鈕名稱" onclick="location.href='newmenu3.html'">
+                            <span style="font-size: 5px;">下一步</span>
+                        </div>
+                        <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='#.html'">
+                            <span style="font-size: 5px;">查看全部餐點</span>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
-        <input class="submit" type="submit" value="儲存" style="font-size: 5px;" onclick="location.href='#.html'" >
-        </input>
-        <div class="laststep" type="return" name="按鈕名稱" onclick="location.href='newmenu1.html'">
-            <span style="font-size: 5px;">上一步</span>
-        </div>
-        <div class="nextstep" type="next" name="按鈕名稱" onclick="location.href='newmenu3.html'">
-            <span style="font-size: 5px;">下一步</span>
-        </div>
-        <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='#.html'">
-            <span style="font-size: 5px;">查看全部餐點</span>
-        </div>
-    </div>
     </div>
 </body>
 
