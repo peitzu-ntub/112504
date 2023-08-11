@@ -235,7 +235,7 @@ form .input-box span.details{
   bottom: -7px; /* 距離視窗上方的位置 */
   left: 11%; /* 距離視窗左側的位置 */
   transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
-  width: 120px;
+  width: 80px;
   height: 37px;
   border: 3px solid #ebcc3f;
   background-color:#ebcc3f;
@@ -250,9 +250,6 @@ form .input-box span.details{
   display: flex;
   align-items: center;
   color: #ebcc3f;
-}
-.checkbutton img {
-  margin-right: 3px; /* 調整圖片和文字之間的間距 */
 }
 .checkbutton:hover {
   border: 3px solid #d6a138;
