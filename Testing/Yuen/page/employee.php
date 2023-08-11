@@ -1,60 +1,7 @@
-<?php
-    session_start();
-    include "../bin/conn.php";
-
-    //todo, 這是假的資料
-    //預設的資料來源，是從登入而來。登入、選擇店家後，就會把以下這兩個資訊，放進SESSION裡，保留在Server端
-    //讓同一個人的接續連線，可以直接拿來用
-    if (!isset($_SESSION["identity"])) {
-        $_SESSION["identity"] = "A123456789";
-    }
-    if (!isset($_SESSION["store_id"])) {
-        $_SESSION["store_id"] = "S01";
-    }
-
-    $nexturl=$_POST['nexturl'];
-
-    //擷取準備要新增時使用的各欄位資料
-    $identity = $_SESSION["identity"];
-    $store = $_SESSION['store_id'];
-
-    $staff_id = $_POST['staff_id'];
-    $staff_name = $_POST['staff_name'];
-    $staff_birth = $_POST['staff_birth'];
-    $staff_gender = $_POST['staff_gender'];
-    $staff_tel = $_POST['staff_tel'];
-    $staff_identity = $_POST['staff_address'];
-    $em_name = $_POST['em_name'];
-    $em_tel = $_POST['em_tel'];
-    $relation = $_POST['relation'];
-    $due_date = $_POST['due_date'];
-
-    $sql = "
-    insert into `112504`.store_staff (
-        staff_id, boss_identity, store_id, staff_name, staff_birth, staff_gender,
-        staff_tel, staff_address, em_name, em_tel, relation, due_date
-        ) 
-        values (
-        '$staff_id', '$identity', '$store', '$staff_name', '$staff_birth', '$staff_gender', '$staff_tel',
-        '$staff_identity', '$em_name', '$em_tel', '$relation', '$due_date'
-        );    
-    ";
-    // mysqli_query($con, $sql);
-    $result = mysqli_query($con,$sql);
-    // 如果有異動到資料庫數量(更新資料庫)
-    if (mysqli_affected_rows($con)>0) {
-    // 如果有一筆以上代表有更新
-    // mysqli_insert_id可以抓到第一筆的id
-    $new_id= mysqli_insert_id ($con);
-    echo "新增成功";
-    }
-else {
-    echo "新增資料錯誤";
-}
- mysqli_close($con); 
-
+<?php 
+include ("../bin/conn.php"); //這是引入剛剛寫完，用來連線的.php
 ?>
-
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -62,21 +9,77 @@ else {
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Menu customization</title>
-	<link href="../js/menu.css" rel="stylesheet">
+	<title>員工資料</title>
 
+	<link href="../js/create.css" rel="stylesheet">
 </head>
 
-
 <body>
-	<div class="cabinet">
-		<label for="type_id">
-		</label>
-	</div><br>
-	<div class="button-container">
-		<button class="Nextstepbutton" onclick="location.href='menu_2.php'">
-			<span>繼續</span>
-		</button>
+
+<?php 
+	$sql = "SELECT staff_id, staff_name FROM store_staff  "; 
+
+	
+
+	$result = mysqli_query($con,$sql);
+?>
+<div class="container-wrapper">
+		<form action="#">
+			<div class="container1">
+				<div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
+					<div align="left">
+						<img src="../images/back.png" alt="返回icon" />
+						<span style="font-size: 18px;">返回</span>
+					</div>
+				</div>
+				<div align="center">
+					<font size="20">員工資料管理</font>
+				</div>
+
+				<!-- <div class="insidebox"> -->
+
+				<div class="ininsidebox">
+                    
+					<table width="50%">
+						<tr>
+							<th>
+								<div class="sidebar_left">刪除</div>
+							</th>
+							<td>
+								<div class="content1">員工編號</div>
+							</td>
+							<td>
+								<div class="content2">員工姓名</div>
+							</td>
+							<td>
+								<div class="sidebar_right">編輯</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+			<!-- 大括號的上、下半部分 分別用 PHP 拆開 ，這樣中間就可以純用HTML語法-->
+			<?php
+				if(mysqli_num_rows($result) > 0)
+				{
+					foreach($result as $row)
+					{
+                        echo "<tr>";
+                        echo "<td>
+                        <a href='dbdeletelist.php?pk=".$datas[$i]['adm_pk']."'><button class='btn btn-success'>刪除</button></a>
+                        </td>";
+        
+                        echo "<td>".$row['staff_id']."</td>";
+                        echo "<td>".$row['staff_name']."</td>";
+                        echo "</tr>";
+			
+				  }
+				}
+			?>
+
+        </div>
+		</form>
 	</div>
 </body>
+
 </html>

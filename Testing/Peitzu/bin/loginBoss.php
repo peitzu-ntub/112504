@@ -4,8 +4,8 @@
     $data= array();
   
     try {
-        $id = $_POST['lic'];
-        $psw = $_POST['psw'];
+        $id = $_POST['boss_identity'];
+        $psw = $_POST['boss_pwd'];
 
         //檢查此老闆是否已經存在
         //1.產生查詢字串
