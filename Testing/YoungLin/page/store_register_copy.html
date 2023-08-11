@@ -1,32 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>店鋪類型</title>
-    <link rel="stylesheet" href="../js/test.css">
-    <script src="../js/jquery-3.6.4.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>add store</title>
+
+    <link href="../js/regist_store.css" rel="stylesheet">
+
 </head>
 
 <body>
-    <div class="container">
-        <div class="title">註冊店家</div><br>
-        <hr>
-        <div class="content">
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='chose_store copy.html'">
+        <div align="left">
+            <img src="../images/back.png" alt="返回icon" />
+            <span style="font-size: 5px;">返回</span>
+        </div>
+    </div>
+    <div class="who">
+        <div align="left">
+            <img src="../images/worker64.png" alt="老闆圖片" />
+            <span style="font-size: 28px;">老闆名字</span>
+        </div>
+    </div>
+    <div class="title">
+        <div align="left">
+            <img src="../images/restaurant128.png" alt="店家圖片" />
+            <span style="font-size: 28px;">新增店家資訊</span>
+        </div>
+    </div>
+
+    <div class="container-wrapper">
+        <div class="container1">
             <form action="#">
                 <div class="user-details">
                     <div class="input-box">
-                        <span class="details">店家名稱：</span>
+                        <span class="details" style="font-size: 20px;">店家名稱：</span>
                         <input type="text" name="store_name" id="store_name" placeholder="請輸入店家名稱" required>
                     </div>
                     <div class="input-box">
-                        <span class="details">店家電話：</span>
+                        <span class="details" style="font-size: 20px;">店家電話：</span>
                         <input type="text" name="store_tel" id="store_tel" placeholder="請輸入店家電話" required>
                     </div>
                     <div class="input-box">
-                        <span class="details">店家地址：</span>
-                        <select id="county" onchange="populateDistricts()">
+                        <span class="details" style="font-size: 20px;">店家地址：</span>
+                        <!-- <select id="county" onchange="populateDistricts()">
                             <option value="台北市">台北市</option>
                             <option value="新北市">新北市</option>
                             <option value="桃園市">桃園市</option>
@@ -48,62 +68,26 @@
                             <option value="澎湖縣">澎湖縣</option>
                             <option value="基隆市">基隆市</option>
                         </select>
-                        <select id="district">
-                        </select><input type="text" name="store_address" id="store_address" placeholder="請輸入正確地址"
-                            required>
+                        <select id="district"></select><br> -->
+                        <input type="text" name="store_address" id="store_address" placeholder="請輸入正確地址" required>
                     </div>
                     <div class="input-box">
-                        <span class="details">店家桌數：</span>
-                        <input type="number" min=0 name="table_count" id="table_count" placeholder="請輸入桌數" required>
+                        <span class="details" style="font-size: 20px;">店家桌數：</span>
+                        <input type="number" min=1 name="table_count" id="table_count" placeholder="請輸入桌數" required>
                     </div>
-
-                    <div class="input-box">
-                        <span class="details">後臺密碼：</span>
-                        <input type="password" name="back_pwd" id="back_pwd1" placeholder="請輸入後臺密碼" required>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">確認後台密碼：</span>
-                        <input type="password" name="back_pwd" id="back_pwd2" placeholder="請再輸入一次後台密碼" required>
-                    </div>
-                </div>
-                <div class="button">
-                    <input value="註冊" type="submit" onclick=validate() /><!--  -->
-                </div>
-                <div class="button">
-                    <input type="reset" value="返回" onclick="location.href='../page/management.html'">
                 </div>
             </form>
-            <div class="button-container">
-                <button class="registbutton" onclick="location.href='../page/chose_store.html'">
-                    <span>註冊過 !</span>
-                </button>
-            </div>
         </div>
     </div>
-    <div id="message"> <!--出現確認密碼密碼是否相同的提醒 --></div>
+    <input class="addstore" type="submit" value="確定" style="font-size: 5px;" onclick="location.href='#.html'">
+        <!-- <img src="../images/OK.png" alt="OK圖片" /> -->
+    </input>
 </body>
 
 
 <script>
-    //確認密碼
-    function validate() {
-        var pw1 = document.getElementById("back_pwd1").value;
-        var pw2 = document.getElementById("back_pwd2").value;
-        if (pw1 == pw2) {
-            document.getElementById("tishi").innerHTML = "兩次密碼相同";
-            document.getElementById("submit").disabled = false;
-
-        }
-
-        else {
-            document.getElementById("tishi").innerHTML = "兩次密碼不同";
-            document.getElementById("submit").disabled = true;
-
-        }
-
-    }
     //選擇縣市
-    var districtsByCounty = {
+/*     var districtsByCounty = {
         "台北市": ["中正區", "大同區", "中山區", "松山區", "大安區", "萬華區", "信義區", "士林區", "北投區", "內湖區", "南港區", "文山區"],
         "新北市": ["板橋區", "三重區", "中和區", "永和區", "新莊區", "新店區", "樹林區", "鶯歌區", "三峽區", "淡水區", "汐止區", "瑞芳區"],
         "桃園市": ["桃園區", "中壢區", "平鎮區", "八德區", "楊梅區", "龍潭區", "大溪區", "蘆竹區", "大園區", "觀音區", "新屋區", "復興區"],
@@ -142,7 +126,7 @@
             option.value = districts[i];
             district.add(option);
         }
-    }
+    } */
 
     //當網頁準備好的時候，做以下的動作(函式)
     $(document).ready(function () {
@@ -181,5 +165,4 @@
         });
     });
 </script>
-
 </html>
