@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<title>老闆管理頁面</title>
+	<link href="../js/boss_management.css" rel="stylesheet">
+  </head>
+<body>
+	<div class="container">
+		<div class="button-container">
+            <button class="backhomebtn" onclick="location.href='../page/home.html'">
+                <span><img src="../images/arrow.png" /> 返回</span>
+            </button>
+		</div>
+		<div id="wrap">
+            <div class="caption">
+                <div class="col-md-5">	
+                    <h1 class="myTitle"><img src="../images/boss_M.png" /></h1>
+                    <span>後台管理</span>
+                </div>
+            </div>
+			<div class="section">
+                <div class="col-md-4">
+                    <input type="button" class="btn" value="員工資料" onclick="location.href='../page/員工資料.html'"></input>
+                    <input type="button" class="btn" value="顧客評價" onclick="location.href='../page/顧客評價.html'"></input>
+                    <input type="button" class="btn" value="消費紀錄" onclick="location.href='../page/消費紀錄.html'"></input>
+                    <div class="dropdown">
+                        <button class="dropbtn">店鋪管理</button>
+                        <div class="dropdown-content">
+                            <a onclick="location.href='../page/menu_1.html'">菜單編輯</a>
+                            <a onclick="location.href='#'">更改桌數</a>
+                            <a onclick="location.href='#'">更改密碼</a>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

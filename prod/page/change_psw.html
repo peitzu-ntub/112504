@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密碼設定</title>
+    <link href="../js/psw_setting.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="caption">
+        <h1 class="myTitle"><img src="../images/padlock.png" /></h1>
+        <span>密碼設定</span>
+    </div>
+    <form method="post" action="#">
+        <!-- <label id="oldPassword" for="oldPassword"><img src="..//key.png" />舊密碼:</label> -->
+        <label id="oldPassword" for="oldPassword"><img src="../images/forgot-password.png" /></label>
+        <input type="password" id="oldPassword" name="oldPassword" placeholder="請輸入您的舊密碼" required>
+        <br>
+        <label id="newPassword" for="newPassword"><img src="../images/lock.png" /></label>
+        <input type="password" id="newPassword" name="newPassword" placeholder="請輸入您的新密碼" required>
+        <br>
+        <label id="confirmNewPassword" for="confirmNewPassword"><img src="../images/shield.png" /></label>
+        <input type="password" id="confirmNewPassword" name="confirmNewPassword" placeholder="請再次輸入您的新密碼" required>
+        <br>
+        <input type="submit" value="儲存設定">
+    </form>
+    <div class="button-container">
+        <button class="backhomebtn" onclick="location.href='../page/home.html'">
+            <span><img src="../images/arrow.png" /> 返回</span>
+        </button>
+    </div>
+</body>
+
+</html>
