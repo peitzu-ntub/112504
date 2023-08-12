@@ -9,7 +9,6 @@
     <title>add store</title>
 
     <link href="../js/regist_store.css" rel="stylesheet">
-    <script src="../js/jquery-3.6.4.min.js"></script>
 
 </head>
 
@@ -37,10 +36,6 @@
         <div class="container1">
             <form action="#">
                 <div class="user-details">
-                    <div class="input-box">
-                        <span class="details" style="font-size: 20px;">店家代號：</span>
-                        <input type="text" name="store_id" id="store_id" placeholder="請輸入店家代號" required>
-                    </div>
                     <div class="input-box">
                         <span class="details" style="font-size: 20px;">店家名稱：</span>
                         <input type="text" name="store_name" id="store_name" placeholder="請輸入店家名稱" required>
@@ -81,10 +76,10 @@
                         <input type="number" min=1 name="table_count" id="table_count" placeholder="請輸入桌數" required>
                     </div>
                 </div>
+            </form>
         </div>
     </div>
-    <input class="addstore" type="submit" value="確定" style="font-size: 5px;">
-            </form>
+    <input class="addstore" type="submit" value="確定" style="font-size: 5px;" onclick="location.href='#.html'">
         <!-- <img src="../images/OK.png" alt="OK圖片" /> -->
     </input>
 </body>

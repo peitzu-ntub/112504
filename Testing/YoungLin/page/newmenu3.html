@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>客製化3</title>
+
+    <link href="../js/newmenu3.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container-wrapper">
+        <form action="#">
+            <div class="container1">
+                <div class="subject">
+                    <div class="big">
+                        <span style="font-size: 25px;">選擇您想呈現的方式</span>
+                    </div>
+                    <div class="onesmall">
+                        <span style="font-size: 15px;">呈現方式</span>
+                    </div>
+                    <div class="twosmall">
+                        <span style="font-size: 15px;">欲加入菜單內容</span>
+                    </div>
+                    <div class="radiobutton">
+                        <div id="radio">
+                            <label><input type="radio" name="label" value="行列式" checked="checked"><span
+                                    class="round button">行列式</span></label>
+                            <label><input type="radio" name="label" value="方塊式"><span
+                                    class="round button">方塊式</span></label>
+                        </div>
+                    </div>
+                    <div class="checkbutton">
+                        <div id="checkbox">
+                            
+                                <label><input type="checkbox" name="variety" value="評價" />
+                                    <span class="round button">評價</span></label>
+                                <label><input type="checkbox" name="variety" value="圖片" />
+                                    <span class="round button">圖片</span></label><br>
+                            
+                            
+                                <label><input type="checkbox" name="variety" value="餐點介紹" />
+                                    <span class="round button">餐點介紹</span></label>
+                                <label><input type="checkbox" name="variety" value="注意事項" />
+                                    <span class="round button">注意事項</span></label>
+                            
+                            <div class="threecheck">
+                                <label><input type="checkbox" name="variety" value="依評價高低排序菜單順序" />
+                                    <span class="round button">依評價高低排序菜單順序</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <input class="submit" type="submit" value="去看菜單" style="font-size: 5px;" onclick="location.href='#.html'">
+        </input>
+        <div class="laststep" type="return" onclick="location.href='newmenu2.html'">
+            <span style="font-size: 5px;">上一步</span>
+        </div>
+    </div>
+    </div>
+</body>
+
+
+<script>
+    //當網頁準備好的時候，做以下的動作(函式)
+    $(document).ready(function () {
+        //form的submit按鈕按下去的動作
+        $("form").on("submit", function (e) {
+            //1.先把準備拋回去的資料「序列化」整理成json格式的字串
+            var dataString = $(this).serialize();
+
+            //可以把字串顯示出來看看是否正確
+            //alert(dataString);               
+
+            //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
+            $.ajax({
+                //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+                type: "POST",
+                //指定要連接的PHP位址
+                url: "../bin/editStore.php",
+                //要傳送的資料內容
+                data: dataString,
+                //獲得正確回應時，要做的事情
+                success: function (response) {
+                    var json = $.parseJSON(response);
+                    if (json.result == 'OK') {
+                        $("#message").html('成功：\n' + json.message);
+                    } else {
+                        $("#message").html('失敗：\n' + json.message);
+                    }
+                },
+                //獲得不正確的回應時，要做的事情
+                error: function (response) {
+                    $("#message").html(response);
+                }
+            });
+
+            e.preventDefault();
+        });
+    });
+</script>
+
+</html>
