@@ -40,7 +40,7 @@ body{
 	width: 200px;
 	height: 60px;
     background-color: lightgreen;
-    opacity: 0.8;
+    /* opacity: 0.8; */
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
     padding-left: 50px;
     padding-right: 50px;
@@ -51,6 +51,7 @@ body{
 }
 
 .aside{ 
+    display: inline-block; 
     border-radius: 15px;
     text-align: center;
 	width: 550px;
@@ -59,7 +60,7 @@ body{
     border: 2px solid #ccc;
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
     margin-top: 150px;
-    margin-left: -210px;
+    margin-left: -220px;
     padding-left: 30px;
     padding-right: 30px;
 }
@@ -74,10 +75,10 @@ body{
     border: 0px ;
     font-weight: bold;
     font-size: 20px;
-    margin-top: 50px;
+    margin-top: 60px;
     margin-bottom: 10px;
-    padding: 20px;
-    width: 80%;
+    padding: 15px;
+    width: 70%;
     color: green;
     background-color:#f3cc5f; 
 }
@@ -121,6 +122,18 @@ body{
     top: -8px;
     left: -105px;
     z-index: 99;
+}
+  
+img[src="../images/open.png"]{
+    position: absolute;
+    top: 250px; 
+    left: 340px;
+}
+
+img[src="../images/menu.png"]{
+    position: absolute;
+    top: 360px; 
+    left: -150px;
 }
 
 /* .backhomebtn span {
