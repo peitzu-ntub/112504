@@ -1,0 +1,158 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #fff3bc; 
+  text-align: center;
+  padding: 20px;
+}
+
+/* h1 {
+  color: #333;
+} */
+
+form {
+  /* max-width: 400px; */
+  position: absolute;
+  top: 200px; 
+  left: 400px;
+  width: 700px;
+	height: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+}
+
+label {   /*密碼文字*/
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  /* margin-top: 15px; */
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+label[id="oldPassword"]{
+  position: absolute;
+  top: 25px; 
+  left: 30px;
+}
+
+label[id="newPassword"]{
+  position: absolute;
+  top: 140px; 
+  left: 30px;
+}
+label[id="confirmNewPassword"]{
+  position: absolute;
+  top: 255px; 
+  left: 30px;
+}
+
+input[type="password"] {
+  width: 70%;
+  padding: 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-radius: 15px;
+  margin-top: 15px;
+  margin-bottom: 40px;
+  margin-left: 15px;
+  transition: all 0.3s ease;
+
+}
+
+input[placeholder] {
+  font-weight: bold;
+}
+
+input[type="submit"] {
+  background-color: lightgreen;
+  color: green;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 24px;
+  /* display: inline-block; */
+  border: none;
+  text-align: center;
+  padding: 10px;
+  width: 400px;
+  transition: all 0.5s;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.caption{
+  border-radius: 30px;
+  text-align: center;
+  width: 200px;
+  height: 60px;
+  background-color: lightgreen;
+  opacity: 0.8;
+  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+  padding-left: 50px;
+  padding-right: 50px;
+  position: absolute;
+  top: 50px;
+  left: 620px;
+  z-index: 99;
+}
+
+.myTitle{
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  z-index: 100;
+}
+
+.caption span{
+  color: green;
+  text-align: justify;
+  position: absolute;
+  top: -4px;
+  left: 60px;
+  z-index: 100;
+  font-size: 300%;
+  font-weight: bold;
+}
+
+.button-container{
+  border-radius: 30px;
+  text-align: center;
+  width: 5px;
+  height: 40px;
+  background-color: lightsalmon;
+  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+  padding-left: 50px;
+  padding-right: 50px;
+  position: absolute;
+  top: 50px;
+  left: 40px;
+  z-index: 99;
+}
+
+.backhomebtn {
+  background: transparent;
+  display: inline-block;
+  border-radius: 4px;
+  border: none;
+  color: #ef5c28;
+  text-align: center;
+  font-size: 16px;
+  padding: 13px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  position: relative;
+  top: -8px;
+  left: -100px;
+  z-index: 99;
+  font-weight: bold;
+}

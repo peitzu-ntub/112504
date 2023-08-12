@@ -1,0 +1,164 @@
+@charset "utf-8";
+
+html{
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+    font-weight: bold;
+}
+
+body{
+    font-family: 'Noto Sans TC', sans-serif;
+    /* height: 95vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff3bc; 
+    /* //畫面黃 */
+}
+
+/* 圖案 */
+.myTitle{
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    z-index: 100;
+}
+
+.col-md-5 span{
+    color: green;
+    text-align: justify;
+    position: absolute;
+    top: -4px;
+    left: 60px;
+    z-index: 100;
+    font-size: 300%;
+}
+
+.caption{
+    border-radius: 30px;
+    text-align: center;
+	width: 200px;
+	height: 60px;
+    background-color: lightgreen;
+    /* opacity: 0.8; */
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+    padding-left: 50px;
+    padding-right: 50px;
+    position: absolute;
+    top: 50px;
+    left: 620px;
+    z-index: 99;
+}
+
+.aside{ 
+    display: inline-block; 
+    border-radius: 15px;
+    text-align: center;
+	width: 550px;
+	height: 320px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+    margin-top: 150px;
+    margin-left: -220px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.btn{
+    background: transparent; /* 清除背景色 */
+    cursor: pointer;  /* 改變滑鼠游標樣式 */
+    text-decoration: none;
+    display: inline-block; 
+    /* border: 2px solid #e5dbd8; */
+    border-radius: 30px;
+    border: 0px ;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 60px;
+    margin-bottom: 10px;
+    padding: 15px;
+    width: 70%;
+    color: green;
+    background-color:#f3cc5f; 
+}
+
+.btn:hover{
+    display: inline-block; /*置中*/
+    background-color: #ef5c28;
+    color: #fff;
+} 
+
+.button-container{
+    border-radius: 30px;
+    text-align: center;
+	width: 5px;
+	height: 40px;
+    background-color: lightsalmon;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+    padding-left: 50px;
+    padding-right: 50px;
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    z-index: 99;
+}
+
+.backhomebtn {
+    font-weight: bold;
+    background: transparent;
+    display: inline-block;
+    border-radius: 4px;
+    border: none;
+    color:#ef5c28;
+    text-align: center;
+    font-size: 16px;
+    padding: 13px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    position: relative;
+    top: -8px;
+    left: -105px;
+    z-index: 99;
+}
+  
+img[src="../images/open.png"]{
+    position: absolute;
+    top: 250px; 
+    left: 340px;
+}
+
+img[src="../images/menu.png"]{
+    position: absolute;
+    top: 360px; 
+    left: -150px;
+}
+
+/* .backhomebtn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    opacity: 0.8;
+}
+
+.backhomebtn span:after {
+    content: '\00bb';
+    position: absolute;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    opacity: 0.9;
+}
+
+.backhomebtn:hover span {
+    padding-right: 10px;
+    opacity: 0.9;
+}
+  
+.backhomebtn:hover span:after {
+    opacity: 1;
+    right: 0;
+} */
