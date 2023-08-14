@@ -18,13 +18,25 @@
             <div class="container1">
                 <div class="subject">
                     <div class="big">
-                        <span style="font-size: 25px;">選擇您想呈現的方式</span>
+                        <span style="font-size: 30px;">
+                            <img src="../images/gear.png" />
+                            選擇您想呈現的方式
+                            <img src="../images/gear.png" />
+                        </span>
+                        <span style="font-size:3px;">我盡力了</span>
                     </div>
                     <div class="onesmall">
-                        <span style="font-size: 15px;">呈現方式</span>
+                        <span style="font-size: 15px;">
+                            <img src="../images/checkmark.png" />
+                            呈現方式
+                            <font color="#ff0000" size="4"> *</font>
+                        </span>
                     </div>
                     <div class="twosmall">
-                        <span style="font-size: 15px;">欲加入菜單內容</span>
+                        <span style="font-size: 15px;">
+                            <img src="../images/checkmark.png" />
+                            欲加入菜單內容
+                        </span>
                     </div>
                     <div class="radiobutton">
                         <div id="radio">
@@ -36,22 +48,21 @@
                     </div>
                     <div class="checkbutton">
                         <div id="checkbox">
-                            
-                                <label><input type="checkbox" name="variety" value="評價" />
-                                    <span class="round button">評價</span></label>
-                                <label><input type="checkbox" name="variety" value="圖片" />
-                                    <span class="round button">圖片</span></label><br>
-                            
-                            
-                                <label><input type="checkbox" name="variety" value="餐點介紹" />
-                                    <span class="round button">餐點介紹</span></label>
-                                <label><input type="checkbox" name="variety" value="注意事項" />
-                                    <span class="round button">注意事項</span></label>
-                            
-                            <div class="threecheck">
-                                <label><input type="checkbox" name="variety" value="依評價高低排序菜單順序" />
-                                    <span class="round button">依評價高低排序菜單順序</span></label>
-                            </div>
+
+                            <label><input type="checkbox" name="variety" value="評價" />
+                                <span class="round button">評價</span></label>
+                            <label><input type="checkbox" name="variety" value="圖片" />
+                                <span class="round button">圖片</span></label><br>
+
+
+                            <label><input type="checkbox" name="variety" value="餐點介紹" />
+                                <span class="round button">餐點介紹</span></label>
+                            <label><input type="checkbox" name="variety" value="注意事項" />
+                                <span class="round button">注意事項</span></label>
+
+
+                            <label><input type="checkbox" name="variety" value="依評價高低排序菜單順序" />
+                                <span class="round button">依評價高低排序菜單順序</span></label>
                         </div>
                     </div>
                 </div>
@@ -83,7 +94,7 @@
                 //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
                 type: "POST",
                 //指定要連接的PHP位址
-                url: "../bin/editStore.php",
+                url: "../bin/#.php",/* ********************************************************************* */
                 //要傳送的資料內容
                 data: dataString,
                 //獲得正確回應時，要做的事情

@@ -13,12 +13,6 @@
 </head>
 
 <body>
-    <!--     <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
-        <div align="left">
-            <img src="../images/back.png" alt="返回icon" />
-            <span style="font-size: 5px;">返回</span>
-        </div>
-    </div> -->
     <div class="container-wrapper">
         <form action="#">
             <div class="container1">
@@ -36,8 +30,9 @@
                             </div>
                             <div class="input-row">
                                 <span class="details">餐點介紹：</span>
-                                <textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="請輸入餐點介紹(上限50字)"
-                                    style="height: 30px;width: 250px;resize: none;"maxlength="50"></textarea>
+                                <textarea id="meal_note" name="meal_note" rows="2" cols="20"
+                                    placeholder="請輸入餐點介紹(上限50字)" style="height: 30px;width: 250px;resize: none;"
+                                    maxlength="50"></textarea>
                             </div>
                             <div class="input-row">
                                 <span class="details">圖片：</span>
@@ -49,18 +44,16 @@
                             </div>
                         </div>
 
-                        
-                        <input class="submit" type="submit" value="儲存" style="font-size: 5px;"
-                            onclick="location.href='#.html'">
+                        <input class="submit" type="submit" value="儲存" style="font-size: 5px;">
                         </input>
-                        <div class="laststep" type="return"  onclick="location.href='newmenu1.html'">
+                        <div class="laststep" type="return" onclick="location.href='newmenu1.html'">
                             <span style="font-size: 5px;">上一步</span>
                         </div>
-                        <div class="nextstep" type="next"  onclick="location.href='newmenu3.html'">
+                        <div class="nextstep" type="next" onclick="location.href='newmenu3.html'">
                             <span style="font-size: 5px;">下一步</span>
                         </div>
-                        <input class="checkbutton" type="check" value="查看全部餐點"style="font-size: 5px;"
-                         onclick="location.href='#.html'">
+                        <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 5px;"
+                            onclick="location.href='#.html'">
                         </input>
                     </div>
                 </div>
@@ -86,7 +79,7 @@
                 //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
                 type: "POST",
                 //指定要連接的PHP位址
-                url: "../bin/editStore.php",
+                url: "../bin/menu_2.php",
                 //要傳送的資料內容
                 data: dataString,
                 //獲得正確回應時，要做的事情

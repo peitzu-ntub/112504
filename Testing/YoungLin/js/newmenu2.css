@@ -18,12 +18,12 @@ body{
 /*   background: linear-gradient(135deg, #e68871, #88ba80); */
   background-color:#fff3bc;
 }
-
-/* 標題方框 */
 .container-wrapper {
   position: relative; /* 設置父容器為相對定位 */
 }
-
+/* =================
+背景與白色中間那塊黃色
+====================*/
 .container1{
   font-weight: bold;
   background-color: #f9e99e;
@@ -37,6 +37,9 @@ body{
   flex-direction: column;
 }
 
+/* =================
+背景與白色中間那塊黃色
+====================*/
 .insidebox{
   font-weight: bold;
   background-color: #ffffff;
@@ -47,7 +50,9 @@ body{
   justify-content: center;
   align-items: center;
 }
-
+/* ==========
+  輸入框的底框
+=============*/
 .ininsidebox{
   font-weight: bold;
   background-color: #ffffff;
@@ -60,46 +65,21 @@ body{
   justify-content: center;
 
 }
-
-.title {
-  position: absolute; /* 設置為絕對定位 */
-  top: 18%; /* 距離視窗上方的位置 */
-  left: 50%; /* 距離視窗左側的位置 */
-  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
-  width: 253px;
-  height: 50px;
-  border: 3px solid #acce79;
-  background-color:#acce79;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-}
-.title div {
-  display: flex;
-  align-items: center;
-  color: #35522b;
-}
-.title img {
-  margin-right: 0px; /* 調整圖片和文字之間的間距 */
-  margin-bottom: 50px;
-}
-
+/* ==========
+    輸入框
+=============*/
 .content .user-details{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 20px 0 12px 0;
 }
-
 .input-box {
   display: flex;
   flex-direction: column;/* center */
   align-items: flex-start;/* center */
   margin-top: 8px;
 }
-
 .input-row {
   display: flex;
   align-items: center;
@@ -137,7 +117,9 @@ form .input-box span.details{
   margin: 20px 0 12px 0;
 }
 
-/* 確定的方框 */
+/* ==========
+  確定的按鈕
+=============*/
 .submit {
   position: absolute; /* 設置為絕對定位 */
   bottom: -7px; /* 距離視窗上方的位置 */
@@ -167,7 +149,10 @@ form .input-box span.details{
   color: #394c32;
   cursor: pointer;
 }
-/* 上一步的方框 */
+
+/* =============
+   上一步的按鈕 
+===============*/
 .laststep {
   position: absolute; /* 設置為絕對定位 */
   bottom: -7px; /* 距離視窗上方的位置 */
@@ -198,7 +183,9 @@ form .input-box span.details{
   cursor: pointer;
 }
 
-/* 下一步的方框 */
+/*===========
+ 下一步的按鈕
+============ */
 .nextstep {
   position: absolute; /* 設置為絕對定位 */
   bottom: -7px; /* 距離視窗上方的位置 */
@@ -229,7 +216,9 @@ form .input-box span.details{
   cursor: pointer;
 }
 
-/* 查看全部餐點的方框 */
+/* ==============
+查看全部餐點的按鈕 
+================*/
 .checkbutton {
   position: absolute; /* 設置為絕對定位 */
   bottom: -7px; /* 距離視窗上方的位置 */
