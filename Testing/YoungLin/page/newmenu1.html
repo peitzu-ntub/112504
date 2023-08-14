@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>客製化2</title>
+    <title>客製化1</title>
 
-    <link href="../js/newmenu2.css" rel="stylesheet">
+    <link href="../js/newmenu1.css" rel="stylesheet">
 
 </head>
 
@@ -16,46 +16,23 @@
     <div class="container-wrapper">
         <form action="#">
             <div class="container1">
-                <font color="#e8a95b" size="5">新增餐點</font>
+                <div class="topinput" style="font-size: 15px;">
+                    <font color="#bf6900" size="5">餐點類型：</font>
+                    <input type="" name="" id="">
+                </div>
                 <div class="insidebox">
                     <div class="ininsidebox">
                         <div class="input-box">
-                            <div class="input-row">
-                                <span class="details">餐點類型：</span>
-                                <select name="type_id" id="type_id"></select>
-                            </div>
-                            <div class="input-row">
-                                <span class="details">價格：</span>
-                                <input type="number" min="0" name="meal_price" id="meal_price" placeholder="請輸入正確價格"
-                                    required>
-                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點介紹：</span>
-                                <textarea id="meal_note" name="meal_note" rows="2" cols="20"
-                                    placeholder="請輸入餐點介紹(上限50字)" style="height: 30px;width: 250px;resize: none;"
-                                    maxlength="50"></textarea>
-                            </div>
-                            <div class="input-row">
-                                <span class="details">圖片：</span>
-                                <input type="file" name="meal_pic" id="meal_pic">
-                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點名稱：</span>
-                                <input type="text" name="meal_name" id="meal_name" placeholder="請輸入餐點名稱" required>
-                            </div>
+                            <div class="input-row"><span>類型名稱</span></div>
+                            <div class="input-row"> <img src="../images/trash.png" /> <input type="" name="" id=""></div>
                         </div>
 
                         <input class="submit" type="submit" value="儲存" style="font-size: 5px;">
                         </input>
-                        <div class="laststep" type="return" onclick="location.href='newmenu1.html'">
-                            <span style="font-size: 5px;">上一步</span>
-                        </div>
-                        <div class="nextstep" type="next" onclick="location.href='newmenu3.html'">
+
+                        <div class="nextstep" type="next" onclick="location.href='newmenu2.html'">
                             <span style="font-size: 5px;">下一步</span>
                         </div>
-                        <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 5px;"
-                            onclick="location.href='#.html'">
-                        </input>
                     </div>
                 </div>
             </div>

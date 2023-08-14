@@ -45,7 +45,7 @@ body{
   background-color: #ffffff;
   border-radius: 20px;
   width: 700px;
-  height: 325px;
+  height: 319px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,7 +63,22 @@ body{
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
+
 }
+/* ==========
+  輸入類型的框
+=============*/
+.topinput input{
+  height: 33px;
+  width: 250px;
+  outline: none;
+  font-size: 16px;
+  border-radius: 20px;
+  padding-left: 15px;
+  border: 1px solid #bf6900;
+  margin-bottom: 3px;
+}
+
 /* ==========
     輸入框
 =============*/
@@ -96,7 +111,7 @@ body{
   width: 250px;
   outline: none;
   font-size: 16px;
-  border-radius: 10px;
+  border-radius: 20px;
   padding-left: 15px;
   border: 1px solid #000000;
   margin-bottom: 3px;
@@ -149,39 +164,6 @@ form .input-box span.details{
   cursor: pointer;
 }
 
-/* =============
-   上一步的按鈕 
-===============*/
-.laststep {
-  position: absolute; /* 設置為絕對定位 */
-  bottom: -13px; /* 距離視窗上方的位置 */
-  left: 43%; /* 距離視窗左側的位置 */
-  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
-  width: 70px;
-  height: 37px;
-  border: 3px solid #deb587;
-  background-color:#deb587;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  color: #d78d38;
-}
-.laststep div {
-  display: flex;
-  align-items: center;
-  color: #deb587;
-}
-.laststep img {
-  margin-right: 3px; /* 調整圖片和文字之間的間距 */
-}
-.laststep:hover {
-  border: 3px solid #9a7e5f;
-  color: #846c51;
-  cursor: pointer;
-}
-
 /*===========
  下一步的按鈕
 ============ */
@@ -212,35 +194,5 @@ form .input-box span.details{
 .nextstep:hover {
   border: 3px solid #99883e;
   color: #857737;
-  cursor: pointer;
-}
-
-/* ==============
-查看全部餐點的按鈕 
-================*/
-.checkbutton {
-  position: absolute; /* 設置為絕對定位 */
-  bottom: -13px; /* 距離視窗上方的位置 */
-  left: 11%; /* 距離視窗左側的位置 */
-  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
-  width: 80px;
-  height: 37px;
-  border: 3px solid #ebcc3f;
-  background-color:#ebcc3f;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  color: #8a792b;
-}
-.checkbutton div {
-  display: flex;
-  align-items: center;
-  color: #ebcc3f;
-}
-.checkbutton:hover {
-  border: 3px solid #d6a138;
-  color: #ab812f;
   cursor: pointer;
 }
