@@ -10,7 +10,7 @@
 
         //檢查老闆是否已經存在
         //1.產生查詢字串
-        $sql = "select * from boss_info where boss_identity = '$boss_identity'";
+        $sql = "SELECT * from boss_info where boss_identity = '$boss_identity'";
         //2.查下去，並取得查詢結果
         $result = mysqli_query($con, $sql);
         //3.查詢結果的筆數
@@ -35,7 +35,7 @@
             $data['message'] = '老闆資料儲存成功';
         }else {
             $data['result'] = 'NG';
-            $data['message'] = "Error: " . $sql . "<br>" . mysqli_error($con);
+            $data['message'] = "Error... " . mysqli_error($con);
         }
         echo json_encode($data);
 

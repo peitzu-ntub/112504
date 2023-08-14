@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <title>忘記密碼</title>
-      <link rel="stylesheet" href="../js/forget_psw.css">
-  </head>
-  <script>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改密碼</title>
+    <link href="../js/change_psw.css" rel="stylesheet">
+</head>
+<script>
     //當網頁準備好的時候，做以下的動作
     $(document).ready(function(){
         //form的submit按鈕按下去的動作
@@ -41,41 +43,30 @@
             e.preventDefault();
         });
     });                
-  </script>
-  <body>
-    <div class="container">
-      <div class="mytitle">忘記密碼</div><br><hr>
-      <div class="content">
-        <form method="post" action="#">
-          <div class="enter">
-            <div class="input-box">
-              <span class="details">帳號</span>
-              <input type="text" name="boss_identity" id="boss_identity" placeholder="請輸入您的帳號" required>
-            </div>
-            <div class="input-box">
-              <span class="details">E-mail</span>
-              <input type="text" name="boss_identity" id="boss_identity" placeholder="請輸入您的E-mail" required>
-            </div>
-          </div>
-          <div class="button">
-            <input type="submit" value="送出">
-          </div>
-          <div class="verify">
-            <div class="input-box">
-              <span class="details">驗證碼</span>
-              <input type="text" name="#" id="#" placeholder="請輸入您的驗證碼" required>
-            </div>
-          </div>
-          <div class="button">
-            <input type="submit" value="確認">
-          </div>
-        </form>
-        <div class="button-container">
-          <button class="proceedbutton" onclick="location.href='../page/reset_psw.html'">
-              <span>重設密碼</span>
-          </button>
-        </div>
-      </div>
+</script>
+<body>
+    <div class="caption">
+        <h1 class="myTitle"><img src="../images/padlock.png" /></h1>
+        <span>修改密碼</span>
     </div>
-  </body>
+    <form method="post" action="#">
+        <!-- <label id="oldPassword" for="oldPassword"><img src="..//key.png" />舊密碼:</label> -->
+        <label id="oldPassword" for="oldPassword"><img src="../images/forgot-password.png" /></label>
+        <input type="password" id="oldPassword" name="oldPassword" placeholder="請輸入您的舊密碼" required>
+        <br>
+        <label id="newPassword" for="newPassword"><img src="../images/lock.png" /></label>
+        <input type="password" id="newPassword" name="newPassword" placeholder="請輸入您的新密碼" required>
+        <br>
+        <label id="confirmNewPassword" for="confirmNewPassword"><img src="../images/shield.png" /></label>
+        <input type="password" id="confirmNewPassword" name="confirmNewPassword" placeholder="請再次輸入您的新密碼" required>
+        <br>
+        <input type="submit" value="儲存設定">
+    </form>
+    <div class="button-container">
+        <button class="backhomebtn" onclick="location.href='../page/boss_management.html'">
+            <span><img src="../images/arrow.png" /> 返回</span>
+        </button>
+    </div>
+</body>
+
 </html>
