@@ -35,25 +35,26 @@
                     <div class="input-box">
                         <span class="details">姓名：</span>
                         <input type="text" name="boss_name" id="boss_name" placeholder="請輸入您的名字" required>
-                      </div>
-                      <div class="input-box">
+                    </div>
+                    <div class="input-box">
                         <span class="details">帳號：</span>
                         <input type="text" name="boss_identity" id="boss_identity" placeholder="請輸入您的身分證" required>
-                      </div>
-                      <div class="input-box">
+                    </div>
+                    <div class="input-box">
                         <span class="details">密碼：</span>
                         <input type="text" name="boss_psw" id="boss_psw1" placeholder="請輸入您的密碼" required>
-                      </div>
-                      <div class="input-box">
+                    </div>
+                    <div class="input-box">
                         <span class="details">確認密碼：</span>
                         <input type="text" name="boss_psw" id="boss_psw2" placeholder="確認您的密碼" required>
-                      </div>
+                    </div>
                 </div>
 
-            <input class="addstore" type="submit" value="確定" style="font-size: 5px;"></input>
+                <input class="addstore" type="submit" value="確定" style="font-size: 5px;">
+                </input>
 
 
-        </form>
+            </form>
         </div>
     </div>
 </body>
@@ -68,7 +69,7 @@
         var dataString = $(this).serialize();
   
         //可以把字串顯示出來看看是否正確
-        //alert(dataString);
+        alert(dataString);
   
         //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
         $.ajax({
@@ -88,7 +89,7 @@
               $('input[id=boss_psw1]').val('');
               $('input[id=boss_psw2]').val('');
   
-              window.location = "login.html"
+              //window.location = "login.html"
             } else {
               alert('儲存失敗：\n' + json.message);
             }

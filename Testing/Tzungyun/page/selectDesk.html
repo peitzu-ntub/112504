@@ -1,9 +1,7 @@
-
-
 <html>
 
     <head>
-        <title>點餐</title>
+        <title>開桌點餐</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,7 +40,7 @@
                 document.getElementById('A23').style.backgroundColor = 'white';
                 document.getElementById('A24').style.backgroundColor = 'white';
                 //將選擇的桌號，改顏色
-                document.getElementById('A'+id).style.backgroundColor = '#71b7e6';
+                document.getElementById('A'+id).style.backgroundColor = '#f3cc5f';
                 //將選擇的桌號，記錄在隱藏欄位
                 document.getElementById('desk_selected').value = 'A'+id;
             }
@@ -89,6 +87,13 @@
     </head>
     
     <body>
+        <div class="caption">
+            <div class="col-md-5">	
+                <h1 class="myTitle"><img src="../images/boss_M.png" /></h1>
+                <span>選擇桌號</span>
+            </div>
+        </div>
+
         <form>        
             <!--隱藏欄位-->
             <input type='hidden' id='identity' name='identity' value='A123456789'>
@@ -96,13 +101,8 @@
             <input type='hidden' id='desk_count' name='desk_count' value='10'>
             <input type='hidden' id='desk_selected' name='desk_selected' value=''>
             <input type='hidden' id='order_no' name='order_no' value=''>
-    
+            
             <div class='container'>
-                <div class='row'>
-                    <div class='col-md-12'>
-                        <span>選擇桌號</span><hr>
-                    </div>
-                </div>
     
                 <div class='row'>
     
@@ -256,11 +256,11 @@
                     <div class='col-md-12'>
                         <div class="section">
                             <label for="store_name">人數</label>
-                            <input type="text" name="persons" id="persons" placeholder="用餐人數" required>
-                            <label for="store_name">員工</label>
-                            <select name="staff_id" id="staff_id" onchange="print_value();"></select>
+                            <input type="text" name="persons" id="persons" placeholder="請輸入用餐人數" required>
+                            <!-- <label for="store_name">員工</label>
+                            <select name="staff_id" id="staff_id" onchange="print_value();"></select> -->
                             <input name="createOrder" type="button" value="開桌" onclick=newOrder() ></input>
-                            <input name="return" type="button"  value="返回"  onclick="location.href='management.html'"></input>    
+                            <input name="return" type="button"  value="返回"  onclick="location.href='management.html'"></input><img src="../images/arrow.png" />     
                         </div>
                     </div>
                 </div>
