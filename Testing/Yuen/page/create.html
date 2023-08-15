@@ -13,7 +13,7 @@
 
 <body>
     <div class="container-wrapper">
-    <form action="staff_in.php" method="POST" enctype="multipart/form-data">
+        <form action="staff_in.php" method="POST" enctype="multipart/form-data">
             <div class="container1">
                 <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
                     <div align="left">
@@ -43,7 +43,8 @@
 
                         <div class="input-box">
                             <span class="details">性別：</span>
-                            <input type="radio" name="staff_gender" value="male"> 男<input type="radio" name="staff_gender" value="female"> 女
+                            <input type="radio" name="staff_gender" value="male">男
+                            <input type="radio" name="staff_gender" value="female">女
                         </div>
 
                         <div class="input-box">
@@ -53,8 +54,7 @@
 
                         <div class="input-box">
                             <span class="details">地址：</span>
-                            <input type="text" name="staff_address" id="staff_address" placeholder="請輸入員工的地址"
-                                required>
+                            <input type="text" name="staff_address" id="staff_address" placeholder="請輸入員工的地址" required>
                         </div>
 
                         <div class="input-box">
@@ -84,24 +84,20 @@
                     </div>
                 </div>
             </div>
-        
-        <div class="button">
-            <input value="儲存" type="submit" />
-        </div>
-        <!-- <div class="submit" type="submit" name="按鈕名稱" >
-            <span style="font-size: 15px;">儲存</span>
-        </div> -->
-        <div class="laststep" type="return" name="按鈕名稱" onclick="location.href='newmenu1.html'">
-            <span style="font-size: 15px;">上一步</span>
-        </div>
-        <div class="nextstep" type="next" name="按鈕名稱" onclick="location.href='newmenu3.html'">
-            <span style="font-size: 15px;">下一步</span>
-        </div>
-        <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='#.html'">
-            <span style="font-size: 14px;">查看全部員工資料</span>
-        </div>
+
+            <input class="submit" type="submit" value="儲存" style="font-size: 15px;"></input>
+            <div class="laststep" type="return" name="按鈕名稱" onclick="location.href='newmenu1.html'">
+                <span style="font-size: 15px;">上一步</span>
+            </div>
+            <div class="nextstep" type="next" name="按鈕名稱" onclick="location.href='newmenu3.html'">
+                <span style="font-size: 15px;">下一步</span>
+            </div>
+            <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='#.html'">
+                <span style="font-size: 14px;">查看全部員工資料</span>
+            </div>
     </div>
     </div>
     </form>
 </body>
+
 </html>
