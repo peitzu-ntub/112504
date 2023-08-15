@@ -224,7 +224,6 @@ form .input-box span.details {
     /* margin-bottom: 3px; */
 }
 
-
 /* 確定的方框 */
 .submit {
     position: absolute;
@@ -311,7 +310,7 @@ form .input-box span.details {
     /* 距離視窗上方的位置 */
     left: 91%;
     /* 距離視窗左側的位置 */
-    /* transform: translate(-50%, -50%); */
+    transform: translate(-50%, -50%);
     /* 將容器水平垂直居中 */
     width: 90px;
     height: 37px;
@@ -380,3 +379,5 @@ form .input-box span.details {
     color: #ab812f;
     cursor: pointer;
 }
+
+
