@@ -67,7 +67,7 @@
     //$date = new DateTime();
     $date = new DateTime('now +8 hours');
     $result = $date->format('Y-m-d H:i:s');
-        echo "<hr>印單時間：$result";
+        echo "<hr>服務人員：$emp <br>印單時間：$result";
 ?>            
         </td></tr>
 
