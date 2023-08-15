@@ -164,7 +164,7 @@ form .input-box span.details {
 .logout {
     position: absolute;
     /* 設置為絕對定位 */
-    top: 30px;
+    top: 60px;
     /* 距離視窗上方的位置 */
     left: 65px;
     /* 距離視窗左側的位置 */
