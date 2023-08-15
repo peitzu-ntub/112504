@@ -40,7 +40,7 @@
     </div> -->
 
     <div class="container-wrapper">
-        <form action="#">
+	<form action="newfood.php" method="POST" enctype="multipart/form-data">
             <div class="container1">
                 <div class="insidebox">
                     <div class="ininsidebox">
@@ -74,9 +74,8 @@
                     </div>
                 </div>
             </div>
-        </form>
-        <input class="submit" type="submit" value="儲存" style="font-size: 5px;" onclick="location.href='#.html'" >
-        </input>
+        
+        <input class="submit" type="submit" value="儲存" style="font-size: 15px;"></input>
         <div class="laststep" type="return" name="按鈕名稱" onclick="location.href='newmenu1.html'">
             <span style="font-size: 5px;">上一步</span>
         </div>
@@ -88,5 +87,6 @@
         </div>
     </div>
     </div>
+	</form>
 </body>
 </html>
