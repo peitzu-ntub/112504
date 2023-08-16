@@ -1,0 +1,150 @@
+html{
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+    font-weight: bold;
+}
+
+body{
+    font-family: 'Noto Sans TC', sans-serif;
+    display: flex;
+    background: #fff3bc;
+}
+
+.myTitle{
+    position: fixed;
+    top: 12px;
+    left: 590px;
+    z-index: 100;
+}
+
+.col-md-5 span{
+    color: green;
+    position: fixed;
+    top: 30px;
+    left: 45%;
+    font-size: 300%;
+}
+  
+.caption{
+    border-radius: 30px;
+    width: 300px;
+    height: 60px;
+    background-color: lightgreen;
+    opacity: 0.8;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+    position: fixed;
+    top: 32px;
+    left: 41%;
+}
+
+.container {
+    position: fixed; /*元素位置固定，相對於瀏覽器而定位*/
+    top: 100px;
+    left: 0px;
+    border-radius: 30px;
+    padding: 100px;
+}
+
+div.row{
+    padding: 15px;
+    margin: -10px;
+}
+span{
+    font-size: 36px;
+    font-weight: bold;
+    position: relative;
+    left: 450px;
+}
+
+.card {
+    box-shadow: 0 0 5px 0 #aaa;
+    padding: 5px;
+    margin: 5px;
+} 
+
+form {
+    z-index: 99;
+    position: fixed;
+    top: 300px;
+    right: 100px;
+    text-align: center;
+}
+
+label {
+    display:flex;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 30px;
+    color: green;
+}
+
+input {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid lightgreen; /*外框*/
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    width: 100px;
+    background-color: lightskyblue;
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+}
+
+.backhomebtn {
+    border-radius: 30px;
+    text-align: center;
+    width: 5px;
+    height: 40px;   
+    background-color: lightsalmon;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+    padding-left: 50px;
+    padding-right: 50px;
+    position: fixed;
+    top: 50px;
+    left: 42px;
+    z-index: 99;
+    border: none;
+    cursor: pointer;
+}
+
+.backhomebtn span{
+    background-color: transparent;
+    border-radius: 4px;
+    border: none;
+    color: #ef5c28;
+    text-align: center;
+    font-size: 16px;
+    padding: 13px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    position: fixed;
+    top: 42px;
+    left: 0px;
+    z-index: 99;
+    font-weight: bold;
+}
+
+
+img[src="../images/arrow.png"]{
+    position: fixed;
+    top: 62px;
+    left: 60px;
+    z-index: 99;
+}
