@@ -8,7 +8,7 @@ $sql ="DELETE FROM store_staff WHERE staff_id = '".$staff_id."'";
 
 if ($con->query($sql) === TRUE) {
     echo "刪除成功";
-    header("location:2.php");
+    header("location:employee.php");
   } else {
     echo "Error: " . $sql . "<br>" . $con->error;
   }
