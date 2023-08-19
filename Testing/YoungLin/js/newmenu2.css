@@ -45,7 +45,7 @@ body{
   background-color: #ffffff;
   border-radius: 20px;
   width: 700px;
-  height: 325px;
+  height: 315px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,8 +113,9 @@ form .input-box span.details{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 20px 0 12px 0;
+  margin: 20px 3px 12px 0;
 }
+
 
 /* ==========
   確定的按鈕
