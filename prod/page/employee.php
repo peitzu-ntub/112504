@@ -91,11 +91,12 @@ $datas_len = count($datas); //目前資料筆數
                         for ($i = 0; $i < $datas_len; $i++) {
                             echo "<tr>";
                             echo "<td>
-                            <a href='staff_del.php?staff_id=".$datas[$i]['staff_id']."'><img src=../images/trash.png></img></a></td>";
+                            <a href='staff_del.php?staff_id=".$datas[$i]['staff_id']."'><img src=../images/trash.png></img></a>
+                            </td>";
                             echo "<td>" . $datas[$i]['staff_id'] . "</td>";
                             echo "<td>" . $datas[$i]['staff_name'] . "</td>";
                             echo "<td>
-                            <a href='1.php?staff_id=".$datas[$i]['staff_id']."'><img src=../images/signature.png></img></a></td>";
+                            <a href='listedit.php?pk=".$datas[$i]['adm_pk']."'><button class='btn btn-success'>修改</button></a></td>";
                         }
                         ?>
 
