@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include ("conn.php");
 
     $data= array();
@@ -18,6 +19,7 @@
         if ($count > 0) {
             $data['result'] = 'OK';
             $data['message'] = "登入成功！";
+            $_SESSION["staff_id"] = $id;
             echo json_encode($data);
         }
 
