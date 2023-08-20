@@ -59,28 +59,17 @@ body{
 .sidebar_right
 {
   background-color: #ffffff;
-  width: 80px;
+  width: 100px;
   height: 30px;
   text-align: center;
   font-size: 25px;
   margin-top: -150px;
   border-radius: 20px;
 }
-
 .content1 {
   /* margin-right:30px; */
   height: 30px;
-  width: 180px;
-  background-color: #ffffff;
-  text-align: center;
-  font-size: 25px;
-  margin-top: -150px;
-  border-radius: 20px;
-}
-
-.content2 {
-  height: 30px;
-  width: 250px;
+  width: 400px;
   background-color: #ffffff;
   text-align: center;
   font-size: 25px;
