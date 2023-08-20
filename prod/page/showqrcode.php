@@ -7,7 +7,8 @@
     $order_no = $_GET["order_no"];
     $desk = $_GET['desk']; 
     $persons = $_GET['persons'];
-    $emp = $_GET['emp'];
+    $emp = '101';
+    
 
     //取得目前URL的「目錄」結構
     $appRoot = __DIR__;

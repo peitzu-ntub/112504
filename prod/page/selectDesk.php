@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    //session_start();
     include "../bin/conn.php";
 
     //todo, 這是假的資料
@@ -11,6 +11,7 @@
     if (!isset($_SESSION["store_id"])) {
         $_SESSION["store_id"] = "T01";
     }
+
     $id = $_POST['boss_identity'];
           $storeid = $_SESSION["store_id"];
 
@@ -70,7 +71,7 @@
             //畫面上選擇的桌號、輸入的人數
             var desk= $('input[name=desk_selected]').val();
             var persons = $('input[name=persons]').val();            
-            //var emp = document.getElementById("staff_id").value;
+            //var emp = $_SESSION["staff_id"];
 
             //若桌號或者人數沒有值，則顯示錯誤訊息後離開
             if (!desk) {
@@ -94,7 +95,7 @@
                 "&order_no="+order_no+
                 "&persons="+persons;
                 //"&emp="+emp;
-            // alert(newUrl);
+             alert(newUrl);
             window.location.replace(newUrl);
         }
 
