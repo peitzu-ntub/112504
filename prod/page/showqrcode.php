@@ -7,7 +7,7 @@
     $order_no = $_GET["order_no"];
     $desk = $_GET['desk']; 
     $persons = $_GET['persons'];
-    $emp = '101';
+    $emp = $_GET['emp'];
     
 
     //取得目前URL的「目錄」結構

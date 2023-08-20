@@ -70,7 +70,9 @@
             var store_id= $('input[name=store_id]').val();
             //畫面上選擇的桌號、輸入的人數
             var desk= $('input[name=desk_selected]').val();
-            var persons = $('input[name=persons]').val();            
+            var persons = $('input[name=persons]').val();    
+            var urlParams = new URLSearchParams(window.location.search);
+            var emp = urlParams.get('staff_id');        
             //var emp = $_SESSION["staff_id"];
 
             //若桌號或者人數沒有值，則顯示錯誤訊息後離開
@@ -93,9 +95,9 @@
                 "&store_id="+store_id+
                 "&desk="+desk+
                 "&order_no="+order_no+
-                "&persons="+persons;
-                //"&emp="+emp;
-             alert(newUrl);
+                "&persons="+persons+
+                "&emp="+emp;
+             //alert(newUrl);
             window.location.replace(newUrl);
         }
 
