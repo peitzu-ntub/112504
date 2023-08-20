@@ -2,7 +2,7 @@
 include "../bin/conn.php";
 
 $staff_id=$_GET['staff_id'];
-$staff_id = $_POST['staff_id'];
+
 $staff_name = $_POST['staff_name'];
 $staff_birth = $_POST['staff_birth'];
 $staff_gender = $_POST['staff_gender'];
@@ -14,19 +14,22 @@ $relation = $_POST['relation'];
 $due_date = $_POST['due_date'];
 $staff_psw = $_POST['staff_psw'];
 
-$sql = "UPDATE admin_manager SET adm_name = '".$adm_name."', adm_account = '".$adm_account."',update_user = '".$_COOKIE['name']."' WHERE adm_pk = '".$adm_pk."'";
+$sql = "UPDATE store_staff SET staff_name = '".$staff_name."',staff_birth = '".$staff_birth."', 
+staff_gender = '".$staff_gender."',  staff_tel = '".$staff_tel."',  staff_address = '".$staff_address."', 
+em_name = '".$em_name."', em_tel = '".$em_tel."', relation = '".$relation."', due_date = '".$due_date."', 
+staff_psw = '".$staff_psw."' WHERE staff_id = '".$staff_id."'";
 
 
-if ($conn->query($sql) === TRUE) {
-    echo "更新成功";
-    header("location:listdetail.php?pk=".$adm_pk);
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
+if ($con->query($sql) === TRUE) {
+  echo "更新成功";
+  header("location:staff_edit.php?staff_id=".$staff_id);
+} else {
+  echo "Error: " . $sql . "<br>" . $con->error;
+}
 
 
-  //關閉資料庫
-  $conn->close();
+//關閉資料庫
+$con->close();
 
 
 ?>
