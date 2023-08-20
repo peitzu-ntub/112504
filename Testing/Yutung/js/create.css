@@ -170,8 +170,8 @@ form .input-box span.details {
     /* 距離視窗左側的位置 */
     transform: translate(-50%, -50%);
     /* 將容器水平垂直居中 */
-    width: 80px;
-    height: 50px;
+    width: 70px;
+    height: 40px;
     border: 3px solid #ecad83;
     background-color: #ecad83;
     border-radius: 20px;

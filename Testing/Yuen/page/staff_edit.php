@@ -57,7 +57,7 @@ $datas_len = count($datas); //目前資料筆數
 ?>
 <body>
     <div class="container-wrapper">
-        <form action="staff_in.php" method="POST" enctype="multipart/form-data">
+        <!-- <form action="staff_in.php" method="POST" enctype="multipart/form-data"> -->
             <div class="container1">
                 <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
                     <div align="left">
@@ -75,7 +75,7 @@ $datas_len = count($datas); //目前資料筆數
                         <form method="post" action="staff_up.php?staff_id=<?php echo $datas[0]['staff_id']?>">
                         
                             <span class="details"></span>
-                            員工編號：<input type="text" class="form-control" value="<?php echo $datas[0]['staff_id'] ?>" name="staff_id"><br>
+                            員工編號：<input type="text" class="form-control" value="<?php echo $datas[0]['staff_id'] ?>" name="staff_id" disabled><br>
                         </div>
                         <div class="input-box">
                             <span class="details"></span>
@@ -138,7 +138,7 @@ $datas_len = count($datas); //目前資料筆數
             <div class="nextstep" type="next" name="按鈕名稱" onclick="location.href='newmenu3.html'">
                 <span style="font-size: 15px;">下一步</span>
             </div>
-            <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='#.html'">
+            <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='employee.php'">
                 <span style="font-size: 14px;">查看全部員工資料</span>
             </div>
     </div>

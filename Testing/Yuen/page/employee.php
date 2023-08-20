@@ -95,7 +95,7 @@ $datas_len = count($datas); //目前資料筆數
                             echo "<td>" . $datas[$i]['staff_id'] . "</td>";
                             echo "<td>" . $datas[$i]['staff_name'] . "</td>";
                             echo "<td>
-                            <a href='1.php?staff_id=".$datas[$i]['staff_id']."'><img src=../images/signature.png></img></a></td>";
+                            <a href='staff_edit.php?staff_id=".$datas[$i]['staff_id']."'><img src=../images/signature.png></img></a></td>";
                         }
                         ?>
 

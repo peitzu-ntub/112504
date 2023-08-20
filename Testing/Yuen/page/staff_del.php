@@ -15,7 +15,7 @@ if ($con->query($sql) === TRUE) {
 
 
   //關閉資料庫
-  $conn->close();
+  $con->close();
 
 
 ?>
