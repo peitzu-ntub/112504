@@ -43,6 +43,7 @@
         if (mysqli_query($con, $sql)) {
             $data['result'] = 'OK';
             $data['message'] = '店家資料儲存成功';
+            echo json_encode($data);
         }else {
             $data['result'] = 'NG';
             $data['message'] = "Error: " . $sql . "<br>" . mysqli_error($con);
