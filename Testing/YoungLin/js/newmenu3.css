@@ -26,6 +26,7 @@ body{
 .container1{
   font-weight: bold;
   background-color: #ffffff;
+  border: 1px solid #8cb87c;
   border-radius: 20px;
   width: 600px;
   max-width: 750px;
@@ -42,7 +43,7 @@ body{
   font-weight: bold;
   background-color: #ffffff;
   border-radius: 20px;
-  width: 500px;
+  width: 498px;
   max-width: 750px;
   height: 50px;
   display: flex;
@@ -81,7 +82,7 @@ body{
   height: 50px;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+/*   align-items: flex-start; */
   flex-direction: column;
   position: absolute;
   top: 190px;
@@ -111,13 +112,13 @@ body{
   font-weight: bold;
   background-color: #ffffff;
   border-radius: 20px;
-  width: 230px;
+  width: 240px;
   max-width: 750px;
   height: 145px;
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  flex-direction: center; 
+  flex-direction: column;
   position: absolute;
   top: 240px;
   margin-left: 42px; /* 距離視窗左側的位置 */
@@ -145,7 +146,7 @@ body{
   font-weight: bold;
   background-color: #ffffff;
   border-radius: 20px;
-  width: 500px;
+  width: 498px;
   max-width: 750px;
   height: 450px;
   display: flex;
@@ -159,7 +160,7 @@ body{
 ==============*/
 .submit {
   position: absolute; /* 設置為絕對定位 */
-  bottom: 25px; /* 距離視窗上方的位置 */
+  bottom: 15px; /* 距離視窗上方的位置 */
   left: 60%; /* 距離視窗左側的位置 */
   transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
   width: 70px;
@@ -191,7 +192,7 @@ body{
 ==============*/
 .laststep {
   position: absolute; /* 設置為絕對定位 */
-  bottom: 25px; /* 距離視窗上方的位置 */
+  bottom: 15px; /* 距離視窗上方的位置 */
   left: 40%; /* 距離視窗左側的位置 */
   transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
   width: 70px;
