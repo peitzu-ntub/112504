@@ -130,6 +130,17 @@ form .input-box span.details{
   margin-right: 3px; /*添加一些右邊距以增加間距  */
   margin-bottom: 3px;
   font-weight: bold;
+} 
+.input-box .smalldetails input{
+  height: 23px;
+  width: 215px;
+  outline: none;
+  font-size: 16px;
+  border-radius: 15px;
+  padding-left: 15px;
+  border: 1px solid #8cb87c;
+  margin-bottom: 3px;
+  /* display: inline-block; */ /* 設定為內聯區塊元素 */
 }
 
 /*------------- 
