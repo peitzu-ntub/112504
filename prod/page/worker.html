@@ -76,7 +76,7 @@
                 success: function (response) {
                     var json = $.parseJSON(response);
                     if (json.result == 'OK') {
-                        //alert (json.message);
+                        alert (json.message);
                         location.href="boss_management.html?boss_identity="+document.getElementById("boss_identity").value;
                         //$("#message").html('成功：\n' + json.message);
                     } else {

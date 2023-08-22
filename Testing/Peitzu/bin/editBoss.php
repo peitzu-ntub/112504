@@ -33,11 +33,13 @@
         if (mysqli_query($con, $sql)) {
             $data['result'] = 'OK';
             $data['message'] = '老闆資料儲存成功';
+            echo json_encode($data);
         }else {
             $data['result'] = 'NG';
             $data['message'] = "Error... " . mysqli_error($con);
+            echo json_encode($data);
         }
-        echo json_encode($data);
+        
 
     } catch (Exception $e) {
         $data['result'] = 'NG';
