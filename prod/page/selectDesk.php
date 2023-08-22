@@ -112,7 +112,7 @@
     <form>
     <div class="caption">
             <div class="col-md-5">	
-                <h1 class="myTitle"><img src="../images/boss_M.png" /></h1>
+                <h1 class="myTitle"><img src="../images/choose.png" /></h1>
                 <span>選擇桌號</span>
             </div>
     </div>      
