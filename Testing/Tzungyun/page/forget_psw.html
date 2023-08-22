@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>修改密碼</title>
+    <title>忘記密碼</title>
     <link href="../js/change_psw.css" rel="stylesheet">
 </head>
 <script>
@@ -46,8 +46,8 @@
 </script>
 <body>
     <div class="caption">
-        <h1 class="myTitle"><img src="../images/padlock.png" /></h1>
-        <span>修改密碼</span>
+        <h1 class="myTitle"><img src="../images/security-code.png" /></h1>
+        <span>忘記密碼</span>
     </div>
 
     <div class="logout" type="button" name="按鈕名稱" onclick="location.href='../page/boss_management.html'">
@@ -59,13 +59,13 @@
 
     <form method="post" action="#">
         <!-- <label id="oldPassword" for="oldPassword"><img src="..//key.png" />舊密碼:</label> -->
-        <label id="oldPassword" for="oldPassword"><img src="../images/forgot-password.png" /></label>
-        <input type="password" id="oldPassword" name="oldPassword" placeholder="請輸入您的舊密碼" required>
+        <label id="oldPassword" for="oldPassword"><img src="../images/search.png" /></label>
+        <input type="password" id="oldPassword" name="boss_identity" placeholder="請輸入您的身分證字號" required>
         <br>
-        <label id="newPassword" for="newPassword"><img src="../images/lock.png" /></label>
+        <label id="newPassword" for="newPassword"><img src="../images/locklock.png" /></label>
         <input type="password" id="newPassword" name="newPassword" placeholder="請輸入您的新密碼" required>
         <br>
-        <label id="confirmNewPassword" for="confirmNewPassword"><img src="../images/shield.png" /></label>
+        <label id="confirmNewPassword" for="confirmNewPassword"><img src="../images/password.png" /></label>
         <input type="password" id="confirmNewPassword" name="confirmNewPassword" placeholder="請再次輸入您的新密碼" required>
         <br>
         <input type="submit" value="儲存設定">
