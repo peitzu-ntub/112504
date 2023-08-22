@@ -67,12 +67,6 @@ body{
 /* ==========
     輸入框
 =============*/
-.content .user-details{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 20px 0 12px 0;
-}
 .input-box {
   display: flex;
   flex-direction: column;/* center */
@@ -102,10 +96,8 @@ body{
   margin-bottom: 3px;
 }
 form .input-box span.details{
-   /* 將顯示更改為 inline-block 以位於同一行 */
-  /* display: inline-block;
-  font-weight: 500; */
-  /*添加一些右邊距以增加間距  */
+  /* display: inline-block;/* 將顯示更改為 inline-block 以位於同一行 */
+  /* font-weight: 500;  *//*添加一些右邊距以增加間距  */
   /* margin-right: 3px; 
   margin-bottom: 3px;
   font-weight: bold; */

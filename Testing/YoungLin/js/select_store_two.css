@@ -7,7 +7,6 @@
 }
 .title {
   text-align: center;
-  top:6px;
 }
 body{
   height: 100vh;
@@ -26,13 +25,47 @@ body{
 
 .container1{
   font-weight: bold;
-  background-color: #fff3bc;
-  width: 100vw;
-  max-width: 1200px;
-  height: 150px;
+  background-color: #ffffff;
+  border: 1px solid #acce79;
+  width: 300px;
+  max-width: 750px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
+  color:#35522b;
+  border-radius: 50px;
+}
+/*===========
+    店家
+=============*/
+.intostore{
+  font-weight: bold;
+  background-color: #ffffff;
+  border: 1px solid #acce79;
+  width: 300px;
+  max-width: 750px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#35522b;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.intostore:hover{
+  font-weight: bold;
+  background-color: #ffffff;
+  border: 5px solid #acce79;
+  width: 300px;
+  max-width: 750px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#35522b;
+  border-radius: 50px;
+  cursor: pointer;
 }
 
 .left-button, .right-button {
@@ -53,10 +86,10 @@ body{
 
 .title {
   position: absolute; /* 設置為絕對定位 */
-  top: 31%; /* 距離視窗上方的位置 */
+  top: 10%; /* 距離視窗上方的位置 */
   left: 50%; /* 距離視窗左側的位置 */
   transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
-  width: 253px;
+  width: 300px;
   height: 50px;
   border: 3px solid #acce79;
   background-color:#acce79;
@@ -72,10 +105,35 @@ body{
   color: #35522b;
 }
 .title img {
-  margin-right: -1px; /* 調整圖片和文字之間的間距 */
-  margin-bottom: 78px;
+  margin-right: 15px; /* 調整圖片和文字之間的間距 */
+  margin-bottom: 15px;
 }
 
+/* 哪位老闆登入的方框 */
+.who {
+  position: absolute; /* 設置為絕對定位 */
+  top: 60px; /* 距離視窗上方的位置 */
+  right: 10px; /* 距離視窗右側的位置 */
+  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
+  width: 200px;
+  height: 50px;
+  border: 1px solid #8cb87c;
+  background-color:#ffffff;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+.who div {
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+.who img {
+  margin-right: 3px; /* 調整圖片和文字之間的間距 */
+  margin-bottom: 15px;
+}
 
 
 /*===========
@@ -111,51 +169,15 @@ body{
   height: 45px;
   cursor: pointer;
 }
- .input-box {
-  display: flex; /* 使用flexbox對齊行中的元素 */
-  align-items: center; /* .input-box 內的元素垂直居中 */
-  margin-top: 8px;
-} 
 
- .input-box input{
-  height: 23px;
-  width: 250px;
-  outline: none;
-  font-size: 16px;
-  border-radius: 15px;
-  padding-left: 15px;
-  border: 1px solid #8cb87c;
-  margin-bottom: 3px;
-  /* display: inline-block; */ /* 設定為內聯區塊元素 */
-}
-.input-box select{
-  height: 25px;
-  width: 123px;
-  outline: none;
-  font-size: 16px;
-  border-radius: 15px;
-  padding-left: 15px;
-  border: 1px solid #8cb87c;
-  margin-bottom: 3px;
- /*  display: inline-block; */ /* 設定為內聯區塊元素 */
-}
-
-form .input-box span.details{
-  display: inline-block; /* 將顯示更改為 inline-block 以位於同一行 */
-  font-weight: 500;
-  margin-right: 3px; /*添加一些右邊距以增加間距  */
-  margin-bottom: 3px;
-  font-weight: bold;
-}
-
-/* 確定的方框 */
+/* 新增店家的方框 */
 .addstore {
   position: absolute; /* 設置為絕對定位 */
-  bottom: -50px; /* 距離視窗上方的位置 */
-  left: 56%; /* 距離視窗左側的位置 */
+  bottom: 15px; /* 距離視窗上方的位置 */
+  left: 50%; /* 距離視窗左側的位置 */
   transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
-  width: 63px;
-  height: 40px;
+  width: 250px;
+  height: 65px;
   border: 3px solid #f3cc5f;
   background-color:#f3cc5f;
   border-radius: 20px;
@@ -163,7 +185,6 @@ form .input-box span.details{
   justify-content: center;
   align-items: center;
   font-size: 18px;
-  color: #914d39;
 }
 .addstore div {
   display: flex;
@@ -173,39 +194,16 @@ form .input-box span.details{
 .addstore img {
   margin-right: 3px; /* 調整圖片和文字之間的間距 */
 }
-/* 確定懸停样式 */
+/* 新增懸停样式 */
 .addstore:hover {
   border: 3px solid #a3893f;
-  color: #d36a09;
+  color: white;
   cursor: pointer;
 }
-/* 忘記密碼的方框 */
-.forget {
-  position: absolute; /* 設置為絕對定位 */
-  bottom: -50px; /* 距離視窗上方的位置 */
-  left: 44%; /* 距離視窗左側的位置 */
-  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
-  width: 80px;
-  height: 40px;
-  border: 3px solid #88bde5;
-  background-color:#88bde5;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  color: #000000;
+/* .content .button1{
+  width:500px;
+  height:100px;
+  font-size:20px;
+  border:2px blue none;
 }
-.forget div {
-  display: flex;
-  align-items: center;
-  color: #88bde5;
-}
-.forget img {
-  margin-right: 3px; /* 調整圖片和文字之間的間距 */
-}
-.forget:hover {
-  border: 3px solid #125181;
-  color: #144366;
-  cursor: pointer;
-}
+ */

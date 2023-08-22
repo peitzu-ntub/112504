@@ -1,0 +1,205 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+  font-weight:bold
+}
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color:#fff3bc;
+}
+.container-wrapper {
+  position: relative; /* 設置父容器為相對定位 */
+}
+/* =========
+    底框
+=========== */
+.subject{
+  font-weight: bold;
+  background-color: #ffffff;
+  border: 1px solid #acce79;
+  border-radius: 40px;
+  width: 950px;
+  max-width: 950px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+/*============
+ 消費紀錄 標題
+=============*/
+.title {
+  position: absolute; 
+  top: 10%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  width: 210px;
+  height: 50px;
+  border: 3px solid #acce79;
+  background-color:#acce79;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title div {
+  display: flex;
+  align-items: center;
+  color: #35522b;
+}
+.title img {
+  margin-right: 10px; /* 調整圖片和文字之間的間距 */
+  margin-bottom: 5px;
+}
+
+/* =========
+消費紀錄底框
+=========== */
+.twosmall{
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 900px;
+  max-width: 900px;
+  height: 370px;
+  display: flex;
+/*   justify-content: center; */
+  align-items: flex-start;
+  flex-direction: column;
+  position: absolute;
+  top: 80px;
+}
+
+/*============
+    確定
+==============*/
+.submit {
+  position: absolute; /* 設置為絕對定位 */
+  bottom: 25px; /* 距離視窗上方的位置 */
+  left: 60%; /* 距離視窗左側的位置 */
+  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
+  width: 70px;
+  height: 37px;
+  border: 3px solid #8cb87c;
+  background-color:#8cb87c;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #ecd368/* #5b7751 */;
+}
+.submit div {
+  display: flex;
+  align-items: center;
+  color: rgb(116, 65, 31)
+}
+.submit img {
+  margin-right: 3px; /* 調整圖片和文字之間的間距 */
+}
+.submit:hover {
+  border: 3px solid #5b7751;
+  color: #394c32;
+  cursor: pointer;
+}
+
+/*===========
+  返回的方框
+ ===========*/
+.logout {
+  position: absolute;
+  top: 60px;
+  left: 65px;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 40px;
+  border: 3px solid #ecad83;
+  background-color: #ecad83;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+.logout div {
+  display: flex;
+  align-items: center;
+  color: rgb(116, 65, 31)
+}
+.logout img {
+  margin-right: 3px;
+}
+.logout:hover {
+  border: 4px solid #b55f45;
+  color: white;
+  width: 70px;
+  height: 45px;
+  cursor: pointer;
+}
+
+/*=============
+   消費紀錄表格
+ =============*/
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  padding: 13px;
+  text-align: center;
+}
+th {
+  background-color: #f2f2f2;
+  border: 1px solid #7297ce;
+}
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+/* tr:hover {
+  background-color: #e9e9e9;
+} */
+
+/*============
+消費紀錄 查詢
+=============*/
+/* 查詢兩字 */
+.inline-form {
+display: flex;
+align-items: center;
+font-size: 20px;
+font-weight:bold;
+margin:10px 10px 5px 3px ;
+}
+/* 查詢日期 */
+.inline-form input[type="date"] {
+margin-right: 10px;
+font-size: 20px;
+font-weight:bold
+}
+/* 確定按鈕 */
+.inline-form input[type="submit"]{
+height: 100%;
+width: 70px;
+border-radius: 20px;
+border: none;
+color: #fff;
+font-size: 18px;
+font-weight: 500;
+letter-spacing: 1px;
+cursor: pointer;
+/* transition: all 0.3s ease; */
+background: #618ccc;
+font-weight:bold
+}
+.inline-form input:hover{
+background: #7297ce;
+color: #f0e24c;
+}

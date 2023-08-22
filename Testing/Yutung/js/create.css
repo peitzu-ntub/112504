@@ -64,7 +64,7 @@ body {
 
 /* 中間分區塊 */
 .sidebar_left {
-    background-color: #FFECC9;
+    background-color: #fff;
     width: 80px;
     height: 30px;
     text-align: center;
@@ -75,7 +75,7 @@ body {
 }
 
 .sidebar_right {
-    background-color: #68b8e7;
+    background-color: #fff;
     width: 100px;
     height: 30px;
     text-align: center;
@@ -90,7 +90,7 @@ body {
     /* margin-right:30px; */
     height: 30px;
     width: 200px;
-    background-color: #F2FFF2;
+    background-color: #fff;
     text-align: center;
     font-size: 20px;
     margin-top: -200px;
@@ -102,7 +102,7 @@ body {
     margin-right: 30px;
     height: 30px;
     width: 300px;
-    background-color: #F2FFF2;
+    background-color: #fff;
     text-align: center;
     font-size: 20px;
     margin-top: -200px;
@@ -170,8 +170,8 @@ form .input-box span.details {
     /* 距離視窗左側的位置 */
     transform: translate(-50%, -50%);
     /* 將容器水平垂直居中 */
-    width: 80px;
-    height: 50px;
+    width: 70px;
+    height: 40px;
     border: 3px solid #ecad83;
     background-color: #ecad83;
     border-radius: 20px;

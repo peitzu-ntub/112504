@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>loginworker</title>
+    <title>員工登入</title>
 
     <link href="../js/newlogin.css" rel="stylesheet">
     <script src="../js/jquery-3.6.4.min.js"></script>
@@ -40,12 +40,12 @@
                         <input type="password" name="staff_psw" id="staff_psw" placeholder="密碼" required>
                     </div>
                 </div>
-            <input class="addstore" type="submit" value="確認" style="font-size: 5px;"> <!-- onclick=validate() -->
-            </input>
-            <div class="forget" type="return" style="font-size: 5px;" onclick="location.href='#.html'">
-                <span>忘記密碼</span>
-            </div>  
-        </form>
+                <input class="addstore" type="submit" value="確認" style="font-size: 5px;"> <!-- onclick=validate() -->
+                </input>
+                <div class="forget" type="return" style="font-size: 5px;" onclick="location.href='#.html'">
+                    <span>忘記密碼</span>
+                </div>
+            </form>
         </div>
     </div>
 </body>
@@ -60,7 +60,7 @@
             var dataString = $(this).serialize();
 
             //可以把字串顯示出來看看是否正確
-            alert(dataString);               
+            alert(dataString);
 
             //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
             $.ajax({
@@ -74,16 +74,16 @@
                 success: function (response) {
                     var json = $.parseJSON(response);
                     if (json.result == 'OK') {
-                        alert (json.message);
+                        alert(json.message);
                         //$("#message").html('成功：\n' + json.message);
                     } else {
-                        alert (json.message);
+                        alert(json.message);
                         //$("#message").html('失敗：\n' + json.message);
                     }
                 },
                 //獲得不正確的回應時，要做的事情
                 error: function (response) {
-                    alert ('錯誤');
+                    alert('錯誤');
                     //$("#message").html(response);
                 }
             });
