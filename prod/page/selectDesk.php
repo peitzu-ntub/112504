@@ -112,10 +112,16 @@
     <form>
     <div class="caption">
             <div class="col-md-5">	
-                <h1 class="myTitle"><img src="../images/boss_M.png" /></h1>
+                <h1 class="myTitle"><img src="../images/choose.png" /></h1>
                 <span>選擇桌號</span>
             </div>
-    </div>        
+    </div>      
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='../page/staff_management.html'">
+            <div align="left">
+                <img src="../images/back.png" alt="返回icon" />
+                <span style="font-size: 14px;">返回</span>
+            </div>
+    </div>      
 <?php
     //PHP是在後端(Server)運作的程式，Html與JavaScript則是在前端(Client)運作的程式
     //在Server端，透過PHP將身份證與店代號，保留於隱藏欄位中，以傳到前端，做後續的應用
@@ -171,8 +177,7 @@
         }
 ?>                             
                             </select>-->
-                        <input name="createOrder" type="button" value="開桌" onclick=newOrder()></input>
-                        <input name="createOrder" type="button"  value="返回"  onclick="location.href='management.html'"></input>
+                        <input name="createOrder" type="button" value="開桌" onclick=newOrder() ></input>
                     </div>
                 </div>
             </div>

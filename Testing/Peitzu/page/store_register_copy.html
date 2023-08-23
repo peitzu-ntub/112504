@@ -153,8 +153,11 @@
                 data: dataString,
                 //獲得正確回應時，要做的事情
                 success: function (response) {
+                    alert(response);
                     var json = $.parseJSON(response);
+                    alert(json.message);
                     if (json.result == 'OK') {
+                        alert (json.message);
                         $("#message").html('成功：\n' + json.message);
                     } else {
                         $("#message").html('失敗：\n' + json.message);

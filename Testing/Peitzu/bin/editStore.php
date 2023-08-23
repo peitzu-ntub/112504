@@ -44,11 +44,14 @@
             $data['result'] = 'OK';
             $data['message'] = '店家資料儲存成功';
             echo json_encode($data);
-        }else {
+        }
+        else {
             $data['result'] = 'NG';
             $data['message'] = "Error: " . $sql . "<br>" . mysqli_error($con);
+            echo json_encode($data);
         }
-        echo json_encode($data);
+
+        
 
     } catch (Exception $e) {
         $data['result'] = 'NG';
