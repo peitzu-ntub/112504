@@ -62,15 +62,15 @@
             }
         }
         //錯誤訊息返回
-        // switch($err){
-        //     case '1':$msg = '字元數錯誤';break;
-        //     case '2':$msg = '英文字母錯誤';break;
-        //     case '3':$msg = '性別錯誤';break;
-        //     case '4':$msg = '驗證失敗';break;
-        //     default:$msg = '驗證通過';break;
-        // }
-        // \App\Library\CommonTools::writeErrorLogByMessage('身份字號：'.$cardid);
-        // \App\Library\CommonTools::writeErrorLogByMessage($msg);
+         switch($err){
+             case '1':$msg = '字元數錯誤';break;
+             case '2':$msg = '英文字母錯誤';break;
+             case '3':$msg = '性別錯誤';break;
+             case '4':$msg = '驗證失敗';break;
+             default:$msg = '驗證通過';break;
+         }
+         \App\Library\CommonTools::writeErrorLogByMessage('身份字號：'.$cardid);
+         \App\Library\CommonTools::writeErrorLogByMessage($msg);
         return true;
     }
   
