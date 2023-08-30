@@ -50,7 +50,15 @@ body{
     z-index: 99;
 }
 
-.aside{ 
+@media(max-width: 992px) {
+    .caption {
+        position: fixed;
+        left: 35%;
+        width: 25%;
+    }
+}
+
+.aside{
     display: inline-block; 
     border-radius: 15px;
     text-align: center;
@@ -63,6 +71,20 @@ body{
     margin-left: -220px;
     padding-left: 30px;
     padding-right: 30px;
+}
+
+/* .wrap{
+    max-width: 800px;
+    margin: 0 auto;
+} */
+
+@media(max-width: 992px) {
+    .aside {
+        position: fixed;
+        left: 42%;
+        width: 60%;
+        height: 320px;
+    }
 }
 
 .btn{
@@ -135,8 +157,24 @@ img[src="../images/open.png"]{
     left: 340px;
 }
 
+@media(max-width: 992px) {
+    img[src="../images/open.png"] {
+        position: fixed;
+        top: 40%;
+        left: 75%;
+    }
+}
+
 img[src="../images/menu.png"]{
     position: absolute;
-    top: 360px; 
+    top: 360px;
     left: -150px;
+}
+
+@media(max-width: 992px) {
+    img[src="../images/menu.png"] {
+        position: fixed;
+        top: 55%;
+        left: 20%;
+    }
 }
