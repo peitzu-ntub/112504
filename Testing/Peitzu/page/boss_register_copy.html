@@ -83,7 +83,8 @@
           success: function (response) {
             var json = $.parseJSON(response);
             if (json.result == 'OK') {
-              $("#message").html("註冊成功");
+              alert('老闆註冊成功！');
+              $("#message").html("註冊成功");              
               $('input[id=boss_name]').val('');
               $('input[id=boss_identity]').val('');
               $('input[id=boss_psw1]').val('');
