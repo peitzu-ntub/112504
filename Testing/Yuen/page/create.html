@@ -27,10 +27,7 @@
 
                 <div class="insidebox">
                     <div class="ininsidebox">
-                        <div class="input-box">
-                            <span class="details">員工編號：</span>
-                            <input type="text" name="staff_id" id="staff_id" placeholder="員工編號" required>
-                        </div>
+                        
                         <div class="input-box">
                             <span class="details">姓名：</span>
                             <input type="text" name="staff_name" id="staff_name" placeholder="請輸入員工姓名" required>
@@ -43,8 +40,10 @@
 
                         <div class="input-box">
                             <span class="details">性別：</span>
-                            <input type="radio" name="staff_gender" value="male">男
-                            <input type="radio" name="staff_gender" value="female">女
+                            <select name="staff_gender" id="staff_gender">
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
                         </div>
 
                         <div class="input-box">
