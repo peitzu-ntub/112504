@@ -1,76 +1,48 @@
-@charset "utf-8";
-
 html{
     box-sizing: border-box;
     font-family: 'Poppins',sans-serif;
     font-weight: bold;
-    justify-content: center;
-    align-items: center;
 }
 
 body{
     font-family: 'Noto Sans TC', sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
     background: #fff3bc;
 }
 
 .myTitle{
-    display: block;
     position: fixed;
     top: 12px;
-    left: 38%;
+    left: 590px;
     z-index: 100;
-    align-items: center;
-    text-align: center;
 }
 
 .col-md-5 span{
-    display: inline;
     color: green;
     position: fixed;
-    top: 16px;
+    top: 30px;
     left: 45%;
-    z-index: 100;
     font-size: 300%;
-    align-items: center;
-    text-align: center;
 }
   
 .caption{
-    display: inline;
     border-radius: 30px;
     width: 300px;
     height: 60px;
     background-color: lightgreen;
+    opacity: 0.8;
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
     position: fixed;
-    top: 20px;
+    top: 32px;
     left: 41%;
-    z-index: 99;
-    align-items: center;
-    text-align: center;
 }
 
-/* @media (max-width: 1000px) {
-    .col-md-5 span{
-        text-align: center; 
-        position: fixed;
-        top: 15px;
-        left: 44%;
-    }
-} */
-
 .container {
-    background-color: #fff;
-    opacity: 0.8;
-    border: 2px solid #ccc;
-    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+    position: fixed; /*元素位置固定，相對於瀏覽器而定位*/
+    top: 100px;
+    left: 0px;
     border-radius: 30px;
-    margin-top: 80px;
-    padding-top: 40px;
+    padding: 100px;
 }
 
 div.row{
@@ -88,52 +60,49 @@ span{
     box-shadow: 0 0 5px 0 #aaa;
     padding: 5px;
     margin: 5px;
-}
+} 
 
-/* 輸入格樣式 */
-input[type="text"] , div.col-md-12.select{
-    margin-left: 5px;
-    height: 45px;
-    width: 15%;
-    outline: none;
-    font-size: 16px;
-    border-radius: 15px;
-    padding-left: 15px;
-    border: 1px solid #ccc;
-    border-bottom-width: 2px;
-    transition: all 0.3s ease;
-}
-
-input[placeholder]{
-    font-weight: bold;
-}
-
-.section{
+form {
+    z-index: 99;
+    position: fixed;
+    top: 300px;
+    right: 100px;
     text-align: center;
 }
 
-label{ 
-    font-size: 25px;
-    padding: 10px;
-    margin: 10px;
-    font-weight: bold
+label {
+    display:flex;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 30px;
+    color: green;
 }
 
-input[name="createOrder"] {
-    height: 45%;
-    width: 10%;
+input {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid lightgreen; /*外框*/
     border-radius: 15px;
-    border: none;
-    color: green;
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background: lightgreen;
     font-weight: bold;
-    margin-left: 35px;
-    padding: 5px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    width: 100px;
+    background-color: lightskyblue;
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
 }
 
 /* 返回的方框 */
@@ -156,7 +125,7 @@ input[name="createOrder"] {
     align-items: center;
     font-size: 18px;
 }
-
+  
 .logout div {
     display: flex;
     align-items: center;
@@ -169,7 +138,7 @@ input[name="createOrder"] {
     position: relative;
     left: 4px;
 }
-  
+
 .logout img {
     margin-right: 3px;
     /* 調整圖片和文字之間的間距 */
@@ -182,3 +151,4 @@ input[name="createOrder"] {
     height: 45px;
     cursor: pointer;
 }
+  

@@ -125,8 +125,8 @@ input[type="submit"]:hover {
 /* 返回的方框 */
 .logout {
   position: absolute;
-  top: 60px;
-  left: 65px;
+  top: 100px;
+  left: 100px;
   transform: translate(-50%, -50%);
   /* 將容器水平垂直居中 */
   width: 80px;
@@ -144,13 +144,6 @@ input[type="submit"]:hover {
   display: flex;
   align-items: center;
   color: rgb(116, 65, 31);
-  position: absolute;
-  left: 8px;
-}
-
-.logout span{
-  position: relative;
-  left: 4px;
 }
 
 .logout img {
