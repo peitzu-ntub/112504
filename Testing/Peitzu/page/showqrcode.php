@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     include "../bin/conn.php";
 
     //從url傳進來的參數
@@ -8,6 +8,7 @@
     $desk = $_GET['desk']; 
     $persons = $_GET['persons'];
     $emp = $_GET['emp'];
+    
 
     //取得目前URL的「目錄」結構
     $appRoot = __DIR__;
@@ -27,6 +28,23 @@
     //所以，在進行url組合時，必要時，得urlencode()
     $curQrcodeUrl = urlencode("$baseUrl/pickFood.php?identity=$identity&store_id=$store_id&order_no=$order_no");
     //echo "$curQrcodeUrl<br>";
+
+    $desk = str_replace("A","",$desk);
+
+    //2023.05.30 完成開桌，等同於新增一張訂單。因此，可以把開桌的相關資訊，當成一張訂單，記錄起來
+    $sql = "insert into store_order (
+                boss_identity, store_id, order_no, table_number, customer_count, employee_no, start_time
+            ) values (
+                '$identity', '$store_id', '$order_no', '$desk', $persons, '$emp', now()
+            )";
+    //echo $sql;
+    mysqli_query($con, $sql);
+
+    $sql = "update store_table set is_open = 'Y'
+    where boss_identity = '$identity' and store_id = '$store_id' and table_number = $desk";
+    echo $sql;
+    mysqli_query($con, $sql);
+
 ?>
 
 <html>
@@ -54,7 +72,8 @@
 
         <tr><td>
 <?php
-    $date = new DateTime();
+    //$date = new DateTime();
+    $date = new DateTime('now +8 hours');
     $result = $date->format('Y-m-d H:i:s');
         echo "<hr>服務人員：$emp <br>印單時間：$result";
 ?>            

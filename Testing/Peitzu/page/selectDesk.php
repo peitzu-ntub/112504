@@ -1,48 +1,72 @@
 <?php
-    session_start();
+    //session_start();
     include "../bin/conn.php";
 
     //todo, 這是假的資料
     //預設的資料來源，是從登入而來。登入、選擇店家後，就會把以下這兩個資訊，放進SESSION裡，保留在Server端
     //讓同一個人的接續連線，可以直接拿來用
-    if (!isset($_SESSION["identity"])) {
-        $_SESSION["identity"] = "A123456789";
+    if (!isset($_SESSION["boss_identity"])) {
+        $_SESSION["boss_identity"] = "A123456789";
     }
     if (!isset($_SESSION["store_id"])) {
-        $_SESSION["store_id"] = "S01";
+        $_SESSION["store_id"] = "yeah";
     }
 
+    $id = $_SESSION['boss_identity'];
+    $storeid = $_SESSION["store_id"];
+
+    $sql = "SELECT * FROM store_info where boss_identity = '$id' and store_id = '$storeid'";
+    $result = mysqli_query($con, $sql);
+    $row_result = mysqli_fetch_assoc($result);
+
     //todo, 這個要從資料庫撈出來
-    $table_count = 20;
+    $table_count = $row_result['table_count'];
 ?>
 
 <html>
 
 <head>
-    <title>點餐</title>
+    <title>開桌點餐</title>
     <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <link rel="stylesheet" href="../js/bootstrap.min.css" >
-	<link rel="stylesheet" href="../js/bootstrap.min.4.6.2.css">
+    <link rel="stylesheet" href="../js/bootstrap.min.4.6.2.css">
     <link rel="stylesheet" href="../js/selectDesk.css" >
-
+    
     <script src="../js/jquery-3.6.4.min.js"></script>
     <script>
-        //每個桌號按下時，onClick事件的執行內容
-        function change(id) {
+    //每個桌號按下時，onClick事件的執行內容
+    function change(id) {
 <?php
     //todo, id應該要採用實際的tableId，不是'A'...
     //如果要做到「已經開桌的要保持ping」就不能這麼簡單的全部換成白色
     for ($x=1; $x<=$table_count; $x++) {
-        echo "
+        $sql = 
+            "SELECT is_open from store_table
+            where boss_identity = '$id' and store_id = '$storeid' and table_number = $x";
+        
+        $result = mysqli_query($con, $sql);
+        $row_result = mysqli_fetch_assoc($result);
+        $is_open = $row_result['is_open'];
+
+        if ($is_open == 'Y') {
+            echo "
+            document.getElementById('A$x').style.backgroundColor = 'pink';";
+        }
+        
+        else{
+            echo "
             document.getElementById('A$x').style.backgroundColor = 'white';";
+        }
+
+        
     }
     echo "\n";
 ?>
             //將選擇的桌號，改顏色
-            document.getElementById('A'+id).style.backgroundColor = '#71b7e6';
+            document.getElementById('A'+id).style.backgroundColor = '#f3cc5f';
             //將選擇的桌號，記錄在隱藏欄位
             document.getElementById('desk_selected').value = 'A'+id;
         }
@@ -63,8 +87,10 @@
             var store_id= $('input[name=store_id]').val();
             //畫面上選擇的桌號、輸入的人數
             var desk= $('input[name=desk_selected]').val();
-            var persons = $('input[name=persons]').val();            
-            var emp = document.getElementById("staff_id").value;
+            var persons = $('input[name=persons]').val();    
+            var urlParams = new URLSearchParams(window.location.search);
+            var emp = urlParams.get('staff_id');        
+            //var emp = $_SESSION["staff_id"];
 
             //若桌號或者人數沒有值，則顯示錯誤訊息後離開
             if (!desk) {
@@ -76,10 +102,10 @@
                 exit;
             }
             //若沒有選擇員工，則顯示錯誤訊息後離開
-            if (!emp || emp == 'none') {
-                alert('請選擇開桌的員工');
-                exit;
-            }
+            //if (!emp || emp == 'none') {
+                //alert('請選擇開桌的員工');
+                //exit;
+            //}
             
             //跳到「模擬」列印qrCode的頁面，並且帶入必要的參數資訊
             var newUrl = "showqrcode.php?identity="+identity+
@@ -88,7 +114,7 @@
                 "&order_no="+order_no+
                 "&persons="+persons+
                 "&emp="+emp;
-            // alert(newUrl);
+             //alert(newUrl);
             window.location.replace(newUrl);
         }
 
@@ -100,11 +126,23 @@
 </head>
 
 <body>
-    <form>        
+    <form>
+    <div class="caption">
+            <div class="col-md-5">	
+                <h1 class="myTitle"><img src="../images/choose.png" /></h1>
+                <span>選擇桌號</span>
+            </div>
+    </div>      
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='../page/staff_management.html'">
+            <div align="left">
+                <img src="../images/back.png" alt="返回icon" />
+                <span style="font-size: 14px;">返回</span>
+            </div>
+    </div>      
 <?php
     //PHP是在後端(Server)運作的程式，Html與JavaScript則是在前端(Client)運作的程式
     //在Server端，透過PHP將身份證與店代號，保留於隱藏欄位中，以傳到前端，做後續的應用
-    $boss = $_SESSION["identity"];
+    $boss = $_SESSION["boss_identity"];
     $store = $_SESSION["store_id"];
 ?>
         <!--隱藏欄位-->
@@ -113,25 +151,42 @@
         <input type='hidden' id='desk_count' name='desk_count' value='10'>
         <input type='hidden' id='desk_selected' name='desk_selected' value=''>
         <input type='hidden' id='order_no' name='order_no' value=''>
-
+        
         <div class='container'>
-            <div class='row'>
-                <div class='col-md-12'>
-                    <img src="../images/selectDesk.png" />　<font size="5"><b>選擇桌號</b></font>
-                </div>
-            </div>
+
 <?php
     echo "
             <div class='row'>\n";
     for ($x=1; $x <= $table_count; $x++) {
-    echo "
-            <div class='col-md-2'>
-                <div class='card' >
-                    <div id='A$x' style='height: 80;' onClick=change('$x')>A$x</div>
-                </div>
+        $sql = 
+        "SELECT is_open from store_table
+        where boss_identity = '$id' and store_id = '$storeid' and table_number = $x";
+    
+    $result = mysqli_query($con, $sql);
+    $row_result = mysqli_fetch_assoc($result);
+    $is_open = $row_result['is_open'];
+
+    if ($is_open == 'Y') {
+        echo "
+        <div class='col-md-2'>
+            <div class='card' >
+                <div id='A$x' style='height: 80; background-color:pink;'>A$x</div>
             </div>
-            ";
+        </div>
+        ";
     }
+    
+    else{
+        echo "
+        <div class='col-md-2'>
+            <div class='card' >
+                <div id='A$x' style='height: 80;' onClick=change('$x')>A$x</div>
+            </div>
+        </div>
+        ";
+    }
+}
+
     echo "
             </div>\n";
 ?>            
@@ -143,8 +198,8 @@
                     <div class='section'>
                         <label for="store_name">人數</label>
                         <input type="text"  name="persons" id="persons" placeholder="用餐人數" required>
-                        <label for="store_name">員工</label>
-                            <select name="staff_id" id="staff_id" onchange="print_value();">
+                        <!-- <label for="store_name">員工</label>
+                            <select name="staff_id" id="staff_id" onchange="print_value();"> 
                                 <option value='none'>(空)</option>
 <?php
         //查詢店舖的員工資料
@@ -158,18 +213,14 @@
             $staff_name = $emp["staff_name"];
             echo "  <option value='$staff_id'>$staff_name</option>";
         }
-?>                            
-                            </select>
-                        <button name="createOrder" type="button"  onclick=newOrder()>
-                            開桌
-                        </button>　　　
-                        <button name="createOrder" type="button"  onclick="location.href='management.html'">
-                            返回
-                        </button>
+?>                             
+                            </select>-->
+                        <input name="createOrder" type="button" value="開桌" onclick=newOrder() ></input>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </form>
 </body>
 

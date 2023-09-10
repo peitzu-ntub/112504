@@ -9,13 +9,13 @@
         $_SESSION["identity"] = "A123456789";
     }
     if (!isset($_SESSION["store_id"])) {
-        $_SESSION["store_id"] = "T01";
+        $_SESSION["store_id"] = "yeah";
     }
 
-    $id = $_POST['boss_identity'];
-          $storeid = $_SESSION["store_id"];
+    $id = $_SESSION['boss_identity'];
+    $storeid = $_SESSION["store_id"];
 
-    $sql = "SELECT * FROM store_info where store_id = '$storeid'";
+    $sql = "SELECT * FROM store_info where boss_identity = '$id' and store_id = '$storeid'";
     $result = mysqli_query($con, $sql);
     $row_result = mysqli_fetch_assoc($result);
 
@@ -43,8 +43,25 @@
     //todo, id應該要採用實際的tableId，不是'A'...
     //如果要做到「已經開桌的要保持ping」就不能這麼簡單的全部換成白色
     for ($x=1; $x<=$table_count; $x++) {
-        echo "
+        $sql = 
+            "SELECT is_open from store_table (
+            where boss_identity = '$id' and store_id = '$storeid' and table_number = $i";
+        
+        $result = mysqli_query($con, $sql);
+        $row_result = mysqli_fetch_assoc($result);
+        $is_open = $row_result['is_open'];
+
+        if ($is_open == 'Y') {
+            echo "
+            document.getElementById('A$x').style.backgroundColor = 'black';";
+        }
+        
+        else{
+            echo "
             document.getElementById('A$x').style.backgroundColor = 'white';";
+        }
+
+        
     }
     echo "\n";
 ?>

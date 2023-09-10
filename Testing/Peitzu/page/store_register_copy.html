@@ -40,6 +40,8 @@
                     <div class="input-box">
                         <span class="details" style="font-size: 20px;">店家代號：</span>
                         <input type="text" name="store_id" id="store_id" placeholder="請輸入店家代號" required>
+                        <input type="hidden" name="boss_identity" id="boss_identity" value="A123456789">
+                        <!-- 之後跳進來的時候要把身分證資料放進去boss_identity這裡，現在是假的老闆身分證 -->
                     </div>
                     <div class="input-box">
                         <span class="details" style="font-size: 20px;">店家名稱：</span>
@@ -153,11 +155,11 @@
                 data: dataString,
                 //獲得正確回應時，要做的事情
                 success: function (response) {
-                    alert(response);
+                    //alert(response);
                     var json = $.parseJSON(response);
                     alert(json.message);
                     if (json.result == 'OK') {
-                        alert (json.message);
+                        //alert (json.message);
                         $("#message").html('成功：\n' + json.message);
                     } else {
                         $("#message").html('失敗：\n' + json.message);
