@@ -31,6 +31,12 @@
                             <span class="details">員工編號：</span>
                             <input type="text" name="staff_id" id="staff_id" placeholder="員工編號" required>
                         </div>
+
+                        <div class="input-box">
+                            <span class="details">密碼：</span>
+                            <input type="text" name="staff_psw" id="staff_psw" placeholder="請輸入員工的密碼" required>
+                        </div>
+
                         <div class="input-box">
                             <span class="details">姓名：</span>
                             <input type="text" name="staff_name" id="staff_name" placeholder="請輸入員工姓名" required>
@@ -41,12 +47,6 @@
                             <input type="date" name="staff_birth" id="staff_birth" placeholder="請輸員工生日" required>
                         </div>
 
-                        <!-- <div class="input-box">
-                            <span class="details">性別：</span>
-                            <input type="radio" name="staff_gender" value="male">男
-                            <input type="radio" name="staff_gender" value="female">女
-                        </div> -->
-
                         <div class="input-box">
                             <span class="details">性別：</span>
                             <select id="group" value="1">
@@ -54,7 +54,6 @@
                                 <option value="female">女</option>
                             </select>
                         </div>
-
 
                         <div class="input-box">
                             <span class="details">聯絡電話：</span>
@@ -67,13 +66,18 @@
                         </div>
 
                         <div class="input-box">
+                            <span class="details">到職日期：</span>
+                            <input type="date" name="due_date" id="due_date" placeholder="請輸員工的到職日期" required>
+                        </div>
+
+                        <div class="input-box">
                             <span class="details">緊急聯絡人：</span>
                             <input type="text" name="em_name" id="em_name" placeholder="請輸入員工的緊急聯絡人姓名" required>
                         </div>
 
                         <div class="input-box">
                             <span class="details">緊急連絡人電話：</span>
-                            <input type="text" name="em_tel" id="em_tel" placeholder="請輸入員工的緊急聯絡人電話" required>
+                            <input type="tel" name="em_tel" id="em_tel" placeholder="請輸入員工的緊急聯絡人電話" required>
                         </div>
 
                         <div class="input-box">
@@ -82,13 +86,7 @@
                         </div>
 
                         <div class="input-box">
-                            <span class="details">到職日期：</span>
-                            <input type="date" name="due_date" id="due_date" placeholder="請輸員工的到職日期" required>
-                        </div>
-
-                        <div class="input-box">
-                            <span class="details">密碼：</span>
-                            <input type="text" name="staff_psw" id="staff_psw" placeholder="請輸入員工的密碼" required>
+                            <span class="details"></span>
                         </div>
                     </div>
                 </div>
@@ -105,8 +103,8 @@
             <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='employee.html'">
                 <span style="font-size: 14px;">查看全部員工資料</span>
             </div>
+        </form>
     </div>
-    </form>
 </body>
 
 </html>
