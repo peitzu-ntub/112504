@@ -4,7 +4,7 @@
     $data= array();
   
     try {
-        //$bossid = $_POST['lic'];
+        $boss_identity = $_POST['boss_identity'];
         $storeid = $_POST['store_id'];
         $name = $_POST['store_name'];
         $tel = $_POST['store_tel'];
@@ -36,14 +36,14 @@
 
         $sql = 
             "INSERT INTO store_info (
-                store_id, store_name, store_tel, store_address, table_count
+                boss_identity, store_id, store_name, store_tel, store_address, table_count
             ) VALUES (
-                '$storeid', '$name', '$tel', '$address', '$table'
+                '$boss_identity', '$storeid', '$name', '$tel', '$address', '$table'
             )";
         if (mysqli_query($con, $sql)) {
             $data['result'] = 'OK';
-            $data['message'] = '店家資料儲存成功';
-            echo json_encode($data);
+            $data['message'] = '店家資料儲存成功..';
+            
         }
         else {
             $data['result'] = 'NG';
@@ -51,6 +51,17 @@
             echo json_encode($data);
         }
 
+        for ($i = 1; $i <= $table; $i++) {
+            $sql = 
+            "INSERT INTO store_table (
+                boss_identity, store_id, table_number, seat_count, is_open
+            ) VALUES (
+                '$boss_identity', '$storeid', $i, 4, 'N'
+            )";
+
+            mysqli_query($con, $sql);
+        }
+        echo json_encode($data);
         
 
     } catch (Exception $e) {

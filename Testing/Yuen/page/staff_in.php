@@ -18,7 +18,6 @@
     $identity = $_SESSION["identity"];
     $store = $_SESSION['store_id'];
 
-    $staff_id = $_POST['staff_id'];
     $staff_name = $_POST['staff_name'];
     $staff_birth = $_POST['staff_birth'];
     $staff_gender = $_POST['staff_gender'];
@@ -30,10 +29,10 @@
     $due_date = $_POST['due_date'];
     $staff_psw = $_POST['staff_psw'];
 
-    $sql = "INSERT INTO store_staff (staff_id, boss_identity, store_id, staff_name, staff_gender, staff_birth, 
+    $sql = "INSERT INTO store_staff (boss_identity, store_id, staff_name, staff_gender, staff_birth, 
         staff_tel, staff_address, em_name, em_tel, relation, due_date, staff_psw) 
         values (
-        '$staff_id', '$identity', '$store', '$staff_name', '$staff_gender', '$staff_birth', '$staff_tel',
+        '$identity', '$store', '$staff_name', '$staff_gender', '$staff_birth', '$staff_tel',
         '$staff_address', '$em_name', '$em_tel', '$relation', '$due_date', '$staff_psw')";
     // mysqli_query($con, $sql);
     $result = mysqli_query($con,$sql);

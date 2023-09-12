@@ -57,7 +57,7 @@ $datas_len = count($datas); //目前資料筆數
 ?>
 <body>
     <div class="container-wrapper">
-        <!-- <form action="staff_in.php" method="POST" enctype="multipart/form-data"> -->
+        <!-- <form action="staff_up.php" method="POST" enctype="multipart/form-data"> -->
             <div class="container1">
                 <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
                     <div align="left">
@@ -89,7 +89,7 @@ $datas_len = count($datas); //目前資料筆數
 
                         <div class="input-box">
                             <span class="details"></span>
-                            性別：<input type="text" class="form-control" value="<?php echo $datas[0]['staff_gender'] ?>" name="staff_gender"><br>
+                            性別：<input type="text" class="form-control" value="<?php echo $datas[0]['staff_gender'] ?>" name="staff_gender" disabled><br>
                         </div>
 
                         <div class="input-box">

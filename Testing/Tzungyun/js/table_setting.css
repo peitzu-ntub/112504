@@ -1,0 +1,154 @@
+html{
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+    font-weight: bold;
+}
+
+body{
+    font-family: 'Noto Sans TC', sans-serif;
+    display: flex;
+    background: #fff3bc;
+}
+
+.myTitle{
+    position: fixed;
+    top: 12px;
+    left: 590px;
+    z-index: 100;
+}
+
+.col-md-5 span{
+    color: green;
+    position: fixed;
+    top: 30px;
+    left: 45%;
+    font-size: 300%;
+}
+  
+.caption{
+    border-radius: 30px;
+    width: 300px;
+    height: 60px;
+    background-color: lightgreen;
+    opacity: 0.8;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+    position: fixed;
+    top: 32px;
+    left: 41%;
+}
+
+.container {
+    position: fixed; /*元素位置固定，相對於瀏覽器而定位*/
+    top: 100px;
+    left: 0px;
+    border-radius: 30px;
+    padding: 100px;
+}
+
+div.row{
+    padding: 15px;
+    margin: -10px;
+}
+span{
+    font-size: 36px;
+    font-weight: bold;
+    position: relative;
+    left: 450px;
+}
+
+.card {
+    box-shadow: 0 0 5px 0 #aaa;
+    padding: 5px;
+    margin: 5px;
+} 
+
+form {
+    z-index: 99;
+    position: fixed;
+    top: 300px;
+    right: 100px;
+    text-align: center;
+}
+
+label {
+    display:flex;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 30px;
+    color: green;
+}
+
+input {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid lightgreen; /*外框*/
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    width: 100px;
+    background-color: lightskyblue;
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+}
+
+/* 返回的方框 */
+.logout {
+    position: absolute;
+    /* 設置為絕對定位 */
+    top: 60px;
+    /* 距離視窗上方的位置 */
+    left: 65px;
+    /* 距離視窗左側的位置 */
+    transform: translate(-50%, -50%);
+    /* 將容器水平垂直居中 */
+    width: 80px;
+    height: 50px;
+    border: 3px solid #ecad83;
+    background-color: #ecad83;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+  
+.logout div {
+    display: flex;
+    align-items: center;
+    color: rgb(116, 65, 31);
+    position: absolute;
+    left: 8px;
+}
+
+.logout span{
+    position: relative;
+    left: 4px;
+}
+
+.logout img {
+    margin-right: 3px;
+    /* 調整圖片和文字之間的間距 */
+}
+  
+.logout:hover {
+    border: 4px solid #b55f45;
+    color: white;
+    width: 70px;
+    height: 45px;
+    cursor: pointer;
+}
+  
