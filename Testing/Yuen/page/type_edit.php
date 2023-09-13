@@ -12,6 +12,52 @@
 
 </head>
 
+<?php
+include "../bin/conn.php";
+
+$type_name=$_GET['type_name'];
+
+// 設置一個空陣列來放資料
+$datas = array();
+
+$sql ="select * FROM food_type WHERE type_name = '".$type_name."'"; // sql語法存在變數中
+
+$result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
+
+// 如果有資料
+if ($result) {
+    // mysqli_num_rows方法可以回傳我們結果總共有幾筆資料
+    if (mysqli_num_rows($result) > 0) {
+        // 取得大於0代表有資料
+        // while迴圈會根據資料數量，決定跑的次數
+        // mysqli_fetch_assoc方法可取得一筆值
+        while ($row = mysqli_fetch_assoc($result)) {
+            // 每跑一次迴圈就抓一筆值，最後放進data陣列中
+            $datas[] = $row;
+        }
+    }
+    // 釋放資料庫查到的記憶體
+    mysqli_free_result($result);
+} else {
+    echo "{$sql} 語法執行失敗，錯誤訊息: " . mysqli_error($link);
+}
+// 處理完後印出資料
+if (!empty($result)) {
+    // 如果結果不為空，就利用print_r方法印出資料
+    // print_r($datas);
+    //echo($datas[0]['adm_name']);
+} else {
+    // 為空表示沒資料
+    echo "查無資料";
+}
+echo "<br><br>";
+//echo $datas[0]['sf_name']; // 印出第0筆資料中的sf_name欄位值
+
+//使用表格排版用while印出
+$datas_len = count($datas); //目前資料筆數
+
+?>
+
 <body>
     <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
         <div align="left">
@@ -20,11 +66,11 @@
         </div>
     </div>
     <div class="container-wrapper">
-        <form action="#">
+        <form action="menu1.php" method="POST">
             <div class="container1">
                 <div class="topinput" style="font-size: 15px;">
                     <font color="#bf6900" size="5">餐點類型：</font>
-                    <input type="" name="" id=""placeholder="請輸入您欲新增的餐點類型">
+                    <input type="text" class="form-control" value="<?php echo $datas[0]['type_name'] ?>" name="type_name" ><br>
                 </div>
                 <div class="insidebox">
                     <div class="ininsidebox">
@@ -43,6 +89,19 @@
                                     <div class="sidebar_right">確定</div>
                                 </td>
                             </tr>
+                            <tbody>
+                            <?php
+                            for ($i = 0; $i < $datas_len; $i++) {
+                                echo "<tr>";
+                                echo "<td>
+                                <a href='type_del.php?type_name=".$datas[$i]['type_name']."'><img src=../images/trash.png></img></a></td>";
+                                echo "<td>" . $datas[$i]['type_name'] . "</td>";
+                                echo "<td>
+                                <a href='type_edit.php?type_name=".$datas[$i]['type_name']."'><img src=../images/signature.png></img></a></td>";
+                             }
+                            ?>
+
+                            </tbody>
                         </table>
 <!--                         <div class="input-box">
                             <div class="input-row"><span>類型名稱</span></div>
@@ -61,43 +120,5 @@
 </body>
 
 
-<script>
-    //當網頁準備好的時候，做以下的動作(函式)
-    $(document).ready(function () {
-        //form的submit按鈕按下去的動作
-        $("form").on("submit", function (e) {
-            //1.先把準備拋回去的資料「序列化」整理成json格式的字串
-            var dataString = $(this).serialize();
-
-            //可以把字串顯示出來看看是否正確
-            //alert(dataString);               
-
-            //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
-            $.ajax({
-                //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
-                type: "POST",
-                //指定要連接的PHP位址
-                url: "../bin/menu_2.php",
-                //要傳送的資料內容
-                data: dataString,
-                //獲得正確回應時，要做的事情
-                success: function (response) {
-                    var json = $.parseJSON(response);
-                    if (json.result == 'OK') {
-                        $("#message").html('成功：\n' + json.message);
-                    } else {
-                        $("#message").html('失敗：\n' + json.message);
-                    }
-                },
-                //獲得不正確的回應時，要做的事情
-                error: function (response) {
-                    $("#message").html(response);
-                }
-            });
-
-            e.preventDefault();
-        });
-    });
-</script>
 
 </html>
