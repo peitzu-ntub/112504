@@ -1,23 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <link href="../js/test3.css" rel="stylesheet">
-    <script src="../js/jquery-3.6.4.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>消費紀錄</title>
+
+    <link href="../js/newrecord.css" rel="stylesheet">
+
 </head>
+
 <body>
-<div class="container">
-    <div class="title">消費紀錄</div><br>
-        <hr>
-        <div class="content">
-            <form action="record.php" method="POST">
-                <p class="inline-form">
-                    查詢: <input type="date" name="查詢日期">
-                    <input type="submit" value="確認">
-                </p> 
-<?php
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='#.html'">
+        <div align="left">
+            <img src="../images/back.png" alt="返回icon" />
+            <span style="font-size: 10px;">返回</span>
+        </div>
+    </div>
+    <div class="container-wrapper">
+    <form action="1.php" method="POST">
+            <div class="subject">
+                <div class="title">
+                    <div align="left">
+                        <img src="../images/money-bag.png" alt="icon圖片" />
+                        <span style="font-size: 28px;">消費紀錄</span>
+                    </div>
+                </div>
+                <div class="twosmall">
+                    <form action="record.php" method="POST">
+                        <p class="inline-form">
+                            查詢：<input type="date" name="查詢日期">
+                            <input type="submit" value="確認">
+                        </p>
+                        <?php
 
     $查詢 = $_POST["查詢日期"];
 
@@ -37,20 +54,16 @@
             
             echo  "<table border = '1' align = 'center'>";
             echo "<tr>";
-                echo "<th>日期</th>";
+              
                 echo "<th>桌號</th>";
                 echo "<th>開桌時間</th>";
                 echo "<th>人數</th>";
                 echo "<th>結帳時間</th>";
                 echo "<th>餐點明細</th>";
-                echo "<td>
-                            <a href='dbdeletelist.php?pk=".$datas[$i]['adm_pk']."'><button class='btn btn-success'>刪除</button></a>
-                            </td>";
-            echo "</tr>";
+       
             
             while($row_result = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
-                echo "<td>".$row_result['date']."</td>";
                 echo "<td>".$row_result['table_number']."</td>";
                 echo "<td>".$row_result['start_time']."</td>";
                 echo "<td>".$row_result['customer_count']."</td>";
@@ -72,15 +85,13 @@
             echo "</table>";
             
     ?>
-             </form>
-        </div>
+                    </form>
+
+                    
+            </div>
+        </form>
+    </div>
+</body>
 
 
-<div class="button-container">
-	<button class="registbutton" onclick="location.href='../page/management.html'">
-		<span>返回</span>
-	</button>
-</div>
 </html>
-
-

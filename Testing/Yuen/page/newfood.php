@@ -18,7 +18,8 @@
     $identity = $_SESSION["identity"];
     $store = $_SESSION['store_id'];
 
-    $meal_type = $_POST['type_id'];
+    $type_id = $_POST['type_id'];
+    $type_name = $_POST['type_name'];
     $meal_name = $_POST['meal_name'];
     $meal_price = $_POST['meal_price'];
     $meal_note = $_POST['meal_note'];

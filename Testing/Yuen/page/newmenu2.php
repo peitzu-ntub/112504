@@ -41,7 +41,7 @@
                         <div class="input-box">
                             <div class="input-row">
                                 <span class="details">餐點類型：</span>
-                                <select name="type_id" id="type_id">
+                                <select name="type_name" id="type_name">
                                     <?php
                                     $sql = "
                                         select * from food_type
@@ -74,7 +74,7 @@
                         </div>
 
                         <input class="submit" type="submit" value="儲存" style="font-size: 5px;"></input>
-                        <div class="laststep" type="return" onclick="location.href='newmenu1.html'">
+                        <div class="laststep" type="return" onclick="location.href='newmenu1.php'">
                             <span style="font-size: 5px;">上一步</span>
                         </div>
                         <div class="nextstep" type="next" onclick="location.href='newmenu3.html'">

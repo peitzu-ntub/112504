@@ -3,13 +3,12 @@
 
 <head>
 	<meta charset="utf-8">
-    <link href="../js/create.css" rel="stylesheet">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>員工資料</title>
 
-	
+	<link href="../js/create.css" rel="stylesheet">
 </head>
 <?php
 
@@ -55,34 +54,40 @@ $datas_len = count($datas); //目前資料筆數
 
 ?>
 <body>
+	<div class="logout" type="button" name="按鈕名稱" onclick="location.href='create.html'">
+		<div align="left">
+			<img src="../images/back.png" alt="返回icon" />
+			<span style="font-size: 13px;">返回</span>
+		</div>
+	</div>
 	<div class="container-wrapper">
-        <form action="staff_del.php" method="POST">
+		<form action="#">
 			<div class="container1">
-				<div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
-					<div align="left">
-						<img src="../images/back.png" alt="返回icon" />
-						<span style="font-size: 18px;">返回</span>
-					</div>
-				</div>
 				<div align="center">
 					<font size="20">員工資料管理</font>
-				</div>
+				</div><br><br>
 
-				<!-- <div class="insidebox"> -->
+				<div class="input-box">
+					<span class="details" style="font-size: 19px;">員工編號：</span>
+					<input type="search" name="staff_id" id="staff_id" placeholder="請輸入員工編號" style="font-size: 15px;">
+
+					<button class="searchbutton" type="search"
+						style="font-size: 17px; width: 68px; height: 34px; background-color: #8cb87c; border-radius: 20px; border: 3px solid #8cb87c;">搜尋</button>
+				</div><br>
 
 				<div class="ininsidebox">
 					<table width="50%">
 						<tr>
-							<td>
+							<td style="text-align:center">
 								<div class="sidebar_left">刪除</div>
 							</td>
-							<td>
+							<td style="text-align:center">
 								<div class="content1">員工編號</div>
 							</td>
-							<td>
+							<td style="text-align:center">
 								<div class="content2">員工姓名</div>
 							</td>
-							<td>
+							<td style="text-align:center">
 								<div class="sidebar_right">編輯</div>
 							</td>
 						</tr>

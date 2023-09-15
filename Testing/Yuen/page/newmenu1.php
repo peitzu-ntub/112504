@@ -126,7 +126,7 @@ $datas_len = count($datas); //目前資料筆數
                         </div> -->
                         <input class="submit" type="submit" value="新增" style="font-size: 5px;">
                         </input>
-                        <div class="nextstep" type="next" onclick="location.href='newmenu2.html'">
+                        <div class="nextstep" type="next" onclick="location.href='newmenu2.php'">
                             <span style="font-size: 5px;">下一步</span>
                         </div>
                     </div>

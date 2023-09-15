@@ -6,12 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>客製化1</title>
+    <title>編輯類型</title>
 
-    <link href="../js/newmenu1.css" rel="stylesheet">
+    <link href="../js/edittype.css" rel="stylesheet">
 
 </head>
-
 <?php
 include "../bin/conn.php";
 
@@ -57,68 +56,36 @@ echo "<br><br>";
 $datas_len = count($datas); //目前資料筆數
 
 ?>
-
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
-        <div align="left">
-            <img src="../images/back.png" alt="返回icon" />
-            <span style="font-size: 10px;">返回</span>
-        </div>
-    </div>
-    <div class="container-wrapper">
-        <form action="menu1.php" method="POST">
-            <div class="container1">
-                <div class="topinput" style="font-size: 15px;">
-                    <font color="#bf6900" size="5">餐點類型：</font>
-                    <input type="text" class="form-control" value="<?php echo $datas[0]['type_name'] ?>" name="type_name" ><br>
-                </div>
-                <div class="insidebox">
-                    <div class="ininsidebox">
-                        <table width="50%">
-                            <tr>
-                                <td>
-                                    <div class="sidebar_left">刪除</div>
-                                </td>
-                                <td>
-                                    <div class="content1">類型名稱</div>
-                                </td>
-                                <td>
-                                    <div class="content2">編輯</div>
-                                </td>
-                                <td>
-                                    <div class="sidebar_right">確定</div>
-                                </td>
-                            </tr>
-                            <tbody>
-                            <?php
-                            for ($i = 0; $i < $datas_len; $i++) {
-                                echo "<tr>";
-                                echo "<td>
-                                <a href='type_del.php?type_name=".$datas[$i]['type_name']."'><img src=../images/trash.png></img></a></td>";
-                                echo "<td>" . $datas[$i]['type_name'] . "</td>";
-                                echo "<td>
-                                <a href='type_edit.php?type_name=".$datas[$i]['type_name']."'><img src=../images/signature.png></img></a></td>";
-                             }
-                            ?>
 
-                            </tbody>
-                        </table>
-<!--                         <div class="input-box">
-                            <div class="input-row"><span>類型名稱</span></div>
-                            <div class="input-row"> <img src="../images/trash.png" /> <input type="" name="" id=""></div>
-                        </div> -->
-                        <input class="submit" type="submit" value="新增" style="font-size: 5px;">
-                        </input>
-                        <div class="nextstep" type="next" onclick="location.href='newmenu2.html'">
-                            <span style="font-size: 5px;">下一步</span>
-                        </div>
+    <div class="container-wrapper">
+            <div class="container1">
+                <div class="upsidebox">
+                    <span style="font-size: 45px;">
+                        <img src="../images/menu.png" />
+                        編輯餐點類型
+                        <!-- <img src="../images/menu.png" /> -->
+                    </span>
+                </div>
+                <div class="downsidebox"></div>
+                <div class="insidebox">
+                <form method="post" action="type_up.php?type_name=<?php echo $datas[0]['type_name']?>">
+
+                    <div class="topinput" style="font-size: 15px;">
+                        <font color="#5db6f1" size="5">餐點類型：</font>
+                        <input type="text" class="form-control" value="<?php echo $datas[0]['type_name'] ?>" name="type_name" ><br>
                     </div>
+                </div>
+                <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.php'">
+                    <img src="../images/back.png" alt="返回icon" />
+                    <span style="font-size: 10px;">返回</span>
+                </div>
+                <input class="submit" type="submit" value="儲存"></input>
+                <div class="nextstep" type="next" onclick="location.href='newmenu2.php'">
+                    <span style="font-size: 5px;">下一步</span>
                 </div>
             </div>
         </form>
     </div>
 </body>
-
-
-
 </html>
