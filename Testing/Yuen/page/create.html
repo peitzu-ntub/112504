@@ -15,19 +15,24 @@
     <div class="container-wrapper">
         <form action="staff_in.php" method="POST" enctype="multipart/form-data">
             <div class="container1">
-                <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
+                <!-- <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
                     <div align="left">
                         <img src="../images/back.png" alt="返回icon" />
                         <span style="font-size: 18px;">返回</span>
                     </div>
-                </div>
+                </div> -->
                 <div align="center">
-                    <font size="20">員工資料管理</font>
+                    <font size="20">員工資料管理</font><br><br>
                 </div>
 
                 <div class="insidebox">
                     <div class="ininsidebox">
-                        
+
+                        <div class="input-box">
+                            <span class="details">密碼：</span>
+                            <input type="text" name="staff_psw" id="staff_psw" placeholder="請輸入員工的密碼" required>
+                        </div>
+
                         <div class="input-box">
                             <span class="details">姓名：</span>
                             <input type="text" name="staff_name" id="staff_name" placeholder="請輸入員工姓名" required>
@@ -40,9 +45,9 @@
 
                         <div class="input-box">
                             <span class="details">性別：</span>
-                            <select name="staff_gender" id="staff_gender">
-                                <option value="男">男</option>
-                                <option value="女">女</option>
+                            <select id="group" value="1">
+                                <option value="male">男</option>
+                                <option value="female">女</option>
                             </select>
                         </div>
 
@@ -57,13 +62,18 @@
                         </div>
 
                         <div class="input-box">
+                            <span class="details">到職日期：</span>
+                            <input type="date" name="due_date" id="due_date" placeholder="請輸員工的到職日期" required>
+                        </div>
+
+                        <div class="input-box">
                             <span class="details">緊急聯絡人：</span>
                             <input type="text" name="em_name" id="em_name" placeholder="請輸入員工的緊急聯絡人姓名" required>
                         </div>
 
                         <div class="input-box">
                             <span class="details">緊急連絡人電話：</span>
-                            <input type="text" name="em_tel" id="em_tel" placeholder="請輸入員工的緊急聯絡人電話" required>
+                            <input type="tel" name="em_tel" id="em_tel" placeholder="請輸入員工的緊急聯絡人電話" required>
                         </div>
 
                         <div class="input-box">
@@ -72,31 +82,25 @@
                         </div>
 
                         <div class="input-box">
-                            <span class="details">到職日期：</span>
-                            <input type="date" name="due_date" id="due_date" placeholder="請輸員工的到職日期" required>
-                        </div>
-
-                        <div class="input-box">
-                            <span class="details">密碼：</span>
-                            <input type="text" name="staff_psw" id="staff_psw" placeholder="請輸入員工的密碼" required>
+                            <span class="details"></span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <input class="submit" type="submit" value="儲存" style="font-size: 15px;"></input>
+            <input class="submit" type="submit" value="儲存" style="font-size: 15px;"
+                onclick="location.href='#.html'"></input>
             <div class="laststep" type="return" name="按鈕名稱" onclick="location.href='newmenu1.html'">
                 <span style="font-size: 15px;">上一步</span>
             </div>
-            <div class="nextstep" type="next" name="按鈕名稱" onclick="location.href='newmenu3.html'">
+            <div class="nextstep" type="next" name="按鈕名稱" onclick="location.href='employee.html'">
                 <span style="font-size: 15px;">下一步</span>
             </div>
-            <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='employee.php'">
+            <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='employee.html'">
                 <span style="font-size: 14px;">查看全部員工資料</span>
             </div>
+        </form>
     </div>
-    </div>
-    </form>
 </body>
 
 </html>
