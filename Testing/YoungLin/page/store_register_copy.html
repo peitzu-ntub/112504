@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>新增店鋪</title>
+    <title>add store</title>
 
     <link href="../js/regist_store.css" rel="stylesheet">
+    <script src="../js/jquery-3.6.4.min.js"></script>
 
 </head>
 
@@ -36,6 +37,12 @@
         <div class="container1">
             <form action="#">
                 <div class="user-details">
+                    <div class="input-box">
+                        <span class="details" style="font-size: 20px;">店家代號：</span>
+                        <input type="text" name="store_id" id="store_id" placeholder="請輸入店家代號" required>
+                        <input type="hidden" name="boss_identity" id="boss_identity" value="A123456789">
+                        <!-- 之後跳進來的時候要把身分證資料放進去boss_identity這裡，現在是假的老闆身分證 -->
+                    </div>
                     <div class="input-box">
                         <span class="details" style="font-size: 20px;">店家名稱：</span>
                         <input type="text" name="store_name" id="store_name" placeholder="請輸入店家名稱" required>
@@ -76,11 +83,12 @@
                         <input type="number" min=1 name="table_count" id="table_count" placeholder="請輸入桌數" required>
                     </div>
                 </div>
-            </form>
         </div>
     </div>
-    <input class="addstore" type="submit" value="確定" style="font-size: 5px;" onclick="location.href='select_store_two.html'">
-        <!-- <img src="../images/OK.png" alt="OK圖片" /> --></input>
+    <input class="addstore" type="submit" value="確定" style="font-size: 5px;">
+            </form>
+        <!-- <img src="../images/OK.png" alt="OK圖片" /> -->
+    </input>
 </body>
 
 
@@ -147,8 +155,11 @@
                 data: dataString,
                 //獲得正確回應時，要做的事情
                 success: function (response) {
+                    //alert(response);
                     var json = $.parseJSON(response);
+                    alert(json.message);
                     if (json.result == 'OK') {
+                        //alert (json.message);
                         $("#message").html('成功：\n' + json.message);
                     } else {
                         $("#message").html('失敗：\n' + json.message);
