@@ -27,9 +27,9 @@ body{
 .col-md-5 span{
     color: green;
     text-align: justify;
-    position: absolute;
+    position: relative;
     top: -4px;
-    left: 60px;
+    left: 10px;
     z-index: 100;
     font-size: 300%;
 }
@@ -44,13 +44,21 @@ body{
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
     padding-left: 50px;
     padding-right: 50px;
-    position: absolute;
+    position: relative; /*此處使用relative整個才能夠隨螢幕移動!*/
     top: 50px;
-    left: 620px;
+    left: 15px;
     z-index: 99;
 }
 
-.aside{ 
+/* @media(max-width: 992px) {
+    .caption {
+        position: fixed;
+        left: 35%;
+        width: 25%;
+    }
+} */
+
+.aside{
     display: inline-block; 
     border-radius: 15px;
     text-align: center;
@@ -59,11 +67,25 @@ body{
     background-color: #fff;
     border: 2px solid #ccc;
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
-    margin-top: 150px;
+    margin-top: 130px;
     margin-left: -220px;
     padding-left: 30px;
     padding-right: 30px;
 }
+
+/* .wrap{
+    max-width: 800px;
+    margin: 0 auto;
+} */
+
+/* @media(max-width: 992px) {
+    .aside {
+        position: fixed;
+        left: 42%;
+        width: 60%;
+        height: 320px;
+    }
+} */
 
 .btn{
     font-size: 20px;
@@ -130,13 +152,31 @@ body{
 }
 
 img[src="../images/open.png"]{
-    position: absolute;
-    top: 250px; 
-    left: 340px;
+    position: relative;
+    top: 45px; 
+    left: 480px;
+    z-index: 99;
 }
 
+/* @media(max-width: 992px) {
+    img[src="../images/open.png"] {
+        position: fixed;
+        top: 40%;
+        left: 75%;
+    }
+} */
+
 img[src="../images/menu.png"]{
-    position: absolute;
-    top: 360px; 
-    left: -150px;
+    position: relative;
+    top: 160px;
+    left: -485px;
+    z-index: 99;
 }
+
+/* @media(max-width: 992px) {
+    img[src="../images/menu.png"] {
+        position: fixed;
+        top: 55%;
+        left: 20%;
+    }
+} */
