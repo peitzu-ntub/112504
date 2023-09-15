@@ -57,6 +57,7 @@ $datas_len = count($datas); //目前資料筆數
 ?>
 <body>
     <div class="container-wrapper">
+    <form method="post" action="staff_up.php?staff_id=<?php echo $datas[0]['staff_id']?>">
             <div class="container1">
                 <!-- <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
                     <div align="left">
@@ -71,7 +72,6 @@ $datas_len = count($datas); //目前資料筆數
                 <div class="insidebox">
                     <div class="ininsidebox">
                         <div class="input-box">
-						<form method="post" action="staff_up.php?staff_id=<?php echo $datas[0]['staff_id']?>">
 
                             <span class="details">員工編號：</span>
                             <input type="text" class="form-control" value="<?php echo $datas[0]['staff_id'] ?>" name="staff_id" disabled><br>

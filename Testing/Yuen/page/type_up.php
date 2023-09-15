@@ -1,13 +1,13 @@
 <?php
 include "../bin/conn.php";
 
-$type_name=$_GET['type_name'];
+$type_id=$_GET['type_id'];
 
 
 $type_name = $_POST['type_name'];
 
 
-$sql = "UPDATE food_type SET type_name = '".$type_name."' WHERE type_name = '".$type_name."'";
+$sql = "UPDATE food_type SET type_name = '".$type_name."' WHERE type_id = '".$type_id."'";
 
 
 if ($con->query($sql) === TRUE) {

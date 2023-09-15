@@ -29,7 +29,7 @@
             boss_identity, store_id, meal_id, type_id, meal_name,
             meal_price, meal_note
         ) values (
-            '$identity', '$store', '$meal_name', '$meal_type', '$meal_name',
+            '$identity', '$store', '$meal_name', '$type_id', '$meal_name',
             $meal_price, '$meal_note'
         );    
     ";

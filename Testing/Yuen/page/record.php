@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="container-wrapper">
-    <form action="1.php" method="POST">
+    <form action="record.php" method="POST">
             <div class="subject">
                 <div class="title">
                     <div align="left">
@@ -40,7 +40,7 @@
 
         include ("../bin/conn.php");
 
-            $sql = "select date(b.start_time) as date, b.table_number, b.start_time, b.customer_count, b.end_time, a.meal_id
+            $sql = "select date(b.start_time) as date, b.table_number, time(b.start_time) start_time, b.customer_count, time(b.end_time)end_time, a.meal_id
             FROM store_order_item as a 
             left join store_order as b
             on a.boss_identity = b.boss_identity and a.store_id = b.store_id and a.order_no = b.order_no
@@ -54,7 +54,7 @@
             
             echo  "<table border = '1' align = 'center'>";
             echo "<tr>";
-              
+                echo "<th>日期</th>";
                 echo "<th>桌號</th>";
                 echo "<th>開桌時間</th>";
                 echo "<th>人數</th>";
@@ -64,6 +64,7 @@
             
             while($row_result = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
+                echo "<td>".$row_result['date']."</td>";
                 echo "<td>".$row_result['table_number']."</td>";
                 echo "<td>".$row_result['start_time']."</td>";
                 echo "<td>".$row_result['customer_count']."</td>";

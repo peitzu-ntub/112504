@@ -41,7 +41,7 @@
                         <div class="input-box">
                             <div class="input-row">
                                 <span class="details">餐點類型：</span>
-                                <select name="type_name" id="type_name">
+                                <select name="type_id" id="type_id">
                                     <?php
                                     $sql = "
                                         select * from food_type

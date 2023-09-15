@@ -59,6 +59,8 @@ $datas_len = count($datas); //目前資料筆數
 <body>
 
     <div class="container-wrapper">
+    <form method="post" action="type_up.php?type_id=<?php echo $datas[0]['type_id']?>">
+
             <div class="container1">
                 <div class="upsidebox">
                     <span style="font-size: 45px;">
@@ -69,7 +71,6 @@ $datas_len = count($datas); //目前資料筆數
                 </div>
                 <div class="downsidebox"></div>
                 <div class="insidebox">
-                <form method="post" action="type_up.php?type_name=<?php echo $datas[0]['type_name']?>">
 
                     <div class="topinput" style="font-size: 15px;">
                         <font color="#5db6f1" size="5">餐點類型：</font>
