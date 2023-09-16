@@ -61,7 +61,7 @@ $datas_len = count($datas); //目前資料筆數
 		</div>
 	</div>
 	<div class="container-wrapper">
-		<form action="#">
+    	<form action="1.php" method="POST">
 			<div class="container1">
 				<div align="center">
 					<font size="20">員工資料管理</font>
@@ -69,7 +69,7 @@ $datas_len = count($datas); //目前資料筆數
 
 				<div class="input-box">
 					<span class="details" style="font-size: 19px;">員工編號：</span>
-					<input type="search" name="staff_id" id="staff_id" placeholder="請輸入員工編號" style="font-size: 15px;">
+					<input type="text" name="staff_id" id="staff_id" placeholder="請輸入員工編號" style="font-size: 15px;">
 
 					<button class="searchbutton" type="search"
 						style="font-size: 17px; width: 68px; height: 34px; background-color: #8cb87c; border-radius: 20px; border: 3px solid #8cb87c;">搜尋</button>

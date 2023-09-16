@@ -83,7 +83,7 @@ $datas_len = count($datas); //目前資料筆數
 
                         <div class="input-box">
                             <span class="details">姓名：</span>
-                            <input type="text" class="form-control" value="<?php echo $datas[0]['staff_name'] ?>" name="staff_name"><br>
+                            <input type="text" class="form-control" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" value="<?php echo $datas[0]['staff_name'] ?>" name="staff_name"><br>
                         </div>
 
                         <div class="input-box">
@@ -97,7 +97,7 @@ $datas_len = count($datas); //目前資料筆數
 
                         <div class="input-box">
                             <span class="details">聯絡電話：</span>
-							<input type="text" class="form-control" value="<?php echo $datas[0]['staff_tel'] ?>" name="staff_tel"><br>                        </div>
+							<input type="text" class="form-control" oninput="value=this.value.replace(/\D/g,'')" value="<?php echo $datas[0]['staff_tel'] ?>" name="staff_tel"><br>                        </div>
 
                         <div class="input-box">
                             <span class="details">地址：</span>
@@ -109,15 +109,15 @@ $datas_len = count($datas); //目前資料筆數
 
                         <div class="input-box">
                             <span class="details">緊急聯絡人：</span>
-							<input type="text" class="form-control" value="<?php echo $datas[0]['em_name'] ?>" name="em_name"><br>                        </div>
+							<input type="text" class="form-control" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" value="<?php echo $datas[0]['em_name'] ?>" name="em_name"><br>                        </div>
 
                         <div class="input-box">
                             <span class="details">緊急連絡人電話：</span>
-							<input type="text" class="form-control" value="<?php echo $datas[0]['em_tel'] ?>" name="em_tel"><br>                        </div>
+							<input type="text" class="form-control" oninput="value=this.value.replace(/\D/g,'')" value="<?php echo $datas[0]['em_tel'] ?>" name="em_tel"><br>                        </div>
 
                         <div class="input-box">
                             <span class="details">與緊急連絡人關係：</span>
-							<input type="text" class="form-control" value="<?php echo $datas[0]['relation'] ?>" name="relation"><br>                        </div>
+							<input type="text" class="form-control" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" value="<?php echo $datas[0]['relation'] ?>" name="relation"><br>                        </div>
 
                         <div class="input-box">
                             <span class="details"></span>

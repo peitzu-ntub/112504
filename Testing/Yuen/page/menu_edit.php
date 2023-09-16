@@ -68,7 +68,7 @@ $datas_len = count($datas); //目前資料筆數
                             <form method="post" action="menu_up.php?meal_name=<?php echo $datas[0]['meal_name']?>">
                                 <?php
                                     echo "原餐點類型：";
-                                    echo $datas[0]['type_name'] ;
+                                    echo $datas[0]['type_id'] ;
                                     echo "</br>";
                                     $query = "SELECT type_id FROM food_type";
                                     $result = mysqli_query($con, $query);
@@ -113,7 +113,7 @@ $datas_len = count($datas); //目前資料筆數
 
                         <input class="submit" type="submit" value="儲存" style="font-size: 5px;">
                         </input>
-                        <div class="laststep" type="return" onclick="location.href='newmenu1.php'">
+                        <div class="laststep" type="return" onclick="location.href='newmenu1.html'">
                             <span style="font-size: 5px;">上一步</span>
                         </div>
                         <div class="nextstep" type="next" onclick="location.href='newmenu3.html'">
