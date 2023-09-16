@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>評價查詢</title>
+
+    <link href="../js/feedback.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='create.html'">
+        <div align="left">
+            <img src="../images/back.png" alt="返回icon" />
+            <span style="font-size: 13px;">返回</span>
+        </div>
+    </div>
+    <div class="container-wrapper">
+        <nav>
+            <ul>
+                <li><a href="../page/allfeedback.html">全品項評價查詢</a></li>
+                <li><a href="../page/onefeedback.html">單一品項評價查詢</a></li>
+            </ul>
+        </nav><br><br>
+        <form action="#">
+            <div class="input-box">
+                <span class="details" style="font-size: 19px;">評價日期：</span>
+                <input type="date" name="查詢日期" style="font-size: 15px;"> ~
+                <input type="date" name="查詢日期" style="font-size: 15px;">
+                <button class="searchbutton" type="search"
+                    style="font-size: 17px; width: 68px; height: 34px; background-color: #8cb87c; border-radius: 20px; border: 3px solid #8cb87c;">查詢</button>
+            </div><br>
+            <div>
+                <input type="radio" name="score" value="high"
+                    style="font-size: 15px;">由高到低&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <input type="radio" name="score" value="low" style="font-size: 15px;">由低到高
+            </div><br>
+
+            <div class="ininsidebox">
+                <span class="details" style="font-size: 19px;">期間平均星星數：</span>
+                <table border="1" align="center">
+                    <tr>
+                        <th>日期 / 時間</th>
+                        <th>餐點</th>
+                        <th>星星數</th>
+                        <th>文字評價</th>
+                    </tr>
+                </table>
+
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

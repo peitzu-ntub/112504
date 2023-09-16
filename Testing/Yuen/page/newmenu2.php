@@ -42,8 +42,7 @@
                             <div class="input-row">
                                 <span class="details">餐點類型：</span>
                                 <select name="type_id" id="type_id">
-                                <option value="none">(空)</option>
-                                <?php
+                                    <?php
                                     $sql = "
                                         select * from food_type
                                         where boss_identity = '$boss' and store_id = '$store'";
@@ -57,42 +56,35 @@
                                 </select>
                             </div>
                             <div class="input-row">
-                                <span class="details">價格：</span>
-                                <input type="number" min="0" name="meal_price" id="meal_price" placeholder="請輸入正確價格"
-                                    required>
-                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點介紹：</span>
-                                <textarea id="meal_note" name="meal_note" rows="2" cols="20"
-                                    placeholder="請輸入餐點介紹(上限50字)" style="resize: none;"
-                                    maxlength="50"></textarea>
-                            </div>
-                            <div class="input-row">
-                                <span class="details">圖片：</span>
-                                <input type="file" name="meal_pic" id="meal_pic">
-                            </div>
-                            <div class="input-row">
                                 <span class="details">餐點名稱：</span>
                                 <input type="text" name="meal_name" id="meal_name" placeholder="請輸入餐點名稱" required>
                             </div>
+                            <div class="input-row">
+                                <span class="details">餐點介紹：</span>
+                                <textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="請輸入餐點介紹(上限50字)" style="resize: none;" maxlength="50"></textarea>
+                            </div>
+                            <div class="input-row">
+                                <span class="details">餐點價格：</span>
+                                <input type="number" min="0" name="meal_price" id="meal_price" placeholder="請輸入正確價格" required>
+                            </div>
+                            <div class="input-row">
+                                <span class="details">餐點圖片：</span>
+                                <input type="file" name="meal_pic" id="meal_pic">
+                            </div>
                         </div>
 
-                        <input class="submit" type="submit" value="儲存" style="font-size: 5px;">
-                        </input>
-                        <div class="laststep" type="return" onclick="location.href='newmenu1.html'">
+                        <input class="submit" type="submit" value="儲存" style="font-size: 5px;"></input>
+                        <div class="laststep" type="return" onclick="location.href='newmenu1.php'">
                             <span style="font-size: 5px;">上一步</span>
                         </div>
                         <div class="nextstep" type="next" onclick="location.href='newmenu3.html'">
                             <span style="font-size: 5px;">下一步</span>
                         </div>
-                        <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 5px;"
-                            onclick="location.href='allmenu.php'">
-                        </input>
+                        <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 5px;"onclick="location.href='allmenu.php'"></input>
                     </div>
                 </div>
             </div>
         </form>
     </div>
 </body>
-
 </html>

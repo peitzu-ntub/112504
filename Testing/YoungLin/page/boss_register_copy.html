@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>老闆註冊</title>
+    <title>registboss</title>
 
     <link href="../js/boss_register_copy.css" rel="stylesheet">
     <script src="../js/jquery-3.6.4.min.js"></script>
@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='#.html'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='home.html'">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
             <span style="font-size: 5px;">返回</span>
@@ -34,21 +34,27 @@
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">姓名：</span>
-                        <input type="text" name="boss_name" id="boss_name" placeholder="請輸入您的名字" required>
+                        <input type="text" name="boss_name" id="boss_name" placeholder="請輸入您的名字(中文)" 
+                        onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))"
+                        required>
                     </div>
                     <div class="input-box">
                         <span class="details">帳號：</span>
-                        <input type="text" name="boss_identity" id="boss_identity" placeholder="請輸入您的身分證" required>
+                        <input type="text" name="boss_identity" id="boss_identity" placeholder="請輸入您的身分證" 
+                        maxlength="10" class="uppercase" onClick="checkID(idNumber.value)"  required>
+                        <!--只能輸英文及數字 
+                          onkeyup="value=value.replace(/[\W]/g,'') 
+                          "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/
+                         -->
                     </div>
                     <div class="input-box">
                         <span class="details">密碼：</span>
-                        <input type="text" name="boss_psw" id="boss_psw1" placeholder="請輸入您的密碼" required>
+                        <input type="text" name="boss_psw" id="boss_psw1" placeholder="請輸入您的密碼" 
+                         required>
                     </div>
                     <div class="input-box">
-                      <div class="smalldetails">
                         <span class="details">確認密碼：</span>
                         <input type="text" name="boss_psw" id="boss_psw2" placeholder="確認您的密碼" required>
-                      </div>
                     </div>
                 </div>
 
@@ -85,13 +91,14 @@
           success: function (response) {
             var json = $.parseJSON(response);
             if (json.result == 'OK') {
-              $("#message").html("註冊成功");
+              alert('老闆註冊成功！');
+              $("#message").html("註冊成功");              
               $('input[id=boss_name]').val('');
               $('input[id=boss_identity]').val('');
               $('input[id=boss_psw1]').val('');
               $('input[id=boss_psw2]').val('');
   
-              window.location = "login.html"
+              //window.location = "login.html"
             } else {
               alert('儲存失敗：\n' + json.message);
             }
@@ -131,6 +138,23 @@
       }
   
     }
+
+//身分證字號
+  import {
+    isNationalIdentificationNumberValid, // 身分證字號
+    isEInvoiceCellPhoneBarcodeValid, // 手機條碼
+  } from 'taiwan-id-validator';
+
+  // 驗證身分證字號
+  const jsId = document.getElementById('js_id');
+  let value = jsId.value.toLocaleUpperCase();
+  if(isNationalIdentificationNumberValid(value)) {
+      // 格式正確時
+  } else {
+      // 格式錯誤時
+  }
+
+
   </script>
 
 </html>

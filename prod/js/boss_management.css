@@ -18,17 +18,17 @@ body{
 /* 圖案 */
 .myTitle{
   position: absolute;
-  top: -40px;
-  left: -40px;
+  top: -30px;
+  left: -50px;
   z-index: 100;
 }
 
 .col-md-5 span{
   color: green;
   text-align: justify;
-  position: absolute;
-  top: -4px;
-  left: 60px;
+  position: relative;
+  top: -2px;
+  left: 10px;
   z-index: 100;
   font-size: 300%;
 }
@@ -39,13 +39,12 @@ body{
   width: 200px;
   height: 60px;
   background-color: lightgreen;
-  opacity: 0.8;
   box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
   padding-left: 50px;
   padding-right: 50px;
-  position: absolute;
+  position: relative;  /*此處使用relative整個才能夠隨螢幕移動!*/
   top: 50px;
-  left: 620px;
+  left: 135px;
   z-index: 99;
 }
 
@@ -58,10 +57,12 @@ body{
   background-color: #fff;
   border: 2px solid #ccc;
   box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
-  margin-top: 180px;
+  margin-top: 130px;
   margin-left: -25px;
   padding-left: 30px;
   padding-right: 30px;
+  position: relative;
+  left: 10px;
 }
 
 .btn{
@@ -75,6 +76,7 @@ body{
   border-radius: 30px;
   font-weight: bold;
   margin-top: 40px;
+  margin-left: 50px;
   margin-bottom: 10px;
   padding: 15px;
   width: 70%;
@@ -99,6 +101,7 @@ body{
   font-weight: bold;
   margin-top: 35px;
   margin-bottom: 30px;
+  margin-left: -80px;
   padding: 15px;
   width: 70%;
   color: green;
@@ -178,25 +181,25 @@ body{
 }
 
 img[src="../images/profile.png"]{
-  position: absolute;
-  top: 225px; 
-  left: 970px;
+  position: relative;
+  top: 25px; 
+  left: 35px;
 }
 
 img[src="../images/chat.png"]{
-  position: absolute;
-  top: 330px; 
-  left: 475px;  /*970px*/
+  position: relative;
+  top: 25px; 
+  left: -470px;
 }
 
 img[src="../images/record.png"]{
-  position: absolute;
-  top: 450px; 
-  left: 970px;  /*970px*/
+  position: relative;
+  top: 20px; 
+  left: 35px; 
 }
 
 img[src="../images/menu (3).png"]{
-  position: absolute;
-  top: 550px; 
-  left: 475px;
+  position: relative;
+  top: 25px; 
+  left: -95px;
 }
