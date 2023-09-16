@@ -3,6 +3,26 @@
 
     $data= array();
 
+    // 使用者提供的密碼
+    $boss_psw = $_POST['boss_psw']; // 假設使用者將密碼作為 POST 參數提交
+
+    // 檢查密碼是否至少8個字符長度
+    if (strlen($boss_psw) < 8) {
+        $data['result'] = 'NG';
+        $data['message'] = "密碼必須至少含有8個字元";
+        echo json_encode($data);
+        exit();
+    } else {
+        // 檢查密碼是否包含英文和數字
+        if (!preg_match('/[A-Za-z]/', $boss_psw) or !preg_match('/\d/', $boss_psw)) {
+
+            $data['result'] = 'NG';
+            $data['message'] = "密碼必須包含英文和數字";
+            echo json_encode($data);
+            exit();
+        } 
+    }
+    
     /**
      * 判斷身分證字號
      * @param  string $id [身分證字號]
