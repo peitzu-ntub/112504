@@ -17,7 +17,8 @@ include "../bin/conn.php";
 // 設置一個空陣列來放資料
 $datas = array();
 
-$sql = "SELECT staff_id, staff_name FROM store_staff";
+$查詢 = $_POST["查詢"];
+$sql = "SELECT staff_id, staff_name FROM store_staff where staff_id = '$查詢'";
 
 $result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
 
@@ -54,7 +55,7 @@ $datas_len = count($datas); //目前資料筆數
 
 ?>
 <body>
-	<div class="logout" type="button" name="按鈕名稱" onclick="location.href='employee.php'">
+	<div class="logout" type="button" name="按鈕名稱" onclick="location.href='create.html'">
 		<div align="left">
 			<img src="../images/back.png" alt="返回icon" />
 			<span style="font-size: 13px;">返回</span>

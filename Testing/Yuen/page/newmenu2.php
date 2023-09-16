@@ -57,11 +57,11 @@
                             </div>
                             <div class="input-row">
                                 <span class="details">餐點名稱：</span>
-                                <input type="text" name="meal_name" id="meal_name" placeholder="請輸入餐點名稱" required>
+                                <input type="text" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" name="meal_name" id="meal_name" placeholder="請輸入餐點名稱" required>
                             </div>
                             <div class="input-row">
                                 <span class="details">餐點介紹：</span>
-                                <textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="請輸入餐點介紹(上限50字)" style="resize: none;" maxlength="50"></textarea>
+                                <textarea id="meal_note" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" name="meal_note" rows="2" cols="20" placeholder="請輸入餐點介紹(上限50字)" style="resize: none;" maxlength="50"></textarea>
                             </div>
                             <div class="input-row">
                                 <span class="details">餐點價格：</span>

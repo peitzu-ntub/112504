@@ -20,8 +20,8 @@ staff_psw = '".$staff_psw."' WHERE staff_id = '".$staff_id."'";
 
 
 if ($con->query($sql) === TRUE) {
-  echo "更新成功";
-  header("location:staff_edit.php?staff_id=".$staff_id);
+  echo "<script>alert('更新成功!');location.href='employee.php';</script>"; 
+  // header("location:staff_edit.php?staff_id=".$staff_id);
 } else {
   echo "Error: " . $sql . "<br>" . $con->error;
 }

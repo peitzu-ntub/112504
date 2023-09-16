@@ -90,27 +90,20 @@ $datas_len = count($datas); //目前資料筆數
                                     <?php endwhile;?>
 
                                 </select>
-                                
-                            </div>
+                                </div>
+                                <div class="input-row">
+                                <span class="details">餐點名稱：</span>
+                                <input type="text" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" class="form-control" value="<?php echo $datas[0]['meal_name'] ?>" name="meal_name" ><br>                            </div>
                             <div class="input-row">
-                                <span class="details"></span>
-                                價格：<input type="number" class="form-control" value="<?php echo $datas[0]['meal_price'] ?>" name="meal_price" ><br>
-                            </div>
+                                <span class="details">餐點介紹：</span>
+                                <input type="text" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" class="form-control" value="<?php echo $datas[0]['meal_note'] ?>" name="meal_note" ><br>                            </div>
                             <div class="input-row">
-                                <span class="details"></span>
-                                餐點介紹：<input type="text" class="form-control" value="<?php echo $datas[0]['meal_note'] ?>" name="meal_note" ><br>
-                                
-                            </div>
+                                <span class="details">餐點價格：</span>
+                                <input type="number" class="form-control" value="<?php echo $datas[0]['meal_price'] ?>" name="meal_price" ><br>                            </div>
                             <div class="input-row">
-                                <span class="details"></span>
-                                圖片：<input type="file" class="form-control" value="<?php echo $datas[0]['meal_pic'] ?>" name="meal_pic" ><br>
-                            </div>
-                            <div class="input-row">
-                                <span class="details"></span>
-                                餐點名稱：<input type="text" class="form-control" value="<?php echo $datas[0]['meal_name'] ?>" name="meal_name" ><br>
-                            </div>
+                                <span class="details">餐點圖片：</span>
+                                <input type="file" class="form-control" value="<?php echo $datas[0]['meal_pic'] ?>" name="meal_pic" ><br>                            </div>
                         </div>
-
                         <input class="submit" type="submit" value="儲存" style="font-size: 5px;">
                         </input>
                         <div class="laststep" type="return" onclick="location.href='newmenu1.html'">

@@ -13,8 +13,8 @@ meal_price = '".$meal_price."',  meal_note = '".$meal_note."' WHERE meal_name = 
 
 
 if ($con->query($sql) === TRUE) {
-  echo "更新成功";
-  header("location:menu_edit.php?meal_name=".$meal_name);
+  echo "<script>alert('更新成功!');location.href='allmenu.php';</script>"; 
+  // header("location:menu_edit.php?meal_name=".$meal_name);
 } else {
   echo "Error: " . $sql . "<br>" . $con->error;
 }
