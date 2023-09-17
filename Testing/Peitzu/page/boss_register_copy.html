@@ -34,7 +34,8 @@
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">姓名：</span>
-                        <input type="text" name="boss_name" id="boss_name" placeholder="請輸入您的名字" required>
+                        <input type="text" name="boss_name" id="boss_name" minlength="2"
+                        placeholder="請輸入您的中文名字" required>
                     </div>
                     <div class="input-box">
                         <span class="details">帳號：</span>
@@ -42,11 +43,13 @@
                     </div>
                     <div class="input-box">
                         <span class="details">密碼：</span>
-                        <input type="text" name="boss_psw" id="boss_psw1" placeholder="請輸入您的密碼" required>
+                        <input type="text" name="boss_psw" id="boss_psw1" minlength="8"
+                        placeholder="至少8字元 需含英文及數字" required>
                     </div>
                     <div class="input-box">
                         <span class="details">確認密碼：</span>
-                        <input type="text" name="boss_psw" id="boss_psw2" placeholder="確認您的密碼" required>
+                        <input type="text" name="boss_psw" id="boss_psw2" minlength="8"
+                        placeholder="再次確認您的密碼" required>
                     </div>
                 </div>
 
