@@ -40,7 +40,7 @@
                     <div class="input-box">
                         <span class="details" style="font-size: 20px;">店家代號：</span>
                         <input type="text" name="store_id" id="store_id" placeholder="請輸入店家代號" required>
-                        <input type="hidden" name="boss_identity" id="boss_identity" value="A123456789">
+                        <input type="hidden" name="boss_identity" id="boss_identity" value="boss">
                         <!-- 之後跳進來的時候要把身分證資料放進去boss_identity這裡，現在是假的老闆身分證 -->
                     </div>
                     <div class="input-box">
@@ -139,11 +139,16 @@
     $(document).ready(function () {
         //form的submit按鈕按下去的動作
         $("form").on("submit", function (e) {
+
+        var urlParams = new URLSearchParams(window.location.search);
+		var boss_identity = urlParams.get('boss_identity');
+        document.getElementById("boss_identity").value = boss_identity;
+
             //1.先把準備拋回去的資料「序列化」整理成json格式的字串
             var dataString = $(this).serialize();
 
             //可以把字串顯示出來看看是否正確
-            //alert(dataString);               
+            alert(dataString);               
 
             //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
             $.ajax({

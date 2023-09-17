@@ -2,6 +2,20 @@
     //session_start();
     include "../bin/conn.php";
 
+    $staff_id = $_GET['staff_id'];
+    //echo $staff_id;
+
+    $sql = "SELECT * FROM store_staff where staff_id = '$staff_id' ";
+    //echo $sql;
+
+    $result = mysqli_query($con, $sql);
+    $row_result = mysqli_fetch_assoc($result);
+    $_SESSION["boss_identity"] = $row_result['boss_identity'];
+    $_SESSION["store_id"] = $row_result['store_id'];
+    //echo $_SESSION["boss_identity"];
+    //echo $_SESSION["store_id"];
+
+
     //todo, 這是假的資料
     //預設的資料來源，是從登入而來。登入、選擇店家後，就會把以下這兩個資訊，放進SESSION裡，保留在Server端
     //讓同一個人的接續連線，可以直接拿來用
@@ -16,6 +30,7 @@
     $storeid = $_SESSION["store_id"];
 
     $sql = "SELECT * FROM store_info where boss_identity = '$id' and store_id = '$storeid'";
+    //echo $sql;
     $result = mysqli_query($con, $sql);
     $row_result = mysqli_fetch_assoc($result);
 
