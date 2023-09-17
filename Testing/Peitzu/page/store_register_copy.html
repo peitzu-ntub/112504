@@ -23,7 +23,7 @@
     <div class="who">
         <div align="left">
             <img src="../images/worker64.png" alt="老闆圖片" />
-            <span style="font-size: 28px;">老闆名字</span>
+            <span style="font-size: 28px;"><div id="boss_name">老闆名字</div></span>
         </div>
     </div>
     <div class="title">
@@ -137,7 +137,9 @@
 
     //當網頁準備好的時候，做以下的動作(函式)
     $(document).ready(function () {
-        //form的submit按鈕按下去的動作
+       
+        document.getElementById("boss_name").innerHTML = '張浿慈';
+         //form的submit按鈕按下去的動作
         $("form").on("submit", function (e) {
 
         var urlParams = new URLSearchParams(window.location.search);
