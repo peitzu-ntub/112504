@@ -11,7 +11,6 @@
     <link href="../js/newmenu2.css" rel="stylesheet">
 
 </head>
-
 <?php
 include "../bin/conn.php";
 
@@ -59,6 +58,7 @@ $datas_len = count($datas); //目前資料筆數
 ?>
 <body>
     <div class="container-wrapper">
+        <form action="newfood.php" method="POST">
             <div class="container1">
                 <font color="#e8a95b" size="6"style="align-items: center;">新增餐點</font>
                 <div class="insidebox">
@@ -90,10 +90,11 @@ $datas_len = count($datas); //目前資料筆數
                                     <?php endwhile;?>
 
                                 </select>
-                                </div>
-                                <div class="input-row">
+                                
+                            </div>
+                            <div class="input-row">
                                 <span class="details">餐點名稱：</span>
-                                <input type="text" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" class="form-control" value="<?php echo $datas[0]['meal_name'] ?>" name="meal_name" ><br>                            </div>
+                                <input type="text" class="form-control" value="<?php echo $datas[0]['meal_name'] ?>" name="meal_name" ><br>                            </div>
                             <div class="input-row">
                                 <span class="details">餐點介紹：</span>
                                 <input type="text" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" class="form-control" value="<?php echo $datas[0]['meal_note'] ?>" name="meal_note" ><br>                            </div>
@@ -104,22 +105,19 @@ $datas_len = count($datas); //目前資料筆數
                                 <span class="details">餐點圖片：</span>
                                 <input type="file" class="form-control" value="<?php echo $datas[0]['meal_pic'] ?>" name="meal_pic" ><br>                            </div>
                         </div>
-                        <input class="submit" type="submit" value="儲存" style="font-size: 5px;">
-                        </input>
-                        <div class="laststep" type="return" onclick="location.href='newmenu1.html'">
+
+                        <input class="submit" type="submit" value="儲存" style="font-size: 5px;"></input>
+                        <div class="laststep" type="return" onclick="location.href='newmenu1.php'">
                             <span style="font-size: 5px;">上一步</span>
                         </div>
                         <div class="nextstep" type="next" onclick="location.href='newmenu3.html'">
                             <span style="font-size: 5px;">下一步</span>
                         </div>
-                        <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 5px;"
-                            onclick="location.href='allmenu.php'">
-                        </input>
+                        <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 5px;"onclick="location.href='allmenu.php'"></input>
                     </div>
                 </div>
             </div>
         </form>
     </div>
 </body>
-
 </html>

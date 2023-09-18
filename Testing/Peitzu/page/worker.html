@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>loginworker</title>
+
+    <link href="../js/newlogin.css" rel="stylesheet">
+    <script src="../js/jquery-3.6.4.min.js"></script>
+
+</head>
+
+<body>
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='chose_work.html'">
+        <div align="left">
+            <img src="../images/back.png" alt="返回icon" />
+            <span style="font-size: 5px;">返回</span>
+        </div>
+    </div>
+
+    <div class="title">
+        <div align="left">
+            <img src="../images/worker128.png" alt="老闆圖片" />
+            <span style="font-size: 28px;">歡迎登入</span>
+        </div>
+    </div>
+
+    <div class="container-wrapper">
+        <div class="container1">
+            <form action="#">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details" style="font-size: 20px;">帳號：</span>
+                        <input type="text" name="boss_identity" id="boss_identity" placeholder="身分證號" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details" style="font-size: 20px;">密碼：</span>
+                        <input type="password" name="boss_pwd" id="boss_pwd" placeholder="密碼" required>
+                    </div>
+                </div>
+
+            <input class="addstore" type="submit" value="確定" style="font-size: 5px;"></input>
+
+            <div class="forget" type="return" name="按鈕名稱" onclick="location.href='#.html'">
+                <span style="font-size: 5px;">忘記密碼</span>
+            </div>
+        </form>
+        </div>
+    </div>
+</body>
+
+
+<script>
+    //當網頁準備好的時候，做以下的動作(函式)
+    $(document).ready(function () {
+        //form的submit按鈕按下去的動作
+        $("form").on("submit", function (e) {
+            //1.先把準備拋回去的資料「序列化」整理成json格式的字串
+            var dataString = $(this).serialize();
+
+            //可以把字串顯示出來看看是否正確
+            alert(dataString);               
+
+            //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
+            $.ajax({
+                //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+                type: "POST",
+                //指定要連接的PHP位址
+                url: "../bin/loginBoss.php",
+                //要傳送的資料內容
+                data: dataString,
+                //獲得正確回應時，要做的事情
+                success: function (response) {
+                    var json = $.parseJSON(response);
+                    if (json.result == 'OK') {
+                        alert (json.message);
+                        location.href="store_register_copy.html?boss_identity="+document.getElementById("boss_identity").value;
+                        //$("#message").html('成功：\n' + json.message);
+                    } else {
+                        alert (json.message);
+                        //$("#message").html('失敗：\n' + json.message);
+                    }
+                },
+                //獲得不正確的回應時，要做的事情
+                error: function (response) {
+                    alert ('錯誤');
+                    //$("#message").html(response);
+                }
+            });
+
+            e.preventDefault();
+        });
+    });
+</script>
+
+</html>

@@ -87,9 +87,9 @@ $datas_len = count($datas); //目前資料筆數
             <div class="container1">
                 <div class="topinput" style="font-size: 15px;">
                     <font color="#bf6900" size="5">餐點類型：</font>
-                    <input type="type_name" name="type_name" id=""placeholder="請輸入您欲新增的餐點類型">
+                    <input type="type_name" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" name="type_name" id=""placeholder="請輸入您欲新增的餐點類型">
                 </div>
-                <div class="insidebox">
+                <div class="insidebox"> 
                     <div class="ininsidebox">
                         <table width="50%">
                             <tr>
@@ -126,7 +126,7 @@ $datas_len = count($datas); //目前資料筆數
                         </div> -->
                         <input class="submit" type="submit" value="新增" style="font-size: 5px;">
                         </input>
-                        <div class="nextstep" type="next" onclick="location.href='newmenu2.html'">
+                        <div class="nextstep" type="next" onclick="location.href='newmenu2.php'">
                             <span style="font-size: 5px;">下一步</span>
                         </div>
                     </div>

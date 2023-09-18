@@ -57,75 +57,70 @@ $datas_len = count($datas); //目前資料筆數
 ?>
 <body>
     <div class="container-wrapper">
-        <!-- <form action="staff_up.php" method="POST" enctype="multipart/form-data"> -->
+    <form method="post" action="staff_up.php?staff_id=<?php echo $datas[0]['staff_id']?>">
             <div class="container1">
-                <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
+                <!-- <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
                     <div align="left">
                         <img src="../images/back.png" alt="返回icon" />
                         <span style="font-size: 18px;">返回</span>
                     </div>
-                </div>
+                </div> -->
                 <div align="center">
-                    <font size="20">員工資料管理</font>
+                    <font size="20">員工資料管理</font><br><br>
                 </div>
 
                 <div class="insidebox">
                     <div class="ininsidebox">
                         <div class="input-box">
-                        <form method="post" action="staff_up.php?staff_id=<?php echo $datas[0]['staff_id']?>">
-                        
-                            <span class="details"></span>
-                            員工編號：<input type="text" class="form-control" value="<?php echo $datas[0]['staff_id'] ?>" name="staff_id" disabled><br>
-                        </div>
-                        <div class="input-box">
-                            <span class="details"></span>
-                            姓名：<input type="text" class="form-control" value="<?php echo $datas[0]['staff_name'] ?>" name="staff_name"><br>
+
+                            <span class="details">員工編號：</span>
+                            <input type="text" class="form-control" value="<?php echo $datas[0]['staff_id'] ?>" name="staff_id" disabled><br>
                         </div>
 
                         <div class="input-box">
-                            <span class="details"></span>
-                            生日：<input type="date" class="form-control" value="<?php echo $datas[0]['staff_birth'] ?>" name="staff_birth"><br>
+                            <span class="details">密碼：</span>
+							<input type="text" class="form-control" value="<?php echo $datas[0]['staff_psw'] ?>" name="staff_psw"><br>                        </div>
+
+                        <div class="input-box">
+                            <span class="details">姓名：</span>
+                            <input type="text" class="form-control" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" value="<?php echo $datas[0]['staff_name'] ?>" name="staff_name"><br>
                         </div>
 
                         <div class="input-box">
-                            <span class="details"></span>
-                            性別：<input type="text" class="form-control" value="<?php echo $datas[0]['staff_gender'] ?>" name="staff_gender" disabled><br>
+                            <span class="details">生日：</span>
+							<input type="date" class="form-control" value="<?php echo $datas[0]['staff_birth'] ?>" name="staff_birth"><br>                        </div>
+
+                        <div class="input-box">
+                            <span class="details">性別：</span>
+                            <input type="text" class="form-control" value="<?php echo $datas[0]['staff_gender'] ?>" name="staff_gender" disabled><br>
                         </div>
 
                         <div class="input-box">
-                            <span class="details"></span>
-                            聯絡電話：<input type="text" class="form-control" value="<?php echo $datas[0]['staff_tel'] ?>" name="staff_tel"><br>
-                        </div>
+                            <span class="details">聯絡電話：</span>
+							<input type="text" class="form-control" oninput="value=this.value.replace(/\D/g,'')" value="<?php echo $datas[0]['staff_tel'] ?>" name="staff_tel"><br>                        </div>
+
+                        <div class="input-box">
+                            <span class="details">地址：</span>
+							<input type="text" class="form-control" value="<?php echo $datas[0]['staff_address'] ?>" name="staff_address"><br>                        </div>
+
+                        <div class="input-box">
+                            <span class="details">到職日期：</span>
+							<input type="date" class="form-control" value="<?php echo $datas[0]['due_date'] ?>" name="due_date"><br>                        </div>
+
+                        <div class="input-box">
+                            <span class="details">緊急聯絡人：</span>
+							<input type="text" class="form-control" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" value="<?php echo $datas[0]['em_name'] ?>" name="em_name"><br>                        </div>
+
+                        <div class="input-box">
+                            <span class="details">緊急連絡人電話：</span>
+							<input type="text" class="form-control" oninput="value=this.value.replace(/\D/g,'')" value="<?php echo $datas[0]['em_tel'] ?>" name="em_tel"><br>                        </div>
+
+                        <div class="input-box">
+                            <span class="details">與緊急連絡人關係：</span>
+							<input type="text" class="form-control" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" value="<?php echo $datas[0]['relation'] ?>" name="relation"><br>                        </div>
 
                         <div class="input-box">
                             <span class="details"></span>
-                            地址：<input type="text" class="form-control" value="<?php echo $datas[0]['staff_address'] ?>" name="staff_address"><br>
-                        </div>
-
-                        <div class="input-box">
-                            <span class="details"></span>
-                            緊急聯絡人：<input type="text" class="form-control" value="<?php echo $datas[0]['em_name'] ?>" name="em_name"><br>
-                        </div>
-
-                        <div class="input-box">
-                            <span class="details"></span>
-                            緊急聯絡人電話：<input type="text" class="form-control" value="<?php echo $datas[0]['em_tel'] ?>" name="em_tel"><br>
-                        </div>
-
-                        <div class="input-box">
-                            <span class="details"></span>
-                            緊急聯絡人關係：<input type="text" class="form-control" value="<?php echo $datas[0]['relation'] ?>" name="relation"><br>
-                        </div>
-
-                        <div class="input-box">
-                            <span class="details"></span>
-                            到職日期：<input type="date" class="form-control" value="<?php echo $datas[0]['due_date'] ?>" name="due_date"><br>
-                        </div>
-
-                        <div class="input-box">
-                            <span class="details"></span>
-                            密碼：<input type="text" class="form-control" value="<?php echo $datas[0]['staff_psw'] ?>" name="staff_psw"><br>
-
                         </div>
                     </div>
                 </div>

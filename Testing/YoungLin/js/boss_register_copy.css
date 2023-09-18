@@ -175,3 +175,9 @@ form .input-box span.details{
   color: #d36a09;
   cursor: pointer;
 }
+/*------------- 
+  身分證確認
+------------ */
+.uppercase {
+  text-transform: uppercase;
+}
