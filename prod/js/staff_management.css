@@ -25,7 +25,7 @@ body{
 }
 
 .col-md-5 span{
-    color:  #35522b;
+    color: #35522b;
     text-align: justify;
     position: relative;
     top: -4px;
@@ -166,7 +166,7 @@ img[src="../images/open.png"]{
     }
 } */
 
-img[src="../images/menu.png"]{
+img[src="../images/fork.png"]{
     position: relative;
     top: 160px;
     left: -485px;
