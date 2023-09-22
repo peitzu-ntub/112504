@@ -1,0 +1,205 @@
+@charset "utf-8";
+
+html{
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+  font-weight: bold;
+}
+
+body{
+  font-family: 'Noto Sans TC', sans-serif;
+  /* height: 95vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff3bc;
+}
+
+/* 圖案 */
+.myTitle{
+  position: absolute;
+  top: -30px;
+  left: -50px;
+  z-index: 100;
+}
+
+.col-md-5 span{
+  color: #35522b;
+  text-align: justify;
+  position: relative;
+  top: -2px;
+  left: 10px;
+  z-index: 100;
+  font-size: 300%;
+}
+
+.caption{
+  border-radius: 30px;
+  text-align: center;
+  width: 200px;
+  height: 60px;
+  background-color: #acce79;
+  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+  padding-left: 50px;
+  padding-right: 50px;
+  position: relative;  /*此處使用relative整個才能夠隨螢幕移動!*/
+  top: 50px;
+  left: 135px;
+  z-index: 99;
+}
+
+.section{ 
+  border-radius: 15px;
+  text-align: center;
+  display: inline-block;
+  width: 550px;
+  height: 460px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+  margin-top: 130px;
+  margin-left: -25px;
+  padding-left: 30px;
+  padding-right: 30px;
+  position: relative;
+  left: 10px;
+}
+
+.btn{
+  font-size: 20px;
+  background: transparent; /* 清除背景色 */
+  cursor: pointer;  /* 改變滑鼠游標樣式 */
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  border: 2px solid #e5dbd8;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-left: 50px;
+  margin-bottom: 10px;
+  padding: 15px;
+  width: 70%;
+  color: green;
+  background-color:#f3cc5f; 
+}
+
+.btn:hover{
+  display: inline-block;  /*置中*/
+  background-color: #ef5c28;
+  color: #fff;
+} 
+
+.dropbtn {
+  font-size: 20px;
+  background: transparent; /* 清除背景色 */
+  cursor: pointer;  /* 改變滑鼠游標樣式 */
+  text-decoration: none;
+  display: inline-block;
+  border: 2px solid #e5dbd8;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-top: 35px;
+  margin-bottom: 30px;
+  margin-left: -80px;
+  padding: 15px;
+  width: 70%;
+  color: green;
+  background-color:#f3cc5f; 
+}
+
+.dropdown-content {
+  padding: 15px;
+  border-radius: 30px;
+  display: none;
+  position: absolute; 
+  background-color: #fff;
+  min-width: 100px;
+}
+
+.dropdown-content a {
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 30px;
+  font-weight: bold;
+  color: green;
+  padding: 10px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  width: 80%;
+}
+
+.dropdown:hover .dropdown-content {
+  display: inline-block;
+} 
+
+.dropdown-content a:hover { /* 滑鼠滑入按鈕變色*/
+  background-color: #ef5c28;
+  color: #fff;
+}
+
+/* 返回的方框 */
+.logout {
+  position: absolute;
+  /* 設置為絕對定位 */
+  top: 60px;
+  /* 距離視窗上方的位置 */
+  left: 65px;
+  /* 距離視窗左側的位置 */
+  transform: translate(-50%, -50%);
+  /* 將容器水平垂直居中 */
+  width: 80px;
+  height: 50px;
+  border: 3px solid #ecad83;
+  background-color: #ecad83;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.logout div {
+  display: flex;
+  align-items: center;
+  color: rgb(116, 65, 31)
+}
+
+.logout img {
+  margin-right: 3px;
+  /* 調整圖片和文字之間的間距 */
+}
+
+.logout:hover {
+  border: 4px solid #b55f45;
+  color: white;
+  width: 70px;
+  height: 45px;
+  cursor: pointer;
+}
+
+img[src="../images/profile.png"]{
+  position: relative;
+  top: 25px; 
+  left: 35px;
+}
+
+img[src="../images/chat.png"]{
+  position: relative;
+  top: 25px; 
+  left: -470px;
+}
+
+img[src="../images/record.png"]{
+  position: relative;
+  top: 20px; 
+  left: 35px; 
+}
+
+img[src="../images/menu (3).png"]{
+  position: relative;
+  top: 25px; 
+  left: -95px;
+}
