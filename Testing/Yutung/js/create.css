@@ -32,7 +32,7 @@ body {
     background-color: #f9e99e;
     border-radius: 20px;
     width: 1000px;
-    height: 800px;
+    height: 670px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,7 +44,7 @@ body {
     background-color: #fff;
     border-radius: 20px;
     width: 950px;
-    height: 600px;
+    height: 470px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,7 +55,7 @@ body {
     background-color: #fff;
     border-radius: 20px;
     width: 900px;
-    height: 500px;
+    height: 400px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
