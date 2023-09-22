@@ -54,7 +54,6 @@ body{
 /*=============
    中間分區塊
 ===============*/
-
 .sidebar_left,
 .sidebar_right
 {
@@ -63,7 +62,7 @@ body{
   height: 30px;
   text-align: center;
   font-size: 25px;
-  margin-top: -150px;
+/*   margin-top: -150px; */
   border-radius: 20px;
 }
 
@@ -74,7 +73,7 @@ body{
   background-color: #ffffff;
   text-align: center;
   font-size: 25px;
-  margin-top: -150px;
+/*   margin-top: -150px; */
   border-radius: 20px;
 }
 
@@ -84,7 +83,7 @@ body{
   background-color: #ffffff;
   text-align: center;
   font-size: 25px;
-  margin-top: -150px;
+/*   margin-top: -150px; */
   border-radius: 20px;
 }
 
