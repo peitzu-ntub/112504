@@ -92,9 +92,24 @@
                     '$identity', '$store_id', '$order_no', '$meal_id', $qty, $price, $subtotal
                 )
                 ";
-            mysqli_query($con, $sql);            
+            mysqli_query($con, $sql);        
         }
-        //刪除購物車
+        //2023.05.30 根據目前的訂單明細，更新訂單主檔的欄位，主要是「訂單金額」欄位
+        $sql = "
+            update store_order m
+            set m.total_price = (
+                select sum(d.subtotal) from store_order_item d
+                where d.boss_identity = '$identity'
+                and d.store_id = '$store_id'
+                and d.order_no = '$order_no'
+                )
+            where m.boss_identity = '$identity'
+            and m.store_id = '$store_id'
+            and m.order_no = '$order_no'
+        ";
+        mysqli_query($con, $sql);                    
+
+        //清空「指定的訂單單號」的購物車
         $sql = "
             delete from store_cart
             where boss_identity = '$identity'
@@ -121,16 +136,28 @@
 
 <body>
     <!--最外層-->
-    <div class='container'>
+    <div>
 
     <!--功能標題-->
-    <div class="row">
-        <div class="col-md-12">
-            <center><h5 class='card-title'>
-                <?php echo "選擇餐點 (訂單：$order_no)"; ?>
-            </h5></center>
-        </div>
-    </div>    
+    <!-- <div class="row"> -->
+    <div class="col-md-4">
+        <table>
+            <tr>
+                <td>
+                    <img src="../images/菜單.png" />            
+                </td>        
+                <td>
+                    <font size='5'>
+                        <?php echo "選擇餐點"; ?>            
+                    </font>
+                    <font size='3'>
+                        <?php echo "<br>訂單:$order_no<p>"; ?>            
+                    </font>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- </div>     -->
 
 <?php 
     //查詢所有的餐點，準備產生畫面
@@ -157,46 +184,91 @@
         $meal_id = $food['meal_id'];
         $meal_name = $food['meal_name'];
         $meal_price = $food['meal_price'];
+
+        //第二種呈現方式：橫條長方形、小圖
         echo "
-        <div class='col-md-4'>
+        <div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>
             <div class='card'>
-                <a href='confirmFood.php?identity=$identity&store_id=$store_id&meal_id=$meal_id&order_no=$order_no'>
-                    <img class='card-img-top' src='../images/$meal_id.upload.jpg' alt='$meal_name' /></a>
-                <div class='card-block'>
-                    <h5 class='card-title'>$meal_name</h5>
-                    <h5 class='card-title'>$$meal_price</h5>
-                </div>
+                <table>
+                    <tr>
+                        <td  width='30%'>
+                            <a href='confirmFood.php?identity=$identity&store_id=$store_id&meal_id=$meal_id&order_no=$order_no'>
+                                <img class='card-img-top' src='../images/$meal_id.upload.jpg' alt='$meal_name' />
+                            </a>
+                        </td>
+                        <td align='right'>
+                            <font size=5>$meal_name</font><br>
+                            <font size=5>$$meal_price</font>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
         ";
+
+        //第一種呈現方式：正方形、大圖
+        // echo "
+        // <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6'>
+        //     <div class='card'>
+        //         <a href='confirmFood.php?identity=$identity&store_id=$store_id&meal_id=$meal_id&order_no=$order_no'>
+        //             <img class='card-img-top' src='../images/$meal_id.upload.jpg' alt='$meal_name' />
+        //         </a>
+        //         <table>
+        //             <tr>
+        //                 <td width='80%'>
+        //                     <font size=5>$meal_name</font>
+        //                 </td>
+        //                 <td align='right'>
+        //                     <font size=5>$$meal_price</font>
+        //                 </td>
+        //             </tr>
+        //         </table>
+        //     </div>
+        // </div>
+        // ";
     }
     //餐點資料，結尾
     echo "
         </div>
     ";
 ?>
-            <div class='row'>
+            <div>
                 <div class='col-md-12'>
                     <div style='height:10;'></div>
                 </div>
                 <div class='col-md-12'>
 <?php                 
     echo "
+                <table width='100%'>
+                <tr>
+                    <td width='30%' align='center'>
                     <a href='cart.php?identity=$identity&store_id=$store_id&order_no=$order_no'>
                         <button type='button' class='registbutton'>
                             購物車
                         </button>
-                    </a>&emsp;&emsp;
+                    </a>
+                    </td>
+
+                    <td width='40%' align='center'>
                     <a href='orderQuery.php?identity=$identity&store_id=$store_id&order_no=$order_no'>
                         <button type='button' class='registbutton'>
                             我的訂單
                         </button>
-                    </a>&emsp;&emsp;
+                    </a>
+                    </td>
     ";
 ?>                
-                    <a href='orderClose.html'><button type="button" class="registbutton">
-                    結帳
-                    </button></a>
+                    <td align='center'>
+                    <a href='orderClose.html'>
+                        <button type="button" class="registbutton">
+                        給評價
+                        </button></a>
+                    </td>
+                    </tr>
+                    </table>
+                </div>
+                <div class='col-md-12'>
+                    <div style='height:20;'></div>
                 </div>
             </div>
 

@@ -24,7 +24,7 @@ body{
 }
 
 .col-md-5 span{
-  color: green;
+  color:  #35522b;
   text-align: justify;
   position: relative;
   top: -2px;
@@ -38,7 +38,7 @@ body{
   text-align: center;
   width: 200px;
   height: 60px;
-  background-color: lightgreen;
+  background-color: #acce79;
   box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
   padding-left: 50px;
   padding-right: 50px;
