@@ -34,7 +34,7 @@
 
                         <div class="input-box">
                             <span class="details">密碼：</span>
-                            <input type="text" name="staff_psw" id="staff_psw" placeholder="請輸入員工的密碼" required>
+                            <input id="staff_psw" name="staff_psw" type="password" placeholder="格式：含英數至少六個字元" pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$" required="required" oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的密碼格式：含英數至少六個字元');"/>
                         </div>
 
                         <div class="input-box">
@@ -57,8 +57,7 @@
 
                         <div class="input-box">
                             <span class="details">聯絡電話：</span>
-                            
-                            <input type="text" oninput="value=this.value.replace(/\D/g,'')" name="staff_tel" id="staff_tel" placeholder="請輸入員工的聯絡電話" required>
+                            <input type="text" name="staff_tel" id="staff_tel" placeholder="09xx-xxxxxx" required="required" maxlength="11" pattern="09\d{2}-\d{6}" oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的手機號瑪格式：09xx-xxxxxx');"/>
                         </div>
 
                         <div class="input-box">
@@ -78,7 +77,8 @@
 
                         <div class="input-box">
                             <span class="details">緊急連絡人電話：</span>
-                            <input type="text" oninput="value=this.value.replace(/\D/g,'')" name="em_tel" id="em_tel" placeholder="請輸入員工的緊急聯絡人電話" required>
+                            <!-- <input type="text" oninput="value=this.value.replace(/\D/g,'')" name="em_tel" id="em_tel" placeholder="請輸入員工的緊急聯絡人電話" required> -->
+                            <input type="text" name="em_tel" id="em_tel" placeholder="09xx-xxxxxx" required="required" maxlength="11" pattern="09\d{2}-\d{6}" oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的手機號瑪格式：09xx-xxxxxx');"/>
                         </div>
 
                         <div class="input-box">
