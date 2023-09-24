@@ -57,7 +57,7 @@ $datas_len = count($datas); //目前資料筆數
 ?>
 
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu2.html'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu2.php'">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
             <span style="font-size: 10px;">返回</span>

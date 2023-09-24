@@ -21,7 +21,7 @@
   $name = $_POST['type_name'];
 
 
-  $sql = "INSERT INTO food_type (boss_identity, store_id, type_name) 
+  $sql = "INSERT IGNORE INTO food_type (boss_identity, store_id, type_name) 
   VALUES ('$identity', '$store', '$name')";
 
   // mysqli_query($con, $sql);
