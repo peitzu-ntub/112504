@@ -34,18 +34,38 @@
 
                         <div class="input-box">
                             <span class="details">密碼：</span>
-                            <input id="staff_psw" name="staff_psw" type="password" placeholder="格式：含英數至少六個字元" pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$" required="required" oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的密碼格式：含英數至少六個字元');"/>
+                            <input id="staff_psw" name="staff_psw" type="password" placeholder="格式：含英數至少六個字元"
+                                pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$" required="required"
+                                oninput="setCustomValidity('');"
+                                oninvalid="setCustomValidity('請輸入正確的密碼格式：含英數至少六個字元');" />
                         </div>
 
                         <div class="input-box">
                             <span class="details">姓名：</span>
-                            <input type="text" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" name="staff_name" id="staff_name" placeholder="請輸入員工姓名" required>
+                            <input type="text" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')"
+                                name="staff_name" id="staff_name" placeholder="請輸入員工姓名" required>
                         </div>
 
                         <div class="input-box">
                             <span class="details">生日：</span>
                             <input type="date" name="staff_birth" id="staff_birth" placeholder="請輸員工生日" required>
                         </div>
+
+                        <script>
+                            // 獲取日期選擇器
+                            var selectedDateInput = document.getElementById("staff_birth");
+
+                            // 獲取今天的日期
+                            var currentDate = new Date();
+
+                            // 把今天日期减去16年
+                            currentDate.setFullYear(currentDate.getFullYear() - 16);
+
+                            // 格式化為 yyyy-MM-dd，並設置為日期選擇器最小值
+                            var formattedMinDate = currentDate.toISOString().split('T')[0];
+                            selectedDateInput.setAttribute("max", formattedMinDate);
+                        </script>
+
 
                         <div class="input-box">
                             <span class="details">性別：</span>
@@ -57,7 +77,10 @@
 
                         <div class="input-box">
                             <span class="details">聯絡電話：</span>
-                            <input type="text" name="staff_tel" id="staff_tel" placeholder="09xx-xxxxxx" required="required" maxlength="11" pattern="09\d{2}-\d{6}" oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的手機號瑪格式：09xx-xxxxxx');"/>
+                            <input type="text" name="staff_tel" id="staff_tel" placeholder="09xx-xxxxxx"
+                                required="required" maxlength="11" pattern="09\d{2}-\d{6}"
+                                oninput="setCustomValidity('');"
+                                oninvalid="setCustomValidity('請輸入正確的手機號瑪格式：09xx-xxxxxx');" />
                         </div>
 
                         <div class="input-box">
@@ -69,21 +92,32 @@
                             <span class="details">到職日期：</span>
                             <input type="date" name="due_date" id="due_date" placeholder="請輸員工的到職日期" required>
                         </div>
+                        <script>
+                            // 獲取今天的日期
+                            var today = new Date().toISOString().split('T')[0];
+
+                            // 設置最小日期為今天
+                            document.getElementById("due_date").max = today;
+                        </script>
 
                         <div class="input-box">
                             <span class="details">緊急聯絡人：</span>
-                            <input type="text" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" name="em_name" id="em_name" placeholder="請輸入員工的緊急聯絡人姓名" required>
+                            <input type="text" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" name="em_name"
+                                id="em_name" placeholder="請輸入員工的緊急聯絡人姓名" required>
                         </div>
 
                         <div class="input-box">
                             <span class="details">緊急連絡人電話：</span>
                             <!-- <input type="text" oninput="value=this.value.replace(/\D/g,'')" name="em_tel" id="em_tel" placeholder="請輸入員工的緊急聯絡人電話" required> -->
-                            <input type="text" name="em_tel" id="em_tel" placeholder="09xx-xxxxxx" required="required" maxlength="11" pattern="09\d{2}-\d{6}" oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的手機號瑪格式：09xx-xxxxxx');"/>
+                            <input type="text" name="em_tel" id="em_tel" placeholder="09xx-xxxxxx" required="required"
+                                maxlength="11" pattern="09\d{2}-\d{6}" oninput="setCustomValidity('');"
+                                oninvalid="setCustomValidity('請輸入正確的手機號瑪格式：09xx-xxxxxx');" />
                         </div>
 
                         <div class="input-box">
                             <span class="details">與緊急連絡人關係：</span>
-                            <input type="text" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" name="relation" id="relation" placeholder="請輸入員工與緊急連絡人的關係" required>
+                            <input type="text" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')"
+                                name="relation" id="relation" placeholder="請輸入員工與緊急連絡人的關係" required>
                         </div>
 
                     </div>
