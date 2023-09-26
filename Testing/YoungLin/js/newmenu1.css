@@ -51,54 +51,49 @@ body{
   align-items: center;
 }
 
-/*=============
-   中間分區塊
-===============*/
-/* .sidebar_left,
-.sidebar_right
-{
-  background-color: #ffffff;
-  width: 80px;
-  height: 30px;
+/*=========
+    標題?
+==========*/
+.content2 {
+  height: 40px;
+  width: 400px;
   text-align: center;
   font-size: 25px;
-  margin-top: -150px;
+  margin-top: -10px;
   border-radius: 20px;
-} */
-
-/* .content1 {
-  margin-right:30px;
-  height: 30px;
-  width: 180px;
+  color: #000000;
   background-color: #ffffff;
+}
+.content1,
+.content3,
+.content4 {
+  height: 40px;
+  width: 120px;
   text-align: center;
   font-size: 25px;
-  margin-top: -150px;
+  margin-top: -10px;
   border-radius: 20px;
-} */
-
-/* .content2 {
-  height: 30px;
-  width: 250px;
+  color: #000000;
   background-color: #ffffff;
-  text-align: center;
-  font-size: 25px;
-  margin-top: -150px;
-  border-radius: 20px;
-} */
+}
 
-/*  */
+/*=========
+   標題底?
+==========*/
 nav{
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 100px;
   padding-right: 100px;
-  background: lightblue;
+  background: rgb(255, 255, 255);
   position: sticky;
   top:0px;
   color: #000000;
   font-size: large;
+  display : flex ;
+  width: 670px;
 }
+
 /* ==========
   輸入框的底框
 =============*/
