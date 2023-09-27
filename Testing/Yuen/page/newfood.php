@@ -36,14 +36,14 @@
     // mysqli_query($con, $sql);
     $result = mysqli_query($con,$sql);
     // 如果有異動到資料庫數量(更新資料庫)
-    if (mysqli_affected_rows($con)>1) {
+    if (mysqli_affected_rows($con)>0) {
     // 如果有一筆以上代表有更新
     // mysqli_insert_id可以抓到第一筆的id
     $new_id= mysqli_insert_id ($con);
     echo "<script>alert('新增成功!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
     }
 else {
-    echo "<script>alert('新增失敗!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
+    echo "<script>alert('類型重複!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
 }
  mysqli_close($con); 
 
