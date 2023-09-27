@@ -1,18 +1,98 @@
 @charset "utf-8";
 
-* {
-    margin: 0;
-    padding: 0;
+html {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     font-weight: bold
 }
 
 body {
-    height: 100vh;
+    font-family: 'Noto Sans TC', sans-serif;
+    display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff3bc;
+    background: #f9e99e;
+}
+
+/* ------- wrapper ------- */
+#wrapper {
+    width: 740px;
+/*     margin: 30px auto; */
+}
+
+/* ------- nav ------- */
+#nav {
+    width: 190px;
+}
+
+#nav li {
+    list-style: none;
+}
+
+div.main {
+    height: 60px;
+    line-height: 60px;
+    text-indent: 25px;
+    background-color: #3FC6F3;
+    border-right: 10px solid #0D9BE5;
+    cursor: pointer;
+}
+
+ul.subs li a {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-indent: 25px;
+    background-color: #F5F5F5;
+    border-right: 10px solid #0D9BE5;
+    font-size: 12px;
+    color: #164158;
+}
+
+/* ------- color selection ------- */
+/* sub menu*/
+li.color-blue ul.subs li a {
+    border-right: 10px solid #0D9BE5;
+    color: #0D9BE5;
+}
+
+li.color-red ul.subs li a {
+    border-right: 10px solid #FD2621;
+    color: #FD2621;
+}
+
+li.color-yellow ul.subs li a {
+    border-right: 10px solid #FF8D00;
+    color: #FF8D00;
+}
+
+
+li.color-blue ul.subs li a:hover {
+    background-color: #3FC6F3;
+    color: #FFF;
+}
+
+li.color-red ul.subs li a:hover {
+    background-color: #FF625F;
+    color: #FFF;
+}
+
+li.color-yellow ul.subs li a:hover {
+    background-color: #FEBD01;
+    color: #FFF;
+}
+
+/* ------- mouseover ------- */
+li.color-blue div.rollover {
+    background-color: #0D9BE5;
+}
+
+li.color-red div.rollover {
+    background-color: #FD2621;
+}
+
+li.color-yellow div.rollover {
+    background-color: #FF8D00;
 }
 
 /* 標題方框 */

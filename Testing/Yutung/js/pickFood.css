@@ -12,7 +12,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    background: #f9e99e;
 }
 
 .container {
@@ -81,13 +81,13 @@ button {
     letter-spacing: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    background: #ecad83;
     font-weight: bold;
   }
   
   form .button input:hover {
     /* transform: scale(0.99); */
-    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+    background: #f9e99e;
   }
 
 /* div.col-md-12.select{
