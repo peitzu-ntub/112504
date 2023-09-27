@@ -36,7 +36,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="../js/bootstrap.min.4.6.2.css">
-  <link rel="stylesheet" href="../js/pickFood.css">
+  <link rel="stylesheet" href="../js/pickfood.css">
   <link rel="stylesheet" href="../js/cart_style.css">
 
   <script src="../js/jquery-3.6.4.min.js"></script>
@@ -55,17 +55,17 @@
     <div class="row">
       <div class="col-md-4">
         <center>
-          <h5>我的訂單</h5>
+        <div align="left"><img src="../images/我的訂單.png" />　<font size="5">我的訂單</font></div>
         </center>
       </div>
     </div>
     <div>
       <table width="100%">
         <tr>
-          <td style="background-color:#B27AC2" align="center"><font color="white"><b>餐點</b></font></td>
-          <td style="background-color:#B27AC2" align="center" width="15%"><font color="white"><b>單價</b></font></td>
-          <td style="background-color:#B27AC2" align="center" width="15%"><font color="white"><b>數量</b></font></td>
-          <td style="background-color:#B27AC2" align="center" width="15%"><font color="white"><b>金額</b></font></td>
+          <td style="background-color:#ecad83" align="center"><font color="black"><b>餐點</b></font></td>
+          <td style="background-color:#ecad83" align="center" width="15%"><font color="black"><b>單價</b></font></td>
+          <td style="background-color:#ecad83" align="center" width="15%"><font color="black"><b>數量</b></font></td>
+          <td style="background-color:#ecad83" align="center" width="15%"><font color="black"><b>金額</b></font></td>
         </tr>
 <?php
     $total=0;
@@ -86,8 +86,8 @@
     }
     echo "
         <tr>
-            <td style='background-color:#B27AC2' align='right' colspan='3'><b>合計</b></td>
-            <td style='background-color:#B27AC2' align='right'><b>$total</b></td>
+            <td style='background-color:#ecad83' align='right' colspan='3'><b>合計</b></td>
+            <td style='background-color:#ecad83' align='right'><b>$total</b></td>
         </tr>
     "
 ?>        
