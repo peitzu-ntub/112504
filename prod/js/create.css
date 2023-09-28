@@ -362,3 +362,15 @@ form .input-box span.details {
     color: #ab812f;
     cursor: pointer;
 }
+
+
+/* 在右側加入卷軸 */
+.right-scroll {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-color: #f0f0f0;
+    overflow-y: auto; /* 垂直滚動條 */
+    padding: 20px;
+}
