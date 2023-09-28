@@ -18,69 +18,236 @@
 
 <body>
     <div class="container-wrapper">
-        <form action="staff_in.php" method="POST" enctype="multipart/form-data">
+        <!-- <form action="staff_in.php" method="POST" enctype="multipart/form-data"> -->
 
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div align="center">
-                            <font size="20">港式飲茶店</font><br><br>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                        <div class="button" type="return" name="按鈕名稱" onclick="location.href='all.html'">
-                            <span style="font-size: 15px;">我的訂單</span>
-                        </div>
-                    </div>
-                </div>
+        <div class="header">
+            <div align="center">
+                <font size="20">港式飲茶店</font><br><br>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="left">
+                <a href="#">主餐</a>
+                <a href="#">甜點</a>
+                <a href="#">飲料</a>
+                <a href="#">套餐</a>
             </div>
 
-            <!-- <nav>
-                <ul class="inline-block-nav">
-                    <li><a href="#">主餐</a></li>
-                    <li><a href="#">甜點</a></li>
-                    <li><a href="#">飲料</a></li>
-                </ul>
-            </nav> -->
+            <div class="menu">
 
-            <div id="wrapper">
-                <div id="nav">
-                    <ul>
-                        <li class="color-blue">
+                <!-- 菜單 1 -->
+                <div class="menu-item">
+                    <!-- 图片容器 -->
+                    <div class="menu-item-img">
+                        <img src="../images/m01.upload.jpg " alt="菜單 1">
+                    </div>
+                    <!-- 右侧容器 -->
+                    <div class="menu-item-center">
+                        <h3>港式炒飯</h3>
+                        <p>$ 60</p>
+                    </div>
+                    <div class="menu-item-right">
+                        <button id="showPopup">點選</button>
+                        
+                        <!-- 彈跳式視窗 -->
+                        <div class="popup-container" id="popup">
 
-                            <ul class="subs">
-                                <li><a href="#">外套</a></li>
-                                <li><a href="#">褲子</a></li>
-                                <li><a href="#">飾品</a></li>
-                            </ul>
-                        </li>
-                        <li class="color-red">
+                            <span class="close-button" id="closePopup">×</span>
+                            <img src="../images/m01.upload.jpg" alt="菜單1" class="product-image">
 
-                            <ul class="subs">
-                                <li><a href="#">沙發</a></li>
-                                <li><a href="#">床</a></li>
-                                <li><a href="#">桌子</a></li>
-                                <li><a href="#">椅子</a></li>
-                            </ul>
-                        </li>
-                        <li class="color-yellow">
+                            <div class="product-details">
+                                <h2>港式炒飯</h2>
+                                <p>價格：$60</p>
+                                <p>介紹：豐富配料滿足味蕾，香味撲鼻，口感滑順，讓您品味無窮享受！</p>
+                            </div>
 
-                            <ul class="subs">
-                                <li><a href="#">鉛筆</a></li>
-                                <li><a href="#">筆記本</a></li>
-                                <li><a href="#">圓規</a></li>
-                                <li><a href="#">資料夾</a></li>
-                            </ul>
-                        </li>
+                            <div class="cart-item">
+                                <button class="button" onclick="decrementItem(1)">-</button>
+                                <span class="item-quantity" id="quantity1">1</span>
+                                <button class="button" onclick="incrementItem(1)">+</button>
+                                <button class="button" onclick="addToCart(1)">加入購物車</button>
+                            </div>
+                        </div>
 
-                    </ul>
+                    </div>
                 </div>
-            </div>
 
-        </form>
+                <!-- 菜單 2 -->
+                <div class="menu-item">
+                    <!-- 图片容器 -->
+                    <div class="menu-item-img">
+                        <img src="../images/m01.upload.jpg" alt="菜單 2">
+                    </div>
+                    <!-- 右侧容器 -->
+                    <div class="menu-item-center">
+                        <h3>皮蛋瘦肉粥</h3>
+                        <p>$ 60</p>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+
+                <!-- 菜單 3 -->
+                <div class="menu-item">
+                    <!-- 图片容器 -->
+                    <div class="menu-item-img">
+                        <img src="../images/m03.upload.jpg" alt="菜單 3">
+                    </div>
+                    <!-- 右侧容器 -->
+                    <div class="menu-item-center">
+                        <h3>XO醬撈麵</h3>
+                        <p>$ 60</p>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+
+                <!-- 菜單 4 -->
+                <div class="menu-item">
+                    <!-- 图片容器 -->
+                    <div class="menu-item-img">
+                        <img src="../images/m03.upload.jpg" alt="菜單 3">
+                    </div>
+                    <!-- 右侧容器 -->
+                    <div class="menu-item-center">
+                        <h3>港式臘味煲仔飯</h3>
+                        <p>$ 60</p>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+
+                <!-- 菜單 5 -->
+                <div class="menu-item">
+                    <!-- 图片容器 -->
+                    <div class="menu-item-img">
+                        <img src="../images/m03.upload.jpg" alt="菜單 3">
+                    </div>
+                    <!-- 右侧容器 -->
+                    <div class="menu-item-center">
+                        <h3>公仔湯麵</h3>
+                        <p>$ 60</p>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+
+                <!-- 菜單 6 -->
+                <div class="menu-item">
+                    <!-- 图片容器 -->
+                    <div class="menu-item-img">
+                        <img src="../images/m03.upload.jpg" alt="菜單 3">
+                    </div>
+                    <!-- 右侧容器 -->
+                    <div class="menu-item-center">
+                        <h3>港式豬扒飯</h3>
+                        <p>$ 60</p>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+                <!-- 菜單 7 -->
+                <div class="menu-item">
+                    <!-- 图片容器 -->
+                    <div class="menu-item-img">
+                        <img src="../images/m03.upload.jpg" alt="菜單 3">
+                    </div>
+                    <!-- 右侧容器 -->
+                    <div class="menu-item-center">
+                        <h3>蜜汁叉燒撈麵</h3>
+                        <p>$ 60</p>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="cartbutton" type="return" name="按鈕名稱" onclick="location.href='cart.php'">
+                <span style="font-size: 15px;">購物車</span>
+            </div>
+            <div class="allbutton" type="return" name="按鈕名稱" onclick="location.href='orderQuery.php'">
+                <span style="font-size: 15px;">我的訂單</span>
+            </div>
+        </div>
+
+        <!-- </form> -->
     </div>
+
+    <script>
+        // 使用JavaScript来实现导航链接选中时的样式更改
+        const navLinks = document.querySelectorAll('.left a');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // 移除所有导航链接的 "active" 类
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                // 将当前点击的链接添加 "active" 类
+                link.classList.add('active');
+            });
+        });
+    </script>
+
+    <script>
+        // 获取弹窗的元素
+        const popup = document.getElementById('popup');
+
+        // 获取显示弹窗的按钮和关闭弹窗的按钮
+        const showPopupButton = document.getElementById('showPopup');
+        const closePopupButton = document.getElementById('closePopup');
+
+        // 当点击显示弹窗的按钮时，显示弹窗
+        showPopupButton.addEventListener('click', () => {
+            popup.style.display = 'block';
+        });
+
+        // 当点击关闭按钮时，关闭弹窗
+        closePopupButton.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+    </script>
+
+    
+<script>
+    const cartItems = document.getElementById('cartItems');
+
+    // 减少商品数量的函数
+    function decrementItem(itemId) {
+        const quantityElement = document.getElementById(`quantity${itemId}`);
+        let quantity = parseInt(quantityElement.textContent);
+        if (quantity > 1) {
+            quantity--;
+            quantityElement.textContent = quantity;
+        }
+    }
+
+    // 增加商品数量的函数
+    function incrementItem(itemId) {
+        const quantityElement = document.getElementById(`quantity${itemId}`);
+        let quantity = parseInt(quantityElement.textContent);
+        quantity++;
+        quantityElement.textContent = quantity;
+    }
+
+    // 加入购物车的函数
+    function addToCart(itemId) {
+        const quantityElement = document.getElementById(`quantity${itemId}`);
+        const itemName = `商品 ${itemId}`;
+        const itemQuantity = parseInt(quantityElement.textContent);
+        const cartItem = document.createElement('li');
+        cartItem.textContent = `${itemName} x ${itemQuantity}`;
+        cartItems.appendChild(cartItem);
+    }
+</script>
 </body>
 
 </html>

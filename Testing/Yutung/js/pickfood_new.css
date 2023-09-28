@@ -17,82 +17,158 @@ body {
 /* ------- wrapper ------- */
 #wrapper {
     width: 740px;
-/*     margin: 30px auto; */
+    /*     margin: 30px auto; */
 }
 
-/* ------- nav ------- */
-#nav {
-    width: 190px;
-}
-
-#nav li {
-    list-style: none;
-}
-
-div.main {
-    height: 60px;
-    line-height: 60px;
-    text-indent: 25px;
-    background-color: #3FC6F3;
-    border-right: 10px solid #0D9BE5;
-    cursor: pointer;
-}
-
-ul.subs li a {
-    display: block;
-    height: 40px;
-    line-height: 40px;
-    text-indent: 25px;
-    background-color: #F5F5F5;
-    border-right: 10px solid #0D9BE5;
-    font-size: 12px;
-    color: #164158;
-}
-
-/* ------- color selection ------- */
-/* sub menu*/
-li.color-blue ul.subs li a {
-    border-right: 10px solid #0D9BE5;
-    color: #0D9BE5;
-}
-
-li.color-red ul.subs li a {
-    border-right: 10px solid #FD2621;
-    color: #FD2621;
-}
-
-li.color-yellow ul.subs li a {
-    border-right: 10px solid #FF8D00;
-    color: #FF8D00;
-}
-
-
-li.color-blue ul.subs li a:hover {
-    background-color: #3FC6F3;
-    color: #FFF;
-}
-
-li.color-red ul.subs li a:hover {
-    background-color: #FF625F;
-    color: #FFF;
-}
-
-li.color-yellow ul.subs li a:hover {
-    background-color: #FEBD01;
-    color: #FFF;
-}
-
-/* ------- mouseover ------- */
-li.color-blue div.rollover {
+.content {
+    width: auto;
+    height: 200px;
     background-color: #0D9BE5;
 }
 
-li.color-red div.rollover {
-    background-color: #FD2621;
+.left {
+    width: 13%;
+    height: 420px;
+    float: left;
+    text-align: center;
+    font-size: 18px;
+    background-color: #4e7fe0;
 }
 
-li.color-yellow div.rollover {
-    background-color: #FF8D00;
+.left a {
+    display: block;
+    /* 让链接占满整个导航栏宽度 */
+    color: #fff;
+    /* 链接文字颜色 */
+    text-decoration: none;
+    /* 去掉下划线 */
+    padding: 10px 0;
+    /* 设置链接内边距 */
+}
+
+.left a.active {
+    background-color: #FF625F;
+}
+
+.menu {
+    width: 87%;
+    float: left;
+    background-color: #80a0e2;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* 菜单项的样式 */
+.menu-item {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 350px;
+    /* 菜单项的宽度 */
+}
+
+/* 图片容器的样式 */
+.menu-item-img {
+    flex: 0 0 100px;
+    /* 图片容器的宽度和高度 */
+    margin-right: 20px;
+    /* 图片右侧的外边距 */
+}
+
+/* 图片的样式 */
+.menu-item-img img {
+    max-width: 100%;
+    /* 图片最大宽度 */
+    height: auto;
+    /* 保持图片比例 */
+    display: block;
+}
+
+/* 右侧容器的样式 */
+.menu-item-center {
+    flex-grow: 1;
+    /* 右侧容器占据剩余的空间 */
+}
+
+/* 名称的样式 */
+.menu-item h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+/* 描述的样式 */
+.menu-item p {
+    margin: 0;
+}
+
+/* 按钮的样式 */
+.menu-item button {
+    width: 80px;
+    height: 40px;
+    border: 3px solid #80a0e2;
+    background-color: #80a0e2;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+}
+
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+/* 关闭按钮的样式 */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* 图片的样式 */
+.product-image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 价格和说明的样式 */
+.product-details {
+    margin-top: 20px;
+}
+
+/* 商品项的样式 */
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+/* 商品数量的样式 */
+.item-quantity {
+    margin: 0 10px;
+}
+
+/* 按钮的样式 */
+.button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 
 /* 標題方框 */
@@ -102,41 +178,92 @@ li.color-yellow div.rollover {
     width: 2000px;
 }
 
+
+/* 購物車 */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #D0DAEE;
+}
+
+
 /* 按鈕 */
-.button {
+.cartbutton {
     position: absolute;
     /* 設置為絕對定位 */
-    bottom: -7px;
+    bottom: 10px;
     /* 距離視窗上方的位置 */
-    left: 11%;
+    left: 5%;
     /* 距離視窗左側的位置 */
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
     /* 將容器水平垂直居中 */
     width: 120px;
-    height: 37px;
-    border: 3px solid #ebcc3f;
-    background-color: #ebcc3f;
+    height: 50px;
+    border: 3px solid #80a0e2;
+    background-color: #80a0e2;
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 18px;
-    color: #8a792b;
+    color: #000000;
 }
 
-.button div {
+.cartbutton div {
     display: flex;
     align-items: center;
-    color: #ebcc3f;
+    color: #80a0e2;
 }
 
-.button img {
+.cartbutton img {
     margin-right: 3px;
     /* 調整圖片和文字之間的間距 */
 }
 
-.button:hover {
-    border: 3px solid #d6a138;
-    color: #ab812f;
+.cartbutton:hover {
+    border: 3px solid #4e7fe0;
+    color: #000000;
+    cursor: pointer;
+}
+
+/* 按鈕 */
+.allbutton {
+    position: absolute;
+    /* 設置為絕對定位 */
+    bottom: 10px;
+    /* 距離視窗上方的位置 */
+    left: 15%;
+    /* 距離視窗左側的位置 */
+    /* transform: translate(-50%, -50%); */
+    /* 將容器水平垂直居中 */
+    width: 120px;
+    height: 50px;
+    border: 3px solid #80a0e2;
+    background-color: #80a0e2;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #000000;
+}
+
+.allbutton div {
+    display: flex;
+    align-items: center;
+    color: #80a0e2;
+}
+
+.allbutton img {
+    margin-right: 3px;
+    /* 調整圖片和文字之間的間距 */
+}
+
+.allbutton:hover {
+    border: 3px solid #4e7fe0;
+    color: #000000;
     cursor: pointer;
 }
