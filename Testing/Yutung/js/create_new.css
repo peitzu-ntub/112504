@@ -17,8 +17,8 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    /*   background: linear-gradient(135deg, #e68871, #88ba80); */
-    background-color: #fff3bc;
+  /*   background: linear-gradient(135deg, #e68871, #88ba80); */
+    background-color:#fff3bc;
 }
 
 /* 標題方框 */
@@ -361,16 +361,4 @@ form .input-box span.details {
     border: 3px solid #d6a138;
     color: #ab812f;
     cursor: pointer;
-}
-
-
-/* 在右側加入卷軸 */
-.right-scroll {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
-    background-color: #f0f0f0;
-    overflow-y: auto; /* 垂直滚動條 */
-    padding: 20px;
 }
