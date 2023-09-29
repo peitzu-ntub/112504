@@ -36,18 +36,16 @@ body {
 }
 
 .left a {
-    display: block;
-    /* 让链接占满整个导航栏宽度 */
-    color: #fff;
-    /* 链接文字颜色 */
+    padding: 10px 15px;
     text-decoration: none;
-    /* 去掉下划线 */
-    padding: 10px 0;
-    /* 设置链接内边距 */
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    transition: 0.5s;
 }
 
-.left a.active {
-    background-color: #FF625F;
+.left a:hover {
+    background-color: #007bff;
 }
 
 .menu {

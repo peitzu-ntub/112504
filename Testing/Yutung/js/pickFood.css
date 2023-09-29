@@ -1,12 +1,12 @@
 @charset "utf-8";
 
-html{
+html {
     box-sizing: border-box;
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold
 }
 
-body{
+body {
     font-family: 'Noto Sans TC', sans-serif;
     display: flex;
     justify-content: center;
@@ -19,14 +19,15 @@ body{
     opacity: 0.8;
     border: 2px solid #ccc;
     width: 1000px;
-    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
-div.row{
+div.row {
     padding: 15px;
     margin: -10px;
 }
-span{
+
+span {
     font-size: 36px;
     font-weight: bold;
     position: relative;
@@ -41,7 +42,8 @@ span{
 }
 
 /* 輸入格樣式 */
-input[type="text"] , div.col-md-12.select{
+input[type="text"],
+div.col-md-12.select {
     margin-left: 5px;
     height: 45px;
     width: 15%;
@@ -54,11 +56,11 @@ input[type="text"] , div.col-md-12.select{
     transition: all 0.3s ease;
 }
 
-.section{
+.section {
     text-align: center;
 }
 
-label{ 
+label {
     font-size: 25px;
     padding: 10px;
     margin: 10px;
@@ -82,9 +84,9 @@ button {
     transition: all 0.3s ease;
     background: #80a0e2;
     font-weight: bold;
-  }
-  
-  form .button input:hover {
+}
+
+form .button input:hover {
     /* transform: scale(0.99); */
     background: #80a0e2;
-  }
+}
