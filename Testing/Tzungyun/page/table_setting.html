@@ -1,19 +1,18 @@
 <html>
 
     <head>
-        <title>桌數設定</title>
+        <title>桌名設定</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../js/bootstrap.min.css" >
         <link rel="stylesheet" href="../js/table_setting.css" >
     </head>
-    
     <body>
         <div class="caption">
             <div class="col-md-5">	
                 <h1 class="myTitle"><img src="../images/dinner-table.png" /></h1>
-                <span>修改桌數</span>
+                <span>修改桌名</span>
             </div>
         </div>
         <div class="logout" type="button" name="按鈕名稱" onclick="location.href='../page/boss_management.html'">
@@ -135,9 +134,9 @@
             </div> 
 
             <form id="tableForm">
-                <label for="table_count">桌數：<input type="number" id="table_count" name="table_count" min="1" required></label>
-                <br>
-                <label for="table_name">桌名：<input type="text" id="table_name" name="table_name" required></label>
+                <!-- <label for="table_count">桌數：<input type="number" id="table_count" name="table_count" min="1" required></label>
+                <br> -->
+                <label for="table_name">桌名：<input type="text" id="table_name" name="table_name" placeholder="請輸入數字或中文字" pattern="[0-9\u4e00-\u9fa5]*" required></label>
                 <br>
                 <input type="submit" value="儲存"></input>
             </form>
