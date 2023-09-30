@@ -1,33 +1,33 @@
 @charset "utf-8";
 
-html{
+html {
     box-sizing: border-box;
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold
 }
 
-body{
+body {
     font-family: 'Noto Sans TC', sans-serif;
-
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    background: #f9e99e;
 }
 
 .container {
-    background-color: #fff;
+    background-color: #D0DAEE;
     opacity: 0.8;
     border: 2px solid #ccc;
     width: 1000px;
-    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
-div.row{
+div.row {
     padding: 15px;
     margin: -10px;
 }
-span{
+
+span {
     font-size: 36px;
     font-weight: bold;
     position: relative;
@@ -42,7 +42,8 @@ span{
 }
 
 /* 輸入格樣式 */
-input[type="text"] , div.col-md-12.select{
+input[type="text"],
+div.col-md-12.select {
     margin-left: 5px;
     height: 45px;
     width: 15%;
@@ -55,11 +56,11 @@ input[type="text"] , div.col-md-12.select{
     transition: all 0.3s ease;
 }
 
-.section{
+.section {
     text-align: center;
 }
 
-label{ 
+label {
     font-size: 25px;
     padding: 10px;
     margin: 10px;
@@ -81,55 +82,11 @@ button {
     letter-spacing: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    background: #80a0e2;
     font-weight: bold;
-  }
-  
-  form .button input:hover {
-    /* transform: scale(0.99); */
-    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
-  }
+}
 
-/* div.col-md-12.select{
-    display: inline-block;
-    width: 300px;
-    position: relative;
-    vertical-align: middle;
-    padding: 0;
-    overflow: hidden;
-    background-color: #fff;
-    color: #555;
-    border: 1px solid #aaa;
-    text-shadow: none;
-    border-radius: 4px;
-    transition: box-shadow 0.25s ease;
-    z-index: 2;
+form .button input:hover {
+    /* transform: scale(0.99); */
+    background: #80a0e2;
 }
-div.col-md-12.select:hover{
-    box-shadow: 01px 4px rgba(0,0,0,0.15)
-}
-div.col-md-12.select:before{
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border: 10px solid transparent;
-    border-top-color: #ccc;
-    top: 14px;
-    right: 10px;
-    cursor: pointer;
-    z-index: -2;
-}
-div.col-md-12.select select{
-cursor: pointer;
-padding: 10px;
-width: 100%;
-border: none;
-background: transparent;
-background-image: none;
--webkit-appearance: none;
--moz-appearance: none;
-}
-div.col-md-12.select select:focus{
-outline: none;
-} */

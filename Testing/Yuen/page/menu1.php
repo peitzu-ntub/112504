@@ -21,7 +21,7 @@
   $name = $_POST['type_name'];
 
 
-  $sql = "INSERT INTO food_type (boss_identity, store_id, type_name) 
+  $sql = "INSERT IGNORE INTO food_type (boss_identity, store_id, type_name) 
   VALUES ('$identity', '$store', '$name')";
 
   // mysqli_query($con, $sql);
@@ -34,7 +34,7 @@
   echo "<script>alert('新增成功!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
   }
 else {
-  echo "<script>alert('新增失敗!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
+  echo "<script>alert('類型重複!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
 }
 mysqli_close($con); 
 ?>
@@ -49,17 +49,4 @@ mysqli_close($con);
 	<link href="../js/menu.css" rel="stylesheet">
 
 </head>
-
-
-<body>
-	<div class="cabinet">
-		<label for="type_id">
-		</label>
-	</div><br>
-	<div class="button-container">
-		<button class="Nextstepbutton" onclick="location.href='menu_1.php'">
-			<span>繼續</span>
-		</button>
-	</div>
-</body>
 </html>

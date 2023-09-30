@@ -6,20 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>客製化2</title>
+    <title>查看全部餐點</title>
 
-    <link href="../js/newmenu2.css" rel="stylesheet">
+    <link href="../js/allmenu.css" rel="stylesheet">
 
 </head>
 <?php
-include "../bin/conn.php";
 
-$meal_name=$_GET['meal_name'];
+include "../bin/conn.php";
 
 // 設置一個空陣列來放資料
 $datas = array();
 
-$sql ="select * FROM store_food WHERE meal_name = '".$meal_name."'"; // sql語法存在變數中
+$sql = "SELECT meal_name FROM store_food";
 
 $result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
 
@@ -43,8 +42,7 @@ if ($result) {
 // 處理完後印出資料
 if (!empty($result)) {
     // 如果結果不為空，就利用print_r方法印出資料
-    // print_r($datas);
-    //echo($datas[0]['adm_name']);
+    //print_r($datas);
 } else {
     // 為空表示沒資料
     echo "查無資料";
@@ -56,68 +54,85 @@ echo "<br><br>";
 $datas_len = count($datas); //目前資料筆數
 
 ?>
+
 <body>
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu2.html'">
+        <div align="left">
+            <img src="../images/back.png" alt="返回icon" />
+            <span style="font-size: 10px;">返回</span>
+        </div>
+    </div>
     <div class="container-wrapper">
-        <form action="newfood.php" method="POST">
+        <form action="menu_del.php" method="POST">
             <div class="container1">
-                <font color="#e8a95b" size="6"style="align-items: center;">新增餐點</font>
+                <div class="topinput" style="font-size: 15px;">
+                    <font color="#bf6900" size="5">全部餐點</font></div>
                 <div class="insidebox">
-                    <div class="ininsidebox">
-                        <div class="input-box">
-                            <div class="input-row">
-                            <form method="post" action="menu_up.php?meal_name=<?php echo $datas[0]['meal_name']?>">
-                                <?php
-                                    echo "原餐點類型：";
-                                    echo $datas[0]['type_id'] ;
-                                    echo "</br>";
-                                    $query = "SELECT type_id FROM food_type";
-                                    $result = mysqli_query($con, $query);
-                                ?>
-                                <label>餐點類型：</label>
-                                <select  name="type_id" >
-
-                                    <?php while($row = mysqli_fetch_array($result)):;?>
-
-                                        <!--下面 $row9['(資料表(add_role) 的欄位(STAFF_ROLE) )']; ---------->
-                                        <option value="<?php echo $row['type_id'];?>"  
-                                            <?PHP 
-                                            
-                                                if($value == $row['type_id']){echo "selected";} 
-                                            ?> 
-                                        >
-                                            <?php echo $row['type_id'];?>
-                                        </option>
-                                    <?php endwhile;?>
-
-                                </select>
-                                
-                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點名稱：</span>
-                                <input type="text" class="form-control" value="<?php echo $datas[0]['meal_name'] ?>" name="meal_name" ><br>                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點介紹：</span>
-                                <input type="text" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" class="form-control" value="<?php echo $datas[0]['meal_note'] ?>" name="meal_note" ><br>                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點價格：</span>
-                                <input type="number" class="form-control" value="<?php echo $datas[0]['meal_price'] ?>" name="meal_price" ><br>                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點圖片：</span>
-                                <input type="file" class="form-control" value="<?php echo $datas[0]['meal_pic'] ?>" name="meal_pic" ><br>                            </div>
+                    <div class="ininsidebox" style="width:680px;height:300px; overflow:auto;">
+                        <div class="countainer">
+                            <nav>
+                                <div class="content1">刪除</div>
+                                <div class="content2">餐點名稱</div>
+                                <div class="content3">確定</div>
+                            </nav>
                         </div>
+                        <tbody>
+                            <?php
+                            for ($i = 0; $i < $datas_len; $i++) {
+                                echo "<tr>";
+                                echo "<td>
+                                <a href='menu_del.php?meal_name=".$datas[$i]['meal_name']."'><img src=../images/trash.png></img></a></td>";
+                                echo "<td>" . $datas[$i]['meal_name'] . "</td>";
+                                echo "<td>
+                                <a href='menu_edit.php?meal_name=".$datas[$i]['meal_name']."'><img src=../images/signature.png></img></a></td>";
+                             }
+                            ?>
 
-                        <input class="submit" type="submit" value="儲存" style="font-size: 5px;"></input>
-                        <div class="laststep" type="return" onclick="location.href='newmenu1.php'">
-                            <span style="font-size: 5px;">上一步</span>
-                        </div>
-                        <div class="nextstep" type="next" onclick="location.href='newmenu3.html'">
-                            <span style="font-size: 5px;">下一步</span>
-                        </div>
-                        <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 5px;"onclick="location.href='allmenu.php'"></input>
-                    </div>
+                            </tbody>                    </div>
                 </div>
             </div>
         </form>
     </div>
 </body>
+
+
+<script>
+    //當網頁準備好的時候，做以下的動作(函式)
+    $(document).ready(function () {
+        //form的submit按鈕按下去的動作
+        $("form").on("submit", function (e) {
+            //1.先把準備拋回去的資料「序列化」整理成json格式的字串
+            var dataString = $(this).serialize();
+
+            //可以把字串顯示出來看看是否正確
+            //alert(dataString);               
+
+            //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
+            $.ajax({
+                //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+                type: "POST",
+                //指定要連接的PHP位址
+                url: "../bin/menu_2.php",
+                //要傳送的資料內容
+                data: dataString,
+                //獲得正確回應時，要做的事情
+                success: function (response) {
+                    var json = $.parseJSON(response);
+                    if (json.result == 'OK') {
+                        $("#message").html('成功：\n' + json.message);
+                    } else {
+                        $("#message").html('失敗：\n' + json.message);
+                    }
+                },
+                //獲得不正確的回應時，要做的事情
+                error: function (response) {
+                    $("#message").html(response);
+                }
+            });
+
+            e.preventDefault();
+        });
+    });
+</script>
+
 </html>

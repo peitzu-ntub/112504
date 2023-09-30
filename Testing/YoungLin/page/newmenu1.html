@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='#.html'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
             <span style="font-size: 10px;">返回</span>
@@ -26,34 +26,27 @@
                     <font color="#bf6900" size="5">餐點類型：</font>
                     <input name="type_id" id="type_id" placeholder="請輸入您欲新增的餐點類型">
                 </div>
+
                 <div class="insidebox">
                     <div class="ininsidebox" style="width:680px;height:300px; overflow:auto;">
-                        <table width="50%">
-                            <tr>
-                                <td>
-                                    <div class="sidebar_left">刪除</div>
-                                </td>
-                                <td>
-                                    <div class="content1">類型名稱</div>
-                                </td>
-                                <td>
-                                    <div class="content2">編輯</div>
-                                </td>
-                                <td>
-                                    <div class="sidebar_right">確定</div>
-                                </td>
-                            </tr>
-                        </table>
+                        <div class="countainer">
+                            <nav>
+                                <div class="content1">刪除 </div> 
+                                <div class="content2">類型名稱</div> 
+                                <div class="content3">編輯</div> 
+                                <div class="content4">確定</div> 
+                            </nav>
+                        </div>
 
                         <!-- 後端資料寫這邊 -->
 
-
                     </div>
-                    <input class="submit" type="submit" value="新增" style="font-size: 5px;">
-                    </input>
+
+                    <input class="submit" type="submit" value="新增" style="font-size: 5px;"></input>
                     <div class="nextstep" type="next" onclick="location.href='newmenu2.html'">
                         <span style="font-size: 5px;">下一步</span>
                     </div>
+
                 </div>
             </div>
         </form>

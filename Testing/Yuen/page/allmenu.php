@@ -6,12 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>全部餐點</title>
+    <title>查看全部餐點</title>
 
     <link href="../js/allmenu.css" rel="stylesheet">
 
 </head>
-
 <?php
 
 include "../bin/conn.php";
@@ -57,7 +56,7 @@ $datas_len = count($datas); //目前資料筆數
 ?>
 
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu2.html'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu2.php'">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
             <span style="font-size: 10px;">返回</span>
@@ -69,20 +68,15 @@ $datas_len = count($datas); //目前資料筆數
                 <div class="topinput" style="font-size: 15px;">
                     <font color="#bf6900" size="5">全部餐點</font></div>
                 <div class="insidebox">
-                    <div class="ininsidebox">
-                        <table width="50%">
-                            <tr>
-                                <td>
-                                    <div class="sidebar_left">刪除</div>
-                                </td>
-                                <td>
-                                    <div class="content1">餐點名稱</div>
-                                </td>
-                                <td>
-                                    <div class="sidebar_right">編輯</div>
-                                </td>
-                            </tr>
-                            <tbody>
+                    <div class="ininsidebox" style="width:680px;height:300px; overflow:auto;">
+                        <div class="countainer">
+                            <nav>
+                                <div class="content1">刪除</div>
+                                <div class="content2">餐點名稱</div>
+                                <div class="content3">確定</div>
+                            </nav>
+                        </div>
+                        <tbody>
                             <?php
                             for ($i = 0; $i < $datas_len; $i++) {
                                 echo "<tr>";
@@ -91,19 +85,16 @@ $datas_len = count($datas); //目前資料筆數
                                 echo "<td>" . $datas[$i]['meal_name'] . "</td>";
                                 echo "<td>
                                 <a href='menu_edit.php?meal_name=".$datas[$i]['meal_name']."'><img src=../images/signature.png></img></a></td>";
-                             }
+                                echo "</br>";
+                            }
                             ?>
 
-                            </tbody>
-                        </table>
-                        <!--<div class="input-box">
-                            <div class="input-row"><span>類型名稱</span></div>
-                            <div class="input-row"> <img src="../images/trash.png" /> <input type="" name="" id=""></div>
-                        </div> -->
-                    </div>
+                            </tbody>                    
+                        </div>
                 </div>
             </div>
         </form>
     </div>
 </body>
+
 </html>

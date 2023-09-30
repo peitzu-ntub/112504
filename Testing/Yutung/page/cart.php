@@ -72,8 +72,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="../js/bootstrap.min.4.6.2.css">
-  <link rel="stylesheet" href="../js/pickFood.css">
-  <link rel="stylesheet" href="../js/cart_style.css">
+  <link rel="stylesheet" href="../js/pickfood.css">
+
 
   <script src="../js/jquery-3.6.4.min.js"></script>
 
@@ -98,11 +98,11 @@
     <div>
       <table width="100%">
         <tr>
-          <td style="background-color:#B27AC2" align="center" width="3%"></td>
-          <td style="background-color:#B27AC2" align="center" ><font color="white"><b>餐點</b></font></td>
-          <td style="background-color:#B27AC2" align="center" width="15%"><font color="white"><b>單價</b></font></td>
-          <td style="background-color:#B27AC2" align="center" width="35%"><font color="white"><b>數量</b></font></td>
-          <td style="background-color:#B27AC2" align="center" width="15%"><font color="white"><b>金額</b></font></td>
+          <td style="background-color:#4e7fe0" align="center" width="3%"></td>
+          <td style="background-color:#4e7fe0" align="center" ><font color="black"><b>餐點</b></font></td>
+          <td style="background-color:#4e7fe0" align="center" width="15%"><font color="black"><b>單價</b></font></td>
+          <td style="background-color:#4e7fe0" align="center" width="35%"><font color="black"><b>數量</b></font></td>
+          <td style="background-color:#4e7fe0" align="center" width="15%"><font color="black"><b>金額</b></font></td>
         </tr>
 <?php
     $total=0;
@@ -145,23 +145,23 @@
     }
     echo "
         <tr>
-            <td style='background-color:#B27AC2' align='right' colspan='4'><b>合計</b></td>
-            <td style='background-color:#B27AC2' align='right'><b>$total</b></td>
+            <td style='background-color:#4e7fe0' align='right' colspan='4'><b>合計</b></td>
+            <td style='background-color:#4e7fe0' align='right'><b>$total</b></td>
         </tr>
     "
 ?>        
       </table>
     </div><br>
 <?php
-    $pickUrl = "pickFood.php?identity=$identity&store_id=$store_id&order_no=$order_no";
+    $pickUrl = "pickFood.html?identity=$identity&store_id=$store_id&order_no=$order_no";
     echo "        
     
         <a href='$pickUrl&cart=1'>
-            <button type='button' class='registbutton'>
+            <button type='button' style='background-color:#80a0e2' class='registbutton'>
                 確定點餐
             </button></a>&emsp;
         <a href='$pickUrl'>
-            <button type='button' class='registbutton'>
+            <button type='button' style='background-color:#80a0e2' class='registbutton'>
                 我要繼續點
             </button>
         </a>
