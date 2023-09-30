@@ -15,6 +15,11 @@ body{
   background: #fff3bc;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
 /* 圖案 */
 .myTitle{
   position: absolute;
@@ -43,8 +48,8 @@ body{
   padding-left: 50px;
   padding-right: 50px;
   position: relative;  /*此處使用relative整個才能夠隨螢幕移動!*/
-  top: 50px;
-  left: 135px;
+  top: 40px;
+  left: 145px;
   z-index: 99;
 }
 
@@ -57,7 +62,7 @@ body{
   background-color: #fff;
   border: 2px solid #ccc;
   box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
-  margin-top: 130px;
+  margin-top: 120px;
   margin-left: -25px;
   padding-left: 30px;
   padding-right: 30px;
