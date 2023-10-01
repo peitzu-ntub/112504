@@ -89,6 +89,12 @@
 </head>
 
 <body>
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
+        <div align="left">
+            <img src="../images/back.png" alt="返回icon" />
+            <span style="font-size: 10px;">返回</span>
+        </div>
+    </div>
     <div class="container-wrapper">
         <form action="store_info_edit.php" method="POST">
             <div class="container1">

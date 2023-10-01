@@ -169,6 +169,26 @@
     font-size: 18px;
     color: #d78d38;
   }
+
+  /*===========
+  返回的方框
+ ===========*/
+ .logout {
+  position: absolute;
+  top: 60px;
+  left: 65px;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 40px;
+  border: 3px solid #ecad83;
+  background-color: #ecad83;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
   .laststep div {
     display: flex;
     align-items: center;
