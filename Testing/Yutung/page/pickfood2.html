@@ -29,8 +29,8 @@
         <div class="content">
             <div class="left">
                 <a href="../page/pickfood.html">主餐</a>
-                <a href="../page/pickfood2.html">甜點</a>
-                <a href="#">飲料</a>
+                <a href="../page/pickfood2.html">點心</a>
+                <a href="../page/pickfood3.html">飲料</a>
                 <a href="#">套餐</a>
             </div>
 
@@ -44,7 +44,7 @@
                     </div>
                     <!-- 右侧容器 -->
                     <div class="menu-item-center">
-                        <h3>港式炒飯</h3>
+                        <h3>冰火波羅包</h3>
                         <p>$ 60</p>
                     </div>
                     <div class="menu-item-right">
@@ -57,7 +57,7 @@
                             <img src="../images/food1.jpg" alt="菜單1" class="product-image">
 
                             <div class="product-details">
-                                <h2>港式炒飯</h2>
+                                <h2>冰火波羅包</h2>
                                 <p>價格：$60</p>
                                 <p>介紹：豐富配料滿足味蕾，香味撲鼻，口感滑順，讓您品味無窮享受！</p>
                             </div>
@@ -81,11 +81,31 @@
                     </div>
                     <!-- 右侧容器 -->
                     <div class="menu-item-center">
-                        <h3>皮蛋瘦肉粥</h3>
+                        <h3>叉燒包</h3>
                         <p>$ 60</p>
                     </div>
                     <div class="menu-item-right">
                         <button>點選</button>
+
+                        <!-- 彈跳式視窗 -->
+                        <div class="popup-container" id="popup">
+
+                            <span class="close-button" id="closePopup">×</span>
+                            <img src="../images/food1.jpg" alt="菜單1" class="product-image">
+
+                            <div class="product-details">
+                                <h2>叉燒包</h2>
+                                <p>價格：$60</p>
+                                <p>介紹：豐富配料滿足味蕾，香味撲鼻，口感滑順，讓您品味無窮享受！</p>
+                            </div>
+
+                            <div class="cart-item">
+                                <button class="button" onclick="decrementItem(1)">-</button>
+                                <span class="item-quantity" id="quantity1">1</span>
+                                <button class="button" onclick="incrementItem(1)">+</button>
+                                <button class="button" onclick="addToCart(1)">加入購物車</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -97,7 +117,7 @@
                     </div>
                     <!-- 右侧容器 -->
                     <div class="menu-item-center">
-                        <h3>XO醬撈麵</h3>
+                        <h3>腐皮捲</h3>
                         <p>$ 60</p>
                     </div>
                     <div class="menu-item-right">
@@ -113,7 +133,7 @@
                     </div>
                     <!-- 右侧容器 -->
                     <div class="menu-item-center">
-                        <h3>港式臘味煲仔飯</h3>
+                        <h3>鮮蝦腸粉</h3>
                         <p>$ 60</p>
                     </div>
                     <div class="menu-item-right">
@@ -129,7 +149,7 @@
                     </div>
                     <!-- 右侧容器 -->
                     <div class="menu-item-center">
-                        <h3>公仔湯麵</h3>
+                        <h3>牛肉腸粉</h3>
                         <p>$ 60</p>
                     </div>
                     <div class="menu-item-right">
