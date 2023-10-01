@@ -49,7 +49,8 @@
                     </div>
                     <div class="input-box">
                         <span class="details" style="font-size: 20px;">店家電話：</span>
-                        <input type="text" name="store_tel" id="store_tel" placeholder="請輸入店家電話" required>
+                        <input type="text" name="store_tel" id="store_tel" placeholder="請輸入店家電話" required oninput="javascript: if (this.value.length > 10) this.value = this.value.slice(0, 10);">
+
                     </div>
                     <div class="input-box">
                         <span class="details" style="font-size: 20px;">店家地址：</span>
