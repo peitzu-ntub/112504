@@ -109,12 +109,12 @@ body{
 }
 
 .dropdown-content {
-  padding: 15px;
-  border-radius: 30px;
+  padding: 10px;
+  border-radius: 25px;
   display: none;
   position: absolute; 
-  background-color: #fff;
-  min-width: 100px;
+  background-color: #b9c34e;
+  min-width: 150px;
 }
 
 .dropdown-content a {
@@ -136,8 +136,8 @@ body{
 } 
 
 .dropdown-content a:hover { /* 滑鼠滑入按鈕變色*/
-  background-color: #ef5c28;
-  color: #fff;
+  background-color: #edffe8;
+  color: green;
 }
 
 /* 返回的方框 */

@@ -1,0 +1,247 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+  font-weight:bold
+}
+.title {
+  text-align: center;
+  top:6px;
+}
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+/*   background: linear-gradient(135deg, #e68871, #88ba80); */
+  background-color:#fff3bc;
+}
+.container-wrapper {
+  position: relative; /* 設置父容器為相對定位 */
+}
+/* =================
+背景與白色中間那塊黃色
+====================*/
+.container1{
+  font-weight: bold;
+  background-color: #f9e99e;
+  border-radius: 20px;
+  width: 750px;
+  max-width: 750px;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* =================
+背景與白色中間那塊白色
+====================*/
+.insidebox{
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 700px;
+  height: 315px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* ==========
+  輸入框的底框
+=============*/
+.ininsidebox{
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 680px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+/* ==========
+    輸入框
+=============*/
+.content .user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+.input-box {
+  display: flex;
+  flex-direction: column;/* center */
+  align-items: flex-start;/* center */
+  margin-top: 8px;
+}
+.input-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+/*  .input-box {
+  display: flex; 
+  align-items: center; 
+  margin-top: 8px;
+}  */
+.input-box input,
+.input-box select,
+.input-box textarea {
+  height: 33px;
+  width: 250px;
+  outline: none;
+  font-size: 16px;
+  border-radius: 10px;
+  padding-left: 15px;
+  border: 1px solid #000000;
+  margin-bottom: 3px;
+}
+form .input-box span.details{
+   /* 將顯示更改為 inline-block 以位於同一行 */
+  /* display: inline-block;
+  font-weight: 500; */
+  /*添加一些右邊距以增加間距  */
+  /* margin-right: 3px; 
+  margin-bottom: 3px;
+  font-weight: bold; */
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 3px 12px 0;
+}
+
+
+/* ==========
+  確定的按鈕
+=============*/
+.submit {
+  position: absolute; /* 設置為絕對定位 */
+  bottom: -13px; /* 距離視窗上方的位置 */
+  left: 58%; /* 距離視窗左側的位置 */
+  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
+  width: 70px;
+  height: 37px;
+  border: 3px solid #8cb87c;
+  background-color:#8cb87c;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #5b7751;
+}
+.submit div {
+  display: flex;
+  align-items: center;
+  color: rgb(116, 65, 31)
+}
+.submit img {
+  margin-right: 3px; /* 調整圖片和文字之間的間距 */
+}
+.submit:hover {
+  border: 3px solid #5b7751;
+  color: #394c32;
+  cursor: pointer;
+}
+
+/* =============
+   上一步的按鈕 
+===============*/
+.laststep {
+  position: absolute; /* 設置為絕對定位 */
+  bottom: -13px; /* 距離視窗上方的位置 */
+  left: 43%; /* 距離視窗左側的位置 */
+  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
+  width: 70px;
+  height: 37px;
+  border: 3px solid #deb587;
+  background-color:#deb587;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #d78d38;
+}
+.laststep div {
+  display: flex;
+  align-items: center;
+  color: #deb587;
+}
+.laststep img {
+  margin-right: 3px; /* 調整圖片和文字之間的間距 */
+}
+.laststep:hover {
+  border: 3px solid #9a7e5f;
+  color: #846c51;
+  cursor: pointer;
+}
+
+/*===========
+ 下一步的按鈕
+============ */
+.nextstep {
+  position: absolute; /* 設置為絕對定位 */
+  bottom: -13px; /* 距離視窗上方的位置 */
+  left: 91%; /* 距離視窗左側的位置 */
+  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
+  width: 90px;
+  height: 37px;
+  border: 3px solid #d4bb4a;
+  background-color:#d4bb4a;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #99883e;
+}
+.nextstep div {
+  display: flex;
+  align-items: center;
+  color: #d4bb4a;
+}
+.nextstep img {
+  margin-right: 3px; /* 調整圖片和文字之間的間距 */
+}
+.nextstep:hover {
+  border: 3px solid #99883e;
+  color: #857737;
+  cursor: pointer;
+}
+
+/* ==============
+查看全部餐點的按鈕 
+================*/
+.checkbutton {
+  position: absolute; /* 設置為絕對定位 */
+  bottom: -13px; /* 距離視窗上方的位置 */
+  left: 11%; /* 距離視窗左側的位置 */
+  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
+  width: 80px;
+  height: 37px;
+  border: 3px solid #ebcc3f;
+  background-color:#ebcc3f;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #8a792b;
+}
+.checkbutton div {
+  display: flex;
+  align-items: center;
+  color: #ebcc3f;
+}
+.checkbutton:hover {
+  border: 3px solid #d6a138;
+  color: #ab812f;
+  cursor: pointer;
+}
