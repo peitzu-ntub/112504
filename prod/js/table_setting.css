@@ -11,17 +11,17 @@ body{
 }
 
 .myTitle{
-    position: fixed;
-    top: 12px;
-    left: 590px;
+    position: relative;
+    top: -15px;
+    left: -45px;
     z-index: 100;
 }
 
 .col-md-5 span{
-    color: green;
+    color: #35522b;
     position: fixed;
     top: 30px;
-    left: 45%;
+    left: 46%;
     font-size: 300%;
 }
   
@@ -29,10 +29,10 @@ body{
     border-radius: 30px;
     width: 300px;
     height: 60px;
-    background-color: lightgreen;
+    background-color: #acce79;
     opacity: 0.8;
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
-    position: fixed;
+    position: relative;
     top: 32px;
     left: 41%;
 }
@@ -66,7 +66,7 @@ form {
     z-index: 99;
     position: fixed;
     top: 300px;
-    right: 100px;
+    right: 130px;
     text-align: center;
 }
 
@@ -86,6 +86,8 @@ input {
     border-radius: 15px;
     font-weight: bold;
     font-size: 16px;
+    position: relative;
+    left: 10px;
 }
 
 input[type="submit"] {

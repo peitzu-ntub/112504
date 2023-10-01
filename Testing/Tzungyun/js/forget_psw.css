@@ -5,15 +5,19 @@ body {
   padding: 20px;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 /* h1 {
   color: #333;
 } */
 
 form {
   /* max-width: 400px; */
-  position: absolute;
-  top: 200px; 
-  left: 400px;
+  position: relative;
+  top: 180px; 
+  left: 0px;
   width: 700px;
 	height: 400px;
   margin: 0 auto;
@@ -111,6 +115,20 @@ input[type="submit"]:hover {
   top: -40px;
   left: -40px;
   z-index: 100;
+}
+
+@media (max-width: 1024px) {
+  .myTitle{
+    position: relative;
+    top: -30px;
+    left: -140px;
+  }
+
+  .caption{
+    position: absolute;
+    top: 60px;
+    left: 380px;
+  }
 }
 
 .caption span{
