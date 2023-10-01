@@ -16,7 +16,7 @@ if ($con->query($sql) === TRUE) {
   echo "<script>alert('更新成功!');location.href='allmenu.php';</script>"; 
   // header("location:menu_edit.php?meal_name=".$meal_name);
 } else {
-  echo "Error: " . $sql . "<br>" . $con->error;
+  echo "<script>alert('餐點重複!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
 }
 
 

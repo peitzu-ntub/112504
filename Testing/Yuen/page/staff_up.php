@@ -23,7 +23,7 @@ if ($con->query($sql) === TRUE) {
   echo "<script>alert('更新成功!');location.href='employee.php';</script>"; 
   // header("location:staff_edit.php?staff_id=".$staff_id);
 } else {
-  echo "Error: " . $sql . "<br>" . $con->error;
+  echo "<script>alert('更新有誤!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
 }
 
 
