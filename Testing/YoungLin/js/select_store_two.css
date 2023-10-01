@@ -200,10 +200,98 @@ body{
   color: white;
   cursor: pointer;
 }
-/* .content .button1{
-  width:500px;
-  height:100px;
-  font-size:20px;
-  border:2px blue none;
+
+/*============= 
+    整個底
+===============*/
+ nav#menu-container {
+  background:#fff3bc;
+  position:relative;
+  width:1280px;
+  height: 300px;
+  margin-top: 35px;
 }
- */
+/*============= 
+    左右按鈕
+===============*/
+#btn-nav-previous {
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  left: 0px;
+  padding: 110px 5px;
+  background: #ecad83;
+  height: 260px;
+}
+#btn-nav-next {
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  right: 0px;
+  padding: 110px 5px;
+  background: #ecad83;
+  height: 260px;
+}
+/*============= 
+  店家按鈕底框
+===============*/
+.menu-inner-box
+{ 
+  width: 95%;
+  white-space: nowrap;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0px 54px;
+  box-sizing: border-box;
+  background: #fff3bc;
+  width:1200px;
+  height: 300px;
+}
+.menu
+{  
+  padding:0;
+  margin: 0;
+  list-style-type: none;
+  display:block;
+  text-align: center;
+}
+
+/*============= 
+    店家樣式
+===============*/
+a.menu-item
+{
+  transform: translateY(-50%);
+/*   height:100%; */
+  padding: 100px 100px;
+  background-color:#ffffff;
+  display:inline;
+  margin:0 auto;
+  line-height:270px;
+  text-decoration:none;
+  text-align:center;
+  white-space:no-wrap;
+  color: #000000;
+  border-radius: 20px;
+  font-size: 25px;
+  border:2px solid #8cb87c;
+}
+.menu-item:hover {
+  text-decoration:underline;
+  border: 5px solid #8cb87c;
+  border-radius: 20px;
+}
+
+@media only screen and (max-width: 480px) {
+#btn-nav-previous {
+  display:none;
+}
+#btn-nav-next {
+  display:none;
+}
+  .menu-inner-box
+  { 
+      width:100%;
+      overflow-x:auto;
+  }
+}

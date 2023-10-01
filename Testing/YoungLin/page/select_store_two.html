@@ -35,14 +35,46 @@
     </div>
 
     <div class="container-wrapper">          
-        <div class="container1">
+<!--         <div class="container1">
             <div class="intostore" onclick="location.href='boss_management.html'">
                 <span style="font-size: 40px;">好吃店家</span>
             </div>
-            <!--<button class="left-button">左邊按鈕</button>
-        <button class="right-button">右邊按鈕</button> -->
-        </div>
+        </div> -->
+        <nav id="menu-container" class="arrow">
+            <div id="btn-nav-previous" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="32"
+                    height="32" viewBox="0 0 24 24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                    <path d="M0 0h24v24H0z" fill="none" /></svg>
+            </div>
+            <div id="btn-nav-next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32"
+                    height="32" viewBox="0 0 24 24">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                    <path d="M0 0h24v24H0z" fill="none" /></svg>
+            </div>
+            <div class="menu-inner-box">
+                <div class="menu">
+                    <a class="menu-item" href="../page/boss_management.html">好吃店家</a>
+                    <a class="menu-item" href="../page/boss_management.html">不好吃店家</a>
+                    <a class="menu-item" href="../page/boss_management.html">薩利YEAH</a>
+                    <a class="menu-item" href="../page/boss_management.html">水底撈</a>
+                    <a class="menu-item" href="../page/boss_management.html">九方雲集</a>
+                    <a class="menu-item" href="../page/boss_management.html">小豐牛肉麵</a>
+                    <a class="menu-item" href="../page/boss_management.html">池下便當</a>
+                    <a class="menu-item" href="../page/boss_management.html">起司馬鈴薯</a>
+                    <a class="menu-item" href="../page/boss_management.html">阿嬌滷味</a>
+                    <a class="menu-item" href="../page/boss_management.html">大GG鹹水G</a>
+                    <a class="menu-item" href="../page/boss_management.html">白糖早餐店</a>
+                    <a class="menu-item" href="../page/boss_management.html">SUKIYAKISI</a>
+                    <a class="menu-item" href="../page/boss_management.html">甕搖雞</a>
+                    <a class="menu-item" href="../page/boss_management.html">壽司狼</a>
+                    <a class="menu-item" href="../page/boss_management.html">葬壽司</a>
+                </div>
+            </div>
+        </nav>
     </div>
+
 
         <div class="addstore" type="button" name="按鈕名稱" onclick="location.href='store_register_copy.html'">
             <div align="right">
@@ -51,7 +83,14 @@
             </div>
         </div>
 </body>
-<!--<div class="button1">
-				<input value="港式飲茶店"onclick="location.href='management.html'">
-			</div> -->
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $('#btn-nav-previous').click(function(){
+            $(".menu-inner-box").animate({scrollLeft: "-=400px"});
+        });
+
+        $('#btn-nav-next').click(function(){
+            $(".menu-inner-box").animate({scrollLeft: "+=400px"});
+        });
+    </script>
 </html>
