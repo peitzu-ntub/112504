@@ -19,6 +19,7 @@ $datas = array();
 
 $sql = "SELECT staff_id, staff_name FROM store_staff";
 
+
 $result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
 
 // 如果有資料
@@ -69,7 +70,7 @@ $datas_len = count($datas); //目前資料筆數
 
 				<div class="input-box">
 					<span class="details" style="font-size: 19px;">員工編號：</span>
-					<input type="search" name="staff_id" id="staff_id" placeholder="請輸入員工編號" style="font-size: 15px;">
+					<input type="search" name="查詢" id="查詢" placeholder="請輸入員工編號" style="font-size: 15px;">
 
 					<button class="searchbutton" type="search"
 						style="font-size: 17px; width: 68px; height: 34px; background-color: #8cb87c; border-radius: 20px; border: 3px solid #8cb87c;">搜尋</button>
