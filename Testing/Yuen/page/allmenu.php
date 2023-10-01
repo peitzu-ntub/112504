@@ -73,16 +73,17 @@ $datas_len = count($datas); //目前資料筆數
                             <nav>
                                 <div class="content1">刪除</div>
                                 <div class="content2">餐點名稱</div>
-                                <div class="content3">確定</div>
+                                <div class="content3">編輯</div>
                             </nav>
                         </div>
                         <tbody>
                             <?php
                             for ($i = 0; $i < $datas_len; $i++) {
                                 echo "<tr>";
-                                echo "<td>
-                                <a href='menu_del.php?meal_name=".$datas[$i]['meal_name']."'><img src=../images/trash.png></img></a></td>";
-                                echo "<td>" . $datas[$i]['meal_name'] . "</td>";
+                                echo "<span align='left' >   
+                                <a href='menu_del.php?meal_name=".$datas[$i]['meal_name']."'><img src=../images/trash1.png></img></a></td>";
+                                echo "<td>";
+                                echo "<span style='font-size: 25px;' align='center' > ". $datas[$i]['meal_name'] . "</span>";
                                 echo "<td>
                                 <a href='menu_edit.php?meal_name=".$datas[$i]['meal_name']."'><img src=../images/signature.png></img></a></td>";
                                 echo "</br>";

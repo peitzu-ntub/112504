@@ -32,7 +32,6 @@
             store_address = '$data_store_address',
             table_count = $data_table_count
         where boss_identity = '$boss' and store_id = '$store'";
-        echo $sql;
         //執行
         mysqli_query($con, $sql);
 
