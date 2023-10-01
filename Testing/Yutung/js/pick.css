@@ -3,7 +3,7 @@
 html {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    font-weight: bold
+    font-weight: bold;
 }
 
 body {
@@ -23,7 +23,7 @@ body {
 .content {
     width: auto;
     height: 200px;
-    background-color: #0D9BE5;
+    background-color: #ffffff;
 }
 
 .left {
@@ -32,7 +32,7 @@ body {
     float: left;
     text-align: center;
     font-size: 18px;
-    background-color: #4e7fe0;
+    background-color: #fcf9f9;
 }
 
 .left a {
@@ -42,16 +42,19 @@ body {
     color: #fff;
     display: block;
     transition: 0.5s;
+    color: #000;
+    border-radius: 30px ;
+    box-shadow: 3px 1px 1px 1px rgba(0,0,0,0.3) inset;
 }
 
 .left a:hover {
-    background-color: #007bff;
+    background-color: #d2d2d2;
 }
 
 .menu {
     width: 87%;
     float: left;
-    background-color: #80a0e2;
+    background-color: #ffffff;
     display: flex;
     flex-wrap: wrap;
 }
@@ -65,6 +68,7 @@ body {
     border: 1px solid #ccc;
     padding: 5px;
     width: 350px;
+    border-radius: 15px ;
     /* 菜单项的宽度 */
 }
 
@@ -184,9 +188,12 @@ body {
     left: 0;
     width: 100%;
     height: 80px;
-    background-color: #D0DAEE;
+    background-color: #80a0e2;/* 80a0e2 */
 }
-
+.header{
+    background-color: #80a0e2;
+    font:bold;
+}
 
 /* 按鈕 */
 .cartbutton {
@@ -200,8 +207,8 @@ body {
     /* 將容器水平垂直居中 */
     width: 120px;
     height: 50px;
-    border: 3px solid #80a0e2;
-    background-color: #80a0e2;
+    border: 3px solid #D0DAEE;
+    background-color: #D0DAEE;
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -239,8 +246,8 @@ body {
     /* 將容器水平垂直居中 */
     width: 120px;
     height: 50px;
-    border: 3px solid #80a0e2;
-    background-color: #80a0e2;
+    border: 3px solid #D0DAEE;
+    background-color: #D0DAEE;
     border-radius: 20px;
     display: flex;
     justify-content: center;
