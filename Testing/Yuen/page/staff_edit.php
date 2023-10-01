@@ -8,7 +8,7 @@
 
     <title>員工資料</title>
 
-    <link href="../js/create.css" rel="stylesheet">
+    <link href="../js/create_new.css" rel="stylesheet">
 </head>
 <?php
 include "../bin/conn.php";
@@ -57,7 +57,7 @@ $datas_len = count($datas); //目前資料筆數
 ?>
 <body>
     <div class="container-wrapper">
-    <form method="post" action="staff_up.php?staff_id=<?php echo $datas[0]['staff_id']?>">
+        <form method="post" action="staff_up.php?staff_id=<?php echo $datas[0]['staff_id']?>">
             <div class="container1">
                 <!-- <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
                     <div align="left">
@@ -79,16 +79,21 @@ $datas_len = count($datas); //目前資料筆數
 
                         <div class="input-box">
                             <span class="details">密碼：</span>
-							<input type="text" class="form-control" value="<?php echo $datas[0]['staff_psw'] ?>" name="staff_psw"><br>                        </div>
+							<input type="text" class="form-control" pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$" required="required" oninput="setCustomValidity('');"
+                                oninvalid="setCustomValidity('請輸入正確的密碼格式：含英數至少六個字元');"
+                                value="<?php echo $datas[0]['staff_psw'] ?>" name="staff_psw" placeholder="格式：含英數至少六個字元"><br>                        
+                        </div>
 
                         <div class="input-box">
                             <span class="details">姓名：</span>
-                            <input type="text" class="form-control" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" value="<?php echo $datas[0]['staff_name'] ?>" name="staff_name"><br>
+                            <input type="text" class="form-control" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" 
+                            value="<?php echo $datas[0]['staff_name'] ?>" name="staff_name" placeholder="請輸入員工姓名" required><br>
                         </div>
 
                         <div class="input-box">
                             <span class="details">生日：</span>
-							<input type="date" class="form-control" value="<?php echo $datas[0]['staff_birth'] ?>" name="staff_birth"><br>                        </div>
+							<input type="date" class="form-control" value="<?php echo $datas[0]['staff_birth'] ?>" name="staff_birth" disabled><br>                       
+                        </div>
 
                         <div class="input-box">
                             <span class="details">性別：</span>
@@ -97,27 +102,37 @@ $datas_len = count($datas); //目前資料筆數
 
                         <div class="input-box">
                             <span class="details">聯絡電話：</span>
-							<input type="text" class="form-control" oninput="value=this.value.replace(/\D/g,'')" value="<?php echo $datas[0]['staff_tel'] ?>" name="staff_tel"><br>                        </div>
+							<input type="text" class="form-control" required="required" maxlength="11" pattern="09\d{2}-\d{6}"
+                                oninput="setCustomValidity('');"
+                                oninvalid="setCustomValidity('請輸入正確的手機號瑪格式：09xx-xxxxxx');" value="<?php echo $datas[0]['staff_tel'] ?>" name="staff_tel" placeholder="09xx-xxxxxx"><br>                        </div>
 
                         <div class="input-box">
                             <span class="details">地址：</span>
-							<input type="text" class="form-control" value="<?php echo $datas[0]['staff_address'] ?>" name="staff_address"><br>                        </div>
+							<input type="text" class="form-control" value="<?php echo $datas[0]['staff_address'] ?>" name="staff_address" placeholder="請輸入員工的地址" required><br>                        
+                        </div>
 
+
+                        
                         <div class="input-box">
                             <span class="details">到職日期：</span>
-							<input type="date" class="form-control" value="<?php echo $datas[0]['due_date'] ?>" name="due_date"><br>                        </div>
+							<input type="date" class="form-control" value="<?php echo $datas[0]['due_date'] ?>" name="due_date" disabled><br>                        
+                        </div>
 
+                        
                         <div class="input-box">
                             <span class="details">緊急聯絡人：</span>
-							<input type="text" class="form-control" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" value="<?php echo $datas[0]['em_name'] ?>" name="em_name"><br>                        </div>
+							<input type="text" class="form-control" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" value="<?php echo $datas[0]['em_name'] ?>" name="em_name" placeholder="請輸入員工的緊急聯絡人姓名"><br>                        </div>
 
                         <div class="input-box">
                             <span class="details">緊急連絡人電話：</span>
-							<input type="text" class="form-control" oninput="value=this.value.replace(/\D/g,'')" value="<?php echo $datas[0]['em_tel'] ?>" name="em_tel"><br>                        </div>
+							<input type="text" class="form-control" required="required"
+                                maxlength="11" pattern="09\d{2}-\d{6}" oninput="setCustomValidity('');"
+                                oninvalid="setCustomValidity('請輸入正確的手機號瑪格式：09xx-xxxxxx');"  value="<?php echo $datas[0]['em_tel'] ?>" name="em_tel" placeholder="09xx-xxxxxx"><br>                        
+                        </div>
 
                         <div class="input-box">
                             <span class="details">與緊急連絡人關係：</span>
-							<input type="text" class="form-control" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" value="<?php echo $datas[0]['relation'] ?>" name="relation"><br>                        </div>
+							<input type="text" class="form-control" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" value="<?php echo $datas[0]['relation'] ?>" name="relation"placeholder="請輸入員工與緊急連絡人的關係"><br>                        </div>
 
                         <div class="input-box">
                             <span class="details"></span>
