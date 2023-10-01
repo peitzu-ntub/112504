@@ -23,7 +23,7 @@ body {
 .content {
     width: auto;
     height: 200px;
-    background-color: #0D9BE5;
+    background-color: #f9e99e;
 }
 
 .left {
@@ -32,26 +32,26 @@ body {
     float: left;
     text-align: center;
     font-size: 18px;
-    background-color: #4e7fe0;
+    background-color: #FFD0AC;
 }
 
 .left a {
     padding: 10px 15px;
     text-decoration: none;
     font-size: 18px;
-    color: #fff;
+    color: #000;
     display: block;
     transition: 0.5s;
 }
 
 .left a:hover {
-    background-color: #007bff;
+    background-color: #f9e99e;
 }
 
 .menu {
     width: 87%;
     float: left;
-    background-color: #80a0e2;
+    background-color: #f9e99e;
     display: flex;
     flex-wrap: wrap;
 }
@@ -106,8 +106,8 @@ body {
 .menu-item button {
     width: 80px;
     height: 40px;
-    border: 3px solid #80a0e2;
-    background-color: #80a0e2;
+    border: 3px solid lightskyblue;
+    background-color: lightskyblue;
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -119,12 +119,12 @@ body {
 .popup-container {
     display: none;
     position: fixed;
-    top: 50%;
+    top: 53%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
     border: 1px solid #ccc;
-    padding: 20px;
+    padding: 30px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 9999;
 }
