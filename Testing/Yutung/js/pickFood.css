@@ -11,7 +11,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f9e99e;
+    background: #ffedbb;
 }
 
 /* ------- wrapper ------- */
@@ -32,23 +32,24 @@ body {
     float: left;
     text-align: center;
     font-size: 18px;
-    background-color: #fcf9f9;
+    background-color: #ffedbb;
 }
 
 .left a {
     padding: 10px 15px;
     text-decoration: none;
     font-size: 18px;
-    color: #fff;
+    background-color: #fff;
     display: block;
     transition: 0.5s;
     color: #000;
-    border-radius: 30px ;
+    border-radius: 25px ;
     box-shadow: 3px 1px 1px 1px rgba(0,0,0,0.3) inset;
+    margin-top: 3px;
 }
 
 .left a:hover {
-    background-color: #d2d2d2;
+    background-color: #FFA07A;
 }
 
 .menu {
@@ -69,30 +70,24 @@ body {
     padding: 5px;
     width: 350px;
     border-radius: 15px ;
-    /* 菜单项的宽度 */
 }
 
 /* 图片容器的样式 */
 .menu-item-img {
     flex: 0 0 100px;
-    /* 图片容器的宽度和高度 */
     margin-right: 20px;
-    /* 图片右侧的外边距 */
 }
 
 /* 图片的样式 */
 .menu-item-img img {
     max-width: 100%;
-    /* 图片最大宽度 */
     height: auto;
-    /* 保持图片比例 */
     display: block;
 }
 
 /* 右侧容器的样式 */
 .menu-item-center {
     flex-grow: 1;
-    /* 右侧容器占据剩余的空间 */
 }
 
 /* 名称的样式 */
@@ -110,14 +105,27 @@ body {
 .menu-item button {
     width: 80px;
     height: 40px;
-    border: 3px solid #80a0e2;
-    background-color: #80a0e2;
+    border: 3px solid #DEB887;
+    background-color: #DEB887;
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 16px;
     color: #000000;
+}
+.menu-item button:hover{
+    width: 80px;
+    height: 40px;
+    border: 3px solid #FFA07A;
+    background-color: #f98f65;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.2s ease;
 }
 
 .popup-container {
@@ -180,41 +188,37 @@ body {
     width: 2000px;
 }
 
-
-/* 購物車 */
+/* 最上方 */
+.header{
+    background-color: #fae278;
+}
+/* 購物車底框 */
 .footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 80px;
-    background-color: #80a0e2;/* 80a0e2 */
-}
-.header{
-    background-color: #80a0e2;
-    font:bold;
+    background-color: #fae278;/* 80a0e2 */
 }
 
-/* 按鈕 */
+/* 購物車按鈕 */
 .cartbutton {
     position: absolute;
-    /* 設置為絕對定位 */
-    bottom: 10px;
-    /* 距離視窗上方的位置 */
-    left: 5%;
-    /* 距離視窗左側的位置 */
-    /* transform: translate(-50%, -50%); */
-    /* 將容器水平垂直居中 */
-    width: 120px;
-    height: 50px;
-    border: 3px solid #D0DAEE;
-    background-color: #D0DAEE;
-    border-radius: 20px;
+    /*bottom: 10px; 距離視窗上方的位置 */
+    left: 5%; /* 距離視窗左側的位置 */
+    /*transform: translate(-50%, -50%); 將容器水平垂直居中 */
+    width: 300px;
+    height: 100px;
+    /*border: 3px solid #D0DAEE; */
+    background-color: #fae278;
+    /*border-radius: 20px; */
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 18px;
-    color: #000000;
+    color: #ffffff;   
+    border-left-style:solid;
 }
 
 .cartbutton div {
@@ -225,35 +229,31 @@ body {
 
 .cartbutton img {
     margin-right: 3px;
-    /* 調整圖片和文字之間的間距 */
 }
 
 .cartbutton:hover {
-    border: 3px solid #4e7fe0;
-    color: #000000;
+    color: #ffffff;
+    background-color: #DEB887;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-/* 按鈕 */
+/* 我的訂單按鈕 */
 .allbutton {
-    position: absolute;
-    /* 設置為絕對定位 */
-    bottom: 10px;
-    /* 距離視窗上方的位置 */
-    left: 15%;
-    /* 距離視窗左側的位置 */
-    /* transform: translate(-50%, -50%); */
-    /* 將容器水平垂直居中 */
-    width: 120px;
-    height: 50px;
-    border: 3px solid #D0DAEE;
-    background-color: #D0DAEE;
-    border-radius: 20px;
+    position: absolute;/*bottom: 10px;  距離視窗上方的位置 */
+    left: 28%;/* 距離視窗左側的位置 */
+    /* transform: translate(-50%, -50%);  將容器水平垂直居中 */
+    width: 300px;
+    height: 100px;
+    /*border: 3px solid #DEB887; */
+    background-color: #fae278;/*好看咖啡色  DEB887 */
+    /*border-radius: 20px; */
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 18px;
-    color: #000000;
+    color: #fafafa;
+    border-left-style:solid;
 }
 
 .allbutton div {
@@ -264,11 +264,11 @@ body {
 
 .allbutton img {
     margin-right: 3px;
-    /* 調整圖片和文字之間的間距 */
 }
 
 .allbutton:hover {
-    border: 3px solid #4e7fe0;
-    color: #000000;
+    background-color: #DEB887;
+    color: #ffffff;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
