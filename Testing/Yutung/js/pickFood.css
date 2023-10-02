@@ -3,7 +3,7 @@
 html {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    font-weight: bold
+    font-weight: bold;
 }
 
 body {
@@ -14,79 +14,261 @@ body {
     background: #f9e99e;
 }
 
-.container {
-    background-color: #D0DAEE;
-    opacity: 0.8;
-    border: 2px solid #ccc;
-    width: 1000px;
-    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
+/* ------- wrapper ------- */
+#wrapper {
+    width: 740px;
+    /*     margin: 30px auto; */
 }
 
-div.row {
-    padding: 15px;
-    margin: -10px;
+.content {
+    width: auto;
+    height: 200px;
+    background-color: #ffffff;
 }
 
-span {
-    font-size: 36px;
-    font-weight: bold;
-    position: relative;
-    left: 450px;
-}
-
-.card {
-    box-shadow: 0 0 5px 0 #aaa;
-    padding: 5px;
-    margin: 5px;
-
-}
-
-/* 輸入格樣式 */
-input[type="text"],
-div.col-md-12.select {
-    margin-left: 5px;
-    height: 45px;
-    width: 15%;
-    outline: none;
-    font-size: 16px;
-    border-radius: 5px;
-    padding-left: 20px;
-    border: 1px solid #ccc;
-    border-bottom-width: 2px;
-    transition: all 0.3s ease;
-}
-
-.section {
+.left {
+    width: 13%;
+    height: 420px;
+    float: left;
     text-align: center;
+    font-size: 18px;
+    background-color: #fcf9f9;
 }
 
-label {
-    font-size: 25px;
-    padding: 10px;
+.left a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    transition: 0.5s;
+    color: #000;
+    border-radius: 30px ;
+    box-shadow: 3px 1px 1px 1px rgba(0,0,0,0.3) inset;
+}
+
+.left a:hover {
+    background-color: #d2d2d2;
+}
+
+.menu {
+    width: 87%;
+    float: left;
+    background-color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* 菜单项的样式 */
+.menu-item {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 350px;
+    border-radius: 15px ;
+    /* 菜单项的宽度 */
+}
+
+/* 图片容器的样式 */
+.menu-item-img {
+    flex: 0 0 100px;
+    /* 图片容器的宽度和高度 */
+    margin-right: 20px;
+    /* 图片右侧的外边距 */
+}
+
+/* 图片的样式 */
+.menu-item-img img {
+    max-width: 100%;
+    /* 图片最大宽度 */
+    height: auto;
+    /* 保持图片比例 */
+    display: block;
+}
+
+/* 右侧容器的样式 */
+.menu-item-center {
+    flex-grow: 1;
+    /* 右侧容器占据剩余的空间 */
+}
+
+/* 名称的样式 */
+.menu-item h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+/* 描述的样式 */
+.menu-item p {
+    margin: 0;
+}
+
+/* 按钮的样式 */
+.menu-item button {
+    width: 80px;
+    height: 40px;
+    border: 3px solid #80a0e2;
+    background-color: #80a0e2;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+}
+
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+/* 关闭按钮的样式 */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* 图片的样式 */
+.product-image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 价格和说明的样式 */
+.product-details {
+    margin-top: 20px;
+}
+
+/* 商品项的样式 */
+.cart-item {
+    display: flex;
+    align-items: center;
     margin: 10px;
-    font-weight: bold
+}
+
+/* 商品数量的样式 */
+.item-quantity {
+    margin: 0 10px;
+}
+
+/* 按钮的样式 */
+.button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* 標題方框 */
+.container-wrapper {
+    position: relative;
+    /* 設置父容器為相對定位 */
+    width: 2000px;
 }
 
 
-
+/* 購物車 */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #80a0e2;/* 80a0e2 */
+}
+.header{
+    background-color: #80a0e2;
+    font:bold;
+}
 
 /* 按鈕 */
-button {
-    height: auto;
-    width: auto;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: none;
-    color: #fff;
+.cartbutton {
+    position: absolute;
+    /* 設置為絕對定位 */
+    bottom: 10px;
+    /* 距離視窗上方的位置 */
+    left: 5%;
+    /* 距離視窗左側的位置 */
+    /* transform: translate(-50%, -50%); */
+    /* 將容器水平垂直居中 */
+    width: 120px;
+    height: 50px;
+    border: 3px solid #D0DAEE;
+    background-color: #D0DAEE;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 18px;
-    letter-spacing: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background: #80a0e2;
-    font-weight: bold;
+    color: #000000;
 }
 
-form .button input:hover {
-    /* transform: scale(0.99); */
-    background: #80a0e2;
+.cartbutton div {
+    display: flex;
+    align-items: center;
+    color: #80a0e2;
+}
+
+.cartbutton img {
+    margin-right: 3px;
+    /* 調整圖片和文字之間的間距 */
+}
+
+.cartbutton:hover {
+    border: 3px solid #4e7fe0;
+    color: #000000;
+    cursor: pointer;
+}
+
+/* 按鈕 */
+.allbutton {
+    position: absolute;
+    /* 設置為絕對定位 */
+    bottom: 10px;
+    /* 距離視窗上方的位置 */
+    left: 15%;
+    /* 距離視窗左側的位置 */
+    /* transform: translate(-50%, -50%); */
+    /* 將容器水平垂直居中 */
+    width: 120px;
+    height: 50px;
+    border: 3px solid #D0DAEE;
+    background-color: #D0DAEE;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #000000;
+}
+
+.allbutton div {
+    display: flex;
+    align-items: center;
+    color: #80a0e2;
+}
+
+.allbutton img {
+    margin-right: 3px;
+    /* 調整圖片和文字之間的間距 */
+}
+
+.allbutton:hover {
+    border: 3px solid #4e7fe0;
+    color: #000000;
+    cursor: pointer;
 }
