@@ -82,7 +82,8 @@ $datas_len = count($datas); //目前資料筆數
         </div>
     </div>
     <div class="container-wrapper">
-            <form action="menu1.php" method="POST">            <div class="container1">
+		<form action="menu1.php" method="POST">            
+            <div class="container1">
                 <div class="topinput" style="font-size: 15px;">
                     <font color="#bf6900" size="5">餐點類型：</font>
                     <input name="type_name" id="type_name" placeholder="請輸入您欲新增的餐點類型">
@@ -90,34 +91,33 @@ $datas_len = count($datas); //目前資料筆數
 
                 <div class="insidebox">
                     <div class="ininsidebox" style="width:680px;height:300px; overflow:auto;">
-                        <div class="countainer">
-                            <nav>
-                                <div class="content1">刪除 </div> 
-                                <div class="content2">類型名稱</div> 
-                                <div class="content3">編輯</div>                             
-                            </nav>
-                        </div>
-
-                        <tbody>
+                        <table width ="500" align="center" >
+                            <tr>
+                                <th><font size="5">刪除</th>
+                                <th><font size="5">類型名稱</th>
+                                <th><font size="5">編輯</th>
+                            </tr>
+							<tbody>
                             <?php
                             for ($i = 0; $i < $datas_len; $i++) {
                                 echo "<tr>";
-                                echo "<td>
-                                <a href='type_del.php?type_name=".$datas[$i]['type_name']."'><img src=../images/trash.png></img></a></td>";
-                                echo "<td>" . $datas[$i]['type_name'] . "</td>";
-                                echo "<td>
+                                echo "<td align='center'>
+                                <a href='type_del.php?type_name=".$datas[$i]['type_name']."'><img src=../images/trash1.png></img></a></td>";
+                                echo "<td style='font-size: 25px;' align='center'> ". $datas[$i]['type_name'] . "</td>";
+                                echo "<td align='center'>
                                 <a href='type_edit.php?type_name=".$datas[$i]['type_name']."'><img src=../images/signature.png></img></a></td>";
-                             }
+                                echo "</br>";
+                            }
                             ?>
 
-                            </tbody>
+                            </tbody>                        
+						</table>
                     </div>
 
                     <input class="submit" type="submit" value="新增" style="font-size: 5px;"></input>
-                    <div class="nextstep" type="next" onclick="location.href='newmenu2.html'">
+                    <div class="nextstep" type="next" onclick="location.href='newmenu2.php'">
                         <span style="font-size: 5px;">下一步</span>
                     </div>
-
                 </div>
             </div>
         </form>
@@ -125,3 +125,5 @@ $datas_len = count($datas); //目前資料筆數
 </body>
 
 
+
+</html>

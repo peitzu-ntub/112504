@@ -8,7 +8,7 @@
 
 	<title>員工資料</title>
 
-	<link href="../js/create_new.css" rel="stylesheet">
+	<link href="../js/employee.css" rel="stylesheet">
 </head>
 
 <body>
@@ -26,34 +26,28 @@
 				</div><br><br>
 
 				<div class="input-box">
-					<span class="details" style="font-size: 19px;">員工編號：</span>
+					<div class="details" style="font-size: 19px;">員工編號：</span>
 					<input type="search" name="staff_id" id="staff_id" placeholder="請輸入員工編號" style="font-size: 15px;">
 
 					<button class="searchbutton" type="search"
 						style="font-size: 17px; width: 68px; height: 34px; background-color: #8cb87c; border-radius: 20px; border: 3px solid #8cb87c;">搜尋</button>
+					</div>
 				</div><br>
 
-				<div class="ininsidebox">
-					<div class="right-scroll">
-						<table width="50%">
-							<tr>
-								<td>
-									<div class="sidebar_left">刪除</div>
-								</td>
-								<td>
-									<div class="content1">員工編號</div>
-								</td>
-								<td>
-									<div class="content2">員工姓名</div>
-								</td>
-								<td>
-									<div class="sidebar_right">編輯</div>
-								</td>
-							</tr>
-						</table>
-					</div>
+				<div class="insidebox">
+                    <div class="ininsidebox" style="width:680px;height:300px; overflow:auto;">
+                        <table border="1" align="center" >
+                            <tr>
+                                <th>刪除</th>
+                                <th>員工編號</th>
+                                <th>員工姓名</th>
+                                <th>編輯</th>
+                            </tr>
+                            <!-- 後端資料寫這邊 -->
+                        </table>
+                    </div>
 				</div>
-				<!-- </div> -->
+
 			</div>
 		</form>
 	</div>
