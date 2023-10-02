@@ -1,3 +1,22 @@
+<?php
+    session_start();
+    include "../bin/conn.php";
+
+    //todo, 這是假的資料
+    //預設的資料來源，是從登入而來。登入、選擇店家後，就會把以下這兩個資訊，放進SESSION裡，保留在Server端
+    //讓同一個人的接續連線，可以直接拿來用
+    if (!isset($_SESSION["identity"])) {
+        $_SESSION["identity"] = "A123456789";
+    }
+    if (!isset($_SESSION["store_id"])) {
+        $_SESSION["store_id"] = "S01";
+    }
+
+    //PHP是在後端(Server)運作的程式，Html與JavaScript則是在前端(Client)運作的程式
+    //在Server端，透過PHP將身份證與店代號，保留於隱藏欄位中，以傳到前端，做後續的應用
+    $boss = $_SESSION["identity"];
+    $store = $_SESSION["store_id"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,9 +25,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>查看全部餐點</title>
+    <title>客製化1</title>
 
-    <link href="../js/allmenu.css" rel="stylesheet">
+    <link href="../js/newmenu1.css" rel="stylesheet">
 
 </head>
 <?php
@@ -18,7 +37,7 @@ include "../bin/conn.php";
 // 設置一個空陣列來放資料
 $datas = array();
 
-$sql = "SELECT meal_name FROM store_food";
+$sql = "SELECT type_name FROM food_type";
 
 $result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
 
@@ -54,46 +73,57 @@ echo "<br><br>";
 $datas_len = count($datas); //目前資料筆數
 
 ?>
+
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu2.php'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
             <span style="font-size: 10px;">返回</span>
         </div>
     </div>
     <div class="container-wrapper">
-        <form action="menu_del.php" method="POST">
+		<form action="menu1.php" method="POST">            <div class="container1">
             <div class="container1">
                 <div class="topinput" style="font-size: 15px;">
-                    <font color="#bf6900" size="5">全部餐點</font></div>
+                    <font color="#bf6900" size="5">餐點類型：</font>
+                    <input name="type_id" id="type_id" placeholder="請輸入您欲新增的餐點類型">
+                </div>
+
                 <div class="insidebox">
                     <div class="ininsidebox" style="width:680px;height:300px; overflow:auto;">
                         <table width ="500" align="center" >
                             <tr>
-                                <th><font size="5">刪除</th>
-                                <th><font size="5">餐點名稱</th>
+                                <th><font size="5" text-align="center">刪除</th>
+                                <th><font size="5">類型名稱</th>
                                 <th><font size="5">編輯</th>
-
                             </tr>
-                            <tbody>
+							<tbody>
                             <?php
                             for ($i = 0; $i < $datas_len; $i++) {
                                 echo "<tr>";
-                                echo "<td align='center'>   
-                                <a href='menu_del.php?meal_name=".$datas[$i]['meal_name']."'><img src=../images/trash1.png></img></a></td>";
-                                echo "<td style='font-size: 25px;' align='center'>". $datas[$i]['meal_name'] . "</span>";
                                 echo "<td align='center'>
-                                <a href='menu_edit.php?meal_name=".$datas[$i]['meal_name']."'><img src=../images/signature.png></img></a></td>";
+                                <a href='type_del.php?type_name=".$datas[$i]['type_name']."'><img src=../images/trash1.png></img></a></td>";
+                                echo "<td style='font-size: 25px;' align='center'> ". $datas[$i]['type_name'] . "</td>";
+                                echo "<td align='center'>
+                                <a href='type_edit.php?type_name=".$datas[$i]['type_name']."'><img src=../images/signature.png></img></a></td>";
                                 echo "</br>";
                             }
                             ?>
 
-                            </tbody>                          
-                        </table>
+                            </tbody>                        
+						</table>
+                    </div>
+
+                    <input class="submit" type="submit" value="新增" style="font-size: 5px;"></input>
+                    <div class="nextstep" type="next" onclick="location.href='newmenu2.html'">
+                        <span style="font-size: 5px;">下一步</span>
                     </div>
                 </div>
             </div>
         </form>
     </div>
 </body>
+
+
+
 </html>
