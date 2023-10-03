@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+html {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold
+}
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f9e99e;
+}
+
+.container {
+    background-color: #D0DAEE;
+    opacity: 0.8;
+    border: 2px solid #ccc;
+    width: 1000px;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+div.row {
+    padding: 15px;
+    margin: -10px;
+}
+
+span {
+    font-size: 36px;
+    font-weight: bold;
+    position: relative;
+    left: 450px;
+}
+
+.card {
+    box-shadow: 0 0 5px 0 #aaa;
+    padding: 5px;
+    margin: 5px;
+
+}
+
+/* 輸入格樣式 */
+input[type="text"],
+div.col-md-12.select {
+    margin-left: 5px;
+    height: 45px;
+    width: 15%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 20px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.section {
+    text-align: center;
+}
+
+label {
+    font-size: 25px;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold
+}
+
+
+
+
+/* 按鈕 */
+button {
+    height: auto;
+    width: auto;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #80a0e2;
+    font-weight: bold;
+}
+
+form .button input:hover {
+    /* transform: scale(0.99); */
+    background: #80a0e2;
+}
