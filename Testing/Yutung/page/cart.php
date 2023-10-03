@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="../js/bootstrap.min.4.6.2.css">
-  <link rel="stylesheet" href="../js/pickfood.css">
+  <link rel="stylesheet" href="../js/pickmenu.css">
 
 
   <script src="../js/jquery-3.6.4.min.js"></script>
