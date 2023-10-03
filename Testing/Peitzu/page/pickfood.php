@@ -1,6 +1,125 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
+<?php
+    include "../bin/conn.php";
+
+    //老闆身份證號
+    $identity = $_GET["identity"];
+    //店代號
+    $store_id = $_GET['store_id'];
+    //訂單單號，用系統時間決定訂單單號，格式：yyyyMMddHHmmss
+    $order_no = $_GET["order_no"];
+    //--------------------------------------------------------
+
+    $confirm_meal_id = $_GET['meal_id'];
+    $confirm_qty = $_GET['qty'];
+    $cart = $_GET['cart'];
+
+    //如果是從 confirmFood.php 過來，則
+    //檢查「選好餐點」的資訊，包含餐點代號與數量。
+    //如果有，就更新購物車的Table
+    if ($confirm_meal_id && $confirm_qty) {
+        //先刪除購物車中、這張訂單、已經存在的這個商品
+        $sql = "delete from store_cart 
+                where boss_identity='$identity'
+                and store_id = '$store_id'
+                and order_no = '$order_no'
+                and meal_id = '$confirm_meal_id'
+        ";
+        //echo $sql;
+        if (!mysqli_query($con, $sql)) {
+            echo "delete error, ", mysqli_error($con);
+        }
+
+        //再新增這次選擇的數量到購物車裡
+        $sql = "insert into store_cart (
+               boss_identity, store_id, order_no, meal_id, meal_qty
+               ) values (
+               '$identity', '$store_id', '$order_no', '$confirm_meal_id', $confirm_qty
+               )
+        ";
+        //echo $sql;
+        if (!mysqli_query($con, $sql)) {
+            echo "insert error: ", mysqli_error($con);
+        }
+    }
+
+    //如果是從 cart.php 過來，則
+    //檢查「確認訂單」的資訊
+    //如果有，更新訂單、把購物車的資料合併到訂單明細
+    if (isset($cart) && $cart == '1') {
+        //購物車與目前Store_order_item的資料先全部撈出來
+        $sql = "
+            select a.meal_id, sum(a.meal_qty) as meal_qty, sf.meal_price
+            from (
+                select c.meal_id, c.meal_qty
+                from store_cart c
+                where c.boss_identity = '$identity'
+                and c.store_id = '$store_id' 
+                and c.order_no = '$order_no'
+                union all
+                select oi.meal_id, oi.count as meal_qty
+                from store_order_item oi
+                where oi.boss_identity = '$identity'
+                and oi.store_id = '$store_id' 
+                and oi.order_no = '$order_no'
+            ) a
+            left join store_food sf
+                on sf.boss_identity = '$identity'
+                and sf.store_id = '$store_id'
+                and sf.meal_id = a.meal_id
+            group by a.meal_id, sf.meal_price;
+        ";
+        $merge_oi = mysqli_query($con, $sql);
+        //刪除原本的訂單
+        $sql = "
+            delete from store_order_item 
+            where boss_identity = '$identity'
+            and store_id = '$store_id' 
+            and order_no = '$order_no'
+            ";
+        mysqli_query($con, $sql);
+        //把整併後的資料重新寫入Store_order_item
+        while ($oi = mysqli_fetch_array($merge_oi, MYSQLI_ASSOC)) {
+            $meal_id = $oi['meal_id'];
+            $qty = $oi['meal_qty'];
+            $price = $oi['meal_price'];
+            $subtotal = $qty * $price;
+            $sql = 
+                "insert into store_order_item (
+                    boss_identity, store_id, order_no, meal_id, count, price, subtotal
+                ) values (
+                    '$identity', '$store_id', '$order_no', '$meal_id', $qty, $price, $subtotal
+                )
+                ";
+            mysqli_query($con, $sql);        
+        }
+        //2023.05.30 根據目前的訂單明細，更新訂單主檔的欄位，主要是「訂單金額」欄位
+        $sql = "
+            update store_order m
+            set m.total_price = (
+                select sum(d.subtotal) from store_order_item d
+                where d.boss_identity = '$identity'
+                and d.store_id = '$store_id'
+                and d.order_no = '$order_no'
+                )
+            where m.boss_identity = '$identity'
+            and m.store_id = '$store_id'
+            and m.order_no = '$order_no'
+        ";
+        mysqli_query($con, $sql);                    
+
+        //清空「指定的訂單單號」的購物車
+        $sql = "
+            delete from store_cart
+            where boss_identity = '$identity'
+            and store_id = '$store_id' 
+            and order_no = '$order_no'
+            ";
+        mysqli_query($con, $sql);
+    }
+
+?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
