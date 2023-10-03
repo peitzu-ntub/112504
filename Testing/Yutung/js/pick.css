@@ -190,7 +190,9 @@ body {
 
 /* 最上方 */
 .header{
-    background-color: #fae278;
+    background-color: #ddb62a;
+    height: 72px;
+    color: #786016; 
 }
 /* 購物車底框 */
 .footer {
@@ -199,7 +201,7 @@ body {
     left: 0;
     width: 100%;
     height: 80px;
-    background-color: #fae278;/* 80a0e2 */
+    background-color: #ddb62a;/* 80a0e2 */
 }
 
 /* 購物車按鈕 */
@@ -211,7 +213,7 @@ body {
     width: 300px;
     height: 100px;
     /*border: 3px solid #D0DAEE; */
-    background-color: #fae278;
+    background-color: #ddb62a;
     /*border-radius: 20px; */
     display: flex;
     justify-content: center;
@@ -246,7 +248,7 @@ body {
     width: 300px;
     height: 100px;
     /*border: 3px solid #DEB887; */
-    background-color: #fae278;/*好看咖啡色  DEB887 */
+    background-color: #ddb62a;/*好看咖啡色  DEB887 有點亮的黃色fae278*/
     /*border-radius: 20px; */
     display: flex;
     justify-content: center;
