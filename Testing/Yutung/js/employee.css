@@ -32,7 +32,7 @@ body {
   background-color: #f9e99e;
   border-radius: 20px;
   width: 880px;
-  height: 480px;
+  height: 570px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -243,11 +243,13 @@ tr:nth-child(even) {
 ===============*/
 .addemployee {
   position: absolute; 
-  bottom: -30px; 
+  bottom: -18px;
   left: 50%; 
   transform: translate(-50%, -50%); 
+  /* width: 200px;
+  height: 55px; */
   width: 200px;
-  height: 55px;
+  height: 48px;
   border: 3px solid #f3cc5f;
   background-color:#f3cc5f;
   border-radius: 20px;
