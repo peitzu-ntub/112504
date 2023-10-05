@@ -141,7 +141,8 @@
 
         <div class="header">
             <div align="center">
-                <font size="20"><b>港式飲茶店</b></font><br><br>  
+                <font size="20"><b>港式飲茶店</b></font><br><br> 
+                <?php echo "<br>訂單:$order_no<p>"; ?> 
                 <!-- style="color: white; font-weight:bolder; font:25px;" -->
             </div>
         </div>
