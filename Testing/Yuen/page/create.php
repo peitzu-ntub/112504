@@ -10,14 +10,26 @@
 
     <link href="../js/create_new.css" rel="stylesheet">
 </head>
+<?php
 
+include "../bin/conn.php";
+
+// 設置一個空陣列來放資料
+
+$sql ="select staff_id FROM store_staff order by staff_id "; // sql語法存在變數中
+$result = mysqli_query($con,$sql);
+$total_records = mysqli_num_rows($result);
+$total = $total_records + 1;
+
+
+?>
 <body>
-    <!-- <div class="logout" type="button" name="按鈕名稱" onclick="location.href='create.html'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='employee.html'">
 		<div align="left">
 			<img src="../images/back.png" alt="返回icon" />
 			<span style="font-size: 11px;">返回</span>
 		</div>
-	</div> -->
+	</div>
     <div class="container-wrapper">
         <form action="staff_in.php" method="POST" enctype="multipart/form-data">
             <div class="container1">
@@ -27,10 +39,9 @@
 
                 <div class="insidebox">
                     <div class="ininsidebox">
-                        <!-- <div class="input-box">
+                        <div class="input-box">
                             <span class="details">員工編號：</span>
-                            <input type="text" name="staff_id" id="staff_id" placeholder="員工編號" required>
-                        </div> -->
+                            <input type="text" class="form-control" value="<?php echo $total ?>" name="staff_id" disabled><br>                        </div>
 
                         <div class="input-box">
                             <span class="details">密碼：</span>
@@ -120,23 +131,26 @@
                                 name="relation" id="relation" placeholder="請輸入員工與緊急連絡人的關係" required>
                         </div>
 
+                        <div class="input-box">
+   
+                        </div>
+
                     </div>
                 </div>
             </div>
-
             
-            <div class="laststep" type="return" name="按鈕名稱" onclick="location.href='boss_management.html'">
+            <!-- <div class="laststep" type="return" name="按鈕名稱" onclick="location.href='boss_management.html'">
                 <span style="font-size: 15px;">上一步</span>
             </div>
-            <div class="nextstep" type="next" name="按鈕名稱" onclick="location.href='employee.php'">
+            <div class="nextstep" type="next" name="按鈕名稱" onclick="location.href='employee.html'">
                 <span style="font-size: 15px;">下一步</span>
-            </div>
+            </div> -->
 
-            <input class="submit" type="submit" value="儲存" style="font-size: 15px;"></input>
+            <input class="submit" type="submit" value="儲存" style="font-size: 16px;"></input>
 
-            <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='employee.php'">
+            <!-- <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='employee.html'">
                 <span style="font-size: 14px;">查看全部員工資料</span>
-            </div>
+            </div> -->
         </form>
     </div>
 </body>

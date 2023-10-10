@@ -70,7 +70,7 @@ $datas_len = count($datas); //目前資料筆數
 
 				<div class="input-box">
 					<div class="details" style="font-size: 19px;">員工編號：</span>
-						<input type="search" name="staff_id" id="staff_id" placeholder="請輸入員工編號"
+						<input type="search" name="查詢" id="查詢" placeholder="請輸入員工編號"
 							style="font-size: 15px;">
 
 						<button class="searchbutton" type="search"

@@ -18,7 +18,7 @@ include "../bin/conn.php";
 $datas = array();
 
 $查詢 = $_POST["查詢"];
-$sql = "SELECT staff_id, staff_name FROM store_staff where staff_id = '$查詢'";
+$sql = "SELECT staff_id, staff_name FROM store_staff where staff_name = '$查詢'";
 
 $result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
 
