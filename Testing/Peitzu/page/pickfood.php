@@ -9,6 +9,14 @@
     $store_id = $_GET['store_id'];
     //訂單單號，用系統時間決定訂單單號，格式：yyyyMMddHHmmss
     $order_no = $_GET["order_no"];
+
+    $food_type=$_GET["food_type"];
+
+    $result = mysqli_query($con, $sql);
+    $row_result = mysqli_fetch_assoc($result);
+    $_SESSION["boss_identity"] = $row_result['boss_identity'];
+    $_SESSION["store_id"] = $row_result['store_id'];
+    $_SESSION["order_no"] = $row_result['order_no'];
     //--------------------------------------------------------
 
     $confirm_meal_id = $_GET['meal_id'];
@@ -120,6 +128,7 @@
     }
 
 ?>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -148,149 +157,95 @@
 
         <div class="content">
             <div class="left">
-                <b><a href="../page/pickfood.html">主餐</a></b>
-                <b><a href="../page/pickfood2.html">點心</a></b>
-                <b><a href="../page/pickfood3.html">飲料</a></b>
-                <b><a href="#">套餐</a></b>
+<?php
+            $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id\">全部</a></b> 
+            ";
+            echo $d;
+
+    //查詢餐點類協，並逐一顯示出來    
+    $sql = "select * from food_type where boss_identity = '$identity' and store_id = '$store_id'";
+    $types = mysqli_query($con, $sql);
+    //把整併後的資料重新寫入Store_order_item    
+    while ($type = mysqli_fetch_array($types, MYSQLI_ASSOC)) {
+        $type_id = $type['type_id'];
+        $type_name = $type['type_name'];
+        $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&food_type=$type_id\">$type_name</a></b> 
+        ";
+        echo $d;
+    }
+
+?>
             </div>
 
             <div class="menu">
+<?php
+    //查詢餐點內容，並逐一顯示出來
+    $sql = "select * from store_food where boss_identity = '$identity' and store_id = '$store_id'";
+    if (isset($food_type)) {
+        $sql = $sql . " and type_id = '$food_type'";
+    }
+    $foods = mysqli_query($con, $sql);
 
-                <!-- 菜單 1 -->
-                <div class="menu-item">
-                    <!-- 图片容器 -->
-                    <div class="menu-item-img">
-                        <img src="../images/food1.jpg" alt="菜單 1">
-                    </div>
-                    <!-- 右侧容器 -->
-                    <div class="menu-item-center">
-                        <h3>港式炒飯</h3>
-                        <p>$ 60</p>
-                    </div>
-                    <div class="menu-item-right">
-                        <button id="showPopup">點選</button>
+    $count = 1;
 
-                        <!-- 彈跳式視窗 -->
-                        <div class="popup-container" id="popup">
+    //把整併後的資料重新寫入Store_order_item    
+    while ($food = mysqli_fetch_array($foods, MYSQLI_ASSOC)) {
+        $meal_name = $food['meal_name'];
+        $meal_price = $food['meal_price'];
+        //$meal_pic = $food['meal_pic'];
+        $meal_note = $food['meal_note'];
+        $meal_up = $food['meal_up'];
 
-                            <span class="close-button" id="closePopup">×</span>
-                            <img src="../images/food1.jpg" alt="菜單1" class="product-image">
+        $p = "";
+        if ($count == 1) {
+            $count == 2;
+            $p = "
+            <div class=\"popup-container\" id=\"popup\">
+                <!-- @@關閉彈跳視窗 -->
+                <span class=\"close-button\" id=\"closePopup\" onclick=\"closePickingDialog();\">X</span>
+                <img src=\"../images/1-2.png\" id=\"pop_food_img\" alt=\"菜單\" class=\"product-image\">
 
-                            <div class="product-details">
-                                <h2>港式炒飯</h2>
-                                <p>價格：$60</p>
-                                <p>介紹：豐富配料滿足味蕾，香味撲鼻，口感滑順，讓您品味無窮享受！</p>
-                            </div>
-
-                            <div class="cart-item">
-                                <button class="button" onclick="decrementItem(1)">-</button>
-                                <span class="item-quantity" id="quantity1">1</span>
-                                <button class="button" onclick="incrementItem(1)">+</button>
-                                <button class="button" onclick="addToCart(1)">加入購物車</button>
-                            </div>
-                        </div>
-
-                    </div>
+                <div class=\"product-details\">
+                    <h2 id=\"pop_food_name\"></h2>
+                    <b><p id=\"pop_price\"></p></b>
+                    <p id=\"pop_desc\"></p>
                 </div>
 
-                <!-- 菜單 2 -->
-                <div class="menu-item">
-                    <!-- 图片容器 -->
-                    <div class="menu-item-img">
-                        <img src="../images/m01.upload.jpg" alt="菜單 2">
-                    </div>
-                    <!-- 右侧容器 -->
-                    <div class="menu-item-center">
-                        <h3>皮蛋瘦肉粥</h3>
-                        <p>$ 60</p>
-                    </div>
-                    <div class="menu-item-right">
-                        <button>點選</button>
-                    </div>
+                <div class=\"cart-item\">
+                    <button class=\"button\" onclick=\"decrementItem()\">-</button>
+                    <span class=\"item-quantity\" id=\"quantity1\">1</span>
+                    <button class=\"button\" onclick=\"incrementItem()\">+</button>
+                    <button class=\"button\" onclick=\"addToCart()\">加入購物車</button>
                 </div>
+            </div>
+            ";
+        }
 
-                <!-- 菜單 3 -->
-                <div class="menu-item">
-                    <!-- 图片容器 -->
-                    <div class="menu-item-img">
-                        <img src="../images/m03.upload.jpg" alt="菜單 3">
-                    </div>
-                    <!-- 右侧容器 -->
-                    <div class="menu-item-center">
-                        <h3>XO醬撈麵</h3>
-                        <p>$ 60</p>
-                    </div>
-                    <div class="menu-item-right">
-                        <button>點選</button>
-                    </div>
-                </div>
-
-                <!-- 菜單 4 -->
-                <div class="menu-item">
-                    <!-- 图片容器 -->
-                    <div class="menu-item-img">
-                        <img src="../images/m03.upload.jpg" alt="菜單 3">
-                    </div>
-                    <!-- 右侧容器 -->
-                    <div class="menu-item-center">
-                        <h3>港式臘味煲仔飯</h3>
-                        <p>$ 60</p>
-                    </div>
-                    <div class="menu-item-right">
-                        <button>點選</button>
-                    </div>
-                </div>
-
-                <!-- 菜單 5 -->
-                <div class="menu-item">
-                    <!-- 图片容器 -->
-                    <div class="menu-item-img">
-                        <img src="../images/m03.upload.jpg" alt="菜單 3">
-                    </div>
-                    <!-- 右侧容器 -->
-                    <div class="menu-item-center">
-                        <h3>公仔湯麵</h3>
-                        <p>$ 60</p>
-                    </div>
-                    <div class="menu-item-right">
-                        <button>點選</button>
-                    </div>
-                </div>
-
-                <!-- 菜單 6 -->
-                <div class="menu-item">
-                    <!-- 图片容器 -->
-                    <div class="menu-item-img">
-                        <img src="../images/m03.upload.jpg" alt="菜單 3">
-                    </div>
-                    <!-- 右侧容器 -->
-                    <div class="menu-item-center">
-                        <h3>港式豬扒飯</h3>
-                        <p>$ 60</p>
-                    </div>
-                    <div class="menu-item-right">
-                        <button>點選</button>
-                    </div>
-                </div>
-                <!-- 菜單 7 -->
-                <div class="menu-item">
-                    <!-- 图片容器 -->
-                    <div class="menu-item-img">
-                        <img src="../images/m03.upload.jpg" alt="菜單 3">
-                    </div>
-                    <!-- 右侧容器 -->
-                    <div class="menu-item-center">
-                        <h3>蜜汁叉燒撈麵</h3>
-                        <p>$ 60</p>
-                    </div>
-                    <div class="menu-item-right">
-                        <button>點選</button>
-                    </div>
-                </div>
-
+        $d = "
+        <!--菜單-->
+        <div class='menu-item'>
+            <!--圖片容器-->
+            <div class='menu-item-img'>
+                <img src='../images/$meal_name.upload.jpg' alt='菜單'>
+            </div>
+            <!--右側容器-->
+            <div class='menu-item-center'>
+                <h3> $meal_name </h3>
+                <p>$ $meal_price </p>
+            </div>
+            <div class='menu-item-right'>
+                <button onclick=\"openPickingDialog('$meal_name', '../images/$meal_name.upload.jpg', $meal_price, '$meal_note');\">點選</button>
+                $p
             </div>
         </div>
+";
+        echo $d;
+    }
 
+?>
+            </div>
+        </div>
+    
         <div class="footer">
             <div class="cartbutton" type="return" name="按鈕名稱" onclick="location.href='cart.php'">
                 <span style="font-size: 20px; font-weight:bolder;">購物車</span>
@@ -302,21 +257,88 @@
 
         <!-- </form> -->
     </div>
+</body>
 
-    <script>
-        // 使用JavaScript来实现导航链接选中时的样式更改
-        const navLinks = document.querySelectorAll('.left a');
+<script>
+    //@@開啟視窗的function
+    //fName : 餐點名稱
+    //imgSrc : 餐點圖片
+    //fPrice : 餐點價格
+    //fDesc : 餐點介紹
+    //---
+    function openPickingDialog(fName, imgSrc, fPrice, fDesc) {
+        //將餐點數量改回預設1
+        const quantityElement = document.getElementById('quantity1');
+        quantityElement.textContent = 1;
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                // 移除所有导航链接的 "active" 类
-                navLinks.forEach(navLink => navLink.classList.remove('active'));
-                // 将当前点击的链接添加 "active" 类
-                link.classList.add('active');
-            });
+        //DOM元素
+        const popup = document.getElementById('popup');
+        const foodName = document.getElementById('pop_food_name');
+        var img = document.getElementById('pop_food_img');
+        var prc = document.getElementById('pop_price');
+        var desc =  document.getElementById('pop_desc');
+
+        //餐點名稱
+        foodName.innerHTML = fName;
+        //餐點圖片
+        var imgSrc = img.setAttribute("src", imgSrc);
+        //價格
+        prc.innerHTML = "$ " + fPrice;
+        //介紹
+        desc.innerHTML = fDesc;
+        
+        //顯示視窗
+        popup.style.display = 'block';
+    }
+
+    //@@關閉視窗的function
+    function closePickingDialog() {
+        //DOM元素
+        const popup = document.getElementById('popup');
+        popup.style.display = 'none';
+    }
+
+    //@@减少商品數量
+    function decrementItem() {
+        const quantityElement = document.getElementById('quantity1');
+        let quantity = parseInt(quantityElement.textContent);
+        if (quantity > 1) {
+            quantity--;
+            quantityElement.textContent = quantity;
+        }
+    }
+
+    //@@增加商品數量
+    function incrementItem() {
+        const quantityElement = document.getElementById('quantity1');
+        let quantity = parseInt(quantityElement.textContent);
+        quantity++;
+        quantityElement.textContent = quantity;
+    }
+
+    //@@加入購物車
+    function addToCart() {
+        const quantityElement = document.getElementById('quantity1');
+        const itemQuantity = parseInt(quantityElement.textContent);
+    }
+
+</script>
+
+<script>
+    // 使用JavaScript来实现导航链接选中时的样式更改
+    const navLinks = document.querySelectorAll('.left a');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // 移除所有导航链接的 "active" 类
+            navLinks.forEach(navLink => navLink.classList.remove('active'));
+            // 将当前点击的链接添加 "active" 类
+            link.classList.add('active');
         });
-    </script>
+    });
+</script>
 
+<!--
     <script>
         // 获取弹窗的元素
         const popup = document.getElementById('popup');
@@ -367,7 +389,7 @@
         cartItem.textContent = `${itemName} x ${itemQuantity}`;
         cartItems.appendChild(cartItem);
     }
-</script>
-</body>
+</script> -->
+
 
 </html>

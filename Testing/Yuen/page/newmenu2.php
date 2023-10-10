@@ -33,7 +33,7 @@
 
 <body>
     <div class="container-wrapper">
-        <form action="newfood.php" method="POST">
+        <form action="newfood.php" method="POST" enctype="multipart/form-data">
             <div class="container1">
                 <font color="#e8a95b" size="6"style="align-items: center;">新增餐點</font>
                 <div class="insidebox">
