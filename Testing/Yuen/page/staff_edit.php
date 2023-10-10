@@ -55,16 +55,17 @@ echo "<br><br>";
 $datas_len = count($datas); //目前資料筆數
 
 ?>
+
 <body>
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='employee.php'">
+		<div align="left">
+			<img src="../images/back.png" alt="返回icon" />
+			<span style="font-size: 11px;">返回</span>
+		</div>
+	</div>
     <div class="container-wrapper">
         <form method="post" action="staff_up.php?staff_id=<?php echo $datas[0]['staff_id']?>">
             <div class="container1">
-                <!-- <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.html'">
-                    <div align="left">
-                        <img src="../images/back.png" alt="返回icon" />
-                        <span style="font-size: 18px;">返回</span>
-                    </div>
-                </div> -->
                 <div align="center">
                     <font size="20">員工資料管理</font><br><br>
                 </div>
@@ -141,18 +142,18 @@ $datas_len = count($datas); //目前資料筆數
                 </div>
             </div>
 
-            <input class="submit" type="submit" value="儲存" style="font-size: 15px;"></input>
-            <div class="laststep" type="return" name="按鈕名稱" onclick="location.href='newmenu1.html'">
+            <!-- <div class="laststep" type="return" name="按鈕名稱" onclick="location.href='boss_management.html'">
                 <span style="font-size: 15px;">上一步</span>
             </div>
-            <div class="nextstep" type="next" name="按鈕名稱" onclick="location.href='newmenu3.html'">
+            <div class="nextstep" type="next" name="按鈕名稱" onclick="location.href='employee.html'">
                 <span style="font-size: 15px;">下一步</span>
-            </div>
-            <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='employee.php'">
+            </div> -->
+
+            <input class="submit" type="submit" value="儲存" style="font-size: 16px;"></input>
+
+            <!-- <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='employee.html'">
                 <span style="font-size: 14px;">查看全部員工資料</span>
-            </div>
-    </div>
-    </div>
+            </div> -->
     </form>
 </body>
 

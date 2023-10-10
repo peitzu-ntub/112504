@@ -108,7 +108,7 @@ $datas_len = count($datas); //目前資料筆數
 					</div>
 				</div>
 			</div>
-			<div class="addemployee" type="button" name="按鈕名稱" onclick="location.href='create.html'">
+			<div class="addemployee" type="button" name="按鈕名稱" onclick="location.href='create.php'">
 				<div align="right">
 					<!-- <img src="../images/employee.png" alt="新增員工icon" /> -->
 					<span style="font-size: 25px;">新增員工</span>

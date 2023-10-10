@@ -24,7 +24,7 @@ $total = $total_records + 1;
 
 ?>
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='employee.html'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='employee.php'">
 		<div align="left">
 			<img src="../images/back.png" alt="返回icon" />
 			<span style="font-size: 11px;">返回</span>
