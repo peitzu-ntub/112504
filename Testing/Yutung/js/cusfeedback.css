@@ -52,36 +52,35 @@ body {
     border-radius: 15px ;
 }
 
-/* 图片容器的样式 */
+/* 圖片容器的樣式 */
 .menu-item-img {
     flex: 0 0 100px;
     margin-right: 20px;
 }
 
-/* 图片的样式 */
+/* 圖片的樣式 */
 .menu-item-img img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* 右侧容器的样式 */
+/* 右側容器的樣式 */
 .menu-item-center {
     flex-grow: 1;
 }
 
-/* 名称的样式 */
 .menu-item h3 {
     margin: 0;
     font-size: 20px;
 }
 
-/* 描述的样式 */
+/* 描述的樣式 */
 .menu-item p {
     margin: 0;
 }
 
-/* 按钮的样式 */
+/* 按钮的樣式 */
 .menu-item button {
     width: 80px;
     height: 40px;
@@ -108,59 +107,6 @@ body {
     transition: all 0.2s ease;
 }
 
-.popup-container {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    z-index: 9999;
-}
-
-/* 关闭按钮的样式 */
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-/* 图片的样式 */
-.product-image {
-    max-width: 100%;
-    height: auto;
-}
-
-/* 价格和说明的样式 */
-.product-details {
-    margin-top: 20px;
-}
-
-/* 商品项的样式 */
-.cart-item {
-    display: flex;
-    align-items: center;
-    margin: 10px;
-}
-
-/* 商品数量的样式 */
-.item-quantity {
-    margin: 0 10px;
-}
-
-/* 按钮的样式 */
-.button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
 /* 標題方框 */
 .container-wrapper {
     position: relative;
@@ -175,48 +121,33 @@ body {
     color: #786016; 
 }
 
-/* 購物車底框 */
-.footer {
+.footer {           
+    text-align: center;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 70px;
-    background-color: #ddb62a;/* 80a0e2 */
-}
-
-/* 購物車按鈕 */
-.endbutton {
-    position: absolute;
-    /*bottom: 10px; 距離視窗上方的位置 */
-    left: 5%; /* 距離視窗左側的位置 */
-    /*transform: translate(-50%, -50%); 將容器水平垂直居中 */
-    width: 300px;
-    height: 100px;
-    /*border: 3px solid #D0DAEE; */
     background-color: #ddb62a;
-    /*border-radius: 20px; */
+}
+
+.centered-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+/* 按鈕 */
+.button {
+    height: auto;
+    width: auto;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
     font-size: 18px;
-    color: #ffffff;   
-    border-left-style:solid;
-}
-
-.endbutton div {
-    display: flex;
-    align-items: center;
-    color: #80a0e2;
-}
-
-.endbutton img {
-    margin-right: 3px;
-}
-
-.endbutton:hover {
-    color: #ffffff;
-    background-color: #DEB887;
+    letter-spacing: 5px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    font-weight: bold;
 }

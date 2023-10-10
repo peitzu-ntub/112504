@@ -100,7 +100,16 @@
                 回餐點選單
             </button></a>
     ";
-?>      
+?>  
+<?php
+    $pickUrl = "cusfeedback.html?identity=$identity&store_id=$store_id&order_no=$order_no";
+    echo "        
+        <a href='$pickUrl'>
+            <button type='button' style='background-color:#80a0e2' class='registbutton'>
+                去評價
+            </button></a>
+    ";
+?>     
   </div>
 </body>
 
