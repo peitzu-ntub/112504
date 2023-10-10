@@ -22,7 +22,7 @@ body {
 
 .content {
     width: auto;
-
+    /* height: 200px; */
     background-color: #ffffff;
 }
 
@@ -30,32 +30,6 @@ body {
     height: 450px; 
     overflow: auto;
     border: 1px solid #ccc;
-}
-
-.left {
-    width: 13%;
-    height: 420px;
-    float: left;
-    text-align: center;
-    font-size: 18px;
-    background-color: #ffedbb;
-}
-
-.left a {
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 18px;
-    background-color: #fff;
-    display: block;
-    transition: 0.5s;
-    color: #000;
-    border-radius: 25px ;
-    box-shadow: 3px 1px 1px 1px rgba(0,0,0,0.3) inset;
-    margin-top: 3px;
-}
-
-.left a:hover {
-    background-color: #FFA07A;
 }
 
 .menu {
@@ -66,7 +40,7 @@ body {
     flex-wrap: wrap;
 }
 
-/* 菜单项的样式 */
+/* 菜單項的樣式 */
 .menu-item {
     display: flex;
     align-items: center;
@@ -74,7 +48,7 @@ body {
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     padding: 5px;
-    width: 350px;
+    width: 550px;
     border-radius: 15px ;
 }
 
@@ -200,18 +174,19 @@ body {
     height: 72px;
     color: #786016; 
 }
+
 /* 購物車底框 */
 .footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 80px;
+    height: 70px;
     background-color: #ddb62a;/* 80a0e2 */
 }
 
 /* 購物車按鈕 */
-.cartbutton {
+.endbutton {
     position: absolute;
     /*bottom: 10px; 距離視窗上方的位置 */
     left: 5%; /* 距離視窗左側的位置 */
@@ -229,54 +204,19 @@ body {
     border-left-style:solid;
 }
 
-.cartbutton div {
+.endbutton div {
     display: flex;
     align-items: center;
     color: #80a0e2;
 }
 
-.cartbutton img {
+.endbutton img {
     margin-right: 3px;
 }
 
-.cartbutton:hover {
+.endbutton:hover {
     color: #ffffff;
     background-color: #DEB887;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-/* 我的訂單按鈕 */
-.allbutton {
-    position: absolute;/*bottom: 10px;  距離視窗上方的位置 */
-    left: 28%;/* 距離視窗左側的位置 */
-    /* transform: translate(-50%, -50%);  將容器水平垂直居中 */
-    width: 300px;
-    height: 100px;
-    /*border: 3px solid #DEB887; */
-    background-color: #ddb62a;/*好看咖啡色  DEB887 有點亮的黃色fae278*/
-    /*border-radius: 20px; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    color: #fafafa;
-    border-left-style:solid;
-}
-
-.allbutton div {
-    display: flex;
-    align-items: center;
-    color: #80a0e2;
-}
-
-.allbutton img {
-    margin-right: 3px;
-}
-
-.allbutton:hover {
-    background-color: #DEB887;
-    color: #ffffff;
     cursor: pointer;
     transition: all 0.2s ease;
 }
