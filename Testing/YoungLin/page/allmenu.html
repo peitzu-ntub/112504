@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu2.html'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
             <span style="font-size: 15px;">返回</span>
@@ -23,18 +23,24 @@
         <form action="#">
             <div class="container1">
                 <div class="topinput" style="font-size: 15px;">
-                    <font color="#bf6900" size="5">全部餐點</font></div>
+                    <font color="#bf6900" size="5">全部餐點</font>
+                </div>
                 <div class="insidebox">
                     <div class="ininsidebox" style="width:680px;height:300px; overflow:auto;">
-                        <table border="1" align="center" >
+                        <table border="1" align="center">
                             <tr>
                                 <th>刪除</th>
-                                <th>類型名稱</th>
+                                <th>餐點名稱</th>
                                 <th>編輯</th>
-                                <th>確定</th>
                             </tr>
                             <!-- 後端資料寫這邊 -->
                         </table>
+                    </div>
+                    <div class="nextstep" type="next" onclick="location.href='newmenu2.html'">
+                        <span style="font-size: 15px;">新增餐點</span>
+                    </div>
+                    <div class="laststep" type="return" onclick="location.href='newmenu1.html'">
+                        <span style="font-size: 15px;">新增類型</span>
                     </div>
                 </div>
             </div>

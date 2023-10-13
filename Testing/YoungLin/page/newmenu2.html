@@ -16,7 +16,14 @@
     <div class="container-wrapper">
         <form action="#">
             <div class="container1">
-                <font color="#e8a95b" size="6"style="align-items: center;">新增餐點</font>
+<!--                 <font color="#e8a95b" size="6"style="align-items: center;">新增餐點 </font>
+                    <font color="#ff0000" size="2"> 您需先新增類型才能新增菜色!</font> -->
+                    
+                    <div style="width:320px;">
+                        <font style=" width:100px;"color="#bf6900" size="5"style="align-items: center;">新增餐點</font>
+                        <font style=" width:100px;" color="#ff0000" size="2"">您需先新增類型才能新增菜色!</font>
+                    </div>
+
                 <div class="insidebox">
                     <div class="ininsidebox">
                         <div class="input-box">
@@ -44,10 +51,10 @@
 
                         <input class="submit" type="submit" value="儲存" style="font-size: 15px;"></input>
                         <div class="laststep" type="return" onclick="location.href='newmenu1.html'">
-                            <span style="font-size: 15px;">上一步</span>
+                            <span style="font-size: 15px;">新增類型</span>
                         </div>
                         <div class="nextstep" type="next" onclick="location.href='newmenu3.html'">
-                            <span style="font-size: 15px;">下一步</span>
+                            <span style="font-size: 15px;">呈現方式</span>
                         </div>
                         <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 12px;"onclick="location.href='allmenu.html'"></input>
                     </div>
