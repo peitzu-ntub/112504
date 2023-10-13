@@ -37,6 +37,22 @@ body{
   flex-direction: column;
 }
 /* =========
+    底框
+=========== */
+.subject{
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 498px;
+  max-width: 750px;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+/*   align-items: center; */
+  flex-direction: column;
+  position: relative;
+}
+/* =========
   大標題
 =========== */
 .big{
@@ -51,16 +67,16 @@ body{
   align-items: center;
   flex-direction: column;
   position: absolute;
-  top: 30px;
+  top: 10px;
 }
 /* =========
-單選框標題底框
+1單選框標題底框
 =========== */
 .onesmall{
   font-weight: bold;
   background-color: #ffffff;
   border-radius: 20px;
-  width: 200px;
+  width: 150px;
   max-width: 750px;
   height: 50px;
   display: flex;
@@ -68,7 +84,25 @@ body{
   align-items: flex-start;
   flex-direction: column;
   position: absolute;
-  top: 80px;
+  top: 60px;
+}
+/* =========
+  1單選框底框
+=========== */
+.radiobutton{
+  font-weight: bold;
+  background-color: #ffffff;
+  margin-left: 140px; /* 增加左側間距 */
+  border-radius: 20px;
+  width: 230px;
+  max-width: 750px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
 }
 /* =========
 複選框標題底框
@@ -85,76 +119,135 @@ body{
 /*   align-items: flex-start; */
   flex-direction: column;
   position: absolute;
-  top: 190px;
-}
-/* =========
-  單選框底框
-=========== */
-.radiobutton{
-  font-weight: bold;
-  background-color: #ffffff;
-  margin-left: 32px; /* 增加左側間距 */
-  border-radius: 20px;
-  width: 230px;
-  max-width: 750px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  position: absolute;
-  top: 130px;
+  top: 180px;
 }
 /*============
     複選框底框
 ==============*/
-.checkbutton{
+.checkbutton {
+  font-weight: bold;
+  margin-left: 185px; /* 距離視窗左側的位置 */
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 320px;
+  max-width: 750px;
+  height: 100px;
+  position: absolute;
+  top: 190px;
+  display: flex; /* 使用 Flexbox 布局 */
+  flex-direction: row; /* 设置水平排列 */
+  justify-content: space-between; /* 平均分布子元素 */
+}
+/* =========
+2單選框標題底框
+=========== */
+.threesmall{
   font-weight: bold;
   background-color: #ffffff;
   border-radius: 20px;
-  width: 240px;
+  width: 270px;
   max-width: 750px;
-  height: 145px;
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  flex-direction: column;
-  position: absolute;
-  top: 240px;
-  margin-left: 42px; /* 距離視窗左側的位置 */
-}
-/* .checkbutton_one{
-  font-weight: bold;
-  background-color: #ff0000;
-  border-radius: 20px;
-  width: 230px;
-  max-width: 750px;
-  height: 40px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  flex-direction: row;
-  position: absolute; */
-/*   top: 240px; */
-/* } */
-
-
+  flex-direction: column;
+  position: absolute;
+  top: 295px;
+}
 /* =========
-    底框
+  2單選框底框
 =========== */
-.subject{
+.tworadiobutton{
   font-weight: bold;
   background-color: #ffffff;
+  margin-left: 90px; /* 增加左側間距 */
   border-radius: 20px;
-  width: 498px;
+  width: 170px;
   max-width: 750px;
-  height: 450px;
+  height: 50px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
-  position: relative;
+  position: absolute;
+  top: 115px;
 }
+/*===================
+
+====================*/
+.onoffswitch {
+  position: relative; 
+  width: 90px;
+  top: 115px;
+}
+.onoffswitch-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #999999;
+  border-radius: 20px;
+}
+.onoffswitch-inner {
+  display: block; 
+  width: 200%; 
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+  /* 整個按鈕框 */
+  display: block; 
+  float: left; 
+  width: 50%; 
+  height: 30px; 
+  padding: 0; 
+  line-height: 30px;
+  font-size: 14px; 
+  color: white; 
+  box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+  content: "ON";
+  padding-left: 10px;
+  background-color: #8cb87c; 
+  color: #ecd368;
+}
+.onoffswitch-inner:after {
+  content: "OFF";
+  padding-right: 10px;
+  background-color: #EEEEEE; 
+  color: #000000;
+  text-align: right;
+}
+.onoffswitch-switch {
+  /* 圓圈移動時 */
+  display: block; 
+  width: 18px; 
+  margin: 6px; 
+  height: 20px;
+  background: #A1A1A1;
+  position: absolute; 
+  top: 0; 
+  bottom: 0;
+  right: 40px;
+  border: 2px solid #999999; 
+  border-radius: 20px;
+  transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  /* 圓圈圈 */
+  right: 0px; 
+  background-color: #394c32; 
+}
+
 /*============
     確定
 ==============*/
