@@ -41,7 +41,7 @@
     // 如果有一筆以上代表有更新
     // mysqli_insert_id可以抓到第一筆的id
     $new_id= mysqli_insert_id ($con);
-    echo "<script>alert('新增成功!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
+    echo "<script>alert('新增成功!');location.href='employee.php';</script>"; 
     }
 else {
     echo "<script>alert('新增失敗!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 

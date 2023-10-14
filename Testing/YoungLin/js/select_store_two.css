@@ -36,55 +36,7 @@ body{
   color:#35522b;
   border-radius: 50px;
 }
-/*===========
-    店家
-=============*/
-.intostore{
-  font-weight: bold;
-  background-color: #ffffff;
-  border: 1px solid #acce79;
-  width: 300px;
-  max-width: 750px;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color:#35522b;
-  border-radius: 50px;
-  cursor: pointer;
-}
-.intostore:hover{
-  font-weight: bold;
-  background-color: #ffffff;
-  border: 5px solid #acce79;
-  width: 300px;
-  max-width: 750px;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color:#35522b;
-  border-radius: 50px;
-  cursor: pointer;
-}
-/*============= 
-    整個底
-===============*/
-.left-button, .right-button {
-  position: absolute; 
-  width: 100px;
-  height: 40px;
-  background-color: #ccc;
-  border: 1px solid #999;
-  top: 50%; 
-  transform: translateY(-50%);
-}
-.left-button {
-  left: 0; 
-}
-.right-button {
-  right: 0; 
-}
+
 /*============= 
     整個底
 ===============*/
@@ -223,19 +175,23 @@ body{
   text-align: center;
   cursor: pointer;
   position: absolute;
-  left: 0px;
-  padding: 110px 5px;
+  left: 30px;
+  /*padding: 110px 5px; */
+  margin-top: 130px;
   background: #ecad83;
-  height: 260px;
+  height: 30px;
+  border-radius: 20px;
 }
 #btn-nav-next {
   text-align: center;
   cursor: pointer;
   position: absolute;
-  right: 0px;
-  padding: 110px 5px;
+  right: 10px;
+  /*padding: 110px 5px; */
+  margin-top: 130px;
   background: #ecad83;
-  height: 260px;
+  height: 30px;
+  border-radius: 20px;
 }
 /*============= 
   店家按鈕底框
@@ -267,7 +223,7 @@ body{
 a.menu-item
 {
   transform: translateY(-50%);
-/*   height:100%; */
+  /*height:100%; */
   padding: 100px 100px;
   background-color:#ffffff;
   display:inline;
@@ -285,6 +241,7 @@ a.menu-item
   text-decoration:underline;
   border: 5px solid #8cb87c;
   border-radius: 20px;
+  color: #35522b;
 }
 
 @media only screen and (max-width: 480px) {

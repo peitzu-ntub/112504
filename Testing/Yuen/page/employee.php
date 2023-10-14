@@ -8,7 +8,7 @@
 
 	<title>員工資料</title>
 
-	<link href="../js/create_new.css" rel="stylesheet">
+	<link href="../js/employee.css" rel="stylesheet">
 </head>
 <?php
 
@@ -55,70 +55,68 @@ $datas_len = count($datas); //目前資料筆數
 
 ?>
 <body>
-	<div class="logout" type="button" name="按鈕名稱" onclick="location.href='create.html'">
+	<div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
 		<div align="left">
 			<img src="../images/back.png" alt="返回icon" />
 			<span style="font-size: 13px;">返回</span>
 		</div>
 	</div>
 	<div class="container-wrapper">
-		<form action="search.php" method="POST">
+        <form action="search.php" method="POST">
 			<div class="container1">
 				<div align="center">
-					<font size="20">員工資料管理</font>
-				</div><br><br>
-
-				<div class="input-box">
-					<span class="details" style="font-size: 19px;">員工編號：</span>
-					<input type="search" name="查詢" id="查詢" placeholder="請輸入員工編號" style="font-size: 15px;">
-
-					<button class="searchbutton" type="search"
-						style="font-size: 17px; width: 68px; height: 34px; background-color: #8cb87c; border-radius: 20px; border: 3px solid #8cb87c;">搜尋</button>
+					<font size="19">員工資料管理</font>
 				</div><br>
 
-				<div class="ininsidebox">
-					<div class="right-scroll">
-						<table width="50%">
+				<div class="input-box">
+					<div class="details" style="font-size: 19px;">員工編號：</span>
+						<input type="search" name="查詢" id="查詢" placeholder="請輸入員工編號"
+							style="font-size: 15px;">
+
+						<button class="searchbutton" type="search"
+							style="font-size: 17px; width: 68px; height: 34px; background-color: #8cb87c; border-radius: 20px; border: 3px solid #8cb87c;">搜尋</button>
+					</div>
+				</div><br>
+
+				<div class="insidebox">
+					<div class="ininsidebox" style="width:680px;height:290px; overflow:auto;">
+                        <table width ="500" align="center" >
 							<tr>
-								<td>
-									<div class="sidebar_left">刪除</div>
-								</td>
-								<td>
-									<div class="content1">員工編號</div>
-								</td>
-								<td>
-									<div class="content2">員工姓名</div>
-								</td>
-								<td>
-									<div class="sidebar_right">編輯</div>
-								</td>
+								<th><font size="5">刪除</th>
+								<th><font size="5">員工編號</th>
+								<th><font size="5">員工姓名</th>
+								<th><font size="5">編輯</th>
 							</tr>
                             <tbody>
                             <?php
                             for ($i = 0; $i < $datas_len; $i++) {
                                 echo "<tr>";
-                                echo "<td>		
+                                echo "<td align='center'>		
                                 <a href='staff_del.php?staff_id=".$datas[$i]['staff_id']."'><img src=../images/trash1.png></img></a></td>";
-                                echo "<td>"; 
+                                echo "<td style='font-size: 25px;' align='center'>"; 
                                 echo "<span style='font-size: 25px;' align='center' > " .  $datas[$i]['staff_id']. "</span>";
                                 
-                                echo "<td>" ;
+                                echo "<td style='font-size: 25px;' align='center'>" ;
                                 echo "<span style='font-size: 25px;' text-align='center'> " . $datas[$i]['staff_name'] .  "</span>";
             
-
-                                echo "<td>
+                                echo "<td align='center'>
                                 <a href='staff_edit.php?staff_id=".$datas[$i]['staff_id']."'><img src=../images/signature.png></img></a></td>";
                             } 
                             ?>
 
-                        </tbody>
-						</table>
+                        </tbody>						</table>
 					</div>
 				</div>
-				<!-- </div> -->
+			</div>
+			<div class="addemployee" type="button" name="按鈕名稱" onclick="location.href='create.php'">
+				<div align="right">
+					<!-- <img src="../images/employee.png" alt="新增員工icon" /> -->
+					<span style="font-size: 25px;">新增員工</span>
+				</div>
 			</div>
 		</form>
 	</div>
+	
 </body>
 
 </html>

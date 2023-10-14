@@ -1,0 +1,153 @@
+@charset "utf-8";
+
+html {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffedbb;
+}
+
+/* ------- wrapper ------- */
+#wrapper {
+    width: 740px;
+    /*     margin: 30px auto; */
+}
+
+.content {
+    width: auto;
+    /* height: 200px; */
+    background-color: #ffffff;
+}
+
+.scrollable-content {
+    height: 450px; 
+    overflow: auto;
+    border: 1px solid #ccc;
+}
+
+.menu {
+    width: 87%;
+    float: left;
+    background-color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* 菜單項的樣式 */
+.menu-item {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 550px;
+    border-radius: 15px ;
+}
+
+/* 圖片容器的樣式 */
+.menu-item-img {
+    flex: 0 0 100px;
+    margin-right: 20px;
+}
+
+/* 圖片的樣式 */
+.menu-item-img img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 右側容器的樣式 */
+.menu-item-center {
+    flex-grow: 1;
+}
+
+.menu-item h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+/* 描述的樣式 */
+.menu-item p {
+    margin: 0;
+}
+
+/* 按钮的樣式 */
+.menu-item button {
+    width: 80px;
+    height: 40px;
+    border: 3px solid #DEB887;
+    background-color: #DEB887;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+}
+.menu-item button:hover{
+    width: 80px;
+    height: 40px;
+    border: 3px solid #FFA07A;
+    background-color: #f98f65;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.2s ease;
+}
+
+/* 標題方框 */
+.container-wrapper {
+    position: relative;
+    /* 設置父容器為相對定位 */
+    width: 2000px;
+}
+
+/* 最上方 */
+.header{
+    background-color: #ddb62a;
+    height: 72px;
+    color: #786016; 
+}
+
+.footer {           
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #ddb62a;
+}
+
+.centered-container {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+/* 按鈕 */
+.button {
+    height: auto;
+    width: auto;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}

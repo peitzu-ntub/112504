@@ -31,13 +31,14 @@ body {
   font-weight: bold;
   background-color: #f9e99e;
   border-radius: 20px;
-  width: 1000px;
-  height: 580px;
+  width: 880px;
+  height: 570px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
 /* =================
 背景與白色中間那塊白色
 ====================*/
@@ -45,7 +46,7 @@ body {
   font-weight: bold;
   background-color: #fff;
   border-radius: 20px;
-  width: 950px;
+  width: 780px;
   height: 300px;
   display: flex;
   justify-content: center;
@@ -71,7 +72,6 @@ body {
   margin-top: -160px;
 }
 
-
 /*=========
    標題底?
 ==========*/
@@ -94,7 +94,7 @@ nav {
 =============*/
 .ininsidebox {
   font-weight: bold;
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 20px;
   width: 680px;
   height: 300px;
@@ -180,42 +180,6 @@ form .input-box span.details {
   font-weight: bold;
 }
 
-/* ==========
-  確定的按鈕
-=============*/
-.submit {
-  position: absolute;
-  /* 設置為絕對定位 */
-  top: 65px;
-  /* 距離視窗上方的位置 */
-  right: 10%;
-  /* 距離視窗左側的位置 */
-  transform: translate(-50%, -50%);
-  /* 將容器水平垂直居中 */
-  width: 70px;
-  height: 37px;
-  border: 3px solid #8cb87c;
-  background-color: #8cb87c;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  color: #5b7751;
-}
-
-.submit div {
-  display: flex;
-  align-items: center;
-  color: rgb(116, 65, 31)
-}
-
-.submit:hover {
-  border: 3px solid #5b7751;
-  color: #394c32;
-  cursor: pointer;
-}
-
 /*===========
   返回的方框
  ===========*/
@@ -253,47 +217,6 @@ form .input-box span.details {
   cursor: pointer;
 }
 
-/*===========
- 下一步的按鈕
-============ */
-.nextstep {
-  position: absolute;
-  /* 設置為絕對定位 */
-  bottom: -13px;
-  /* 距離視窗上方的位置 */
-  left: 91%;
-  /* 距離視窗左側的位置 */
-  transform: translate(-50%, -50%);
-  /* 將容器水平垂直居中 */
-  width: 90px;
-  height: 37px;
-  border: 3px solid #d4bb4a;
-  background-color: #d4bb4a;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  color: #99883e;
-}
-
-.nextstep div {
-  display: flex;
-  align-items: center;
-  color: #d4bb4a;
-}
-
-.nextstep img {
-  margin-right: 3px;
-  /* 調整圖片和文字之間的間距 */
-}
-
-.nextstep:hover {
-  border: 3px solid #99883e;
-  color: #857737;
-  cursor: pointer;
-}
-
 table {
   border-collapse: collapse;
   width: 100%;
@@ -313,4 +236,37 @@ th {
 
 tr:nth-child(even) {
   background-color: #ffffff;
+}
+
+/*============= 
+    新增店家
+===============*/
+.addemployee {
+  position: absolute; 
+  bottom: -18px;
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  /* width: 200px;
+  height: 55px; */
+  width: 200px;
+  height: 48px;
+  border: 3px solid #f3cc5f;
+  background-color:#f3cc5f;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addemployee div {
+  display: flex;
+  align-items: center;
+  color: rgb(116, 65, 31)
+}
+.addemployee img {
+  margin-right: 3px; 
+}
+.addemployee:hover {
+  border: 3px solid #a3893f;
+  color: white;
+  cursor: pointer;
 }
