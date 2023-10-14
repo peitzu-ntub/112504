@@ -60,7 +60,7 @@ $datas_len = count($datas); //目前資料筆數
 <body>
     <div class="container-wrapper">
             <div class="container1">
-                <font color="#e8a95b" size="6"style="align-items: center;">新增餐點</font>
+                <font color="#e8a95b" size="6"style="align-items: center;">修改餐點</font>
                 <div class="insidebox">
                     <div class="ininsidebox">
                         <div class="input-box">
