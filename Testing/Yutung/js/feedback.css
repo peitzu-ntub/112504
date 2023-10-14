@@ -100,7 +100,7 @@ nav a:hover {
     max-width: 950px;
     height: 500px;
     display: flex;
-    justify-content: center;
+    justify-content: column;
     align-items: center;
     flex-direction: column;
     position: relative;
