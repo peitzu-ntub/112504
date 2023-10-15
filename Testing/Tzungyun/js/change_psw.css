@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: #fff3bc; 
   text-align: center;
   padding: 20px;
@@ -75,21 +75,25 @@ input[placeholder] {
 input[type="submit"] {
   background-color: #8cb87c;
   color: #5b7751;
-  border: none;
-  border-radius: 30px;
+  border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 24px;
-  /* display: inline-block; */
-  border: none;
+  font-size: 18px;
   text-align: center;
-  padding: 10px;
+  padding-bottom: 2px;
   width: 400px;
   transition: all 0.5s;
+  width: 120px;
+  height: 40px;
+  border: 3px solid #8cb87c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 270px;
 }
 
 input[type="submit"]:hover {
-  border: 2px solid #5b7751;
+  border: 3px solid #5b7751;
   color: #394c32;
   cursor: pointer;
 }
@@ -100,7 +104,6 @@ input[type="submit"]:hover {
   width: 200px;
   height: 60px;
   background-color: #acce79;
-  opacity: 0.8;
   box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
   padding-left: 50px;
   padding-right: 50px;
