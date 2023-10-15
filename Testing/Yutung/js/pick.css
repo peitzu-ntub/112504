@@ -212,6 +212,11 @@ body {
     background-color: #ddb62a;/* 80a0e2 */
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-around;
+}
+
 /* 購物車按鈕 */
 .cartbutton {
     width: 80px;
