@@ -73,16 +73,11 @@ echo "<br><br>";
 $datas_len = count($datas); //目前資料筆數
 
 ?>
-
 <body>
     <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
-        <div align="left">
-            <img src="../images/back.png" alt="返回icon" />
-            <span style="font-size: 10px;">返回</span>
-        </div>
     </div>
     <div class="container-wrapper">
-		<form action="menu1.php" method="POST">            
+        <form action="menu1.php" method="POST">            
             <div class="container1">
                 <div class="topinput" style="font-size: 15px;">
                     <font color="#bf6900" size="5">餐點類型：</font>
@@ -91,13 +86,13 @@ $datas_len = count($datas); //目前資料筆數
 
                 <div class="insidebox">
                     <div class="ininsidebox" style="width:680px;height:300px; overflow:auto;">
-                        <table width ="500" align="center" >
+                    <table width ="500" align="center" >
                             <tr>
                                 <th><font size="5">刪除</th>
                                 <th><font size="5">類型名稱</th>
                                 <th><font size="5">編輯</th>
                             </tr>
-							<tbody>
+                            <tbody>
                             <?php
                             for ($i = 0; $i < $datas_len; $i++) {
                                 echo "<tr>";
@@ -110,20 +105,23 @@ $datas_len = count($datas); //目前資料筆數
                             }
                             ?>
 
-                            </tbody>                        
-						</table>
+                            </tbody>     
+                        </table>
                     </div>
 
-                    <input class="submit" type="submit" value="新增" style="font-size: 5px;"></input>
-                    <div class="nextstep" type="next" onclick="location.href='newmenu2.php'">
-                        <span style="font-size: 5px;">下一步</span>
+                    <input class="submit" type="submit" value="儲存" style="font-size: 15px;"></input>
+                    <div class="laststep" type="return" onclick="location.href='newmenu2.php'">
+                        <span style="font-size: 15px;">新增餐點</span>
                     </div>
+                    <div class="nextstep" type="next" onclick="location.href='newmenu3.html'">
+                        <span style="font-size: 15px;">呈現方式</span>
+                    </div>
+                    <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 12px;"onclick="location.href='allmenu.php'"></input>
+                </div>
                 </div>
             </div>
         </form>
     </div>
 </body>
-
-
 
 </html>

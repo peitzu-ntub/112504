@@ -104,9 +104,9 @@ nav{
   width: 680px;
   height: 300px;
   display: flex;
-  align-items: center;/*stretch*/
-  flex-direction: column;
-  position: relative;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 /* ==========
   輸入類型的框

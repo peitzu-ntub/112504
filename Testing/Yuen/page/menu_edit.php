@@ -104,22 +104,20 @@ $datas_len = count($datas); //目前資料筆數
                                 <span class="details">餐點圖片：</span>
                                 <input type="file" class="form-control" value="<?php echo $datas[0]['meal_pic'] ?>" name="meal_pic" ><br>                            </div>
                         </div>
-                        <input class="submit" type="submit" value="儲存" style="font-size: 5px;">
-                        </input>
-                        <div class="laststep" type="return" onclick="location.href='newmenu1.html'">
-                            <span style="font-size: 5px;">上一步</span>
+                        <input class="submit" type="submit" value="修改" style="font-size: 15px;"></input>
+                        <div class="laststep" type="return" onclick="location.href='newmenu1.php'">
+                            <span style="font-size: 15px;">新增類型</span>
                         </div>
                         <div class="nextstep" type="next" onclick="location.href='newmenu3.html'">
-                            <span style="font-size: 5px;">下一步</span>
+                            <span style="font-size: 15px;">呈現方式</span>
                         </div>
-                        <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 5px;"
-                            onclick="location.href='allmenu.php'">
-                        </input>
+                        <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 12px;"onclick="location.href='allmenu.php'"></input>
                     </div>
                 </div>
             </div>
         </form>
     </div>
 </body>
+
 
 </html>
