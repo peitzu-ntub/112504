@@ -35,14 +35,21 @@
     <div class="container-wrapper">
         <form action="newfood.php" method="POST" enctype="multipart/form-data">
             <div class="container1">
-                <font color="#e8a95b" size="6"style="align-items: center;">新增餐點</font>
+<!--                 <font color="#e8a95b" size="6"style="align-items: center;">新增餐點 </font>
+                    <font color="#ff0000" size="2"> 您需先新增類型才能新增菜色!</font> -->
+                    
+                    <div style="width:320px;">
+                        <font style=" width:100px;"color="#bf6900" size="5"style="align-items: center;">新增餐點</font>
+                        <font style=" width:100px;" color="#ff0000" size="2"">您需先新增類型才能新增菜色!</font>
+                    </div>
+
                 <div class="insidebox">
                     <div class="ininsidebox">
                         <div class="input-box">
                             <div class="input-row">
                                 <span class="details">餐點類型：</span>
                                 <select name="type_id" id="type_id">
-                                    <?php
+                                <?php
                                     $sql = "
                                         select * from food_type
                                         where boss_identity = '$boss' and store_id = '$store'";
@@ -57,11 +64,11 @@
                             </div>
                             <div class="input-row">
                                 <span class="details">餐點名稱：</span>
-                                <input type="text" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" name="meal_name" id="meal_name" placeholder="請輸入餐點名稱" required>
+                                <input type="text" name="meal_name" id="meal_name" placeholder="請輸入餐點名稱" required>
                             </div>
                             <div class="input-row">
                                 <span class="details">餐點介紹：</span>
-                                <textarea id="meal_note" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" name="meal_note" rows="2" cols="20" placeholder="請輸入餐點介紹(上限50字)" style="resize: none;" maxlength="50"></textarea>
+                                <textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="請輸入餐點介紹(上限50字)" style="resize: none;" maxlength="50"></textarea>
                             </div>
                             <div class="input-row">
                                 <span class="details">餐點價格：</span>
@@ -73,18 +80,20 @@
                             </div>
                         </div>
 
-                        <input class="submit" type="submit" value="儲存" style="font-size: 5px;"></input>
+                        <input class="submit" type="submit" value="儲存" style="font-size: 15px;"></input>
                         <div class="laststep" type="return" onclick="location.href='newmenu1.php'">
-                            <span style="font-size: 5px;">上一步</span>
+                            <span style="font-size: 15px;">新增類型</span>
                         </div>
                         <div class="nextstep" type="next" onclick="location.href='newmenu3.html'">
-                            <span style="font-size: 5px;">下一步</span>
+                            <span style="font-size: 15px;">呈現方式</span>
                         </div>
-                        <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 5px;"onclick="location.href='allmenu.php'"></input>
+                        <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 12px;"onclick="location.href='allmenu.php'"></input>
                     </div>
                 </div>
             </div>
         </form>
     </div>
 </body>
+
+
 </html>

@@ -104,9 +104,9 @@ nav{
   width: 680px;
   height: 300px;
   display: flex;
-  align-items: stretch;/*至頂*/
-  flex-wrap: wrap;
-  justify-content: center;
+  align-items: center;/*stretch*/
+  flex-direction: column;
+  position: relative;
 }
 
 /* ==========
@@ -204,6 +204,71 @@ form .input-box span.details{
   color: #394c32;
   cursor: pointer;
 }
+/* =============
+   新增類型的按鈕 
+===============*/
+.laststep {
+  position: absolute; /* 設置為絕對定位 */
+  bottom: -13px; /* 距離視窗上方的位置 */
+  left: 40%; /* 距離視窗左側的位置 */
+  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
+  width: 70px;
+  height: 37px;
+  border: 3px solid #deb587;
+  background-color:#deb587;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #d78d38;
+}
+.laststep div {
+  display: flex;
+  align-items: center;
+  color: #deb587;
+}
+.laststep img {
+  margin-right: 3px; /* 調整圖片和文字之間的間距 */
+}
+.laststep:hover {
+  border: 3px solid #9a7e5f;
+  color: #846c51;
+  cursor: pointer;
+}
+/*===========
+ 下一步的按鈕
+============ */
+.nextstep {
+  position: absolute; /* 設置為絕對定位 */
+  bottom: -13px; /* 距離視窗上方的位置 */
+  left: 60%; /* 距離視窗左側的位置 */
+  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
+  width: 70px;
+  height: 37px;
+  border: 3px solid #d4bb4a;
+  background-color:#d4bb4a;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #99883e;
+}
+.nextstep div {
+  display: flex;
+  align-items: center;
+  color: #d4bb4a;
+}
+.nextstep img {
+  margin-right: 3px; 
+}
+.nextstep:hover {
+  border: 3px solid #99883e;
+  color: #857737;
+  cursor: pointer;
+}
+
 /*===========
   返回的方框
  ===========*/
@@ -237,35 +302,20 @@ form .input-box span.details{
   height: 45px;
   cursor: pointer;
 }
-/*===========
- 下一步的按鈕
-============ */
-.nextstep {
-  position: absolute; /* 設置為絕對定位 */
-  bottom: -13px; 
-  left: 91%; 
-  transform: translate(-50%, -50%); 
-  width: 90px;
-  height: 37px;
-  border: 3px solid #d4bb4a;
-  background-color:#d4bb4a;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  color: #99883e;
+
+table {
+  border-collapse: collapse;
+  width: 100%;
 }
-.nextstep div {
-  display: flex;
-  align-items: center;
-  color: #d4bb4a;
+th, td {
+  padding: 13px;
+  text-align: center;
+  font-size: 25px;
 }
-.nextstep img {
-  margin-right: 3px; 
+th {
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
 }
-.nextstep:hover {
-  border: 3px solid #99883e;
-  color: #857737;
-  cursor: pointer;
+tr:nth-child(even) {
+  background-color: #ffffff;
 }

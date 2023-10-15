@@ -55,17 +55,18 @@ $datas_len = count($datas); //目前資料筆數
 
 ?>
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu2.php'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
-            <span style="font-size: 10px;">返回</span>
+            <span style="font-size: 15px;">返回</span>
         </div>
     </div>
     <div class="container-wrapper">
         <form action="menu_del.php" method="POST">
             <div class="container1">
                 <div class="topinput" style="font-size: 15px;">
-                    <font color="#bf6900" size="5">全部餐點</font></div>
+                    <font color="#bf6900" size="5">全部餐點</font>
+                </div>
                 <div class="insidebox">
                     <div class="ininsidebox" style="width:680px;height:300px; overflow:auto;">
                         <table width ="500" align="center" >
@@ -73,7 +74,6 @@ $datas_len = count($datas); //目前資料筆數
                                 <th><font size="5">刪除</th>
                                 <th><font size="5">餐點名稱</th>
                                 <th><font size="5">編輯</th>
-
                             </tr>
                             <tbody>
                             <?php
@@ -88,8 +88,14 @@ $datas_len = count($datas); //目前資料筆數
                             }
                             ?>
 
-                            </tbody>                          
+                            </tbody>    
                         </table>
+                    </div>
+                    <div class="nextstep" type="next" onclick="location.href='newmenu2.php'">
+                        <span style="font-size: 15px;">新增餐點</span>
+                    </div>
+                    <div class="laststep" type="return" onclick="location.href='newmenu1.php'">
+                        <span style="font-size: 15px;">新增類型</span>
                     </div>
                 </div>
             </div>
@@ -97,3 +103,4 @@ $datas_len = count($datas); //目前資料筆數
     </div>
 </body>
 </html>
+
