@@ -14,13 +14,10 @@
 
 include "../bin/conn.php";
 
-// 設置一個空陣列來放資料
+$staff_id=$_GET['staff_id'];
 
-$sql ="select staff_id FROM store_staff order by staff_id "; // sql語法存在變數中
+$sql ="select staff_id+ 1 staff_id FROM store_staff order by staff_id desc limit 1"; // sql語法存在變數中
 $result = mysqli_query($con,$sql);
-$total_records = mysqli_num_rows($result);
-$total = $total_records + 1;
-
 
 ?>
 <body>
@@ -41,7 +38,8 @@ $total = $total_records + 1;
                     <div class="ininsidebox">
                         <div class="input-box">
                             <span class="details">員工編號：</span>
-                            <input type="text" class="form-control" value="<?php echo $total ?>" name="staff_id" disabled><br>                        </div>
+                            <input type="text" class="form-control" value="<?php while($row_result = mysqli_fetch_assoc($result)) {
+    echo $row_result['staff_id'];};?>" name="staff_id" disabled><br>                        </div>
 
                         <div class="input-box">
                             <span class="details">密碼：</span>
