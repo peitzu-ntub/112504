@@ -1,6 +1,12 @@
 <html>
 
 <?php 
+    /*
+    url的長相跟範例：http://xxx.xxx/final/page/cart.php?identity=A123456789&store_id=S01&order_no=20231001xxxx
+    可能從pickFood.php跳過來
+    可能從自己加減餐點數量後跳到自己
+    */
+
   include "../bin/conn.php";
   $identity = $_GET['identity'];
   $store_id = $_GET['store_id'];
@@ -73,8 +79,6 @@
 
   <link rel="stylesheet" href="../js/bootstrap.min.4.6.2.css">
   <link rel="stylesheet" href="../js/pickmenu.css">
-
-
   <script src="../js/jquery-3.6.4.min.js"></script>
 
   <style>
@@ -153,7 +157,7 @@
       </table>
     </div><br>
 <?php
-    $pickUrl = "pickFood.html?identity=$identity&store_id=$store_id&order_no=$order_no";
+    $pickUrl = "pickFood.php?identity=$identity&store_id=$store_id&order_no=$order_no";
     echo "        
     
         <a href='$pickUrl&cart=1'>

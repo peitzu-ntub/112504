@@ -16,7 +16,7 @@
           where c.boss_identity='$identity' 
           and c.store_id='$store_id' 
           and c.order_no = '$order_no'";
-
+//echo $sql;
     try {
         $cart_data = mysqli_query($con, $sql);
         if (!$cart_data) {
@@ -93,7 +93,7 @@
       </table>
     </div><br>
 <?php
-    $pickUrl = "pickFood.html?identity=$identity&store_id=$store_id&order_no=$order_no";
+    $pickUrl = "pickFood.php?identity=$identity&store_id=$store_id&order_no=$order_no";
     echo "        
         <a href='$pickUrl'>
             <button type='button' style='background-color:#80a0e2' class='registbutton'>
