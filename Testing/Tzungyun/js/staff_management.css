@@ -116,8 +116,8 @@ body{
     top: 60px;
     left: 65px;
     transform: translate(-50%, -50%);
-    width: 70px;
-    height: 40px;
+    width: 66px;
+    height: 35px;
     border: 3px solid #ecad83;
     background-color: #ecad83;
     border-radius: 20px;
@@ -126,19 +126,27 @@ body{
     align-items: center;
     font-size: 18px;
 }
-    .logout div {
+  
+.logout span{
+    position: relative;
+    top: 0.5px;
+}
+  
+.logout div {
     display: flex;
     align-items: center;
     color: rgb(116, 65, 31)
 }
+  
 .logout img {
     margin-right: 3px;
 }
+  
 .logout:hover {
     border: 4px solid #b55f45;
     color: white;
     width: 70px;
-    height: 45px;
+    height: 40px;
     cursor: pointer;
 }
 
