@@ -68,24 +68,24 @@ $datas_len = count($datas); //目前資料筆數
                             <form method="post" action="menu_up.php?meal_name=<?php echo $datas[0]['meal_name']?>">
                                 <?php
                                     echo "原餐點類型：";
-                                    echo $datas[0]['type_id'] ;
+                                    echo $datas[0]['type_name'] ;
                                     echo "</br>";
-                                    $query = "SELECT type_id FROM food_type";
+                                    $query = "SELECT type_name FROM food_type";
                                     $result = mysqli_query($con, $query);
                                 ?>
                                 <label>餐點類型：</label>
-                                <select  name="type_id" >
+                                <select  name="type_name" >
 
                                     <?php while($row = mysqli_fetch_array($result)):;?>
 
                                         <!--下面 $row9['(資料表(add_role) 的欄位(STAFF_ROLE) )']; ---------->
-                                        <option value="<?php echo $row['type_id'];?>"  
+                                        <option value="<?php echo $row['type_name'];?>"  
                                             <?PHP 
                                             
-                                                if($value == $row['type_id']){echo "selected";} 
+                                                if($value == $row['type_name']){echo "selected";} 
                                             ?> 
                                         >
-                                            <?php echo $row['type_id'];?>
+                                            <?php echo $row['type_name'];?>
                                         </option>
                                     <?php endwhile;?>
 

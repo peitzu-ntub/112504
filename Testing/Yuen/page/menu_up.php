@@ -3,12 +3,12 @@ include "../bin/conn.php";
 
 $meal_name=$_GET['meal_name'];
 
-$type_id = $_POST['type_id'];
+$type_name = $_POST['type_name'];
 $meal_name = $_POST['meal_name'];
 $meal_price = $_POST['meal_price'];
 $meal_note = $_POST['meal_note'];
 
-$sql = "UPDATE store_food SET type_id = '".$type_id."',meal_name = '".$meal_name."', 
+$sql = "UPDATE store_food SET type_name = '".$type_name."',meal_name = '".$meal_name."', 
 meal_price = '".$meal_price."',  meal_note = '".$meal_note."' WHERE meal_name = '".$meal_name."'";
 
 
