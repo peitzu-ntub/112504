@@ -18,7 +18,7 @@
             <div class="container1">
                 <div class="subject">
                     <div class="big">
-                        <span style="font-size: 30px;" >
+                        <span style="font-size: 30px;">
                             <img src="../images/gear.png" />
                             <font color="#bf6900" size="6">選擇您想呈現的方式</font>
                             <img src="../images/gear.png" />
@@ -37,13 +37,13 @@
                             欲加入菜單內容
                         </span>
                     </div>
-                    
-                    <div class="threesmall">
+
+                    <!-- <div class="threesmall">
                         <span style="font-size: 20px;">
                             <img src="../images/checkmark.png" />
                             依評價高低排序菜單順序
                         </span>
-                    </div>
+                    </div> -->
 
                     <div class="radiobutton">
                         <div id="radio">
@@ -55,25 +55,29 @@
                     </div>
 
                     <div class="checkbutton">
-                        <div id="checkbox">
-                            <label><input type="checkbox" name="variety" value="評價" />
-                                <span class="round button">評價</span></label>
-                            <label><input type="checkbox" name="variety" value="圖片" />
-                                <span class="round button">圖片</span></label>
-                            <label><input type="checkbox" name="variety" value="餐點介紹" />
+                        <div id="radio">
+                            <label><input type="radio" name="variety" value="0" checked="checked" />
+                                <span class="round button">無</span></label>
+                            <label><input type="radio" name="variety" value="1" />
                                 <span class="round button">餐點介紹</span></label>
-                            <label><input type="checkbox" name="variety" value="注意事項" />
-                                <span class="round button">注意事項</span></label>
-                    </div>
+                            <label><input type="radio" name="variety" value="2" />
+                                <span class="round button">圖片+餐點介紹</span></label>
+                            <label><input type="radio" name="variety" value="3" />
+                                <span class="round button">圖片+餐點介紹+評價</span></label>
+                            <label><input type="radio" name="variety" value="4" />
+                                <span class="round button">圖片+餐點介紹+注意事項</span></label>
+                            <label><input type="radio" name="variety" value="5" />
+                                <span class="round button">圖片+餐點介紹+注意事項+評價</span></label>
+                        </div>
 
-<!--                     <div class="onoffswitch">
+                        <!--<div class="onoffswitch">
                         <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" checked>
                         <label class="onoffswitch-label" for="myonoffswitch">
                             <span class="onoffswitch-inner"></span>
                             <span class="onoffswitch-switch"></span>
                         </label>
                     </div> -->
-                    <!--<div class="tworadiobutton">
+                        <!--<div class="tworadiobutton">
                         <div id="radio">
                             <label><input type="radio" name="label" value="是" checked="checked">
                                 <span class="round button">是</span></label>
@@ -81,7 +85,7 @@
                                     <span class="round button">否</span></label>
                         </div>
                     </div> -->
-                    
+
                     </div>
                 </div>
             </div>
