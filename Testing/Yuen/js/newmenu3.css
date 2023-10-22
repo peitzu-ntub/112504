@@ -1,0 +1,372 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+  font-weight:bold
+}
+.title {
+  text-align: center;
+  top:6px;
+}
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color:#fff3bc;
+}
+.container-wrapper {
+  position: relative; /* 設置父容器為相對定位 */
+}
+/* =========
+   大框框
+=========== */
+.container1{
+  font-weight: bold;
+  background-color: #ffffff;
+  border: 1px solid #8cb87c;
+  border-radius: 20px;
+  width: 600px;
+  max-width: 750px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+/* =========
+    底框
+=========== */
+.subject{
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 498px;
+  max-width: 750px;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+/*   align-items: center; */
+  flex-direction: column;
+  position: relative;
+}
+/* =========
+  大標題
+=========== */
+.big{
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 498px;
+  max-width: 750px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 10px;
+}
+/* =========
+1單選框標題底框
+=========== */
+.onesmall{
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 150px;
+  max-width: 750px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+}
+/* =========
+  1單選框底框
+=========== */
+.radiobutton{
+  font-weight: bold;
+  background-color: #ffffff;
+  margin-left: 140px; /* 增加左側間距 */
+  border-radius: 20px;
+  width: 230px;
+  max-width: 750px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+}
+/* =========
+複選框標題底框
+=========== */
+.twosmall{
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 200px;
+  max-width: 750px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+/*   align-items: flex-start; */
+  flex-direction: column;
+  position: absolute;
+  top: 180px;
+}
+/*============
+    複選框底框
+==============*/
+.checkbutton {
+  font-weight: bold;
+  margin-left: 185px; /* 距離視窗左側的位置 */
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 320px;
+  max-width: 750px;
+  height: 100px;
+  position: absolute;
+  top: 190px;
+  display: flex; /* 使用 Flexbox 布局 */
+  flex-direction: row; /* 设置水平排列 */
+  justify-content: space-between; /* 平均分布子元素 */
+}
+/* =========
+2單選框標題底框
+=========== */
+.threesmall{
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 270px;
+  max-width: 750px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  position: absolute;
+  top: 295px;
+}
+/* =========
+  2單選框底框
+=========== */
+.tworadiobutton{
+  font-weight: bold;
+  background-color: #ffffff;
+  margin-left: 90px; /* 增加左側間距 */
+  border-radius: 20px;
+  width: 170px;
+  max-width: 750px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  position: absolute;
+  top: 115px;
+}
+/*===================
+
+====================*/
+.onoffswitch {
+  position: relative; 
+  width: 90px;
+  top: 115px;
+}
+.onoffswitch-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #999999;
+  border-radius: 20px;
+}
+.onoffswitch-inner {
+  display: block; 
+  width: 200%; 
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+  /* 整個按鈕框 */
+  display: block; 
+  float: left; 
+  width: 50%; 
+  height: 30px; 
+  padding: 0; 
+  line-height: 30px;
+  font-size: 14px; 
+  color: white; 
+  box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+  content: "ON";
+  padding-left: 10px;
+  background-color: #8cb87c; 
+  color: #ecd368;
+}
+.onoffswitch-inner:after {
+  content: "OFF";
+  padding-right: 10px;
+  background-color: #EEEEEE; 
+  color: #000000;
+  text-align: right;
+}
+.onoffswitch-switch {
+  /* 圓圈移動時 */
+  display: block; 
+  width: 18px; 
+  margin: 6px; 
+  height: 20px;
+  background: #A1A1A1;
+  position: absolute; 
+  top: 0; 
+  bottom: 0;
+  right: 40px;
+  border: 2px solid #999999; 
+  border-radius: 20px;
+  transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  /* 圓圈圈 */
+  right: 0px; 
+  background-color: #394c32; 
+}
+
+/*============
+    確定
+==============*/
+.submit {
+  position: absolute; /* 設置為絕對定位 */
+  bottom: 15px; /* 距離視窗上方的位置 */
+  left: 60%; /* 距離視窗左側的位置 */
+  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
+  width: 70px;
+  height: 37px;
+  border: 3px solid #8cb87c;
+  background-color:#8cb87c;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #ecd368/* #5b7751 */;
+}
+.submit div {
+  display: flex;
+  align-items: center;
+  color: rgb(116, 65, 31)
+}
+.submit img {
+  margin-right: 3px; /* 調整圖片和文字之間的間距 */
+}
+.submit:hover {
+  border: 3px solid #5b7751;
+  color: #394c32;
+  cursor: pointer;
+}
+/*============
+    上一步
+==============*/
+.laststep {
+  position: absolute; /* 設置為絕對定位 */
+  bottom: 15px; /* 距離視窗上方的位置 */
+  left: 40%; /* 距離視窗左側的位置 */
+  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
+  width: 70px;
+  height: 37px;
+  border: 3px solid #deb587;
+  background-color:#deb587;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #cf750d;
+}
+.laststep div {
+  display: flex;
+  align-items: center;
+  color: #deb587;
+}
+.laststep img {
+  margin-right: 3px; /* 調整圖片和文字之間的間距 */
+}
+.laststep:hover {
+  border: 3px solid #9a7e5f;
+  color: #846c51;
+  cursor: pointer;
+}
+/*============
+     單選
+==============*/
+#radio input[type="radio"] {
+  display: none; 
+}
+#radio input:checked + .button {
+  background: #8bb47b; 
+  color: #ecd368; 
+  cursor: default; 
+  border-radius: 20px;
+}
+#radio .button {
+  display: inline-block; 
+  margin: 0 42px 5px 0; 
+  padding: 5px 10px; 
+  background: #f7f7f7; 
+  border: 1px solid #8bb47b;
+  color: #333; 
+  cursor: pointer; 
+}
+#radio .button:hover {
+  background: #8bb47b; 
+  color: #000000; 
+}
+#radio .round {
+  border-radius: 5px; 
+  border-radius: 20px;
+}
+/*============
+     複選
+==============*/
+#checkbox input[type="checkbox"] {
+  display: none; 
+}
+#checkbox input:checked + .button {
+  background: #8bb47b; 
+  color: #ecd368;
+  border-radius: 20px;
+}
+#checkbox .button {
+  display: inline-block; 
+  margin: 0 5px 10px 0; 
+  padding: 5px 10px; 
+  background: #f7f7f7; 
+  border: 1px solid #8bb47b;
+  color: #333; 
+  cursor: pointer; 
+}
+#checkbox .button:hover {
+  background: #8bb47b; 
+  color: #ecd368; 
+}
+#checkbox .round {
+  border-radius: 5px; 
+  border-radius: 20px;
+}
+
