@@ -1,6 +1,13 @@
 <html>
 
 <?php
+    /*
+    url的長相跟範例：http://xxx.xxx/final/page/pickFood.php?identity=A123456789&store_id=S01&order_no=20231001xxxx&food_type=A
+    可能從開桌的網頁跳過來
+    可能從自己pickFood.php選擇餐點類型後跳到自己
+    可能從購物車cart.php回來這裡繼續點餐
+    */
+
     include "../bin/conn.php";
 
     //老闆身份證號
@@ -9,7 +16,7 @@
     $store_id = $_GET['store_id'];
     //訂單單號，用系統時間決定訂單單號，格式：yyyyMMddHHmmss
     $order_no = $_GET["order_no"];
-
+    //餐點類型，用來呈現全部或者指定的餐點內容
     $food_type=$_GET["food_type"];
 
     $result = mysqli_query($con, $sql);
@@ -19,20 +26,20 @@
     $_SESSION["order_no"] = $row_result['order_no'];
     //--------------------------------------------------------
 
-    $confirm_meal_id = $_GET['meal_id'];
-    $confirm_qty = $_GET['qty'];
+    $pick_meal_id = $_GET['pick_meal_id'];
+    $pick_qty = $_GET['pick_qty'];
     $cart = $_GET['cart'];
 
-    //如果是從 confirmFood.php 過來，則
+    //如果是從自己pickFood.php過來，則
     //檢查「選好餐點」的資訊，包含餐點代號與數量。
     //如果有，就更新購物車的Table
-    if ($confirm_meal_id && $confirm_qty) {
+    if (isset($pick_meal_id) && isset($pick_qty)) {
         //先刪除購物車中、這張訂單、已經存在的這個商品
         $sql = "delete from store_cart 
                 where boss_identity='$identity'
                 and store_id = '$store_id'
                 and order_no = '$order_no'
-                and meal_id = '$confirm_meal_id'
+                and meal_id = '$pick_meal_id'
         ";
         //echo $sql;
         if (!mysqli_query($con, $sql)) {
@@ -43,7 +50,7 @@
         $sql = "insert into store_cart (
                boss_identity, store_id, order_no, meal_id, meal_qty
                ) values (
-               '$identity', '$store_id', '$order_no', '$confirm_meal_id', $confirm_qty
+               '$identity', '$store_id', '$order_no', '$pick_meal_id', $pick_qty
                )
         ";
         //echo $sql;
@@ -180,21 +187,33 @@
             <div class="menu">
 <?php
     //查詢餐點內容，並逐一顯示出來
-    $sql = "select * from store_food where boss_identity = '$identity' and store_id = '$store_id'";
+    $sql = "
+    select F.*, c.meal_qty
+    from store_food F
+    left join store_cart C 
+      on c.boss_identity = F.boss_identity 
+      and c.store_id = F.store_id 
+      and F.meal_id = C.meal_id
+    where F.boss_identity = '$identity' and F.store_id = '$store_id'";
     if (isset($food_type)) {
-        $sql = $sql . " and type_id = '$food_type'";
+        $sql = $sql . " and F.type_id = '$food_type'";
     }
     $foods = mysqli_query($con, $sql);
 
     $count = 1;
 
-    //把整併後的資料重新寫入Store_order_item    
     while ($food = mysqli_fetch_array($foods, MYSQLI_ASSOC)) {
+        $meal_id = $food['meal_id'];
         $meal_name = $food['meal_name'];
         $meal_price = $food['meal_price'];
         //$meal_pic = $food['meal_pic'];
         $meal_note = $food['meal_note'];
         $meal_up = $food['meal_up'];
+        $meal_qty = $food['meal_qty'];
+
+        if (!isset($meal_qty)) {
+            $meal_qty = 1;
+        }
 
         $p = "";
         if ($count == 1) {
@@ -212,6 +231,12 @@
                 </div>
 
                 <div class=\"cart-item\">
+                    <!-- 必要的隱藏欄位 -->
+                    <input type=\"hidden\" id=\"pick_identity\" name=\"pick_identity\" value=\"$identity\">
+                    <input type=\"hidden\" id=\"pick_store_id\" name=\"pick_store_id\" value=\"$store_id\">
+                    <input type=\"hidden\" id=\"pick_order_no\" name=\"pick_order_no\" value=\"$order_no\">
+                    <input type=\"hidden\" id=\"pick_meal_id\" name=\"pick_meal_id\" value=\"\">
+
                     <button class=\"button\" onclick=\"decrementItem()\">-</button>
                     <span class=\"item-quantity\" id=\"quantity1\">1</span>
                     <button class=\"button\" onclick=\"incrementItem()\">+</button>
@@ -234,7 +259,7 @@
                 <p>$ $meal_price </p>
             </div>
             <div class='menu-item-right'>
-                <button onclick=\"openPickingDialog('$meal_name', '../images/$meal_name.upload.jpg', $meal_price, '$meal_note');\">點選</button>
+                <button onclick=\"openPickingDialog('$meal_id', '$meal_name', '../images/$meal_name.upload.jpg', $meal_qty, $meal_price, '$meal_note');\">點選</button>
                 $p
             </div>
         </div>
@@ -247,12 +272,22 @@
         </div>
     
         <div class="footer">
-            <div class="cartbutton" type="return" name="按鈕名稱" onclick="location.href='cart.php'">
-                <span style="font-size: 20px; font-weight:bolder;">購物車</span>
-            </div>
-            <div class="allbutton" type="return" name="按鈕名稱" onclick="location.href='orderQuery.php'">
-                <span style="font-size: 20px; font-weight:bolder;">我的訂單</span>
-            </div>
+<?php
+    //顯示購物車畫面，顯示指定的訂單的購物車現況
+    $cart_url = "location.href='cart.php?identity=$identity&store_id=$store_id&order_no=$order_no'";
+    $cart_div = "
+            <div class=\"cartbutton\" type=\"return\" name=\"按鈕名稱\" onclick=\"$cart_url\">
+                <span style=\"font-size: 20px; font-weight:bolder;\">購物車</span>
+            </div>";
+    echo $cart_div;
+
+    $qr_url = "location.href='orderQuery.php?identity=$identity&store_id=$store_id&order_no=$order_no'";
+    $qr_div = "
+        <div class=\"allbutton\" type=\"return\" name=\"按鈕名稱\" onclick=\"$qr_url\">
+            <span style=\"font-size: 20px; font-weight:bolder;\">我的訂單</span>
+        </div>";
+    echo $qr_div;
+?>        
         </div>
 
         <!-- </form> -->
@@ -266,10 +301,13 @@
     //fPrice : 餐點價格
     //fDesc : 餐點介紹
     //---
-    function openPickingDialog(fName, imgSrc, fPrice, fDesc) {
+    function openPickingDialog(fid, fName, imgSrc, fqty, fPrice, fDesc) {
+        //將餐點代號記錄在隱藏欄位
+        document.getElementById('pick_meal_id').value = fid;
+
         //將餐點數量改回預設1
         const quantityElement = document.getElementById('quantity1');
-        quantityElement.textContent = 1;
+        quantityElement.textContent = fqty;
 
         //DOM元素
         const popup = document.getElementById('popup');
@@ -318,8 +356,20 @@
 
     //@@加入購物車
     function addToCart() {
-        const quantityElement = document.getElementById('quantity1');
-        const itemQuantity = parseInt(quantityElement.textContent);
+        //必要欄位
+        var pick_identity = document.getElementById('pick_identity').value; 
+        var pick_store_id = document.getElementById('pick_store_id').value; 
+        var pick_order_no = document.getElementById('pick_order_no').value; 
+        //餐點代號
+        var pick_meal_id = document.getElementById('pick_meal_id').value;
+        //餐點數量
+        var quantityElement = document.getElementById('quantity1');
+        var qty = parseInt(quantityElement.textContent);
+
+        //重新導頁,並將餐點數量加入購物車
+        var url = 'pickFood.php?identity='+pick_identity + '&store_id='+pick_store_id + '&order_no='+ pick_order_no + '&pick_meal_id=' + pick_meal_id + '&pick_qty=' + qty;
+        //alert(url);
+        window.location.href = url;
     }
 
 </script>
