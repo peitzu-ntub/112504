@@ -22,18 +22,15 @@ body {
 
 nav {
     /*整個上方區塊*/
+    margin: 0;
     min-width: 100%;
-    margin: 0px;
-    background-color: #68b8e7;
+    background-color: #fff3bc;
 }
 
 nav ul {
     /*第一層選單區域*/
-    padding: 0;
-    margin: 0;
     list-style: none;
     position: relative;
-    margin: 0px;
 }
 
 nav ul li {
@@ -41,6 +38,7 @@ nav ul li {
     display: inline-block;
     float: none;
     white-space: nowrap;
+    border-radius: 20px 20px 0 0 ;
 }
 
 nav ul li a {
@@ -51,16 +49,16 @@ nav ul li a {
     font-size: 20px;
     line-height: 40px;
     text-decoration: none;
-    background-color: #68b8e7;
+    background-color: #f9e99e;
+    border-radius: 20px 20px 0 0 ;
 }
 
-nav a:hover {
-    /*整個選單連結滑鼠移上去時的樣式*/
+/* nav a:hover {
     color: #FFF;
-    background-color: #3da5e2;
+    background-color: #f0db7a;
     transition: all .2s ease;
 }
-
+ */
 
 /* 標題方框 */
 .container-wrapper {
@@ -68,25 +66,16 @@ nav a:hover {
     /* 設置父容器為相對定位 */
 }
 
-.container1 {
-    font-weight: bold;
-    background-color: #f9e99e;
-    border-radius: 20px;
-    width: 1000px;
-    height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
 
 .insidebox {
+    margin-top: 0px;
     font-weight: bold;
-    background-color: #fff;
-    border-radius: 20px;
-    width: 950px;
-    height: 600px;
-    display: flex;
+    background-color: #f9e99e;
+    border-radius: 0 40px 40px 40px; 
+    width: 750px;
+    height: 450px;
+    display: flex;/* column */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -94,11 +83,11 @@ nav a:hover {
 .ininsidebox {
     font-weight: bold;
     background-color: #ffffff;
-    border: 1px solid #acce79;
+/*     border: 1px solid #acce79; */
     border-radius: 40px;
-    width: 950px;
-    max-width: 950px;
-    height: 500px;
+    width: 700px;
+    max-width: 750px;
+    height: 330px;
     display: flex;
     justify-content: column;
     align-items: center;
@@ -162,6 +151,17 @@ form .input-box span.details {
     justify-content: space-between;
     margin: 20px 0 12px 0;
 }
+.input-box input,
+.input-box select {
+    height: 33px;
+    width: 250px;
+    outline: none;
+    font-size: 16px;
+    border-radius: 10px;
+    padding-left: 15px;
+    border: 1px solid #000000;
+    /* margin-bottom: 3px; */
+}
 
 /*=============
    消費紀錄表格
@@ -173,32 +173,16 @@ table {
 
 th,
 td {
-    padding: 13px;
+    padding: 13px ;
     text-align: center;
 }
 
 th {
     background-color: #f2f2f2;
-    border: 1px solid #7297ce;
+    border: 1px solid transparent;
+    border-radius: 40px 40px 0 0 ;
 }
 
 tr:nth-child(even) {
     background-color: #f9f9f9;
-}
-
-/*  .input-box {
-    display: flex; 
-    align-items: center; 
-    margin-top: 8px;
-  }  */
-.input-box input,
-.input-box select {
-    height: 33px;
-    width: 250px;
-    outline: none;
-    font-size: 16px;
-    border-radius: 10px;
-    padding-left: 15px;
-    border: 1px solid #000000;
-    /* margin-bottom: 3px; */
 }
