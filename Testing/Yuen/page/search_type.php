@@ -36,7 +36,8 @@ include "../bin/conn.php";
 // 設置一個空陣列來放資料
 $datas = array();
 
-$sql = "SELECT meal_name FROM store_food";
+$查詢 = $_POST["查詢"];
+$sql = "SELECT meal_name FROM store_food where type_name = '$查詢'";
 
 $result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
 
