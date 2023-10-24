@@ -23,26 +23,28 @@ body {
 /* 標題方框 */
 .container-wrapper {
   position: relative; /* 設置父容器為相對定位 */
+  color:#e8a95b;
 }
 
-.container1 {
+.container1{
   font-weight: bold;
   background-color: #f9e99e;
   border-radius: 20px;
-  width: 900px;
-  height: 540px;
+  width: 750px;
+  max-width: 750px;
+  height: 480px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.insidebox {
+.insidebox{
   font-weight: bold;
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 20px;
-  width: 850px;
-  height: 370px;
+  width: 700px;
+  height: 315px;
   display: flex;
   justify-content: center;
   align-items: center;
