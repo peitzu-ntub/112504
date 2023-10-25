@@ -77,7 +77,7 @@ nav ul li a:hover {
   display: flex;
   justify-content: column;
   align-items: column;
-  flex-direction: column;
+  flex-wrap: wrap;
   position: relative;
 }
 

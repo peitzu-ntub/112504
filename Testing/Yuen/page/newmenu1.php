@@ -25,10 +25,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>客製化1</title>
+    <title>新增餐點類型</title>
 
-    <link href="../js/newmenu1.css" rel="stylesheet">
-
+    <link href="../js/m.css" rel="stylesheet">
 </head>
 <?php
 
@@ -75,18 +74,36 @@ $datas_len = count($datas); //目前資料筆數
 ?>
 <body>
     <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
+        <div align="left">
+            <img src="../images/back.png" alt="返回icon" />
+            <span style="font-size: 15px;">返回</span>
+        </div>
     </div>
     <div class="container-wrapper">
-        <form action="menu1.php" method="POST">            
-            <div class="container1">
-                <div class="topinput" style="font-size: 15px;">
-                    <font color="#bf6900" size="5">餐點類型：</font>
-                    <input name="type_name" id="type_name" placeholder="請輸入您欲新增的餐點類型">
-                </div>
+        <nav>
+            <ul>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/allmenu.php">全部餐點</a></li>
+                <li><a>餐點類型</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/newmenu2.php">新增餐點</a></li>
+                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
+                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/nm3.html">呈現方法</a></li>
+            </ul>
+        </nav>
 
-                <div class="insidebox">
-                    <div class="ininsidebox" style="width:680px;height:300px; overflow:auto;">
-                    <table width ="500" align="center" >
+        <div class="insidebox">
+            <form action="menu1.php" method="POST">            
+                <div class="input-box">
+                    <div class="topinput" style="font-size: 15px;">
+                        <img src="../images/edit.png" />
+                        <font color="#bf6900" size="5">餐點類型：</font>
+                        <input name="type_name" id="type_name" placeholder="請輸入您欲新增的餐點類型">
+                        <button class="checkbutton" type="submit" value="儲存">新增</button>
+                    </div>
+                </div><br>
+
+                <div class="ininsidebox" style="width:700px;height:330px; overflow:auto;">
+                <table width ="500" align="center" >
                             <tr>
                                 <th><font size="5">刪除</th>
                                 <th><font size="5">類型名稱</th>
@@ -105,23 +122,12 @@ $datas_len = count($datas); //目前資料筆數
                             }
                             ?>
 
-                            </tbody>     
-                        </table>
-                    </div>
+                            </tbody>  
+                    </table>
 
-                    <input class="submit" type="submit" value="儲存" style="font-size: 15px;"></input>
-                    <div class="laststep" type="return" onclick="location.href='newmenu2.php'">
-                        <span style="font-size: 15px;">新增餐點</span>
-                    </div>
-                    <div class="nextstep" type="next" onclick="location.href='newmenu3.html'">
-                        <span style="font-size: 15px;">呈現方式</span>
-                    </div>
-                    <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 12px;"onclick="location.href='allmenu.php'"></input>
                 </div>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </body>
-
 </html>

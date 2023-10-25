@@ -25,30 +25,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>客製化2</title>
+    <title>新增餐點</title>
 
-    <link href="../js/newmenu2.css" rel="stylesheet">
-
+    <link href="../js/m.css" rel="stylesheet">
 </head>
 
 <body>
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
+        <div align="left">
+            <img src="../images/back.png" alt="返回icon" />
+            <span style="font-size: 15px;">返回</span>
+        </div>
+    </div>
     <div class="container-wrapper">
-        <form action="newfood.php" method="POST" enctype="multipart/form-data">
-            <div class="container1">
-<!--                 <font color="#e8a95b" size="6"style="align-items: center;">新增餐點 </font>
-                    <font color="#ff0000" size="2"> 您需先新增類型才能新增菜色!</font> -->
-                    
-                    <div style="width:320px;">
-                        <font style=" width:100px;"color="#bf6900" size="5"style="align-items: center;">新增餐點</font>
-                        <font style=" width:100px;" color="#ff0000" size="2"">您需先新增類型才能新增菜色!</font>
-                    </div>
+        <nav>
+            <ul>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/allmenu.php">全部餐點</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/newmenu1.php">餐點類型</a></li>
+                <li><a>新增餐點</a></li>
+                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
+                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/nm3.html">呈現方法</a></li>
+            </ul>
+        </nav>
 
-                <div class="insidebox">
-                    <div class="ininsidebox">
-                        <div class="input-box">
-                            <div class="input-row">
-                                <span class="details">餐點類型：</span>
-                                <select name="type_id" id="type_id">
+        <div class="insidebox">
+            <form action="newfood.php" method="POST" enctype="multipart/form-data">
+                <div style="width:320px;">
+                    <img src="../images/add.png" />
+                    <font color="#bf6900" size="5" >新增餐點</font>
+                    <font color="#ff0000" size="2">您需先新增類型才能新增菜色!</font>
+                </div><br>
+
+                <div class="ininsidebox">
+                    <div class="input-box">
+                        <div class="input-row">
+                            <span class="details">餐點類型：</span>
+                            <select name="type_id" id="type_id">
                                 <?php
                                     $sql = "
                                         select * from food_type
@@ -61,39 +74,31 @@
                                     }
                                     ?> 
                                 </select>
-                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點名稱：</span>
-                                <input type="text" name="meal_name" id="meal_name" placeholder="請輸入餐點名稱" required>
-                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點介紹：</span>
-                                <textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="請輸入餐點介紹(上限50字)" style="resize: none;" maxlength="50"></textarea>
-                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點價格：</span>
-                                <input type="number" min="0" name="meal_price" id="meal_price" placeholder="請輸入正確價格" required>
-                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點圖片：</span>
-                                <input type="file" name="meal_pic" id="meal_pic">
-                            </div>
                         </div>
-
-                        <input class="submit" type="submit" value="儲存" style="font-size: 15px;"></input>
-                        <div class="laststep" type="return" onclick="location.href='newmenu1.php'">
-                            <span style="font-size: 15px;">新增類型</span>
+                        <div class="input-row">
+                            <span class="details">餐點名稱：</span>
+                            <input type="text" name="meal_name" id="meal_name" placeholder="請輸入餐點名稱" required>
                         </div>
-                        <div class="nextstep" type="next" onclick="location.href='newmenu3.html'">
-                            <span style="font-size: 15px;">呈現方式</span>
+                        <div class="input-row">
+                            <span class="details">餐點介紹：</span>
+                            <textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="請輸入餐點介紹(上限50字)"
+                                style="resize: none;" maxlength="50"></textarea>
                         </div>
-                        <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 12px;"onclick="location.href='allmenu.php'"></input>
+                        <div class="input-row">
+                            <span class="details">餐點價格：</span>
+                            <input type="number" min="0" name="meal_price" id="meal_price" placeholder="請輸入正確價格"
+                                required>
+                        </div>
+                        <div class="input-row">
+                            <span class="details">餐點圖片：</span>
+                            <input type="file" name="meal_pic" id="meal_pic">
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+                <input class="submitbutton" type="submit" value="儲存"></input>
+            </form>
+        </div>
     </div>
 </body>
-
 
 </html>
