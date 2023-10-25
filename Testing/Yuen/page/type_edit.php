@@ -60,10 +60,9 @@ $datas_len = count($datas); //目前資料筆數
 
     <div class="container-wrapper">
     <form method="post" action="type_up.php?type_id=<?php echo $datas[0]['type_id']?>">
-
             <div class="container1">
                 <div class="upsidebox">
-                    <span style="font-size: 45px;">
+                    <span style="font-size: 40px;">
                         <img src="../images/menu.png" />
                         編輯餐點類型
                         <!-- <img src="../images/menu.png" /> -->
@@ -71,7 +70,6 @@ $datas_len = count($datas); //目前資料筆數
                 </div>
                 <div class="downsidebox"></div>
                 <div class="insidebox">
-
                     <div class="topinput" style="font-size: 15px;">
                         <font color="#5db6f1" size="5">餐點類型：</font>
                         <input type="text" class="form-control" value="<?php echo $datas[0]['type_name'] ?>" name="type_name" ><br>
@@ -79,14 +77,15 @@ $datas_len = count($datas); //目前資料筆數
                 </div>
                 <div class="logout" type="button" name="按鈕名稱" onclick="location.href='newmenu1.php'">
                     <img src="../images/back.png" alt="返回icon" />
-                    <span style="font-size: 10px;">返回</span>
+                    <span style="font-size: 15px;">返回</span>
                 </div>
-                <input class="submit" type="submit" value="儲存"></input>
-                <div class="nextstep" type="next" onclick="location.href='newmenu2.php'">
-                    <span style="font-size: 5px;">下一步</span>
-                </div>
+                <input class="submit" type="submit" value="儲存" style="font-size: 15px;"></input>
+<!--                 <div class="nextstep" type="next" onclick="location.href='newmenu2.html'">
+                    <span style="font-size: 15px;">下一步</span>
+                </div> -->
             </div>
         </form>
     </div>
 </body>
+
 </html>
