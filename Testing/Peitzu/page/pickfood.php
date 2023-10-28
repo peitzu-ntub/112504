@@ -287,6 +287,13 @@
             <span style=\"font-size: 20px; font-weight:bolder;\">我的訂單</span>
         </div>";
     echo $qr_div;
+
+    $qr_url = "location.href='cusfeedback.html";
+    $qr_div = "
+        <div class=\"allbutton\" type=\"return\" name=\"按鈕名稱\" onclick=\"$qr_url\">
+            <span style=\"font-size: 20px; font-weight:bolder;\">去評價</span>
+        </div>";
+    echo $qr_div;
 ?>        
         </div>
 
