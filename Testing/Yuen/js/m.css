@@ -1,0 +1,269 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff3bc;
+}
+
+.container-wrapper {
+  position: relative;
+}
+
+nav {
+  /*整個上方區塊*/
+  margin: 0;
+  min-width: 100%;
+  background-color: #fff3bc;
+}
+nav ul {
+  /*第一層選單區域*/
+  list-style: none;
+  position: relative;
+}
+nav ul li {
+  /*第一層選單項目*/
+  display: inline-block;
+  float: none;
+  white-space: nowrap;
+  border-radius: 20px 20px 0 0 ;
+}
+nav ul li a {
+  /*最上層選單樣式*/
+  display: block;
+  padding: 0 10px;
+  color: #000;
+  font-size: 20px;
+  line-height: 40px;
+  text-decoration: none;
+  background-color: #f9e99e;
+  border-radius: 20px 20px 0 0 ;
+}
+nav ul li a:hover {
+  color: #FFF;
+  background-color: #f0db7a;
+}
+
+
+.insidebox {
+  margin-top: 0px;
+  font-weight: bold;
+  background-color: #f9e99e;
+  border-radius: 0 40px 40px 40px; 
+  width: 750px;
+  height: 450px;
+  display: flex;/* column */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ininsidebox {
+  font-weight: bold;
+  background-color: #ffffff;
+  /*border: 1px solid #acce79; */
+  border-radius: 40px;
+  width: 700px;
+  max-width: 750px;
+  height: 330px;
+  display: flex;
+  justify-content: column;
+  align-items: column;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+form .insidebox .input-box {
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+.ininsidebox span{
+  margin: 10px 0 15px 10px;
+  color: #bf6900;
+}
+form .input-box span.details {
+  display: inline-block;
+  margin:20px 3px 20px 25% ;
+  font-weight: bold;
+  font-size: 20px;
+}
+.content .user-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.input-box input,
+.input-box select{
+  height: 33px;
+  width: 250px;
+  outline: none;
+  font-size: 16px;
+  border-radius: 20px;
+  padding-left: 15px;
+  border: 1px solid #bf6900;
+}
+.input-box textarea{
+  height: 33px;
+  width: 250px;
+  outline: none;
+  font-size: 16px;
+  border-radius: 20px;
+  padding-left: 15px;
+  border: 1px solid #bf6900;
+}
+
+/*===========
+  儲存的按鈕
+===========*/
+.checkbutton{
+  color: #5b7751;
+  font-size: 17px; 
+  width: 68px;
+  height: 34px; 
+  background-color: #8cb87c; 
+  border-radius: 20px; 
+  border: 3px solid #8cb87c;
+}
+.checkbutton:hover{
+  background-color: #8cb87c; 
+  border: 3px solid #5b7751;
+  color: #394c32;
+}
+.submitbutton{
+  color: #5b7751;
+  font-size: 17px; 
+  width: 68px;
+  height: 34px; 
+  margin:10px 0 0  45%;
+  background-color: #8cb87c; 
+  border-radius: 20px; 
+  border: 3px solid #8cb87c;
+}
+.submitbutton:hover{
+  background-color: #8cb87c;  
+  border: 3px solid #5b7751;
+  color: #394c32;
+}
+.searchbutton{
+  color: #5b7751;
+  font-size: 17px; 
+  width: 68px;
+  height: 34px; 
+  background-color: #8cb87c; 
+  border-radius: 20px; 
+  border: 3px solid #8cb87c;
+}
+.searchbutton:hover{
+  background-color: #8cb87c; 
+  border: 3px solid #5b7751;
+  color: #394c32;
+}
+.finalbutton{
+  color: #cf750d;
+  font-size: 17px; 
+  width: 180px;
+  height: 34px; 
+  margin:10px 0 0  38%;
+  background-color: #deb587; 
+  border-radius: 20px; 
+  border: 3px solid #deb587;
+}
+.finalbutton:hover{
+  border: 3px solid #9a7e5f;
+  color: #846c51;
+}
+/*===========
+  返回的按鈕
+===========*/
+.logout {
+  position: absolute;
+  top: 60px;
+  left: 65px;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 40px;
+  border: 3px solid #ecad83;
+  background-color: #ecad83;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+.logout div {
+  display: flex;
+  align-items: center;
+  color: rgb(116, 65, 31)
+}
+.logout img {
+  margin-right: 3px;
+}
+.logout:hover {
+  border: 4px solid #b55f45;
+  color: white;
+  width: 70px;
+  height: 45px;
+  cursor: pointer;
+}
+
+/*=============
+      表格
+=============*/
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 13px ;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+  border: 1px solid transparent;
+  border-radius: 10px 10px 0 0 ;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* ============
+    單選鈕
+=============== */
+#radio input[type="radio"] {
+  display: none; 
+}
+#radio input:checked + .button {
+  background: #8bb47b; 
+  color: #ecd368; 
+  cursor: default; 
+  border-radius: 20px;
+}
+#radio .button {
+  display: inline-block; 
+  /* margin: 0 10px 5px 10px; */ /* 上右下左 */
+  padding: 5px 10px; 
+  background: #f7f7f7; 
+  border: 1px solid #8bb47b;
+  color: #333; 
+  cursor: pointer; 
+}
+#radio .button:hover {
+  background: #8bb47b; 
+  color: #000000; 
+}
+#radio .round {
+  border-radius: 5px; 
+  border-radius: 20px;
+}

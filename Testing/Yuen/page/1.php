@@ -25,30 +25,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>客製化2</title>
+    <title>查看全部餐點</title>
 
-    <link href="../js/newmenu2.css" rel="stylesheet">
-
+    <link href="../js/m.css" rel="stylesheet">
 </head>
+<?php
 
+include "../bin/conn.php";
+
+// 設置一個空陣列來放資料
+$datas = array();
+
+$sql = "SELECT meal_name FROM store_food";
+
+$result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
+
+// 如果有資料
+if ($result) {
+    // mysqli_num_rows方法可以回傳我們結果總共有幾筆資料
+    if (mysqli_num_rows($result) > 0) {
+        // 取得大於0代表有資料
+        // while迴圈會根據資料數量，決定跑的次數
+        // mysqli_fetch_assoc方法可取得一筆值
+        while ($row = mysqli_fetch_assoc($result)) {
+            // 每跑一次迴圈就抓一筆值，最後放進data陣列中
+            $datas[] = $row;
+        }
+    }
+    // 釋放資料庫查到的記憶體
+    mysqli_free_result($result);
+} else {
+    echo "{$sql} 語法執行失敗，錯誤訊息: " . mysqli_error($link);
+}
+// 處理完後印出資料
+if (!empty($result)) {
+    // 如果結果不為空，就利用print_r方法印出資料
+    //print_r($datas);
+} else {
+    // 為空表示沒資料
+    echo "查無資料";
+}
+echo "<br><br>";
+//echo $datas[0]['sf_name']; // 印出第0筆資料中的sf_name欄位值
+
+//使用表格排版用while印出
+$datas_len = count($datas); //目前資料筆數
+
+?>
 <body>
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
+        <div align="left">
+            <img src="../images/back.png" alt="返回icon" />
+            <span style="font-size: 15px;">返回</span>
+        </div>
+    </div>
     <div class="container-wrapper">
-        <form action="newfood.php" method="POST" enctype="multipart/form-data">
-            <div class="container1">
-<!--                 <font color="#e8a95b" size="6"style="align-items: center;">新增餐點 </font>
-                    <font color="#ff0000" size="2"> 您需先新增類型才能新增菜色!</font> -->
-                    
-                    <div style="width:320px;">
-                        <font style=" width:100px;"color="#bf6900" size="5"style="align-items: center;">新增餐點</font>
-                        <font style=" width:100px;" color="#ff0000" size="2"">您需先新增類型才能新增菜色!</font>
-                    </div>
+        <nav>
+            <ul>
+                <li><a>全部餐點</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/newmenu1.php">餐點類型</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/newmenu2.php">新增餐點</a></li>
+                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
+                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/nm3.html">呈現方法</a></li>
+            </ul>
+        </nav>
 
-                <div class="insidebox">
-                    <div class="ininsidebox">
-                        <div class="input-box">
-                            <div class="input-row">
-                                <span class="details">餐點類型：</span>
-                                <select name="type_id" id="type_id">
+        <div class="insidebox">
+            <form action="search_type.php" method="POST">
+                <div class="input-box">
+                    <img src="../images/loupe.png" />
+                    <font color="#bf6900" size="5">餐點類型：</font>
+                    <select name="查詢" id="查詢">
                                 <?php
                                     $sql = "
                                         select * from food_type
@@ -61,39 +109,37 @@
                                     }
                                     ?> 
                                 </select>
-                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點名稱：</span>
-                                <input type="text" name="meal_name" id="meal_name" placeholder="請輸入餐點名稱" required>
-                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點介紹：</span>
-                                <textarea id="meal_note" name="meal_note" rows="2" cols="20" placeholder="請輸入餐點介紹(上限50字)" style="resize: none;" maxlength="50"></textarea>
-                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點價格：</span>
-                                <input type="number" min="0" name="meal_price" id="meal_price" placeholder="請輸入正確價格" required>
-                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點圖片：</span>
-                                <input type="file" name="meal_pic" id="meal_pic">
-                            </div>
-                        </div>
+                    <button class="searchbutton" type="search">查詢</button>
+                </div><br>
 
-                        <input class="submit" type="submit" value="儲存" style="font-size: 15px;"></input>
-                        <div class="laststep" type="return" onclick="location.href='newmenu1.php'">
-                            <span style="font-size: 15px;">新增類型</span>
-                        </div>
-                        <div class="nextstep" type="next" onclick="location.href='newmenu3.html'">
-                            <span style="font-size: 15px;">呈現方式</span>
-                        </div>
-                        <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 12px;"onclick="location.href='allmenu.php'"></input>
-                    </div>
+                <div class="ininsidebox">
+                    <table width ="500" align="center">
+                        <tr>
+                            <th><font size="5">刪除</th>
+                            <th><font size="5">餐點名稱</th>
+                            <th><font size="5">編輯</th>
+                        </tr>
+                        <tbody>
+                            <?php
+                            for ($i = 0; $i < $datas_len; $i++) {
+                                echo "<tr>";
+                                echo "<td align='center'>   
+                                <a href='menu_del.php?meal_name=".$datas[$i]['meal_name']."'><img src=../images/trash1.png></img></a></td>";
+                                echo "<td style='font-size: 25px;' align='center'>". $datas[$i]['meal_name'] . "</span>";
+                                echo "<td align='center'>
+                                <a href='menu_edit.php?meal_name=".$datas[$i]['meal_name']."'><img src=../images/signature.png></img></a></td>";
+                                echo "</br>";
+                            }
+                            ?>
+
+                            </tbody>  
+                    </table>
+
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+    </div>
     </div>
 </body>
-
 
 </html>

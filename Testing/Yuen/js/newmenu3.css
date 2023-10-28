@@ -18,8 +18,7 @@ body{
   background-color:#fff3bc;
 }
 .container-wrapper {
-/* 設置父容器為相對定位 */
-  position: relative; 
+  position: relative; /* 設置父容器為相對定位 */
 }
 /* =========
    大框框
@@ -54,7 +53,7 @@ body{
   position: relative;
 }
 /* =========
-   大標題
+  大標題
 =========== */
 .big{
   font-weight: bold;
@@ -70,9 +69,9 @@ body{
   position: absolute;
   top: 10px;
 }
-/* =============
-呈現方式標題底框
-================ */
+/* =========
+1單選框標題底框
+=========== */
 .onesmall{
   font-weight: bold;
   background-color: #ffffff;
@@ -85,15 +84,15 @@ body{
   align-items: flex-start;
   flex-direction: column;
   position: absolute;
-  top: 80px;
+  top: 60px;
 }
-/* =================
- 呈現方式單選框底框
-====================*/
+/* =========
+  1單選框底框
+=========== */
 .radiobutton{
   font-weight: bold;
   background-color: #ffffff;
-  margin-left: 140px; 
+  margin-left: 140px; /* 增加左側間距 */
   border-radius: 20px;
   width: 230px;
   max-width: 750px;
@@ -103,11 +102,11 @@ body{
   align-items: flex-start;
   flex-direction: column;
   position: absolute;
-  top: 80px;
+  top: 60px;
 }
-/* ==============
-欲加入菜單標題底框
-================= */
+/* =========
+複選框標題底框
+=========== */
 .twosmall{
   font-weight: bold;
   background-color: #ffffff;
@@ -117,88 +116,32 @@ body{
   height: 50px;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+/*   align-items: flex-start; */
   flex-direction: column;
   position: absolute;
-  top: 160px;
+  top: 180px;
 }
 /*============
-欲加入菜單複選框底框
+    複選框底框
 ==============*/
 .checkbutton {
   font-weight: bold;
-  margin-left: 185px; 
+  margin-left: 185px; /* 距離視窗左側的位置 */
   background-color: #ffffff;
   border-radius: 20px;
   width: 320px;
-  height: 250px;
+  max-width: 750px;
+  height: 100px;
   position: absolute;
-  display: flex; 
-  flex-direction: row; 
-  justify-content: space-between; 
-  top: 170px;
+  top: 190px;
+  display: flex; /* 使用 Flexbox 布局 */
+  flex-direction: row; /* 设置水平排列 */
+  justify-content: space-between; /* 平均分布子元素 */
 }
-/*============
-     單選
-==============*/
-#radio input[type="radio"] {
-  display: none; 
-}
-#radio input:checked + .button {
-  background: #8bb47b; 
-  color: #ecd368; 
-  cursor: default; 
-  border-radius: 20px;
-}
-#radio .button {
-  display: inline-block; 
-  margin: 0 10px 5px 0; /* ................... */
-  padding: 5px 10px; 
-  background: #f7f7f7; 
-  border: 1px solid #8bb47b;
-  color: #333; 
-  cursor: pointer; 
-}
-#radio .button:hover {
-  background: #8bb47b; 
-  color: #000000; 
-}
-#radio .round {
-  border-radius: 5px; 
-  border-radius: 20px;
-}
-/*============
-     複選
-==============*/
-/* #checkbox input[type="checkbox"] {
-  display: none; 
-}
-#checkbox input:checked + .button {
-  background: #8bb47b; 
-  color: #ecd368;
-  border-radius: 20px;
-}
-#checkbox .button {
-  display: inline-block; 
-  margin: 0 5px 10px 0; 
-  padding: 5px 10px; 
-  background: #f7f7f7; 
-  border: 1px solid #8bb47b;
-  color: #333; 
-  cursor: pointer; 
-}
-#checkbox .button:hover {
-  background: #8bb47b; 
-  color: #ecd368; 
-}
-#checkbox .round {
-  border-radius: 5px; 
-  border-radius: 20px;
-} */
 /* =========
-
+2單選框標題底框
 =========== */
-/* .threesmall{
+.threesmall{
   font-weight: bold;
   background-color: #ffffff;
   border-radius: 20px;
@@ -211,14 +154,14 @@ body{
   flex-direction: column;
   position: absolute;
   top: 295px;
-} */
+}
 /* =========
-
+  2單選框底框
 =========== */
-/* .tworadiobutton{
+.tworadiobutton{
   font-weight: bold;
   background-color: #ffffff;
-  margin-left: 90px; 
+  margin-left: 90px; /* 增加左側間距 */
   border-radius: 20px;
   width: 170px;
   max-width: 750px;
@@ -229,11 +172,11 @@ body{
   flex-direction: column;
   position: absolute;
   top: 115px;
-} */
+}
 /*===================
 
 ====================*/
-/* .onoffswitch {
+.onoffswitch {
   position: relative; 
   width: 90px;
   top: 115px;
@@ -257,6 +200,7 @@ body{
   transition: margin 0.3s ease-in 0s;
 }
 .onoffswitch-inner:before, .onoffswitch-inner:after {
+  /* 整個按鈕框 */
   display: block; 
   float: left; 
   width: 50%; 
@@ -281,6 +225,7 @@ body{
   text-align: right;
 }
 .onoffswitch-switch {
+  /* 圓圈移動時 */
   display: block; 
   width: 18px; 
   margin: 6px; 
@@ -298,18 +243,19 @@ body{
   margin-left: 0;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  /* 圓圈圈 */
   right: 0px; 
   background-color: #394c32; 
-} */
+}
 
 /*============
-    去看菜單
+    確定
 ==============*/
 .submit {
-  position: absolute; 
-  bottom: 15px; 
-  left: 60%; 
-  transform: translate(-50%, -50%); 
+  position: absolute; /* 設置為絕對定位 */
+  bottom: 15px; /* 距離視窗上方的位置 */
+  left: 60%; /* 距離視窗左側的位置 */
+  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
   width: 70px;
   height: 37px;
   border: 3px solid #8cb87c;
@@ -327,8 +273,7 @@ body{
   color: rgb(116, 65, 31)
 }
 .submit img {
-/* 調整圖片和文字之間的間距 */
-  margin-right: 3px; 
+  margin-right: 3px; /* 調整圖片和文字之間的間距 */
 }
 .submit:hover {
   border: 3px solid #5b7751;
@@ -336,13 +281,13 @@ body{
   cursor: pointer;
 }
 /*============
-  查看全菜單
+    上一步
 ==============*/
 .laststep {
-  position: absolute; 
-  bottom: 15px; 
-  left: 40%; 
-  transform: translate(-50%, -50%); 
+  position: absolute; /* 設置為絕對定位 */
+  bottom: 15px; /* 距離視窗上方的位置 */
+  left: 40%; /* 距離視窗左側的位置 */
+  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
   width: 70px;
   height: 37px;
   border: 3px solid #deb587;
@@ -360,12 +305,68 @@ body{
   color: #deb587;
 }
 .laststep img {
-  /* 調整圖片和文字之間的間距 */
-  margin-right: 3px;
+  margin-right: 3px; /* 調整圖片和文字之間的間距 */
 }
 .laststep:hover {
   border: 3px solid #9a7e5f;
   color: #846c51;
   cursor: pointer;
+}
+/*============
+     單選
+==============*/
+#radio input[type="radio"] {
+  display: none; 
+}
+#radio input:checked + .button {
+  background: #8bb47b; 
+  color: #ecd368; 
+  cursor: default; 
+  border-radius: 20px;
+}
+#radio .button {
+  display: inline-block; 
+  margin: 0 42px 5px 0; 
+  padding: 5px 10px; 
+  background: #f7f7f7; 
+  border: 1px solid #8bb47b;
+  color: #333; 
+  cursor: pointer; 
+}
+#radio .button:hover {
+  background: #8bb47b; 
+  color: #000000; 
+}
+#radio .round {
+  border-radius: 5px; 
+  border-radius: 20px;
+}
+/*============
+     複選
+==============*/
+#checkbox input[type="checkbox"] {
+  display: none; 
+}
+#checkbox input:checked + .button {
+  background: #8bb47b; 
+  color: #ecd368;
+  border-radius: 20px;
+}
+#checkbox .button {
+  display: inline-block; 
+  margin: 0 5px 10px 0; 
+  padding: 5px 10px; 
+  background: #f7f7f7; 
+  border: 1px solid #8bb47b;
+  color: #333; 
+  cursor: pointer; 
+}
+#checkbox .button:hover {
+  background: #8bb47b; 
+  color: #ecd368; 
+}
+#checkbox .round {
+  border-radius: 5px; 
+  border-radius: 20px;
 }
 

@@ -8,43 +8,41 @@
 
     <title>呈現方式</title>
 
-    <link href="../js/newmenu3.css" rel="stylesheet">
-
+    <link href="../js/m.css" rel="stylesheet">
 </head>
 
 <body>
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
+        <div align="left">
+            <img src="../images/back.png" alt="返回icon" />
+            <span style="font-size: 15px;">返回</span>
+        </div>
+    </div>
     <div class="container-wrapper">
-        <form action="#">
-            <div class="container1">
-                <div class="subject">
-                    <div class="big">
-                        <span style="font-size: 30px;">
-                            <img src="../images/gear.png" />
-                            <font color="#bf6900" size="6">選擇您想呈現的方式</font>
-                            <img src="../images/gear.png" />
-                        </span>
-                    </div>
-                    <div class="onesmall">
-                        <span style="font-size: 20px;">
-                            <img src="../images/checkmark.png" />
-                            呈現方式
-                            <font color="#ff0000" size="4"> *</font>
-                        </span>
-                    </div>
-                    <div class="twosmall">
-                        <span style="font-size: 20px;">
-                            <img src="../images/checkmark.png" />
-                            欲加入菜單內容
-                        </span>
-                    </div>
+        <nav>
+            <ul>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/am.html">全部餐點</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/nm1.html">餐點類型</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/nm2.html">新增餐點</a></li>
+                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
+                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
+                <li><a >呈現方法</a></li>
+            </ul>
+        </nav>
 
-                    <!-- <div class="threesmall">
-                        <span style="font-size: 20px;">
-                            <img src="../images/checkmark.png" />
-                            依評價高低排序菜單順序
-                        </span>
-                    </div> -->
+        <div class="insidebox">
+            <form action="#">
+                <div class="input-box">
+                    <img src="../images/gear.png" />
+                    <font color="#b55f45"size="5px">選擇您想呈現的方式</font>
+                </div><br>
 
+                <div class="ininsidebox">
+                    <span style="font-size: 20px;">
+                        <img src="../images/checkmark.png" />
+                        菜單呈現方式
+                        <font color="#ff0000" size="4"> *</font>
+                    </span>
                     <div class="radiobutton">
                         <div id="radio">
                             <label><input type="radio" name="label" value="行列式" checked="checked">
@@ -54,7 +52,11 @@
                         </div>
                     </div>
 
-                    <div class="checkbutton">
+                    <span style="font-size: 20px;">
+                        <img src="../images/checkmark.png" />
+                        欲加入菜單內容
+                    </span>
+                    <div class="radiobutton">
                         <div id="radio">
                             <label><input type="radio" name="variety" value="0" checked="checked" />
                                 <span class="round button">無</span></label>
@@ -69,36 +71,15 @@
                             <label><input type="radio" name="variety" value="5" />
                                 <span class="round button">圖片+餐點介紹+注意事項+評價</span></label>
                         </div>
-
-                        <!--<div class="onoffswitch">
-                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" checked>
-                        <label class="onoffswitch-label" for="myonoffswitch">
-                            <span class="onoffswitch-inner"></span>
-                            <span class="onoffswitch-switch"></span>
-                        </label>
-                    </div> -->
-                        <!--<div class="tworadiobutton">
-                        <div id="radio">
-                            <label><input type="radio" name="label" value="是" checked="checked">
-                                <span class="round button">是</span></label>
-                            <label><input type="radio" name="label" value="否">
-                                    <span class="round button">否</span></label>
-                        </div>
-                    </div> -->
-
                     </div>
                 </div>
-            </div>
-        </form>
-        <input class="submit" type="submit" value="去看菜單" style="font-size: 15px;" onclick="location.href='#.html'">
-        </input>
-        <div class="laststep" type="return" onclick="location.href='allmenu.html'">
-            <span style="font-size: 10px;">查看全部餐點</span>
+                <input class="finalbutton" type="submit" value="去看菜單!"
+                onclick="location.href='#.html'"></input>
+            </form>
         </div>
     </div>
+    </div>
 </body>
-
-
 <script>
     //當網頁準備好的時候，做以下的動作(函式)
     $(document).ready(function () {
@@ -137,5 +118,4 @@
         });
     });
 </script>
-
 </html>

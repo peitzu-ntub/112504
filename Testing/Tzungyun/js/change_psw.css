@@ -1,162 +1,122 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #fff3bc; 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold
+}
+
+.title {
   text-align: center;
-  padding: 20px;
+  top: 6px;
 }
 
-body::-webkit-scrollbar {
-  display: none;
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color:#fff3bc;
 }
 
-/* h1 {
-  color: #333;
-} */
+/* 標題方框 */
+.container-wrapper {
+  position: relative; /* 設置父容器為相對定位 */
+  color:#e8a95b;
+}
 
-form {
-  /* max-width: 400px; */
-  position: relative;
-  top: 140px; 
-  left: 0px;
+.container1{
+  font-weight: bold;
+  background-color: #f9e99e;
+  border-radius: 20px;
+  width: 750px;
+  max-width: 750px;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.insidebox{
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 20px;
   width: 700px;
-	height: 400px;
-  margin: 0 auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 30px;
-  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+  height: 315px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 253px;
+  height: 50px;
+  border: 3px solid #acce79;
+  background-color: #acce79;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
 }
 
 label {   /*密碼文字*/
-  display: block;
+  display: inline-block;
   text-align: left;
-  margin-bottom: 5px;
-  /* margin-top: 15px; */
-  padding-top: 10px;
+  margin-bottom: 20px;
+  margin-top: 15px;
   font-weight: bold;
 }
 
 label[id="oldPassword"]{
   position: absolute;
-  top: 25px; 
-  left: 30px;
+  top: 135px; 
+  left: 190px;
 }
 
 label[id="newPassword"]{
   position: absolute;
-  top: 140px; 
-  left: 30px;
+  top: 230px; 
+  left: 190px;
 }
 label[id="confirmNewPassword"]{
   position: absolute;
-  top: 255px; 
-  left: 30px;
+  top: 325px; 
+  left: 190px;
 }
 
 input[type="password"] {
-  width: 70%;
-  padding: 20px;
-  font-size: 16px;
+  top: 10px;
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
   border: 1px solid #ccc;
   border-right-width: 2px;
   border-bottom-width: 2px;
   border-radius: 15px;
-  margin-top: 15px;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 30px;
   margin-left: 15px;
   transition: all 0.3s ease;
-
 }
 
 input[placeholder] {
   font-weight: bold;
 }
 
-input[type="submit"] {
-  background-color: #8cb87c;
-  color: #5b7751;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 24px;
-  /* display: inline-block; */
-  border: none;
-  text-align: center;
-  padding: 10px;
-  width: 400px;
-  transition: all 0.5s;
-}
-
-input[type="submit"]:hover {
-  border: 2px solid #5b7751;
-  color: #394c32;
-  cursor: pointer;
-}
-
-.caption{
-  border-radius: 30px;
-  text-align: center;
-  width: 200px;
-  height: 60px;
-  background-color: #acce79;
-  opacity: 0.8;
-  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
-  padding-left: 50px;
-  padding-right: 50px;
-  position: relative;
-  top: 40px;
-  left: 620px;
-  z-index: 99;
-}
-
-.myTitle{
-  position: absolute;
-  top: -40px;
-  left: -40px;
-  z-index: 100;
-}
-
-@media (max-width: 1024px) {
-  .myTitle{
-    position: relative;
-    top: -30px;
-    left: -140px;
-  }
-
-  .caption{
-    position: absolute;
-    top: 60px;
-    left: 380px;
-  }
-
-  form{
-    position: relative;
-    top: 170px; 
-    left: 0px;
-  }
-}
-
-.caption span{
-  color: #35522b;
-  text-align: justify;
-  position: absolute;
-  top: -4px;
-  left: 60px;
-  z-index: 100;
-  font-size: 300%;
-  font-weight: bold;
-}
-
-/* 返回的方框 */
 .logout {
   position: absolute;
   top: 60px;
   left: 65px;
   transform: translate(-50%, -50%);
-  /* 將容器水平垂直居中 */
-  width: 80px;
-  height: 50px;
+  width: 70px;
+  height: 40px;
   border: 3px solid #ecad83;
   background-color: #ecad83;
   border-radius: 20px;
@@ -169,19 +129,11 @@ input[type="submit"]:hover {
 .logout div {
   display: flex;
   align-items: center;
-  color: rgb(116, 65, 31);
-  position: absolute;
-  left: 8px;
-}
-
-.logout span{
-  position: relative;
-  left: 4px;
+  color: rgb(116, 65, 31)
 }
 
 .logout img {
   margin-right: 3px;
-  /* 調整圖片和文字之間的間距 */
 }
 
 .logout:hover {
@@ -189,5 +141,34 @@ input[type="submit"]:hover {
   color: white;
   width: 70px;
   height: 45px;
+  cursor: pointer;
+}
+
+.submit {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 40px;
+  border: 3px solid #8cb87c;
+  background-color: #8cb87c;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #5b7751;
+}
+
+.submit div {
+  display: flex;
+  align-items: center;
+  color: rgb(116, 65, 31)
+}
+
+.submit:hover {
+  border: 3px solid #5b7751;
+  color: #394c32;
   cursor: pointer;
 }

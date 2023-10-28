@@ -4,8 +4,16 @@
     <meta charset="utf-8">
 	<title>員工管理頁面</title>
 	<link href="../js/staff_management.css" rel="stylesheet">
-	<meta name=”viewport” content=”width=device-width, initial-scale=1.0">
   </head>
+
+  <script>
+	function opendesk(){
+		var urlParams = new URLSearchParams(window.location.search);
+		var staff_id = urlParams.get('staff_id');
+		location.href='selectDesk.php?staff_id='+staff_id;
+	}
+	</script>
+
 <body>
 	<div class="container">
 		<!-- <div class="button-container">
@@ -28,7 +36,7 @@
 				</div>
 			<div class="aside">
 				<div class="col-md-4">
-					<img src="../images/open.png" /><input type="button" class="btn" value="開桌" onclick="location.href='http://140.131.114.143/demo2/page/selectdesk.php'"></input>
+					<img src="../images/open.png" /><input type="button" class="btn" value="開桌" onclick=opendesk();></input>
 					<img src="../images/fork.png" /><input type="button" class="btn" value="菜單" onclick="location.href='../page/pickFood.html'"></input>
 				</div>
 			</div>

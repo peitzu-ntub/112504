@@ -36,7 +36,8 @@ include "../bin/conn.php";
 // 設置一個空陣列來放資料
 $datas = array();
 
-$sql = "SELECT meal_name FROM store_food";
+$查詢 = $_POST["查詢"];
+$sql = "SELECT meal_name FROM store_food where type_name = '$查詢'";
 
 $result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
 
@@ -112,7 +113,7 @@ $datas_len = count($datas); //目前資料筆數
                     <button class="searchbutton" type="search">查詢</button>
                 </div><br>
 
-                <div class="ininsidebox" style="width:700px;height:330px; overflow:auto;">
+                <div class="ininsidebox">
                     <table width ="500" align="center">
                         <tr>
                             <th><font size="5">刪除</th>

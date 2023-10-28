@@ -1,0 +1,174 @@
+﻿*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+  font-weight:bold
+}
+.title {
+  text-align: center;
+  top:6px;
+  margin-bottom: 10px; /* 在文本下方添加内边距 */
+  padding-bottom: 10px; /* 在文本下方添加内边距 */
+}
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+/*   background: linear-gradient(135deg, #e68871, #88ba80); */
+  background-color:#fff3bc;
+}
+.container-wrapper {
+  position: relative; /* 設置父容器為相對定位 */
+}
+/* =================
+背景與白色中間那塊黃色
+====================*/
+.container1{
+  font-weight: bold;
+  background-color: #f9e99e;
+  border-radius: 20px;
+  width: 750px;
+  max-width: 750px;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* =================
+背景與白色中間那塊白色
+====================*/
+.insidebox{
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 700px;
+  height: 315px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* ==========
+  輸入框的底框
+=============*/
+.ininsidebox{
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 680px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+/* ==========
+    輸入框
+=============*/
+.content .user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+.input-box {
+  display: flex;
+  flex-direction: column;/* center */
+  align-items: flex-start;/* center */
+  margin-top: 8px;
+}
+.input-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.input-box input,
+.input-box select,
+.input-box textarea {
+  height: 33px;
+  width: 250px;
+  outline: none;
+  font-size: 16px;
+  border-radius: 10px;
+  padding-left: 15px;
+  border: 1px solid #000000;
+  margin-bottom: 3px;
+}
+form .input-box span.details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 3px 12px 0;
+}
+
+.submit {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 35px;
+  border: 3px solid #8cb87c;
+  background-color: #8cb87c;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #5b7751;
+}
+
+.submit div {
+  display: flex;
+  align-items: center;
+  color: rgb(116, 65, 31)
+}
+
+.submit img {
+  margin-right: 3px;
+}
+
+.submit:hover {
+  border: 3px solid #5b7751;
+  color: #394c32;
+  cursor: pointer;
+}
+
+.logout {
+  position: absolute;
+  top: 60px;
+  left: 65px;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 40px;
+  border: 3px solid #ecad83;
+  background-color: #ecad83;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.logout div {
+  display: flex;
+  align-items: center;
+  color: rgb(116, 65, 31)
+}
+
+.logout img {
+  margin-right: 3px;
+}
+
+.logout:hover {
+  border: 4px solid #b55f45;
+  color: white;
+  width: 70px;
+  height: 45px;
+  cursor: pointer;
+}
