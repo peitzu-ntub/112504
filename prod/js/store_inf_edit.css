@@ -8,10 +8,10 @@
 
 .title {
   text-align: center;
-  top:6px;
-  margin-bottom: 10px; /* 在文本下方添加内边距 */
+  top: 6px;
+  margin-bottom: 10px; /* 在文本下方添加内边距
   padding-bottom: 10px; /* 在文本下方添加内边距 */
-}
+} 
 
 body{
   height: 100vh;
@@ -19,7 +19,6 @@ body{
   justify-content: center;
   align-items: center;
   padding: 10px;
-/*   background: linear-gradient(135deg, #e68871, #88ba80); */
   background-color:#fff3bc;
 }
 
@@ -36,7 +35,7 @@ body{
   border-radius: 20px;
   width: 750px;
   max-width: 750px;
-  height: 450px;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,11 +46,12 @@ body{
 背景與白色中間那塊白色
 ====================*/
 .insidebox{
+  margin-top: 20px;
   font-weight: bold;
   background-color: #ffffff;
   border-radius: 20px;
   width: 700px;
-  height: 315px;
+  height: 325px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -116,7 +116,7 @@ form .input-box span.details{
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100px;
-  height: 35px;
+  height: 40px;
   border: 3px solid #8cb87c;
   background-color: #8cb87c;
   border-radius: 20px;
