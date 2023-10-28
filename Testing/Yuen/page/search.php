@@ -62,7 +62,7 @@ $datas_len = count($datas); //目前資料筆數
 		</div>
 	</div>
 	<div class="container-wrapper">
-        <form action="search_type.php" method="POST">
+        <form action="search.php" method="POST">
 			<div class="container1">
 				<div align="center">
 					<font size="19">員工資料管理</font>

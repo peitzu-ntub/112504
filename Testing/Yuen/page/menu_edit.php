@@ -6,12 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>客製化2</title>
+    <title>新增餐點</title>
 
-    <link href="../js/newmenu2.css" rel="stylesheet">
-
+    <link href="../js/edit.css" rel="stylesheet">
 </head>
-
 <?php
 include "../bin/conn.php";
 
@@ -58,23 +56,44 @@ $datas_len = count($datas); //目前資料筆數
 
 ?>
 <body>
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
+        <div align="left">
+            <img src="../images/back.png" alt="返回icon" />
+            <span style="font-size: 15px;">返回</span>
+        </div>
+    </div>
     <div class="container-wrapper">
-            <div class="container1">
-                <font color="#e8a95b" size="6"style="align-items: center;">修改餐點</font>
-                <div class="insidebox">
-                    <div class="ininsidebox">
-                        <div class="input-box">
-                            <div class="input-row">
-                            <form method="post" action="menu_up.php?meal_name=<?php echo $datas[0]['meal_name']?>">
-                                <?php
-                                    echo "原餐點類型：";
+        <nav>
+            <ul>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/allmenu.php">全部餐點</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/newmenu1.php">餐點類型</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/newmenu2.php">新增餐點</a></li>
+                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
+                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/nm3.html">呈現方法</a></li>
+            </ul>
+        </nav>
+
+        <div class="insidebox">
+            <form method="post" action="menu_up.php?meal_name=<?php echo $datas[0]['meal_name']?>">
+                <div style="width:320px;">
+                    <img src="../images/add.png" />
+                    <font color="#bf6900" size="5" >修改餐點</font>
+                </div><br>
+
+                <div class="ininsidebox">
+                    <div class="input-box">
+                        <div class="input-row">
+                            <?php
+                                    echo "<font color=#bf6900 size='4';>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原餐點類型：";
                                     echo $datas[0]['type_name'] ;
                                     echo "</br>";
                                     $query = "SELECT type_name FROM food_type";
                                     $result = mysqli_query($con, $query);
                                 ?>
-                                <label>餐點類型：</label>
-                                <select  name="type_name" >
+                            <span class="details">餐點類型：</span>
+                            <select  name="type_name" >
 
                                     <?php while($row = mysqli_fetch_array($result)):;?>
 
@@ -90,34 +109,31 @@ $datas_len = count($datas); //目前資料筆數
                                     <?php endwhile;?>
 
                                 </select>
-                                </div>
-                                <div class="input-row">
-                                <span class="details">餐點名稱：</span>
-                                <input type="text" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" class="form-control" value="<?php echo $datas[0]['meal_name'] ?>" name="meal_name" ><br>                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點介紹：</span>
-                                <input type="text" oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" class="form-control" value="<?php echo $datas[0]['meal_note'] ?>" name="meal_note" ><br>                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點價格：</span>
-                                <input type="number" class="form-control" value="<?php echo $datas[0]['meal_price'] ?>" name="meal_price" ><br>                            </div>
-                            <div class="input-row">
-                                <span class="details">餐點圖片：</span>
-                                <input type="file" class="form-control" value="<?php echo $datas[0]['meal_pic'] ?>" name="meal_pic" ><br>                            </div>
                         </div>
-                        <input class="submit" type="submit" value="修改" style="font-size: 15px;"></input>
-                        <div class="laststep" type="return" onclick="location.href='newmenu1.php'">
-                            <span style="font-size: 15px;">新增類型</span>
+                        <div class="input-row">
+                            <span class="details">餐點名稱：</span>
+                            <input type="text"  class="form-control" value="<?php echo $datas[0]['meal_name'] ?>" name="meal_name" >
+
                         </div>
-                        <div class="nextstep" type="next" onclick="location.href='newmenu3.html'">
-                            <span style="font-size: 15px;">呈現方式</span>
+                        <div class="input-row">
+                            <span class="details">餐點介紹：</span>
+                            <input type="text" class="form-control" value="<?php echo $datas[0]['meal_note'] ?>" name="meal_note" >
+
                         </div>
-                        <input class="checkbutton" type="check" value="查看全部餐點" style="font-size: 12px;"onclick="location.href='allmenu.php'"></input>
+                        <div class="input-row">
+                            <span class="details">餐點價格：</span>
+                            <input type="number" class="form-control" value="<?php echo $datas[0]['meal_price'] ?>" name="meal_price" >                                
+                        </div>
+                        <div class="input-row">
+                            <span class="details">餐點圖片：</span>
+                            <input type="file" class="form-control" value="<?php echo $datas[0]['meal_pic'] ?>" name="meal_pic" >                     
+                           </div>
                     </div>
                 </div>
-            </div>
-        </form>
+                <input class="submitbutton" type="submit" value="儲存"></input>
+            </form>
+        </div>
     </div>
 </body>
-
 
 </html>

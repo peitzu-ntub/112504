@@ -77,27 +77,27 @@ nav ul li a:hover {
   display: flex;
   justify-content: column;
   align-items: column;
-  flex-wrap: wrap;
-  position: relative;
   flex-direction: column;
+  position: relative; 
 }
 
-form .insidebox .input-box {
+/* form .insidebox .input-box {
   margin-bottom: 15px;
   width: calc(100% / 2 - 20px);
-}
+} */
 .ininsidebox span{
+  /* menu3會用到 */
   margin: 10px 0 15px 10px;
   color: #bf6900;
 }
 form .input-box span.details {
   display: inline-block;
-  margin:20px 3px 20px 25% ;
+  margin:15px 3px 20px 25% ;
   font-weight: bold;
   font-size: 20px;
 }
 .content .user-details {
-  display: flex;
+/*   display: flex; */
   flex-wrap: wrap;
   justify-content: space-between;
 }
@@ -143,7 +143,7 @@ form .input-box span.details {
   font-size: 17px; 
   width: 68px;
   height: 34px; 
-  margin:10px 0 0  45%;
+  margin:3px 0 0  45%;
   background-color: #8cb87c; 
   border-radius: 20px; 
   border: 3px solid #8cb87c;
