@@ -23,7 +23,7 @@ body {
 /* 標題方框 */
 .container-wrapper {
   position: relative; /* 設置父容器為相對定位 */
-  color:#e8a95b;
+  color: #000;
 }
 
 .container1{
@@ -92,18 +92,20 @@ label[id="confirmNewPassword"]{
 }
 
 input[type="password"] {
-  top: 10px;
-  width: 100%;
-  padding: 12px;
-  font-size: 15px;
-  border: 1px solid #ccc;
-  border-right-width: 2px;
-  border-bottom-width: 2px;
-  border-radius: 15px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-left: 15px;
+  /* top: 10px; */
+  font-size: 16px;
+  border: 1px solid #000;
+  /* border-right-width: 2px;
+  border-bottom-width: 2px; */
+  border-radius: 10px;
+  margin-top: 25px;
+  margin-bottom: 35px;
+  margin-left: 25px;
   transition: all 0.3s ease;
+  height: 35px;
+  width: 250px;
+  outline: none;
+  padding-left: 15px;
 }
 
 input[placeholder] {
@@ -146,7 +148,7 @@ input[placeholder] {
 
 .submit {
   position: absolute;
-  bottom: -18px;
+  bottom: -17px;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100px;

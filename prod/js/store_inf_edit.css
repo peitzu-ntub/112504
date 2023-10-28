@@ -5,12 +5,14 @@
   font-family: 'Poppins',sans-serif;
   font-weight:bold
 }
+
 .title {
   text-align: center;
   top:6px;
   margin-bottom: 10px; /* 在文本下方添加内边距 */
   padding-bottom: 10px; /* 在文本下方添加内边距 */
 }
+
 body{
   height: 100vh;
   display: flex;
@@ -20,9 +22,11 @@ body{
 /*   background: linear-gradient(135deg, #e68871, #88ba80); */
   background-color:#fff3bc;
 }
+
 .container-wrapper {
   position: relative; /* 設置父容器為相對定位 */
 }
+
 /* =================
 背景與白色中間那塊黃色
 ====================*/
@@ -108,7 +112,7 @@ form .input-box span.details{
 
 .submit {
   position: absolute;
-  bottom: -18px;
+  bottom: -17px;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100px;
