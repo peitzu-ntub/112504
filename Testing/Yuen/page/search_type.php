@@ -83,7 +83,7 @@ $datas_len = count($datas); //目前資料筆數
     <div class="container-wrapper">
         <nav>
             <ul>
-                <li><a>全部餐點</a></li>
+                <li><a  href="../page/allmenu.php">全部餐點</a></li>
                 <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/newmenu1.php">餐點類型</a></li>
                 <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/newmenu2.php">新增餐點</a></li>
                 <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>

@@ -107,7 +107,7 @@ body {
     margin: 0;
 }
 
-/* 按钮的样式 */
+/* 按钮的樣式 */
 .menu-item button {
     width: 80px;
     height: 40px;
@@ -133,6 +133,61 @@ body {
     color: #000000;
     transition: all 0.2s ease;
 }
+
+/* 按钮的樣式 */
+.cart-item button {
+    width: 50px;
+    height: 35px;
+    border: 3px solid #DEB887;
+    background-color: #DEB887;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+}
+.cart-item button:hover{
+    width: 50px;
+    height: 35px;
+    border: 3px solid #FFA07A;
+    background-color: #f98f65;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.2s ease;
+}
+
+/* 按钮的樣式 */
+.add-item button {
+    width: 130px;
+    height: 38px;
+    border: 3px solid #DEB887;
+    background-color: #DEB887;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+}
+.add-item button:hover{
+    width: 130px;
+    height: 38px;
+    border: 3px solid #FFA07A;
+    background-color: #f98f65;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.2s ease;
+}
+
 
 .popup-container {
     display: none;
@@ -219,7 +274,7 @@ body {
 
 /* 購物車按鈕 */
 .cartbutton {
-    width: 80px;
+    width: 90px;
 /*     margin-left:30px; */
 /*     width: 80px; */
     margin: 0 auto; 

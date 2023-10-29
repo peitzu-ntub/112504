@@ -27,7 +27,7 @@
 
     <title>新增餐點</title>
 
-    <link href="../js/m.css" rel="stylesheet">
+    <link href="../js/edit.css" rel="stylesheet">
 </head>
 
 <body>
@@ -61,7 +61,7 @@
                     <div class="input-box">
                         <div class="input-row">
                             <span class="details">餐點類型：</span>
-                            <select name="type_id" id="type_id">
+                            <select name="type_name" id="type_name">
                                 <?php
                                     $sql = "
                                         select * from food_type

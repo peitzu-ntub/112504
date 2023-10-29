@@ -11,11 +11,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f9e99e;
+    background: #ffedbb;
 }
 
 .container {
-    background-color: #D0DAEE;
+    background-color: #ddd;
     opacity: 0.8;
     border: 2px solid #ccc;
     width: 1000px;
@@ -74,7 +74,7 @@ button {
     padding: 5px 10px;
     border-radius: 5px;
     border: none;
-    color: #fff;
+    color: #000;
     font-size: 18px;
     letter-spacing: 5px;
     cursor: pointer;
