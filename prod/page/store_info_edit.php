@@ -98,7 +98,7 @@
     <div class="container-wrapper">
         <form action="store_info_edit.php" method="POST">
             <div class="container1">
-                <font color="#e8a95b" size="6" style="align-items: center; margin-bottom: 10px;">店鋪資料更改</font>
+                <font color="#000" size="15" style="align-items: center;">店鋪資料更改</font>
                 <div class="insidebox">
                     <div class="ininsidebox">
                         <div class="input-box">

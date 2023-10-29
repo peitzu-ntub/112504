@@ -18,7 +18,7 @@
     $identity = $_SESSION["identity"];
     $store = $_SESSION['store_id'];
 
-    $type_id = $_POST['type_id'];
+    $meal_id = $_POST['meal_id'];
     $type_name = $_POST['type_name'];
     $meal_name = $_POST['meal_name'];
     $meal_price = $_POST['meal_price'];
@@ -26,10 +26,10 @@
 
     $sql = "
         insert into store_food (
-            boss_identity, store_id, meal_id, type_id, meal_name,
+            boss_identity, store_id, meal_id, type_name, meal_name,
             meal_price, meal_note
         ) values (
-            '$identity', '$store', '$meal_name', '$type_id', '$meal_name',
+            '$identity', '$store', '$meal_id', '$type_name', '$meal_name',
             $meal_price, '$meal_note'
         );    
     ";
@@ -43,7 +43,7 @@
     echo "<script>alert('新增成功!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
     }
 else {
-    echo "<script>alert('類型重複!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
+    echo "<script>alert('餐點重複!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>"; 
 }
  mysqli_close($con); 
 
