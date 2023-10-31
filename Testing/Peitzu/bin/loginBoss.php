@@ -18,9 +18,20 @@
         if ($count > 0) {
             $data['result'] = 'OK';
             $data['message'] = "登入成功！";
+            //4.找出老闆的姓名
+            $row_result = mysqli_fetch_assoc($result);
+            $data['boss_name'] = $row_result["boss_name"];
+            //5.檢查店舖數量，決定要顯示的下一個頁面
+            $sql = "SELECT * FROM store_info WHERE boss_identity='$id'";
+            $result = mysqli_query($con, $sql);
+            $count = mysqli_num_rows($result);
+            if ($count == 0) {
+                $data['next'] = 'register';
+            } else {
+                $data['next'] = 'choose';
+            }
             echo json_encode($data);
         }
-
         else {
             $data['result'] = 'NG';
             $data['message'] = "帳號或密碼輸入錯誤，請重新登入";

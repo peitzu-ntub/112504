@@ -13,18 +13,18 @@
 
         //檢查店家是否已經存在
         //1.產生查詢字串
-        //$sql = "select * from store_info where store_id = '$id'";
+        $sql = "select * from store_info where boss_identity = '$boss_identity' and store_id = '$storeid'";
         //2.查下去，並取得查詢結果
-        //$result = mysqli_query($con, $sql);
+        $result = mysqli_query($con, $sql);
         //3.查詢結果的筆數
-        //$count = mysqli_num_rows($result);
+        $count = mysqli_num_rows($result);
         //如果筆數大於0，表示這個店家已經存在
-        //if ($count > 0) {
-            //$data['result'] = 'NG';
-            //$data['message'] = "店家已經存在,請重新輸入";
-            //echo json_encode($data);
-            //exit();
-        //}
+        if ($count > 0) {
+            $data['result'] = 'NG';
+            $data['message'] = "店家已經存在,請重新輸入";
+            echo json_encode($data);
+            return;
+        }
 
         //註冊店家資料
         //$sql = 
@@ -38,12 +38,11 @@
             "INSERT INTO store_info (
                 boss_identity, store_id, store_name, store_tel, store_address, table_count
             ) VALUES (
-                '$boss_identity', '$storeid', '$name', '$tel', '$address', '$table'
+                '$boss_identity', '$storeid', '$name', '$tel', '$address', $table
             )";
         if (mysqli_query($con, $sql)) {
             $data['result'] = 'OK';
-            $data['message'] = '店家資料儲存成功..';
-            
+            $data['message'] = '店家資料儲存成功..';            
         }
         else {
             $data['result'] = 'NG';
@@ -58,7 +57,6 @@
             ) VALUES (
                 '$boss_identity', '$storeid', $i, 4, 'N'
             )";
-
             mysqli_query($con, $sql);
         }
         echo json_encode($data);

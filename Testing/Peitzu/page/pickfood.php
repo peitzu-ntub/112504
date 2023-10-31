@@ -165,7 +165,7 @@
         <div class="content">
             <div class="left">
 <?php
-            $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id\">全部</a></b> 
+            $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&order_no=$order_no\">全部</a></b> 
             ";
             echo $d;
 
@@ -176,7 +176,7 @@
     while ($type = mysqli_fetch_array($types, MYSQLI_ASSOC)) {
         $type_id = $type['type_id'];
         $type_name = $type['type_name'];
-        $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&food_type=$type_id\">$type_name</a></b> 
+        $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&food_type=$type_id&order_no=$order_no\">$type_name</a></b> 
         ";
         echo $d;
     }
