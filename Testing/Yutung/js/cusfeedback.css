@@ -139,7 +139,7 @@ body {
 
 /* 按鈕 */
 .button {
-    height: auto;
+    /* height: auto;
     width: auto;
     padding: 5px 10px;
     border-radius: 10px;
@@ -149,7 +149,17 @@ body {
     letter-spacing: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-weight: bold;
+    font-weight: bold; */
+
+    width: 150px;
+    height: 40px;
+    border: 3px solid #DEB887;
+    background-color: #DEB887;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
 }
 
 /* 返回的方框 */
