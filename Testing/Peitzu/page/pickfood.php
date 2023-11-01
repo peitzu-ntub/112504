@@ -165,7 +165,7 @@
         <div class="content">
             <div class="left">
 <?php
-            $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&order_no=$order_no\">全部</a></b> 
+            $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id\">全部</a></b> 
             ";
             echo $d;
 
@@ -176,7 +176,7 @@
     while ($type = mysqli_fetch_array($types, MYSQLI_ASSOC)) {
         $type_id = $type['type_id'];
         $type_name = $type['type_name'];
-        $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&food_type=$type_id&order_no=$order_no\">$type_name</a></b> 
+        $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&food_type=$type_id&order_no=$order_no'\">$type_name</a></b> 
         ";
         echo $d;
     }
@@ -272,29 +272,32 @@
         </div>
     
         <div class="footer">
+            <div class="centered-container">
+
 <?php
     //顯示購物車畫面，顯示指定的訂單的購物車現況
     $cart_url = "location.href='cart.php?identity=$identity&store_id=$store_id&order_no=$order_no'";
     $cart_div = "
-            <div class=\"cartbutton\" type=\"return\" name=\"按鈕名稱\" onclick=\"$cart_url\">
-                <span style=\"font-size: 20px; font-weight:bolder;\">購物車</span>
-            </div>";
+                <button type='return' style='font-size: 18px; font-weight:bolder;' class='cartbutton' onclick=\"$cart_url\">
+                    購物車
+                </button>&emsp;";
     echo $cart_div;
 
     $qr_url = "location.href='orderQuery.php?identity=$identity&store_id=$store_id&order_no=$order_no'";
     $qr_div = "
-        <div class=\"allbutton\" type=\"return\" name=\"按鈕名稱\" onclick=\"$qr_url\">
-            <span style=\"font-size: 20px; font-weight:bolder;\">我的訂單</span>
-        </div>";
+                <button type='return' style='font-size: 18px; font-weight:bolder;' class='allbutton' onclick=\"$qr_url\">
+                    我的訂單
+                </button>&emsp;";
     echo $qr_div;
+    $fc_url = "location.href='cusfeedback.php?identity=$identity&store_id=$store_id&order_no=$order_no'";
+    $fc_div = "
+                <button type='return' style='font-size: 18px; font-weight:bolder;' class='feedbackbutton' onclick=\"$fc_url\">
+                    去評價
+                </button>";
+    echo $fc_div;
 
-    $qr_url = "location.href='cusfeedback.html";
-    $qr_div = "
-        <div class=\"allbutton\" type=\"return\" name=\"按鈕名稱\" onclick=\"$qr_url\">
-            <span style=\"font-size: 20px; font-weight:bolder;\">去評價</span>
-        </div>";
-    echo $qr_div;
-?>        
+?>  
+            </div>      
         </div>
 
         <!-- </form> -->
