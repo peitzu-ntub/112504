@@ -246,7 +246,9 @@
                     <button class=\"button\" onclick=\"decrementItem()\">-</button>
                     <span class=\"item-quantity\" id=\"quantity1\">1</span>
                     <button class=\"button\" onclick=\"incrementItem()\">+</button>
+                    <div class=\"add-item\">
                     <button class=\"button\" onclick=\"addToCart()\">加入購物車</button>
+                    </div>
                 </div>
             </div>
             ";
