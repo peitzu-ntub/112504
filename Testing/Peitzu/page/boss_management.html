@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
-	<title>老闆管理頁面</title>
-	<link href="../js/boss_management.css" rel="stylesheet">
-  </head>
+    <title>老闆管理頁面</title>
+    <link href="../js/boss_management.css" rel="stylesheet">
+    <script src="../js/jquery-3.6.4.min.js"></script>
+</head>
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='../page/select_store_two.php?boss_identity=A231368272&boss_name=張浿慈'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="goBack();">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
             <span style="font-size: 15px;">返回</span>
@@ -30,7 +31,7 @@
                         <button class="dropbtn">店鋪管理</button>
                         <div class="dropdown-content">
                             <a onclick="location.href='../page/allmenu.php'">菜單編輯</a>
-                            <a onclick="location.href='../page/store_info_edit.php?identity=A231368272&store_id=P35'">店家資訊編輯</a>
+                            <a onclick="location.href='../page/store_info_edit.php'">店家資訊編輯</a>
                             <a onclick="location.href='../page/change_psw.html'">更改密碼</a>
                         </div>
                     </div>
@@ -39,4 +40,15 @@
 		</div>
 	</div>
 </body>
+
+<script>
+    function goBack() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var boss_name = urlParams.get('boss_name');
+        location.href="select_store_two.php?boss_identity=" + boss_identity + "&boss_name=" + boss_name;
+    }
+
+</script>
+
 </html>
