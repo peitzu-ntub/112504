@@ -204,7 +204,6 @@
     if (isset($food_type)) {
         $sql = $sql . " and F.type_id = '$food_type'";
     }
-    echo $sql;
     $foods = mysqli_query($con, $sql);
 
     $count = 1;
