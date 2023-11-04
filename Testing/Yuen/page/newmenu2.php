@@ -70,7 +70,7 @@
                                     while ($cat = mysqli_fetch_array($meal_type,MYSQLI_ASSOC)) {
                                         $type_id=$cat['type_id'];
                                         $type_name=$cat['type_name'];
-                                        echo "  <option value='$type_id'>$type_name</option>";
+                                        echo "  <option value='$type_name'>$type_name</option>";
                                     }
                                     ?> 
                                 </select>

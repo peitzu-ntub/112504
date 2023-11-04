@@ -100,13 +100,12 @@ $datas_len = count($datas); //目前資料筆數
                     <select name="查詢" id="查詢">
                                 <?php
                                     $sql = "
-                                        select * from food_type
+                                        select type_name from food_type
                                         where boss_identity = '$boss' and store_id = '$store'";
                                     $meal_type = mysqli_query($con, $sql);
                                     while ($cat = mysqli_fetch_array($meal_type,MYSQLI_ASSOC)) {
-                                        $type_id=$cat['type_id'];
                                         $type_name=$cat['type_name'];
-                                        echo "  <option value='$type_id'>$type_name</option>";
+                                        echo "  <option value='$type_name'>$type_name</option>";
                                     }
                                     ?> 
                                 </select>
