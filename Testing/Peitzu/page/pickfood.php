@@ -170,7 +170,7 @@
         <div class="content">
             <div class="left">
 <?php
-            $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id\">全部</a></b> 
+            $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&order_no=$order_no\">全部</a></b> 
             ";
             echo $d;
 
@@ -181,7 +181,7 @@
     while ($type = mysqli_fetch_array($types, MYSQLI_ASSOC)) {
         $type_id = $type['type_id'];
         $type_name = $type['type_name'];
-        $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&food_type=$type_id&order_no=$order_no'\">$type_name</a></b> 
+        $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&food_type=$type_id&order_no=$order_no\">$type_name</a></b> 
         ";
         echo $d;
     }
@@ -199,10 +199,12 @@
       on c.boss_identity = F.boss_identity 
       and c.store_id = F.store_id 
       and F.meal_id = C.meal_id
+      and C.meal_id = '$order_no'
     where F.boss_identity = '$identity' and F.store_id = '$store_id'";
     if (isset($food_type)) {
         $sql = $sql . " and F.type_id = '$food_type'";
     }
+    echo $sql;
     $foods = mysqli_query($con, $sql);
 
     $count = 1;
