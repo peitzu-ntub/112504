@@ -23,7 +23,7 @@ body {
 /* 標題方框 */
 .container-wrapper {
   position: relative; /* 設置父容器為相對定位 */
-  color:#e8a95b;
+  color: #000;
 }
 
 .container1{
@@ -32,7 +32,7 @@ body {
   border-radius: 20px;
   width: 750px;
   max-width: 750px;
-  height: 480px;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,7 +44,7 @@ body {
   background-color: #ffffff;
   border-radius: 20px;
   width: 700px;
-  height: 315px;
+  height: 325px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,34 +76,36 @@ label {   /*密碼文字*/
 
 label[id="oldPassword"]{
   position: absolute;
-  top: 135px; 
+  top: 140px; 
   left: 190px;
 }
 
 label[id="newPassword"]{
   position: absolute;
-  top: 230px; 
-  left: 190px;
+  top: 235px; 
+  left: 185px;
 }
 label[id="confirmNewPassword"]{
   position: absolute;
-  top: 325px; 
+  top: 335px; 
   left: 190px;
 }
 
 input[type="password"] {
-  top: 10px;
-  width: 100%;
-  padding: 12px;
-  font-size: 15px;
-  border: 1px solid #ccc;
-  border-right-width: 2px;
-  border-bottom-width: 2px;
-  border-radius: 15px;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  margin-left: 15px;
+  /* top: 10px; */
+  font-size: 16px;
+  border: 1px solid #000;
+  /* border-right-width: 2px;
+  border-bottom-width: 2px; */
+  border-radius: 10px;
+  margin-top: 25px;
+  margin-bottom: 35px;
+  margin-left: 25px;
   transition: all 0.3s ease;
+  height: 35px;
+  width: 250px;
+  outline: none;
+  padding-left: 15px;
 }
 
 input[placeholder] {
@@ -146,7 +148,7 @@ input[placeholder] {
 
 .submit {
   position: absolute;
-  bottom: -18px;
+  bottom: -17px;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100px;

@@ -134,6 +134,11 @@
         mysqli_query($con, $sql);
     }
 
+    header("Expires: Tue, 01 Jan 2000 00:00:00 GMT");
+    header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");        
 ?>
 
 <head>
@@ -165,7 +170,7 @@
         <div class="content">
             <div class="left">
 <?php
-            $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id\">全部</a></b> 
+            $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&order_no=$order_no\">全部</a></b> 
             ";
             echo $d;
 
@@ -176,7 +181,7 @@
     while ($type = mysqli_fetch_array($types, MYSQLI_ASSOC)) {
         $type_id = $type['type_id'];
         $type_name = $type['type_name'];
-        $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&food_type=$type_id\">$type_name</a></b> 
+        $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&food_type=$type_id&order_no=$order_no\">$type_name</a></b> 
         ";
         echo $d;
     }
@@ -194,6 +199,7 @@
       on c.boss_identity = F.boss_identity 
       and c.store_id = F.store_id 
       and F.meal_id = C.meal_id
+      and C.meal_id = '$order_no'
     where F.boss_identity = '$identity' and F.store_id = '$store_id'";
     if (isset($food_type)) {
         $sql = $sql . " and F.type_id = '$food_type'";
@@ -240,7 +246,9 @@
                     <button class=\"button\" onclick=\"decrementItem()\">-</button>
                     <span class=\"item-quantity\" id=\"quantity1\">1</span>
                     <button class=\"button\" onclick=\"incrementItem()\">+</button>
+                    <div class=\"add-item\">
                     <button class=\"button\" onclick=\"addToCart()\">加入購物車</button>
+                    </div>
                 </div>
             </div>
             ";
@@ -272,22 +280,32 @@
         </div>
     
         <div class="footer">
+            <div class="centered-container">
+
 <?php
     //顯示購物車畫面，顯示指定的訂單的購物車現況
     $cart_url = "location.href='cart.php?identity=$identity&store_id=$store_id&order_no=$order_no'";
     $cart_div = "
-            <div class=\"cartbutton\" type=\"return\" name=\"按鈕名稱\" onclick=\"$cart_url\">
-                <span style=\"font-size: 20px; font-weight:bolder;\">購物車</span>
-            </div>";
+                <button type='return' style='font-size: 18px; font-weight:bolder;' class='cartbutton' onclick=\"$cart_url\">
+                    購物車
+                </button>&emsp;";
     echo $cart_div;
 
     $qr_url = "location.href='orderQuery.php?identity=$identity&store_id=$store_id&order_no=$order_no'";
     $qr_div = "
-        <div class=\"allbutton\" type=\"return\" name=\"按鈕名稱\" onclick=\"$qr_url\">
-            <span style=\"font-size: 20px; font-weight:bolder;\">我的訂單</span>
-        </div>";
+                <button type='return' style='font-size: 18px; font-weight:bolder;' class='allbutton' onclick=\"$qr_url\">
+                    我的訂單
+                </button>&emsp;";
     echo $qr_div;
-?>        
+    $fc_url = "location.href='cusfeedback.php?identity=$identity&store_id=$store_id&order_no=$order_no'";
+    $fc_div = "
+                <button type='return' style='font-size: 18px; font-weight:bolder;' class='feedbackbutton' onclick=\"$fc_url\">
+                    去評價
+                </button>";
+    echo $fc_div;
+
+?>  
+            </div>      
         </div>
 
         <!-- </form> -->

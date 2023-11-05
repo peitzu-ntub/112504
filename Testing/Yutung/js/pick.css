@@ -47,7 +47,6 @@ body {
     font-size: 18px;
     background-color: #fff;
     display: block;
-    transition: 0.5s;
     color: #000;
     border-radius: 25px ;
     box-shadow: 3px 1px 1px 1px rgba(0,0,0,0.3) inset;
@@ -66,7 +65,7 @@ body {
     flex-wrap: wrap;
 }
 
-/* 菜单项的样式 */
+/* 菜單項的樣式 */
 .menu-item {
     display: flex;
     align-items: center;
@@ -78,36 +77,36 @@ body {
     border-radius: 15px ;
 }
 
-/* 图片容器的样式 */
+/* 圖片容器的樣式 */
 .menu-item-img {
     flex: 0 0 100px;
     margin-right: 20px;
 }
 
-/* 图片的样式 */
+/* 圖片的樣式 */
 .menu-item-img img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* 右侧容器的样式 */
+/* 右側容器的樣式 */
 .menu-item-center {
     flex-grow: 1;
 }
 
-/* 名称的样式 */
+/* 名稱的樣式 */
 .menu-item h3 {
     margin: 0;
     font-size: 20px;
 }
 
-/* 描述的样式 */
+/* 描述的樣式 */
 .menu-item p {
     margin: 0;
 }
 
-/* 按钮的样式 */
+/* 按钮的樣式 */
 .menu-item button {
     width: 80px;
     height: 40px;
@@ -123,6 +122,60 @@ body {
 .menu-item button:hover{
     width: 80px;
     height: 40px;
+    border: 3px solid #FFA07A;
+    background-color: #f98f65;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.2s ease;
+}
+
+/* 按钮的樣式 */
+.cart-item button {
+    width: 50px;
+    height: 35px;
+    border: 3px solid #DEB887;
+    background-color: #DEB887;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+}
+.cart-item button:hover{
+    width: 50px;
+    height: 35px;
+    border: 3px solid #FFA07A;
+    background-color: #f98f65;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.2s ease;
+}
+
+/* 按钮的樣式 */
+.add-item button {
+    width: 130px;
+    height: 38px;
+    border: 3px solid #DEB887;
+    background-color: #DEB887;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+}
+.add-item button:hover{
+    width: 130px;
+    height: 38px;
     border: 3px solid #FFA07A;
     background-color: #f98f65;
     border-radius: 20px;
@@ -203,26 +256,26 @@ body {
 /* 購物車底框 */
 .footer {
     text-align: center;
-    justify-content: center;/*  */
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 68px;
-    background-color: #ddb62a;/* 80a0e2 */
+    height: 70px;
+    background-color: #ddb62a;
 }
 
-.button-container {
+.centered-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
 }
 
 /* 購物車按鈕 */
 .cartbutton {
-    width: 80px;
-/*     margin-left:30px; */
+    width: 90px;
+    margin-left:30px;
 /*     width: 80px; */
-    margin: 0 auto; 
+
     height: 40px;
     border: 3px solid #DEB887;
     background-color: #DEB887;
@@ -253,8 +306,8 @@ body {
 
 /* 我的訂單按鈕 */
 .allbutton {
-    width: 100px;
-    margin: 0 auto;
+    width: 120px;
+
 /*     width: 100px; */
     height: 40px;
     border: 3px solid #DEB887;
@@ -278,6 +331,39 @@ body {
 }
 
 .allbutton:hover {
+    background-color: #DEB887;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* 去評價按鈕 */
+.feedbackbutton {
+    width: 100px;
+
+/*     width: 100px; */
+    height: 40px;
+    border: 3px solid #DEB887;
+    background-color: #DEB887;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+}
+
+.feedbackbutton div {
+    display: flex;
+    align-items: center;
+    color: #80a0e2;
+}
+
+.feedbackbutton img {
+    margin-right: 3px;
+}
+
+.feedbackbutton:hover {
     background-color: #DEB887;
     color: #ffffff;
     cursor: pointer;

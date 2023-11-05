@@ -91,18 +91,18 @@
     <div class="row">
       <div class="col-md-4">
         <center>
-          <div align="left"><img src="../images/購物車.png" />　<font size="5">購物車</font></div>
+          <div align="left"><img src="../images/購物車.png" />　<font size="6">購物車</font></div>
         </center>
       </div>
     </div>
     <div>
       <table width="100%">
         <tr>
-          <td style="background-color:#4e7fe0" align="center" width="3%"></td>
-          <td style="background-color:#4e7fe0" align="center" ><font color="black"><b>餐點</b></font></td>
-          <td style="background-color:#4e7fe0" align="center" width="15%"><font color="black"><b>單價</b></font></td>
-          <td style="background-color:#4e7fe0" align="center" width="35%"><font color="black"><b>數量</b></font></td>
-          <td style="background-color:#4e7fe0" align="center" width="15%"><font color="black"><b>金額</b></font></td>
+          <td style="background-color:#b5c4b1" align="center" width="3%"></td>
+          <td style="background-color:#b5c4b1" align="center" ><font color="black"><b>餐點</b></font></td>
+          <td style="background-color:#b5c4b1" align="center" width="15%"><font color="black"><b>單價</b></font></td>
+          <td style="background-color:#b5c4b1" align="center" width="35%"><font color="black"><b>數量</b></font></td>
+          <td style="background-color:#b5c4b1" align="center" width="15%"><font color="black"><b>金額</b></font></td>
         </tr>
 <?php
     $total=0;
@@ -145,8 +145,8 @@
     }
     echo "
         <tr>
-            <td style='background-color:#4e7fe0' align='right' colspan='4'><b>合計</b></td>
-            <td style='background-color:#4e7fe0' align='right'><b>$total</b></td>
+            <td style='background-color:#b5c4b1' align='right' colspan='4'><b>合計</b></td>
+            <td style='background-color:#b5c4b1' align='right'><b>$total</b></td>
         </tr>
     "
 ?>        
@@ -157,11 +157,11 @@
     echo "        
     
         <a href='$pickUrl&cart=1'>
-            <button type='button' style='background-color:#80a0e2' class='registbutton'>
+            <button type='button' style='background-color:#b5c4b1' class='registbutton'>
                 確定點餐
             </button></a>&emsp;
         <a href='$pickUrl'>
-            <button type='button' style='background-color:#80a0e2' class='registbutton'>
+            <button type='button' style='background-color:#b5c4b1' class='registbutton'>
                 我要繼續點
             </button>
         </a>

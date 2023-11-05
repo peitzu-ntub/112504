@@ -6,10 +6,10 @@
     //預設的資料來源，是從登入而來。登入、選擇店家後，就會把以下這兩個資訊，放進SESSION裡，保留在Server端
     //讓同一個人的接續連線，可以直接拿來用
     if (!isset($_SESSION["identity"])) {
-        $_SESSION["identity"] = "A123456789";
+        $_SESSION["identity"] = "A231368272";
     }
     if (!isset($_SESSION["store_id"])) {
-        $_SESSION["store_id"] = "S01";
+        $_SESSION["store_id"] = "P35";
     }
 
     //PHP是在後端(Server)運作的程式，Html與JavaScript則是在前端(Client)運作的程式
