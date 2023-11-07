@@ -63,15 +63,17 @@
             <div class="menu-inner-box">
                 <div class="menu">
 <?php
+    $boss_name = $_GET["boss_name"];
     //查詢老闆的店舖資料  
     $sql = "select * from store_info where boss_identity = '$identity'";
     $stores = mysqli_query($con, $sql);
+
     //把整併後的資料重新寫入Store_order_item    
     while ($store = mysqli_fetch_array($stores, MYSQLI_ASSOC)) {
         $store_id = $store['store_id'];
         $store_name = $store['store_name'];
         $d = "
-                    <a class=\"menu-item\" href=\"../page/boss_management.html?boss_identity=$identity\">$store_name</a>";
+                    <a class=\"menu-item\" href=\"../page/boss_management.html?boss_identity=$identity&boss_name=$boss_name&store_id=$store_id\">$store_name</a>";
         echo $d;
     }
 ?>                  <!--
