@@ -1,9 +1,10 @@
 @charset "utf-8";
-
+/* 
 html {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
+    height: 100%;
 }
 
 body {
@@ -12,24 +13,44 @@ body {
     justify-content: center;
     align-items: center;
     background: #ffedbb;
+} */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 10pt;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/* ------- wrapper ------- */
-#wrapper {
-    width: 740px;
-    /*     margin: 30px auto; */
+/* 標題方框 */
+.main {
+    /* position: relative; */
+    /* 設置父容器為相對定位 */
+    /* width: 100%; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* 最上方 */
+.header {
+    background-color: #ddb62a;
+    height: 72px;
+    color: #786016;
+
+    flex-basis: 40px;
+    flex-shrink: 0;
 }
 
 .content {
-    width: auto;
-
-    background-color: #ffffff;
-}
-
-.scrollable-content {
-    height: 450px; 
-    overflow: auto;
-    border: 1px solid #ccc;
+    flex-grow: 1;
+    background-color: #ffedbb;
+    overflow-y: auto;
+    border: 1px solid #ffedbb;
 }
 
 .left {
@@ -48,8 +69,8 @@ body {
     background-color: #fff;
     display: block;
     color: #000;
-    border-radius: 25px ;
-    box-shadow: 3px 1px 1px 1px rgba(0,0,0,0.3) inset;
+    border-radius: 25px;
+    box-shadow: 3px 1px 1px 1px rgba(0, 0, 0, 0.3) inset;
     margin-top: 3px;
 }
 
@@ -60,7 +81,7 @@ body {
 .menu {
     width: 87%;
     float: left;
-    background-color: #ffffff;
+    background-color: #ffedbb;
     display: flex;
     flex-wrap: wrap;
 }
@@ -74,7 +95,7 @@ body {
     border: 1px solid #ccc;
     padding: 5px;
     width: 350px;
-    border-radius: 15px ;
+    border-radius: 15px;
 }
 
 /* 圖片容器的樣式 */
@@ -119,7 +140,8 @@ body {
     font-size: 16px;
     color: #000000;
 }
-.menu-item button:hover{
+
+.menu-item button:hover {
     width: 80px;
     height: 40px;
     border: 3px solid #FFA07A;
@@ -146,7 +168,8 @@ body {
     font-size: 16px;
     color: #000000;
 }
-.cart-item button:hover{
+
+.cart-item button:hover {
     width: 50px;
     height: 35px;
     border: 3px solid #FFA07A;
@@ -173,7 +196,8 @@ body {
     font-size: 16px;
     color: #000000;
 }
-.add-item button:hover{
+
+.add-item button:hover {
     width: 130px;
     height: 38px;
     border: 3px solid #FFA07A;
@@ -200,7 +224,7 @@ body {
     z-index: 9999;
 }
 
-/* 关闭按钮的样式 */
+/* 關閉按鈕的樣式 */
 .close-button {
     position: absolute;
     top: 10px;
@@ -208,30 +232,30 @@ body {
     cursor: pointer;
 }
 
-/* 图片的样式 */
+/* 圖片的樣式 */
 .product-image {
     max-width: 100%;
     height: auto;
 }
 
-/* 价格和说明的样式 */
+/* 價格和說明的樣式 */
 .product-details {
     margin-top: 20px;
 }
 
-/* 商品项的样式 */
+/* 商品項的樣式 */
 .cart-item {
     display: flex;
     align-items: center;
     margin: 10px;
 }
 
-/* 商品数量的样式 */
+/* 商品數量的樣式 */
 .item-quantity {
     margin: 0 10px;
 }
 
-/* 按钮的样式 */
+/* 按钮的樣式 */
 .button {
     background-color: #007bff;
     color: #fff;
@@ -240,42 +264,25 @@ body {
     cursor: pointer;
 }
 
-/* 標題方框 */
-.container-wrapper {
-    position: relative;
-    /* 設置父容器為相對定位 */
-    width: 2000px;
-}
-
-/* 最上方 */
-.header{
-    background-color: #ddb62a;
-    height: 72px;
-    color: #786016; 
-}
 /* 購物車底框 */
 .footer {
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
     background-color: #ddb62a;
+    flex-basis: 55px;
+    flex-shrink: 0;
 }
 
 .centered-container {
     display: flex;
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
 }
 
 /* 購物車按鈕 */
 .cartbutton {
     width: 90px;
-    margin-left:30px;
-/*     width: 80px; */
-
+    margin-left: 30px;
     height: 40px;
     border: 3px solid #DEB887;
     background-color: #DEB887;
@@ -307,8 +314,6 @@ body {
 /* 我的訂單按鈕 */
 .allbutton {
     width: 120px;
-
-/*     width: 100px; */
     height: 40px;
     border: 3px solid #DEB887;
     background-color: #DEB887;
@@ -340,8 +345,6 @@ body {
 /* 去評價按鈕 */
 .feedbackbutton {
     width: 100px;
-
-/*     width: 100px; */
     height: 40px;
     border: 3px solid #DEB887;
     background-color: #DEB887;

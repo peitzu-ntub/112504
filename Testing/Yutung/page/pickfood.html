@@ -17,9 +17,8 @@
 </head>
 
 <body>
-    <div class="container-wrapper">
+    <div class="main">
         <!-- <form action="staff_in.php" method="POST" enctype="multipart/form-data"> -->
-
         <div class="header">
             <div align="center">
                 <font size="20"><b>港式飲茶店</b></font><br><br>
@@ -28,178 +27,165 @@
         </div>
 
         <div class="content">
-            <div class="scrollable-content">
-                <div class="left">
-                    <b><a href="../page/pickfood.html">主餐</a></b>
-                    <b><a href="../page/pickfood2.html">點心</a></b>
-                    <b><a href="../page/pickfood3.html">飲料</a></b>
-                    <b><a href="#">套餐</a></b>
-                </div>
+            <div class="left">
+                <b><a href="../page/pickfood.html">主餐</a></b>
+                <b><a href="../page/pickfood2.html">點心</a></b>
+                <b><a href="../page/pickfood3.html">飲料</a></b>
+                <b><a href="#">套餐</a></b>
+            </div>
 
-                <div class="menu">
+            <div class="menu">
 
-                    <!-- 菜單 1 -->
-                    <div class="menu-item">
-                        <!-- 图片容器 -->
-                        <div class="menu-item-img">
-                            <img src="../images/food1.jpg" alt="菜單 1">
-                        </div>
-                        <!-- 右侧容器 -->
-                        <div class="menu-item-center">
-                            <h3>港式炒飯</h3>
-                            <p>$ 60</p>
-                        </div>
-                        <div class="menu-item-right">
-                            <button id="showPopup">點選</button>
+                <!-- 菜單 1 -->
+                <div class="menu-item">
+                    <!-- 图片容器 -->
+                    <div class="menu-item-img">
+                        <img src="../images/food1.jpg" alt="菜單 1">
+                    </div>
+                    <!-- 右侧容器 -->
+                    <div class="menu-item-center">
+                        <h3>港式炒飯</h3>
+                        <p>$ 60</p>
+                    </div>
+                    <div class="menu-item-right">
+                        <button id="showPopup">點選</button>
 
-                            <!-- 彈跳式視窗 -->
-                            <div class="popup-container" id="popup">
+                        <!-- 彈跳式視窗 -->
+                        <div class="popup-container" id="popup">
 
-                                <span class="close-button" id="closePopup">×</span>
-                                <img src="../images/food1.jpg" alt="菜單1" class="product-image">
+                            <span class="close-button" id="closePopup">×</span>
+                            <img src="../images/food1.jpg" alt="菜單1" class="product-image">
 
-                                <div class="product-details">
-                                    <h2>港式炒飯</h2>
-                                    <p>價格：$60</p>
-                                    <p>介紹：豐富配料滿足味蕾，香味撲鼻，口感滑順，讓您品味無窮享受！</p>
-                                </div>
-
-                                <div class="cart-item">
-                                    <button class="button" onclick="decrementItem(1)">-</button>
-                                    <span class="item-quantity" id="quantity1">1</span>
-                                    <button class="button" onclick="incrementItem(1)">+</button>&emsp;&emsp;
-                                    <!-- <button class="button" onclick="addToCart(1)">加入購物車</button> -->
-                                    <div class="add-item">
-                                        <button class="button" onclick="addToCart(1)">加入購物車</button>
-                                    </div>
-                                </div>
+                            <div class="product-details">
+                                <h2>港式炒飯</h2>
+                                <p>價格：$60</p>
+                                <p>介紹：豐富配料滿足味蕾，香味撲鼻，口感滑順，讓您品味無窮享受！</p>
                             </div>
 
+                            <div class="cart-item">
+                                <button class="button" onclick="decrementItem(1)">-</button>
+                                <span class="item-quantity" id="quantity1">1</span>
+                                <button class="button" onclick="incrementItem(1)">+</button>&emsp;&emsp;
+                                <!-- <button class="button" onclick="addToCart(1)">加入購物車</button> -->
+                                <div class="add-item">
+                                    <button class="button" onclick="addToCart(1)">加入購物車</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- 菜單 2 -->
-                    <div class="menu-item">
-                        <!-- 图片容器 -->
-                        <div class="menu-item-img">
-                            <img src="../images/m01.upload.jpg" alt="菜單 2">
-                        </div>
-                        <!-- 右侧容器 -->
-                        <div class="menu-item-center">
-                            <h3>皮蛋瘦肉粥</h3>
-                            <p>$ 60</p>
-                        </div>
-                        <div class="menu-item-right">
-                            <button>點選</button>
-                        </div>
                     </div>
+                </div>
 
-                    <!-- 菜單 3 -->
-                    <div class="menu-item">
-                        <!-- 图片容器 -->
-                        <div class="menu-item-img">
-                            <img src="../images/m03.upload.jpg" alt="菜單 3">
-                        </div>
-                        <!-- 右侧容器 -->
-                        <div class="menu-item-center">
-                            <h3>XO醬撈麵</h3>
-                            <p>$ 60</p>
-                        </div>
-                        <div class="menu-item-right">
-                            <button>點選</button>
-                        </div>
+                <!-- 菜單 2 -->
+                <div class="menu-item">
+                    <!-- 图片容器 -->
+                    <div class="menu-item-img">
+                        <img src="../images/m01.upload.jpg" alt="菜單 2">
                     </div>
+                    <!-- 右侧容器 -->
+                    <div class="menu-item-center">
+                        <h3>皮蛋瘦肉粥</h3>
+                        <p>$ 60</p>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
 
-                    <!-- 菜單 4 -->
-                    <div class="menu-item">
-                        <!-- 图片容器 -->
-                        <div class="menu-item-img">
-                            <img src="../images/m03.upload.jpg" alt="菜單 3">
-                        </div>
-                        <!-- 右侧容器 -->
-                        <div class="menu-item-center">
-                            <h3>港式臘味煲仔飯</h3>
-                            <p>$ 60</p>
-                        </div>
-                        <div class="menu-item-right">
-                            <button>點選</button>
-                        </div>
+                <!-- 菜單 3 -->
+                <div class="menu-item">
+                    <!-- 图片容器 -->
+                    <div class="menu-item-img">
+                        <img src="../images/m03.upload.jpg" alt="菜單 3">
                     </div>
+                    <!-- 右侧容器 -->
+                    <div class="menu-item-center">
+                        <h3>XO醬撈麵</h3>
+                        <p>$ 60</p>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
 
-                    <!-- 菜單 5 -->
-                    <div class="menu-item">
-                        <!-- 图片容器 -->
-                        <div class="menu-item-img">
-                            <img src="../images/m03.upload.jpg" alt="菜單 3">
-                        </div>
-                        <!-- 右侧容器 -->
-                        <div class="menu-item-center">
-                            <h3>公仔湯麵</h3>
-                            <p>$ 60</p>
-                        </div>
-                        <div class="menu-item-right">
-                            <button>點選</button>
-                        </div>
+                <!-- 菜單 4 -->
+                <div class="menu-item">
+                    <!-- 图片容器 -->
+                    <div class="menu-item-img">
+                        <img src="../images/m03.upload.jpg" alt="菜單 3">
                     </div>
+                    <!-- 右侧容器 -->
+                    <div class="menu-item-center">
+                        <h3>港式臘味煲仔飯</h3>
+                        <p>$ 60</p>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
 
-                    <!-- 菜單 6 -->
-                    <div class="menu-item">
-                        <!-- 图片容器 -->
-                        <div class="menu-item-img">
-                            <img src="../images/m03.upload.jpg" alt="菜單 3">
-                        </div>
-                        <!-- 右侧容器 -->
-                        <div class="menu-item-center">
-                            <h3>港式豬扒飯</h3>
-                            <p>$ 60</p>
-                        </div>
-                        <div class="menu-item-right">
-                            <button>點選</button>
-                        </div>
+                <!-- 菜單 5 -->
+                <div class="menu-item">
+                    <!-- 图片容器 -->
+                    <div class="menu-item-img">
+                        <img src="../images/m03.upload.jpg" alt="菜單 3">
                     </div>
-                    <!-- 菜單 7 -->
-                    <div class="menu-item">
-                        <!-- 图片容器 -->
-                        <div class="menu-item-img">
-                            <img src="../images/m03.upload.jpg" alt="菜單 3">
-                        </div>
-                        <!-- 右侧容器 -->
-                        <div class="menu-item-center">
-                            <h3>蜜汁叉燒撈麵</h3>
-                            <p>$ 60</p>
-                        </div>
-                        <div class="menu-item-right">
-                            <button>點選</button>
-                        </div>
+                    <!-- 右侧容器 -->
+                    <div class="menu-item-center">
+                        <h3>公仔湯麵</h3>
+                        <p>$ 60</p>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+
+                <!-- 菜單 6 -->
+                <div class="menu-item">
+                    <!-- 图片容器 -->
+                    <div class="menu-item-img">
+                        <img src="../images/m03.upload.jpg" alt="菜單 3">
+                    </div>
+                    <!-- 右侧容器 -->
+                    <div class="menu-item-center">
+                        <h3>港式豬扒飯</h3>
+                        <p>$ 60</p>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+                <!-- 菜單 7 -->
+                <div class="menu-item">
+                    <!-- 图片容器 -->
+                    <div class="menu-item-img">
+                        <img src="../images/m03.upload.jpg" alt="菜單 3">
+                    </div>
+                    <!-- 右侧容器 -->
+                    <div class="menu-item-center">
+                        <h3>蜜汁叉燒撈麵</h3>
+                        <p>$ 60</p>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+                <!-- 菜單 8 -->
+                <div class="menu-item">
+                    <!-- 图片容器 -->
+                    <div class="menu-item-img">
+                        <img src="../images/m03.upload.jpg" alt="菜單 3">
+                    </div>
+                    <!-- 右侧容器 -->
+                    <div class="menu-item-center">
+                        <h3>生魚片</h3>
+                        <p>$ 60</p>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="footer">
-            <div class="centered-container">
-                <!-- <div class="cartbutton" type="return" name="按鈕名稱" onclick="location.href='cart.php'">
-                    <span style="font-size: 20px; font-weight:bolder;">購物車</span>
-                </div>
-                <div class="allbutton" type="return" name="按鈕名稱" onclick="location.href='orderQuery.php'">
-                    <span style="font-size: 20px; font-weight:bolder;">我的訂單</span>
-                </div>
-                <div class="feedbackbutton" type="return" name="按鈕名稱" onclick="location.href='cusfeedback.html'">
-                    <span style="font-size: 20px; font-weight:bolder;">去評價</span>
-                </div> -->
-
-                <button type='return' style='font-size: 18px; font-weight:bolder;' class='cartbutton' onclick="location.href='cart.php'">
-                    購物車
-                </button>&emsp;
-                <button type='return' style='font-size: 18px; font-weight:bolder;' class='allbutton' onclick="location.href='orderQuery.php'">
-                    我的訂單
-                </button>&emsp;
-                <button type='return' style='font-size: 18px; font-weight:bolder;' class='feedbackbutton' onclick="location.href='cusfeedback.html'">
-                    去評價
-                </button>
-            </div>
-
-            <!-- </form> -->
         </div>
 
         <script>
@@ -264,6 +250,26 @@
                 cartItems.appendChild(cartItem);
             }
         </script>
+
+        <div class="footer">
+            <div class="centered-container">
+                <button type='return' style='font-size: 18px; font-weight:bolder;' class='cartbutton'
+                    onclick="location.href='cart.php'">
+                    購物車
+                </button>&emsp;
+                <button type='return' style='font-size: 18px; font-weight:bolder;' class='allbutton'
+                    onclick="location.href='orderQuery.php'">
+                    我的訂單
+                </button>&emsp;
+                <button type='return' style='font-size: 18px; font-weight:bolder;' class='feedbackbutton'
+                    onclick="location.href='cusfeedback.html'">
+                    去評價
+                </button>
+            </div>
+
+            <!-- </form> -->
+        </div>
+    </div>
 </body>
 
 </html>
