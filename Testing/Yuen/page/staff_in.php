@@ -1,22 +1,9 @@
 <?php
-    session_start();
     include "../bin/conn.php";
 
-    //todo, 這是假的資料
-    //預設的資料來源，是從登入而來。登入、選擇店家後，就會把以下這兩個資訊，放進SESSION裡，保留在Server端
-    //讓同一個人的接續連線，可以直接拿來用
-    if (!isset($_SESSION["identity"])) {
-        $_SESSION["identity"] = "A123456789";
-    }
-    if (!isset($_SESSION["store_id"])) {
-        $_SESSION["store_id"] = "S01";
-    }
-
-    $nexturl=$_POST['nexturl'];
-
     //擷取準備要新增時使用的各欄位資料
-    $identity = $_SESSION["identity"];
-    $store = $_SESSION['store_id'];
+    $identity = $_GET["identity"];
+    $store_id = $_GET["store_id"];
 
     $staff_name = $_POST['staff_name'];
     $staff_birth = $_POST['staff_birth'];
@@ -74,4 +61,18 @@ else {
 		</button>
 	</div>
 </body>
+<script>
+    function goRegister() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var boss_name = urlParams.get('boss_name');
+
+        location.href='store_register_copy.php?boss_identity=' + boss_identity + '&boss_name=' + boss_name + "&back=1";
+    }
+    $(document).ready(function () {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_name = urlParams.get('boss_name');       
+        document.getElementById("boss_name").innerHTML = boss_name;
+    });
+</script>
 </html>

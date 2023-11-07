@@ -13,7 +13,8 @@
 <?php
 
 include "../bin/conn.php";
-
+$identity = $_GET["identity"];
+$store_id = $_GET["store_id"];
 // 設置一個空陣列來放資料
 $datas = array();
 
@@ -118,5 +119,13 @@ $datas_len = count($datas); //目前資料筆數
 	</div>
 	
 </body>
+<script>
+    function goCreate() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        location.href="create.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+    }
 
+</script>
 </html>

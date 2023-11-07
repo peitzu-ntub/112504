@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>老闆管理頁面</title>
+    <link href="../js/boss_management.css" rel="stylesheet">
+    <script src="../js/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <div class="logout" type="button" name="按鈕名稱" onclick="goBack();">
+        <div align="left">
+            <img src="../images/back.png" alt="返回icon" />
+            <span style="font-size: 15px;">返回</span>
+        </div>
+    </div>
+
+	<div class="container">	
+		<div id="wrap">
+            <div class="caption">
+                <div class="col-md-5">	
+                    <h1 class="myTitle"><img src="../images/boss_M.png" /></h1>
+                    <span>後台管理</span>
+                </div>
+            </div>
+			<div class="section">
+                <div class="col-md-4">
+                    <input type="button" class="btn" value="員工資料" onclick="goEmployee();"><img src="../images/profile.png" /></input>
+                    <input type="button" class="btn" value="顧客評價" onclick="location.href='../page/allfeedback.html'"><img src="../images/chat.png" /></input>
+                    <input type="button" class="btn" value="消費紀錄" onclick="location.href='../page/record.php'"><img src="../images/record.png" /></input>
+                    <div class="dropdown"><img src="../images/menu (3).png" />
+                        <button class="dropbtn">店鋪管理</button>
+                        <div class="dropdown-content">
+                            <a onclick="goAllmenu();">菜單編輯</a>
+                            <a onclick="location.href='../page/store_info_edit.php'">店家資訊編輯</a>
+                            <a onclick="location.href='../page/change_psw.html'">更改密碼</a>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script>
+    function goBack() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var boss_name = urlParams.get('boss_name');
+        location.href="select_store_two.php?boss_identity=" + boss_identity + "&boss_name=" + boss_name;
+    }
+    function goEmployee() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        location.href="employee.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+    }
+    function goAllenu() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        location.href="allmenu.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+    }
+    function goType() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        location.href="allmenu.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+    }
+    function goMenu() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        location.href="allmenu.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+    }
+
+</script>
+
+</html>

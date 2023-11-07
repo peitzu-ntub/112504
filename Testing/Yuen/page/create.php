@@ -13,6 +13,8 @@
 <?php
 
 include "../bin/conn.php";
+$identity = $_GET["identity"];
+$store_id = $_GET["store_id"];
 
 $staff_id=$_GET['staff_id'];
 
@@ -144,7 +146,7 @@ $result = mysqli_query($con,$sql);
                 <span style="font-size: 15px;">下一步</span>
             </div> -->
 
-            <input class="submit" type="submit" value="儲存" style="font-size: 16px;"></input>
+            <input class="submit" type="submit" value="儲存" onclick="goIn();" style="font-size: 16px;"></input>
 
             <!-- <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='employee.html'">
                 <span style="font-size: 14px;">查看全部員工資料</span>
@@ -152,5 +154,13 @@ $result = mysqli_query($con,$sql);
         </form>
     </div>
 </body>
+<script>
+    function goIn() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        location.href="create.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+    }
 
+</script>
 </html>
