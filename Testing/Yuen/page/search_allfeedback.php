@@ -19,16 +19,47 @@ $查詢2 = $_POST["查詢日期2"];
 // 設置一個空陣列來放資料
 $datas = array();
 
+ 
+if(isset($_POST['high'])) {
+
 $sql = "SELECT date(b.start_time) as date, c.meal_name, a.score, a.evaluate
 FROM store_order_item as a
 left join store_order as b
 on a.boss_identity = b.boss_identity and a.store_id = b.store_id and a.order_no = b.order_no
 left join store_food as c
 on a.meal_id = c.meal_id
-
+WHERE date(b.start_time) BETWEEN '$查詢1' AND '$查詢2' order by score desc
 ";
 
 $result = mysqli_query($con, $sql);
+
+} elseif(isset($_POST['high'])) {
+
+    $sql = "SELECT date(b.start_time) as date, c.meal_name, a.score, a.evaluate
+    FROM store_order_item as a
+    left join store_order as b
+    on a.boss_identity = b.boss_identity and a.store_id = b.store_id and a.order_no = b.order_no
+    left join store_food as c
+    on a.meal_id = c.meal_id
+    WHERE date(b.start_time) BETWEEN '$查詢1' AND '$查詢2' order by score asc
+    ";
+    
+    $result = mysqli_query($con, $sql);   
+
+} else{
+
+    $sql = "SELECT date(b.start_time) as date, c.meal_name, a.score, a.evaluate
+    FROM store_order_item as a
+    left join store_order as b
+    on a.boss_identity = b.boss_identity and a.store_id = b.store_id and a.order_no = b.order_no
+    left join store_food as c
+    on a.meal_id = c.meal_id
+    WHERE date(b.start_time) BETWEEN '$查詢1' AND '$查詢2' 
+    ";
+    
+    $result = mysqli_query($con, $sql);   
+
+}
 
 
 // 如果有資料
