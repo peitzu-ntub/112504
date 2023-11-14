@@ -69,8 +69,8 @@
     function goAllfeedback() {
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');
-        var boss_name = urlParams.get('boss_name');
-        location.href="allfeedback.php?boss_identity=" + boss_identity + "&boss_name=" + boss_name;
+        var store_id = urlParams.get('store_id');
+        location.href="allfeedback.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
     }
 
 </script>
