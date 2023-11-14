@@ -73,7 +73,7 @@
         $store_id = $store['store_id'];
         $store_name = $store['store_name'];
         $d = "
-                    <a class=\"menu-item\" href=\"../page/boss_management.html?boss_identity=$identity&boss_name=$boss_name&store_id=$store_id\">$store_name</a>";
+        <a class=\"menu-item\" href=\"../page/boss_management.html?boss_identity=$identity&boss_name=$boss_name&store_id=$store_id\">$store_name</a>";
         echo $d;
     }
 ?>                  <!--
