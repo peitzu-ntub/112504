@@ -176,7 +176,7 @@
         <script>
             const cartItems = document.getElementById('cartItems');
 
-            // 减少商品数量的函数
+            // 减少商品數量的函數
             function decrementItem(itemId) {
                 const quantityElement = document.getElementById(`quantity${itemId}`);
                 let quantity = parseInt(quantityElement.textContent);
@@ -186,7 +186,7 @@
                 }
             }
 
-            // 增加商品数量的函数
+            // 增加商品數量的函數
             function incrementItem(itemId) {
                 const quantityElement = document.getElementById(`quantity${itemId}`);
                 let quantity = parseInt(quantityElement.textContent);
@@ -194,7 +194,7 @@
                 quantityElement.textContent = quantity;
             }
 
-            // 加入購物車的函数
+            // 加入購物車的函數
             function addToCart(itemId) {
                 const quantityElement = document.getElementById(`quantity${itemId}`);
                 const itemName = `商品 ${itemId}`;
