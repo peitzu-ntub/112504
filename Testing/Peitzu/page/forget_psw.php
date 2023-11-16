@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>忘記密碼</title>
+
+    <link href="../js/change_psw.css" rel="stylesheet">
+    <script src="../js/jquery-3.6.4.min.js"></script>
+
+    <!--取代alert的工具-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- 若需相容 IE11，要加載 Promise Polyfill-->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>    
+
+</head>
+
+
+
+<body>
+    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='worker.html'">
+        <div align="left">
+            <img src="../images/back.png" alt="返回icon" />
+            <span style="font-size: 15px;">返回</span>
+        </div>
+    </div>
+    <div class="container-wrapper">
+        <form id="main" method="POST">
+            <div class="container1">
+                <div align="center">
+                    <font size="20">忘記密碼</font><br><br>
+                </div>
+                <div class="insidebox">
+                    <div class="ininsidebox">
+                        <div class="input-box">
+                            <div class="input-row">                  
+                                <label id="oldPassword" for="oldPassword"><img src="../images/search.png" /></label>
+                                <input type="password" id="boss_identity" name="boss_identity" placeholder="請輸入您的身分證字號" required>                
+                            </div>
+                            <div class="input-row">
+                                <label id="newPassword" for="newPassword"><img src="../images/locklock.png" /></label>
+                                <input type="password" id="new_pass" name="new_pass" placeholder="請輸入您的新密碼" required>          
+                            </div>
+                            <div class="input-row">
+                                <label id="confirmNewPassword" for="confirmNewPassword"><img src="../images/password.png" /></label>
+                                <input type="password" id="new_pass2" name="new_pass2" placeholder="請再次輸入您的新密碼" required>                                           
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="submit" style="font-size: 15px;" onclick="saveData();">儲存</button>
+        </form>
+    </div>
+</body>
+
+<script>
+    function saveData() {
+        alert('x');
+        //透過 jQuery + ajax 進行 post 的動作
+        $("form#main").submit(function(e) {
+            e.preventDefault();    
+            var formData = new FormData(this);
+            $.ajax({
+                url: "../bin/editBossPass.php",
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    var json = $.parseJSON(response);
+                    if (json.result == 'OK') {
+                        //alert(json.message);
+                        Swal.fire(
+                            '密碼', //標題
+                            '新密碼已生效', //訊息容
+                            'success' // 圖示 (success/info/warning/error/question)
+                        );
+                    } else {
+                        Swal.fire(
+                            '呈現方式', //標題
+                            json.message, //訊息容
+                            'error' // 圖示 (success/info/warning/error/question)
+                        );
+                    }
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });        
+        });
+    }
+    
+</script>
+
+</html>
