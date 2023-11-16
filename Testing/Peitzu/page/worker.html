@@ -11,6 +11,14 @@
     <link href="../js/newlogin.css" rel="stylesheet">
     <script src="../js/jquery-3.6.4.min.js"></script>
 
+    <!--取代alert的工具-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- 若需相容 IE11，要加載 Promise Polyfill-->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>   
+    
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="EXPIRES" CONTENT="0">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 </head>
 
 <body>
@@ -44,7 +52,7 @@
 
                 <input class="addstore" type="submit" value="確定" style="font-size: 15px;"></input>
 
-                <div class="forget" type="return" name="按鈕名稱" onclick="location.href='forget_psw.html'">
+                <div class="forget" type="return" name="按鈕名稱" onclick="location.href='forget_psw.php'">
                     <span style="font-size: 15px;">忘記密碼</span>
                 </div>
             </form>
@@ -92,8 +100,11 @@
                         //跳到下一個頁面
                         location.href = nextUrl + nextParams;
                     } else {
-                        alert (json.message);
-                        //$("#message").html('失敗：\n' + json.message);
+                        Swal.fire(
+                            '登入失敗', //標題
+                            json.message, //訊息容
+                            'error' // 圖示 (success/info/warning/error/question)
+                        );
                     }
                 },
                 //獲得不正確的回應時，要做的事情
