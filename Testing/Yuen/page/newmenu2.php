@@ -2,21 +2,10 @@
     session_start();
     include "../bin/conn.php";
 
-    //todo, 這是假的資料
-    //預設的資料來源，是從登入而來。登入、選擇店家後，就會把以下這兩個資訊，放進SESSION裡，保留在Server端
-    //讓同一個人的接續連線，可以直接拿來用
-    if (!isset($_SESSION["identity"])) {
-        $_SESSION["identity"] = "A123456789";
-    }
-    if (!isset($_SESSION["store_id"])) {
-        $_SESSION["store_id"] = "S01";
-    }
-
-    //PHP是在後端(Server)運作的程式，Html與JavaScript則是在前端(Client)運作的程式
-    //在Server端，透過PHP將身份證與店代號，保留於隱藏欄位中，以傳到前端，做後續的應用
-    $boss = $_SESSION["identity"];
-    $store = $_SESSION["store_id"];
+    $identity = $_GET["boss_identity"];
+    $store = $_GET["store_id"];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,10 +17,11 @@
     <title>新增餐點</title>
 
     <link href="../js/edit.css" rel="stylesheet">
+    <script src="../js/jquery-3.6.4.min.js"></script>
 </head>
 
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="goBack()">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
             <span style="font-size: 15px;">返回</span>
@@ -40,8 +30,8 @@
     <div class="container-wrapper">
         <nav>
             <ul>
-                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/allmenu.php">全部餐點</a></li>
-                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/newmenu1.php">餐點類型</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goAll()">全部餐點</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goType()">餐點類型</a></li>
                 <li><a>新增餐點</a></li>
                 <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
                 <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
@@ -50,7 +40,7 @@
         </nav>
 
         <div class="insidebox">
-            <form action="newfood.php" method="POST" enctype="multipart/form-data">
+            <form action="#" method="POST" enctype="multipart/form-data">
                 <div style="width:320px;">
                     <img src="../images/add.png" />
                     <font color="#bf6900" size="5" >新增餐點</font>
@@ -59,18 +49,21 @@
 
                 <div class="ininsidebox">
                     <div class="input-box">
+                    <input type="hidden" id="boss_identity" name="boss_identity" value="">
+                    <input type="hidden" id="store_id" name="store_id" value="">
+
                         <div class="input-row">
                             <span class="details">餐點類型：</span>
-                            <select name="type_name" id="type_name">
+                            <select name="type_id" id="type_id">
                                 <?php
                                     $sql = "
                                         select * from food_type
-                                        where boss_identity = '$boss' and store_id = '$store'";
+                                        where boss_identity = '$identity' and store_id = '$store'";
                                     $meal_type = mysqli_query($con, $sql);
                                     while ($cat = mysqli_fetch_array($meal_type,MYSQLI_ASSOC)) {
                                         $type_id=$cat['type_id'];
                                         $type_name=$cat['type_name'];
-                                        echo "  <option value='$type_name'>$type_name</option>";
+                                        echo "  <option value='$type_id'>$type_name</option>";
                                     }
                                     ?> 
                                 </select>
@@ -95,10 +88,76 @@
                         </div>
                     </div>
                 </div>
-                <input class="submitbutton" type="submit" value="儲存"></input>
+                <button class="submitbutton" type="submit" value="儲存">儲存</button>
             </form>
         </div>
     </div>
 </body>
 
+<script>
+    //當網頁準備好的時候，做以下的動作(函式)
+    $(document).ready(function () {
+
+        //form的submit按鈕按下去的動作
+        $("form").on("submit", function (e) {
+            var urlParams = new URLSearchParams(window.location.search);
+            var bossIdentity = urlParams.get('boss_identity');
+            var storeId = urlParams.get('store_id');
+            document.getElementById("boss_identity").value = bossIdentity;
+            document.getElementById("store_id").value = storeId;
+
+            //1.先把準備拋回去的資料「序列化」整理成json格式的字串
+            var dataString = $(this).serialize();
+
+            //可以把字串顯示出來看看是否正確
+            //alert(dataString);               
+
+            //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
+            $.ajax({
+                //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+                type: "POST",
+                //指定要連接的PHP位址
+                url: "../bin/newfood.php",
+                //要傳送的資料內容
+                data: dataString,
+                //獲得正確回應時，要做的事情
+                success: function (response) {
+                    var json = $.parseJSON(response);
+                    if (json.result == 'OK') {
+                        alert (json.message);
+                    } else {
+                        alert (json.message);
+                    }
+                },
+                //獲得不正確的回應時，要做的事情
+                error: function (response) {
+                    alert ('錯誤');
+                    //$("#message").html(response);
+                }
+            });
+
+            e.preventDefault();
+        });
+    });
+
+
+    function goBack() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var boss_name = urlParams.get('boss_name');
+        location.href="boss_management.html?boss_identity=" + boss_identity + "&boss_name=" + boss_name;
+    }
+    function goType() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        location.href="newmenu1.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+    }
+    function goAll() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        location.href="allmenu.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+    }
+</script>
 </html>
