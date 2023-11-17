@@ -18,6 +18,11 @@
 
     <link href="../js/edit.css" rel="stylesheet">
     <script src="../js/jquery-3.6.4.min.js"></script>
+
+    <!--取代alert的工具-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- 若需相容 IE11，要加載 Promise Polyfill-->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>    
 </head>
 
 <body>
@@ -30,17 +35,17 @@
     <div class="container-wrapper">
         <nav>
             <ul>
-                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goAll()">全部餐點</a></li>
-                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goType()">餐點類型</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goAllmenu();">全部餐點</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goMenu1();">餐點類型</a></li>
                 <li><a>新增餐點</a></li>
                 <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
                 <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
-                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/nm3.html">呈現方法</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goNM3();">呈現方法</a></li>
             </ul>
         </nav>
 
         <div class="insidebox">
-            <form action="#" method="POST" enctype="multipart/form-data">
+            <form id="main" action="../bin/newfood.php" method="POST" enctype="multipart/form-data">
                 <div style="width:320px;">
                     <img src="../images/add.png" />
                     <font color="#bf6900" size="5" >新增餐點</font>
@@ -51,6 +56,7 @@
                     <div class="input-box">
                     <input type="hidden" id="boss_identity" name="boss_identity" value="">
                     <input type="hidden" id="store_id" name="store_id" value="">
+                    <input type="hidden" id="data_type" name="data_type" value="menu2">
 
                         <div class="input-row">
                             <span class="details">餐點類型：</span>
@@ -88,76 +94,98 @@
                         </div>
                     </div>
                 </div>
-                <button class="submitbutton" type="submit" value="儲存">儲存</button>
+                <!--不要直接submit，透過 jQuery + Ajax 把餐點資料跟圖檔一起 post 到後端-->
+                <button class="submitbutton" onclick="saveData();" value="儲存">儲存</button>
             </form>
         </div>
     </div>
 </body>
 
 <script>
-    //當網頁準備好的時候，做以下的動作(函式)
-    $(document).ready(function () {
+    //儲存餐點資料、圖檔
+    function saveData() {
+        //把老闆身份證號、店代號，塞進隱藏欄位，一起送到後端
+        var urlParams = new URLSearchParams(window.location.search);
+        var bossIdentity = urlParams.get('boss_identity');
+        var storeId = urlParams.get('store_id');
+        document.getElementById("boss_identity").value = bossIdentity;
+        document.getElementById("store_id").value = storeId;
 
-        //form的submit按鈕按下去的動作
-        $("form").on("submit", function (e) {
-            var urlParams = new URLSearchParams(window.location.search);
-            var bossIdentity = urlParams.get('boss_identity');
-            var storeId = urlParams.get('store_id');
-            document.getElementById("boss_identity").value = bossIdentity;
-            document.getElementById("store_id").value = storeId;
-
-            //1.先把準備拋回去的資料「序列化」整理成json格式的字串
-            var dataString = $(this).serialize();
-
-            //可以把字串顯示出來看看是否正確
-            //alert(dataString);               
-
-            //2.透過ajax(非同步JavaScript)把字串送給後端的PHP網站
+        //透過 jQuery + ajax 進行 post 的動作
+        $("form#main").submit(function(e) {
+            e.preventDefault();    
+            var formData = new FormData(this);
             $.ajax({
-                //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
-                type: "POST",
-                //指定要連接的PHP位址
                 url: "../bin/newfood.php",
-                //要傳送的資料內容
-                data: dataString,
-                //獲得正確回應時，要做的事情
+                type: 'POST',
+                data: formData,
                 success: function (response) {
                     var json = $.parseJSON(response);
                     if (json.result == 'OK') {
-                        alert (json.message);
+                        //alert(json.message);
+                        Swal.fire(
+                            '餐點', //標題
+                            '您所輸入的新餐點資料已儲存', //訊息容
+                            'success' // 圖示 (success/info/warning/error/question)
+                        );
+                        //成功後，清除畫面上所輸入的資料內容
+                        document.getElementById("main").reset();
                     } else {
-                        alert (json.message);
+                        Swal.fire(
+                            '餐點', //標題
+                            json.message, //訊息容
+                            'error' // 圖示 (success/info/warning/error/question)
+                        );
                     }
                 },
-                //獲得不正確的回應時，要做的事情
-                error: function (response) {
-                    alert ('錯誤');
-                    //$("#message").html(response);
-                }
-            });
-
-            e.preventDefault();
+                cache: false,
+                contentType: false,
+                processData: false
+            });        
         });
-    });
+    }
 
-
+    function goAllmenu() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="allmenu.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
+    }
     function goBack() {
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');
         var boss_name = urlParams.get('boss_name');
         location.href="boss_management.html?boss_identity=" + boss_identity + "&boss_name=" + boss_name;
     }
-    function goType() {
+    function goMenu1() {
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');
         var store_id = urlParams.get('store_id');
-        location.href="newmenu1.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+        var boss_name = urlParams.get('boss_name');
+        location.href="newmenu1.php?boss_identity=" + boss_identity + "&store_id=" + store_id+ "&boss_name=" + boss_name;
     }
-    function goAll() {
+    function goMenu2() {
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');
         var store_id = urlParams.get('store_id');
-        location.href="allmenu.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+        var boss_name = urlParams.get('boss_name');
+        location.href="newmenu2.php?boss_identity=" + boss_identity + "&store_id=" + store_id+ "&boss_name=" + boss_name;
+    }
+    function goSearch() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="search_type.php?boss_identity=" + boss_identity + "&store_id=" + store_id+ "&boss_name=" + boss_name;
+    }
+    function goNM3() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="nm3.php?boss_identity=" + boss_identity + "&store_id=" + store_id+ "&boss_name=" + boss_name;
     }
 </script>
+
 </html>
