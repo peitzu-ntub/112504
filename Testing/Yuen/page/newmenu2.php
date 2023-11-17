@@ -155,8 +155,9 @@
     function goBack() {
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
         var boss_name = urlParams.get('boss_name');
-        location.href="boss_management.html?boss_identity=" + boss_identity + "&boss_name=" + boss_name;
+        location.href="boss_management.html?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
     function goMenu1() {
         var urlParams = new URLSearchParams(window.location.search);

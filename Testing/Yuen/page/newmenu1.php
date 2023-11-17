@@ -112,7 +112,7 @@ $datas_len = count($datas); //目前資料筆數
                                 <a href='type_del.php?type_name=".$datas[$i]['type_name']."'><img src=../images/trash1.png></img></a></td>";
                                 echo "<td style='font-size: 25px;' align='center'> ". $datas[$i]['type_name'] . "</td>";
                                 echo "<td align='center'>
-                                <a href='type_edit.php?type_name=".$datas[$i]['type_name']."'><img src=../images/signature.png></img></a></td>";
+                                <a href='type_edit.php?boss_identity=$identity&store_id=$store_id&type_name=".$datas[$i]['type_name']."'><img src=../images/signature.png></img></a></td>";
                                 echo "</br>";
                             }
                             ?>
@@ -153,7 +153,7 @@ $datas_len = count($datas); //目前資料筆數
                             'success' // 圖示 (success/info/warning/error/question)
                         );
                         //成功後，讓畫面重新呼叫一次
-                        goType();
+                        document.getElementById("main").reset();
                     } else {
                         Swal.fire(
                             '餐點類型', //標題
@@ -179,8 +179,9 @@ $datas_len = count($datas); //目前資料筆數
     function goBack() {
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
         var boss_name = urlParams.get('boss_name');
-        location.href="boss_management.html?boss_identity=" + boss_identity + "&boss_name=" + boss_name;
+        location.href="boss_management.html?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
     function goMenu1() {
         var urlParams = new URLSearchParams(window.location.search);
@@ -202,6 +203,13 @@ $datas_len = count($datas); //目前資料筆數
         var store_id = urlParams.get('store_id');
         var boss_name = urlParams.get('boss_name');
         location.href="search_type.php?boss_identity=" + boss_identity + "&store_id=" + store_id+ "&boss_name=" + boss_name;
+    }
+    function goTypeedit() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="type_edit.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
 </script>
 </html>

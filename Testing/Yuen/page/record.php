@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='#.html'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="goBack()">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
             <span style="font-size: 10px;">返回</span>
@@ -40,10 +40,12 @@
 
                             include ("../bin/conn.php");
 
-                                $sql = "select date(b.start_time) as date, b.table_number, time(b.start_time) start_time, b.customer_count, time(b.end_time)end_time, a.meal_id
+                                $sql = "select date(b.start_time) as date, b.table_number, time(b.start_time) start_time, b.customer_count, time(b.end_time)end_time, c.meal_name
                                 FROM store_order_item as a 
                                 left join store_order as b
                                 on a.boss_identity = b.boss_identity and a.store_id = b.store_id and a.order_no = b.order_no
+                                left join store_food as c
+                                on a.meal_id = c.meal_id
                                 where date(b.start_time) = '$查詢'"
                                 ;
 
@@ -58,8 +60,8 @@
                                     echo "<th>桌號</th>";
                                     echo "<th>開桌時間</th>";
                                     echo "<th>人數</th>";
-                                    echo "<th>結帳時間</th>";
-                                    echo "<th>餐點明細</th>";
+                                    echo "<th>關桌時間</th>";
+                                    echo "<th>餐點</th>";
                         
                                 
                                 while($row_result = mysqli_fetch_assoc($result)) {
@@ -69,7 +71,7 @@
                                     echo "<td>".$row_result['start_time']."</td>";
                                     echo "<td>".$row_result['customer_count']."</td>";
                                     echo "<td>".$row_result['end_time']."</td>";
-                                    echo "<td>".$row_result['meal_id']."</td>";
+                                    echo "<td>".$row_result['meal_name']."</td>";
                                     echo "</tr>";
                                 }
                                 for($row=0;$row<count($contact1);$row++)
@@ -93,6 +95,14 @@
         </form>
     </div>
 </body>
-
+<script>
+    function goBack() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="boss_management.html?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
+    }
+</script>
 
 </html>

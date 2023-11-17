@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    include "../bin/conn.php";
+
+    $identity = $_GET["boss_identity"];
+    $store_id = $_GET["store_id"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,13 +20,10 @@
 </head>
 <?php
 
-include "../bin/conn.php";
-$identity = $_GET["identity"];
-$store_id = $_GET["store_id"];
 // 設置一個空陣列來放資料
 $datas = array();
 
-$sql = "SELECT staff_id, staff_name FROM store_staff";
+$sql = "SELECT staff_id, staff_name FROM store_staff where boss_identity = '$identity' and store_id = '$store_id'";
 
 
 $result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
@@ -56,7 +61,7 @@ $datas_len = count($datas); //目前資料筆數
 
 ?>
 <body>
-	<div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
+	<div class="logout" type="button" name="按鈕名稱" onclick="goBack()">
 		<div align="left">
 			<img src="../images/back.png" alt="返回icon" />
 			<span style="font-size: 13px;">返回</span>
@@ -109,7 +114,7 @@ $datas_len = count($datas); //目前資料筆數
 					</div>
 				</div>
 			</div>
-			<div class="addemployee" type="button" name="按鈕名稱" onclick="location.href='create.php'">
+			<div class="addemployee" type="button" name="按鈕名稱" onclick="goCreate()">
 				<div align="right">
 					<!-- <img src="../images/employee.png" alt="新增員工icon" /> -->
 					<span style="font-size: 25px;">新增員工</span>
@@ -120,11 +125,18 @@ $datas_len = count($datas); //目前資料筆數
 	
 </body>
 <script>
+    function goBack() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var boss_name = urlParams.get('boss_name');
+        location.href="boss_management.html?boss_identity=" + boss_identity + "&boss_name=" + boss_name;
+    }
     function goCreate() {
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');
         var store_id = urlParams.get('store_id');
-        location.href="create.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+        var boss_name = urlParams.get('boss_name');
+        location.href="create.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
 
 </script>
