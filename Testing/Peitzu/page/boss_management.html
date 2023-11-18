@@ -25,7 +25,7 @@
 			<div class="section">
                 <div class="col-md-4">
                     <input type="button" class="btn" value="員工資料" onclick="goEmployee();"><img src="../images/profile.png" /></input>
-                    <input type="button" class="btn" value="顧客評價" onclick="location.href='../page/allfeedback.html'"><img src="../images/chat.png" /></input>
+                    <input type="button" class="btn" value="顧客評價" onclick="goAllfeedback()"><img src="../images/chat.png" /></input>
                     <input type="button" class="btn" value="消費紀錄" onclick="location.href='../page/record.php'"><img src="../images/record.png" /></input>
                     <div class="dropdown"><img src="../images/menu (3).png" />
                         <button class="dropbtn">店鋪管理</button>
@@ -54,19 +54,7 @@
         var store_id = urlParams.get('store_id');
         location.href="employee.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
     }
-    function goAllenu() {
-        var urlParams = new URLSearchParams(window.location.search);
-        var boss_identity = urlParams.get('boss_identity');
-        var store_id = urlParams.get('store_id');
-        location.href="allmenu.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
-    }
-    function goType() {
-        var urlParams = new URLSearchParams(window.location.search);
-        var boss_identity = urlParams.get('boss_identity');
-        var store_id = urlParams.get('store_id');
-        location.href="allmenu.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
-    }
-    function goMenu() {
+    function goAllmenu() {
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');
         var store_id = urlParams.get('store_id');
@@ -77,6 +65,12 @@
         var boss_identity = urlParams.get('boss_identity');
         var boss_name = urlParams.get('boss_name');
         location.href="change_psw.html?boss_identity=" + boss_identity + "&boss_name=" + boss_name;
+    }
+    function goAllfeedback() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        location.href="allfeedback.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
     }
 
 </script>

@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    include "../bin/conn.php";
+
+    $identity = $_GET["boss_identity"];
+    $store_id = $_GET["store_id"];
+
+    $staff_id=$_GET['staff_id'];
+
+    $sql ="select count(staff_id)+1 staff_id FROM store_staff where boss_identity = '$identity' and store_id = '$store_id'"; // sql語法存在變數中
+    $result = mysqli_query($con,$sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,21 +20,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>員工資料</title>
-
+    <script src="../js/jquery-3.6.4.min.js"></script>
     <link href="../js/create_new.css" rel="stylesheet">
+    <!--取代alert的工具-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- 若需相容 IE11，要加載 Promise Polyfill-->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>    
 </head>
-<?php
 
-include "../bin/conn.php";
-$identity = $_GET["identity"];
-$store_id = $_GET["store_id"];
-
-$staff_id=$_GET['staff_id'];
-
-$sql ="select staff_id+ 1 staff_id FROM store_staff order by staff_id desc limit 1"; // sql語法存在變數中
-$result = mysqli_query($con,$sql);
-
-?>
 <body>
     <div class="logout" type="button" name="按鈕名稱" onclick="location.href='employee.php'">
 		<div align="left">
@@ -30,7 +36,7 @@ $result = mysqli_query($con,$sql);
 		</div>
 	</div>
     <div class="container-wrapper">
-        <form action="staff_in.php" method="POST" enctype="multipart/form-data">
+        <form id="main" action="../bin/staff_in.php"  method="POST">
             <div class="container1">
                 <div align="center">
                     <font size="20">員工資料管理</font><br><br>
@@ -38,6 +44,10 @@ $result = mysqli_query($con,$sql);
 
                 <div class="insidebox">
                     <div class="ininsidebox">
+                    <input type="hidden" id="boss_identity" name="boss_identity" value="">
+                    <input type="hidden" id="store_id" name="store_id" value="">
+                    <input type="hidden" id="data_type" name="data_type" value="staff">
+
                         <div class="input-box">
                             <span class="details">員工編號：</span>
                             <input type="text" class="form-control" value="<?php while($row_result = mysqli_fetch_assoc($result)) {
@@ -145,8 +155,7 @@ $result = mysqli_query($con,$sql);
             <div class="nextstep" type="next" name="按鈕名稱" onclick="location.href='employee.html'">
                 <span style="font-size: 15px;">下一步</span>
             </div> -->
-
-            <input class="submit" type="submit" value="儲存" onclick="goIn();" style="font-size: 16px;"></input>
+            <button class="submitbutton" onclick="saveData();" value="儲存" style="font-size: 16px;">儲存</button>
 
             <!-- <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='employee.html'">
                 <span style="font-size: 14px;">查看全部員工資料</span>
@@ -155,12 +164,57 @@ $result = mysqli_query($con,$sql);
     </div>
 </body>
 <script>
-    function goIn() {
+    //儲存餐點資料、圖檔
+    function saveData() {
+        //把老闆身份證號、店代號，塞進隱藏欄位，一起送到後端
         var urlParams = new URLSearchParams(window.location.search);
-        var boss_identity = urlParams.get('boss_identity');
-        var store_id = urlParams.get('store_id');
-        location.href="create.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+        var bossIdentity = urlParams.get('boss_identity');
+        var storeId = urlParams.get('store_id');
+        document.getElementById("boss_identity").value = bossIdentity;
+        document.getElementById("store_id").value = storeId;
+
+        //透過 jQuery + ajax 進行 post 的動作
+        $("form#main").submit(function(e) {
+            e.preventDefault();    
+            var formData = new FormData(this);
+            $.ajax({
+                url: "../bin/staff_in.php",
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    var json = $.parseJSON(response);
+                    if (json.result == 'OK') {
+                        //alert(json.message);
+                        Swal.fire(
+                            '員工', //標題
+                            '您所輸入的新員工資料已儲存', //訊息容
+                            'success' // 圖示 (success/info/warning/error/question)
+                        );
+                        //成功後，清除畫面上所輸入的資料內容
+                        document.getElementById("main").reset();
+                    } else {
+                        Swal.fire(
+                            '員工', //標題
+                            json.message, //訊息容
+                            'error' // 圖示 (success/info/warning/error/question)
+                        );
+                    }
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });        
+        });
     }
 
+
+
+    function goBack() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var boss_identity = urlParams.get('boss_identity');
+    var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="employee.php?boss_identity=" + boss_identity + "&store_id=" + store_id+ "&boss_name=" + boss_name;
+    }
 </script>
 </html>

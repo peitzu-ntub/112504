@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>點餐</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="../js/bootstrap.min.css" rel="stylesheet">
+    <link href="../js/Preview.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="main">
+        <!-- <form action="staff_in.php" method="POST" enctype="multipart/form-data"> -->
+        <div class="header">
+            <div align="center">
+                <font size="20"><b>港式飲茶店</b></font><br><br>
+                <!-- style="color: white; font-weight:bolder; font:25px;" -->
+                <div class="logout" type="button" onclick="location.href='nm3.php'">
+                    <div align="left">
+                        <img src="../images/back.png" alt="返回icon" />
+                        <span>結束預覽</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="left">
+                <b><a>主餐</a></b>
+                <b><a>點心</a></b>
+                <b><a>飲料</a></b>
+                <b><a>套餐</a></b>
+            </div>
+
+            <div class="menu">
+
+                <!-- 菜單 1 -->
+                <div class="menu-item">
+                    <!-- 右側容器 -->
+                    <div class="menu-item-center">
+                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;港式炒飯</h3>
+                    </div>
+                    <div>
+                        <h3>$60&nbsp;&nbsp;</h3>
+                    </div>
+                    <div class="menu-item-right">
+                        <button id="showPopup">點選</button>
+
+                        <!-- 彈跳式視窗 -->
+                        <div class="popup-container" id="popup">
+                            <span class="close-button" id="closePopup">×</span>
+                            <div class="product-details">
+                                <h2>港式炒飯</h2><br>
+                                <h5>介紹：豐富配料滿足味蕾，香味撲鼻，口感滑順，讓您品味無窮享受！</h5><br>
+                                <h5>價格：$60</h5><br>
+                            </div>
+
+                            <div class="cart-item">
+                                <button class="button" onclick="decrementItem(1)">-</button>
+                                <span class="item-quantity" id="quantity1" style="font-size: 18px;">1</span>
+                                <button class="button" onclick="incrementItem(1)">+</button>&emsp;&emsp;
+                                <!-- <button class="button" onclick="addToCart(1)">加入購物車</button> -->
+                                <div class="add-item">
+                                    <button class="button" onclick="addToCart(1)">加入購物車</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 菜單 2 -->
+                <div class="menu-item">
+                    <!-- 右側容器 -->
+                    <div class="menu-item-center">
+                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;皮蛋瘦肉粥</h3>
+                    </div>
+                    <div>
+                        <h3>$60&nbsp;&nbsp;</h3>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+
+                <!-- 菜單 3 -->
+                <div class="menu-item">
+                    <!-- 右側容器 -->
+                    <div class="menu-item-center">
+                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;XO醬撈麵</h3>
+                    </div>
+                    <div>
+                        <h3>$60&nbsp;&nbsp;</h3>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+
+                <!-- 菜單 4 -->
+                <div class="menu-item">
+                    <!-- 右側容器 -->
+                    <div class="menu-item-center">
+                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;港式臘味煲仔飯</h3>
+                    </div>
+                    <div>
+                        <h3>$60&nbsp;&nbsp;</h3>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+
+                <!-- 菜單 5 -->
+                <div class="menu-item">
+                    <!-- 右側容器 -->
+                    <div class="menu-item-center">
+                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;公仔湯麵</h3>
+                    </div>
+                    <div>
+                        <h3>$60&nbsp;&nbsp;</h3>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+
+                <!-- 菜單 6 -->
+                <div class="menu-item">
+                    <!-- 右側容器 -->
+                    <div class="menu-item-center">
+                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;港式豬扒飯</h3>
+                    </div>
+                    <div>
+                        <h3>$60&nbsp;&nbsp;</h3>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+                <!-- 菜單 7 -->
+                <div class="menu-item">
+                    <!-- 右側容器 -->
+                    <div class="menu-item-center">
+                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;蜜汁叉燒撈麵</h3>
+                    </div>
+                    <div>
+                        <h3>$60&nbsp;&nbsp;</h3>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+                <!-- 菜單 8 -->
+                <div class="menu-item">
+                    <!-- 右側容器 -->
+                    <div class="menu-item-center">
+                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;生魚片</h3>
+                    </div>
+                    <div>
+                        <h3>$60&nbsp;&nbsp;</h3>
+                    </div>
+                    <div class="menu-item-right">
+                        <button>點選</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const navLinks = document.querySelectorAll('.left a');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    link.classList.add('active');
+                });
+            });
+        </script>
+
+        <script>
+            // 彈跳是視窗
+            const popup = document.getElementById('popup');
+
+            // 顯示彈跳式視窗的按钮和關閉彈跳式視窗的按钮
+            const showPopupButton = document.getElementById('showPopup');
+            const closePopupButton = document.getElementById('closePopup');
+
+            // 當點擊時，顯示彈跳式視窗
+            showPopupButton.addEventListener('click', () => {
+                popup.style.display = 'block';
+            });
+
+            // 當點擊時，關閉彈跳式視窗
+            closePopupButton.addEventListener('click', () => {
+                popup.style.display = 'none';
+            });
+        </script>
+
+
+        <script>
+            const cartItems = document.getElementById('cartItems');
+
+            // 减少商品数量的函数
+            function decrementItem(itemId) {
+                const quantityElement = document.getElementById(`quantity${itemId}`);
+                let quantity = parseInt(quantityElement.textContent);
+                if (quantity > 1) {
+                    quantity--;
+                    quantityElement.textContent = quantity;
+                }
+            }
+
+            // 增加商品数量的函数
+            function incrementItem(itemId) {
+                const quantityElement = document.getElementById(`quantity${itemId}`);
+                let quantity = parseInt(quantityElement.textContent);
+                quantity++;
+                quantityElement.textContent = quantity;
+            }
+
+            // 加入購物車的函数
+            function addToCart(itemId) {
+                const quantityElement = document.getElementById(`quantity${itemId}`);
+                const itemName = `商品 ${itemId}`;
+                const itemQuantity = parseInt(quantityElement.textContent);
+                const cartItem = document.createElement('li');
+                cartItem.textContent = `${itemName} x ${itemQuantity}`;
+                cartItems.appendChild(cartItem);
+            }
+        </script>
+
+        <div class="footer">
+            <div class="centered-container">
+                <button style='font-size: 18px; font-weight:bolder;' class='cartbutton'>
+                    購物車
+                </button>&emsp;
+                <button style='font-size: 18px; font-weight:bolder;' class='allbutton'>
+                    我的訂單
+                </button>&emsp;
+                <button style='font-size: 18px; font-weight:bolder;' class='feedbackbutton'>
+                    去評價
+                </button>
+        </div>
+
+            <!-- </form> -->
+        </div>
+    </div>
+</body>
+
+</html>
