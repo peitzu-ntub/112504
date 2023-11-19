@@ -14,7 +14,7 @@ body{
   background-color:#fff3bc;
 }
 .container-wrapper {
-  position: relative; /* 設置父容器為相對定位 */
+  position: relative; 
 }
 /* =========
     底框
@@ -56,7 +56,7 @@ body{
   color: #35522b;
 }
 .title img {
-  margin-right: 10px; /* 調整圖片和文字之間的間距 */
+  margin-right: 10px; 
   margin-bottom: 5px;
 }
 
@@ -78,38 +78,6 @@ body{
   top: 80px;
 }
 
-/*============
-    確定
-==============*/
-.submit {
-  position: absolute; /* 設置為絕對定位 */
-  bottom: 25px; /* 距離視窗上方的位置 */
-  left: 60%; /* 距離視窗左側的位置 */
-  transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
-  width: 70px;
-  height: 37px;
-  border: 3px solid #8cb87c;
-  background-color:#8cb87c;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  color: #ecd368/* #5b7751 */;
-}
-.submit div {
-  display: flex;
-  align-items: center;
-  color: rgb(116, 65, 31)
-}
-.submit img {
-  margin-right: 3px; /* 調整圖片和文字之間的間距 */
-}
-.submit:hover {
-  border: 3px solid #5b7751;
-  color: #394c32;
-  cursor: pointer;
-}
 
 /*===========
   返回的方框
@@ -158,7 +126,7 @@ th, td {
 }
 th {
   background-color: #f2f2f2;
-  border: 1px solid #7297ce;
+  border: transparent;
 }
 tr:nth-child(even) {
   background-color: #f9f9f9;
@@ -199,7 +167,7 @@ cursor: pointer;
 background: #618ccc;
 font-weight:bold
 }
-.inline-form input:hover{
+/* .inline-form input:hover{
 background: #7297ce;
 color: #f0e24c;
-}
+} */
