@@ -48,7 +48,6 @@
             )";
     mysqli_query($con, $sql);
 
-echo $sql;
 echo "<br>";
 
     //更新訂單的關桌時間
@@ -59,7 +58,6 @@ echo "<br>";
         and store_id = '$store_id' 
         and order_no = '$order_no'";
     mysqli_query($con, $sql);    
-echo $sql;
 
 ?>                
 
