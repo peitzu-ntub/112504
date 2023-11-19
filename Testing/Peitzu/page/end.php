@@ -33,6 +33,34 @@
             mysqli_query($con, $sql);
         }
     }
+
+    //關桌
+    $sql = "
+        update store_table
+            set is_open = 'N'
+        where boss_identity = '$identity' 
+        and store_id = '$store_id' 
+        and table_number = (
+            select table_number from store_order
+            where boss_identity = '$identity' 
+            and store_id = '$store_id' 
+            and order_no = '$order_no'
+            )";
+    mysqli_query($con, $sql);
+
+echo $sql;
+echo "<br>";
+
+    //更新訂單的關桌時間
+    $sql = "
+        update store_order 
+            set end_time = now()
+        where boss_identity = '$identity' 
+        and store_id = '$store_id' 
+        and order_no = '$order_no'";
+    mysqli_query($con, $sql);    
+echo $sql;
+
 ?>                
 
 
