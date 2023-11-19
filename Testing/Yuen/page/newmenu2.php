@@ -38,9 +38,7 @@
                 <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goAllmenu();">全部餐點</a></li>
                 <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goMenu1();">餐點類型</a></li>
                 <li><a>新增餐點</a></li>
-                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
-                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
-                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goNM3();">呈現方法</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goNM3();">菜單呈現設定</a></li>
             </ul>
         </nav>
 

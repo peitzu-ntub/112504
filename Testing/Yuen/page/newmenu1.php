@@ -4,6 +4,7 @@
 
     $identity = $_GET["boss_identity"];
     $store_id = $_GET["store_id"];
+
 ?>
 
 <!DOCTYPE html>
@@ -77,23 +78,31 @@ $datas_len = count($datas); //目前資料筆數
                 <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goAllmenu()">全部餐點</a></li>
                 <li><a>餐點類型</a></li>
                 <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goMenu2()">新增餐點</a></li>
-                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
-                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
-                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/nm3.html">呈現方法</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goNM3();">菜單呈現設定</a></li>
             </ul>
         </nav>
 
         <div class="insidebox">
-            <form id="main" action="../bin/menu1.php" method="POST">            
+            <form id="main">            
+                <input type="hidden" id="boss_identity" name="boss_identity" 
+<?php      
+                //把老闆身份證號、店代號，放進隱藏欄位。供POST時使用
+                echo "value=\"$identity\">";
+?>                
+                <input type="hidden" id="store_id" name="store_id" 
+<?php                
+                //把老闆身份證號、店代號，放進隱藏欄位。供POST時使用
+                echo "value=\"$store_id\">";
+?>                
+                <input type="hidden" id="data_type" name="data_type" value="menu1">
+                <input type="hidden" id="data_value" name="data_value" value="">
+
                 <div class="input-box">
-                    <input type="hidden" id="boss_identity" name="boss_identity" value="">
-                    <input type="hidden" id="store_id" name="store_id" value="">
-                    <input type="hidden" id="data_type" name="data_type" value="menu1">
                     <div class="topinput" style="font-size: 15px;">
                         <img src="../images/edit.png" />
                         <font color="#bf6900" size="5">餐點類型：</font>
                         <input name="type_name" id="type_name" placeholder="請輸入您欲新增的餐點類型">
-                        <button class="checkbutton" value="儲存" onclick="saveData();">新增</button>
+                        <label id="btnSave" name="btnSave" class="checkbutton" value="新增" onclick="saveData();">新增</label>
                     </div>
                 </div><br>
 
@@ -105,17 +114,31 @@ $datas_len = count($datas); //目前資料筆數
                                 <th><font size="5">編輯</th>
                             </tr>
                             <tbody>
-                            <?php
+<?php
                             for ($i = 0; $i < $datas_len; $i++) {
-                                echo "<tr>";
-                                echo "<td align='center'>
-                                <a href='type_del.php?type_name=".$datas[$i]['type_name']."'><img src=../images/trash1.png></img></a></td>";
-                                echo "<td style='font-size: 25px;' align='center'> ". $datas[$i]['type_name'] . "</td>";
-                                echo "<td align='center'>
-                                <a href='type_edit.php?boss_identity=$identity&store_id=$store_id&type_name=".$datas[$i]['type_name']."'><img src=../images/signature.png></img></a></td>";
-                                echo "</br>";
+                                $type_name = $datas[$i]['type_name'];
+                                echo "
+                            <tr>
+                                <td align='center'>
+                                <img src=../images/trash1.png onclick='deleteData(\"$type_name\");'></img>
+                                <!--
+                                <button id=\"btnSave\" name=\"btnSave\" class=\"checkbutton\" onclick='deleteData(\"$type_name\");'>刪</button>
+                                <a href='type_del.php?boss_identity=$identity&store_id=$store_id&type_name=$type_name'>
+                                        <img src=../images/trash1.png></img>
+                                    </a>
+                                -->
+                                </td>
+                                <td style='font-size: 25px;' align='center'>
+                                    $type_name
+                                </td>
+                                <td align='center'>
+                                    <a href='type_edit.php?boss_identity=$identity&store_id=$store_id&type_name=$type_name'>
+                                        <img src=../images/signature.png></img>
+                                    </a>
+                                </td>
+                            </tr>";
                             }
-                            ?>
+?>
 
                             </tbody>  
                     </table>
@@ -125,48 +148,67 @@ $datas_len = count($datas); //目前資料筆數
         </div>
     </div>
 </body>
+
 <script>
+    function doSubmit() {
+        var dataString = $("form#main").serialize();
+        // alert('submiting: ' + dataString);
+        $.ajax({
+            //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+            type: "POST",
+            //指定要連接的PHP位址
+            url: "../bin/menu1.php",
+            //要傳送的資料內容
+            data: dataString,
+            //獲得正確回應時，要做的事情
+            success: function (response) {
+                // alert(response);
+                var json = $.parseJSON(response);
+                var msgIcon = 'success';
+                if (json.result != 'OK') msgIcon = 'error';
+                Swal.fire(
+                    '餐點', //標題
+                    json.message, //訊息容
+                    msgIcon // 圖示 (success/info/warning/error/question)
+                ).then((result) => {
+                    location.reload();
+                });
+            },
+            //獲得不正確的回應時，要做的事情
+            error: function (response) {
+                alert ('錯誤');
+            },
+        });
+    }
+
     //儲存餐點資料、圖檔
     function saveData() {
-        //把老闆身份證號、店代號，塞進隱藏欄位，一起送到後端
-        var urlParams = new URLSearchParams(window.location.search);
-        var bossIdentity = urlParams.get('boss_identity');
-        var storeId = urlParams.get('store_id');
-        document.getElementById("boss_identity").value = bossIdentity;
-        document.getElementById("store_id").value = storeId;
+        document.getElementById("data_type").value = "menu1";
 
-        //透過 jQuery + ajax 進行 post 的動作
-        $("form#main").submit(function(e) {
-            e.preventDefault();    
-            var formData = new FormData(this);
-            $.ajax({
-                url: "../bin/menu1.php",
-                type: 'POST',
-                data: formData,
-                success: function (response) {
-                    var json = $.parseJSON(response);
-                    if (json.result == 'OK') {
-                        //alert(json.message);
-                        Swal.fire(
-                            '餐點類型', //標題
-                            '您所輸入的餐點類型已儲存完畢', //訊息容
-                            'success' // 圖示 (success/info/warning/error/question)
-                        );
-                        //成功後，讓畫面重新呼叫一次
-                        document.getElementById("main").reset();
-                    } else {
-                        Swal.fire(
-                            '餐點類型', //標題
-                            json.message, //訊息容
-                            'error' // 圖示 (success/info/warning/error/question)
-                        );
-                    }
-                },
-                cache: false,
-                contentType: false,
-                processData: false
-            });        
+        doSubmit();
+    }
+
+    function deleteData(typeName) {
+        document.getElementById("data_type").value = "menu1_delete";
+        document.getElementById("data_value").value = typeName;
+
+        // alert(typeName);
+
+        Swal.fire({
+            title: "餐點類型",
+            text: "確定要刪除 " + typeName +" 嗎？",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "是",
+            cancelButtonText: "取消",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                doSubmit();
+            }
         });
+
     }
 
     function goAllmenu() {
@@ -211,5 +253,13 @@ $datas_len = count($datas); //目前資料筆數
         var boss_name = urlParams.get('boss_name');
         location.href="type_edit.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
+    function goNM3() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="nm3.php?boss_identity=" + boss_identity + "&store_id=" + store_id+ "&boss_name=" + boss_name;
+    }
 </script>
+
 </html>
