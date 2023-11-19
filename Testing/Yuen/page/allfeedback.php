@@ -1,3 +1,33 @@
+<?php
+    include "../bin/conn.php";
+    
+    if (isset($_GET["boss_identity"]))
+        $identity = $_GET["boss_identity"];
+    if (isset($_GET['store_id']))
+        $store_id = $_GET["store_id"];
+    if (isset($_GET["boss_name"]))
+        $boss_name = $_GET["boss_name"];
+
+    if (isset($_POST["boss_identity"]))
+        $identity = $_POST["boss_identity"];
+    if (isset($_POST['store_id']))
+        $store_id = $_POST["store_id"];
+    if (isset($_POST["boss_name"]))
+        $boss_name = $_POST["boss_name"];
+
+    $ord = "ASC";
+    if (isset($_POST['ord']) && $_POST["ord"] == 'high')
+        $ord = "DESC";
+
+    $date_s = '';
+    if (isset($_POST['date_s']) && $_POST['date_s'] != '')
+        $date_s = $_POST['date_s'];
+    $date_e = '';
+    if (isset($_POST['date_e']) && $_POST['date_e'] != '')
+        $date_e = $_POST['date_e'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,21 +42,32 @@
 </head>
 <?php
 
-include "../bin/conn.php";
-$查詢1 = $_POST["查詢日期1"];
-$查詢2 = $_POST["查詢日期2"];
 
 // 設置一個空陣列來放資料
 $datas = array();
 
-$sql = "SELECT date(b.start_time) as date, c.meal_name, a.score, a.evaluate
-FROM store_order_item as a
-left join store_order as b
-on a.boss_identity = b.boss_identity and a.store_id = b.store_id and a.order_no = b.order_no
-left join store_food as c
-on a.meal_id = c.meal_id
+$dateS = "";
+if (isset($_POST['date_s']) && $_POST['date_s'] != '')
+    $dateS = " and date(b.start_time) >= '" . $_POST["date_s"] . "' ";
+$dateE = "";
+if (isset($_POST['date_e']) && $_POST['date_e'] != '')
+    $dateE = " and date(b.start_time) <= '" . $_POST["date_e"] . "' ";
 
-";
+$sql = "SELECT date(b.start_time) as date, c.meal_name, a.score, a.evaluate
+        FROM store_order_item as a
+        left join store_order as b
+            on a.boss_identity = b.boss_identity and a.store_id = b.store_id and a.order_no = b.order_no
+        left join store_food as c
+            on a.meal_id = c.meal_id
+        where a.boss_identity = '$identity' 
+        and a.store_id = '$store_id' 
+        and b.boss_identity = '$identity' 
+        and b.store_id = '$store_id'
+        $dateS
+        $dateE
+        order by a.score $ord
+    ";
+//  echo $sql;
 
 $result = mysqli_query($con, $sql);
 
@@ -64,7 +105,7 @@ $datas_len = count($datas); //目前資料筆數
 
 ?>
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="goBack();">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
             <span style="font-size: 15px;">返回</span>
@@ -79,18 +120,49 @@ $datas_len = count($datas); //目前資料筆數
                 </ul>
             </nav>
             <div class="insidebox">
-                <form action="search_allfeedback.php" method="POST">
+                <form id="main" method="POST" action="allfeedback.php" >
+                    <input type="hidden" id="boss_identity" name="boss_identity" value="<?php echo $identity; ?>" />
+                    <input type="hidden" id="store_id" name="store_id" value="<?php echo $store_id; ?>" />
+                    <input type="hidden" id="boss_name" name="boss_name" value="<?php echo $boss_name; ?>" />
+
                     <div class="input-box">
                         <span class="details" style="font-size: 19px;">評價日期：</span>
-                        <input type="date" name="查詢日期1" style="font-size: 15px;"> ~
-                        <input type="date" name="查詢日期2" style="font-size: 15px;">
-                        <button class="searchbutton" type="search"
-                            style="font-size: 17px; width: 68px; height: 34px; background-color: #8cb87c; border-radius: 20px; border: 3px solid #8cb87c;">查詢</button>
-                    </div><br>
+<?php 
+    if ($date_s != '') 
+        echo "
+                        <input type=\"date\" name=\"date_s\" style=\"font-size: 15px;\" value=\"$date_s\">";
+    else echo "
+                        <input type=\"date\" name=\"date_s\" style=\"font-size: 15px;\">";
+?>                        
+                        <!-- <input type="date" name="date_s" style="font-size: 15px;"> -->
+                        ~
+<?php 
+    if ($date_e != '') 
+        echo "
+                        <input type=\"date\" name=\"date_e\" style=\"font-size: 15px;\" value=\"$date_e\">";
+    else echo "
+                        <input type=\"date\" name=\"date_e\" style=\"font-size: 15px;\">";
+?>                        
+                        <!-- <input type="date" name="date_e" style="font-size: 15px;"> -->
+                        <button class="searchbutton" type="submit"
+                            style="font-size: 17px; width: 68px; height: 34px; background-color: #8cb87c; border-radius: 20px; border: 3px solid #8cb87c;"> 
+                            查詢
+                        </button>
+                    </div>
+                    <br>
                     <div>
-                        <input type="radio" name="high" value="high"
-                            style="font-size: 15px;">由高到低&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="low" value="low" style="font-size: 15px;">由低到高
+<?php 
+    if ($ord == 'asc') 
+        echo "
+                        <input type=\"radio\" name=\"ord\" value=\"high\" style=\"font-size: 15px;\" checked=\"checked\">由高到低&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input type=\"radio\" name=\"ord\" value=\"low\" style=\"font-size: 15px;\" checked=checked >由低到高
+            ";
+    else
+        echo "
+                        <input type=\"radio\" name=\"ord\" value=\"high\" style=\"font-size: 15px;\">由高到低&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input type=\"radio\" name=\"ord\" value=\"low\" style=\"font-size: 15px;\" checked=\"checked\" >由低到高
+            ";
+?>
                     </div><br>
 
                     <div class="ininsidebox" style="width:700px;height:330px; overflow:auto;">
@@ -99,28 +171,38 @@ $datas_len = count($datas); //目前資料筆數
                             <tr>
                                 <th>日期 / 時間</th>
                                 <th>餐點</th>
-                                <th>平均星星數</th>
+                                <th>星星數</th>
                                 <th>文字評價</th>
                             </tr>
                             <tbody>
                                 <?php
                                 for ($i = 0; $i < $datas_len; $i++) {
                                     echo "<tr>";
-                                    echo "<td style='font-size: 25px;' align='center'>". $datas[$i]['date'] . "</span>";
-                                    echo "<td style='font-size: 25px;' align='center'>". $datas[$i]['meal_name'] . "</span>";
-                                    echo "<td style='font-size: 25px;' align='center'>". $datas[$i]['score'] . "</span>";
-                                    echo "<td style='font-size: 25px;' align='center'>". $datas[$i]['evaluate'] . "</span>";
+                                    echo "<td style='font-size: 20px;' align='center'>". $datas[$i]['date'] . "</span>";
+                                    echo "<td style='font-size: 20px;' align='center'>". $datas[$i]['meal_name'] . "</span>";
+                                    echo "<td style='font-size: 20px;' align='center'>". $datas[$i]['score'] . "</span>";
+                                    echo "<td style='font-size: 20px;' align='center'>". $datas[$i]['evaluate'] . "</span>";
                                     echo "</br>";
                                 }
                                 ?>
-    
                                 </tbody>  
-                        </table>
+                            </table>
 
                     </div>
                 </form>
             </div>
         </div>
 </body>
+
+<script>
+
+    function goBack() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = '<?php echo $identity; ?>'; 
+        var store_id = '<?php echo $store_id; ?>';
+        var boss_name = '<?php echo $boss_name; ?>';
+        location.href="boss_management.html?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
+    }
+</script>
 
 </html>
