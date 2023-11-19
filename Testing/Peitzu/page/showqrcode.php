@@ -37,12 +37,10 @@
             ) values (
                 '$identity', '$store_id', '$order_no', '$desk', $persons, $emp, now()
             )";
-    echo $sql;
     mysqli_query($con, $sql);
 
     $sql = "update store_table set is_open = 'Y'
     where boss_identity = '$identity' and store_id = '$store_id' and table_number = $desk";
-    echo $sql;
     mysqli_query($con, $sql);
 
 ?>
