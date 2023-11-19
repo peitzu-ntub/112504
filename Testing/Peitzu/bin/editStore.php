@@ -25,15 +25,6 @@
             echo json_encode($data);
             return;
         }
-
-        //註冊店家資料
-        //$sql = 
-        //    "INSERT INTO store_info (
-        //        boss_identity, store_id, store_name, store_tel, store_address, table_count
-        //    ) VALUES (
-        //        '$bossid', '$storeid', '$name', '$tel', '$address', '$table'
-        //    )";
-
         $sql = 
             "INSERT INTO store_info (
                 boss_identity, store_id, store_name, store_tel, store_address, table_count
