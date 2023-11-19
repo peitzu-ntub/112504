@@ -5,6 +5,9 @@
     <title>老闆管理頁面</title>
     <link href="../js/boss_management.css" rel="stylesheet">
     <script src="../js/jquery-3.6.4.min.js"></script>
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="EXPIRES" CONTENT="0">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 </head>
 <body>
     <div class="logout" type="button" name="按鈕名稱" onclick="goBack();">
@@ -31,7 +34,7 @@
                         <button class="dropbtn">店鋪管理</button>
                         <div class="dropdown-content">
                             <a onclick="goAllmenu();">菜單編輯</a>
-                            <a onclick="location.href='../page/store_info_edit.php'">店家資訊編輯</a>
+                            <a onclick="goStoreEdit()">店家資訊編輯</a>
                             <a onclick="goChangePsw();">更改密碼</a>
                         </div>
                     </div>
@@ -52,13 +55,15 @@
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');
         var store_id = urlParams.get('store_id');
-        location.href="employee.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+        var boss_name = urlParams.get('boss_name');
+        location.href="employee.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
     function goAllmenu() {
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');
         var store_id = urlParams.get('store_id');
-        location.href="allmenu.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+        var boss_name = urlParams.get('boss_name');
+        location.href="allmenu.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
     function goChangePsw() {
         var urlParams = new URLSearchParams(window.location.search);
@@ -70,7 +75,15 @@
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');
         var store_id = urlParams.get('store_id');
-        location.href="allfeedback.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+        var boss_name = urlParams.get('boss_name');
+        location.href="allfeedback.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
+    }
+    function goStoreEdit() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="store_info_edit.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
 
 </script>
