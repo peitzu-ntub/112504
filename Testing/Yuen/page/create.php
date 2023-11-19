@@ -7,8 +7,11 @@
 
     $staff_id=$_GET['staff_id'];
 
-    $sql ="select count(staff_id)+1 staff_id FROM store_staff where boss_identity = '$identity' and store_id = '$store_id'"; // sql語法存在變數中
+    $sql ="select count(staff_id)+1 staff_id FROM store_staff "; // sql語法存在變數中
     $result = mysqli_query($con,$sql);
+    //下一個員工編號
+    $row_result = mysqli_fetch_assoc($result);
+    $emp_staff_id = $row_result['staff_id'];
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +32,7 @@
 </head>
 
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='employee.php'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="goBack()">
 		<div align="left">
 			<img src="../images/back.png" alt="返回icon" />
 			<span style="font-size: 11px;">返回</span>
@@ -51,7 +54,7 @@
                         <div class="input-box">
                             <span class="details">員工編號：</span>
                             <input type="text" class="form-control" value="<?php while($row_result = mysqli_fetch_assoc($result)) {
-    echo $row_result['staff_id'];};?>" name="staff_id" disabled><br>                        </div>
+    echo $row_result['staff_id'];};?>" name="staff_id" id="staff_id" disabled><br>                        </div>
 
                         <div class="input-box">
                             <span class="details">密碼：</span>
@@ -173,39 +176,38 @@
         document.getElementById("boss_identity").value = bossIdentity;
         document.getElementById("store_id").value = storeId;
 
-        //透過 jQuery + ajax 進行 post 的動作
-        $("form#main").submit(function(e) {
-            e.preventDefault();    
-            var formData = new FormData(this);
-            $.ajax({
-                url: "../bin/staff_in.php",
-                type: 'POST',
-                data: formData,
-                success: function (response) {
-                    var json = $.parseJSON(response);
-                    if (json.result == 'OK') {
-                        //alert(json.message);
-                        Swal.fire(
-                            '員工', //標題
-                            '您所輸入的新員工資料已儲存', //訊息容
-                            'success' // 圖示 (success/info/warning/error/question)
-                        );
-                        //成功後，清除畫面上所輸入的資料內容
-                        document.getElementById("main").reset();
-                    } else {
-                        Swal.fire(
-                            '員工', //標題
-                            json.message, //訊息容
-                            'error' // 圖示 (success/info/warning/error/question)
-                        );
-                    }
-                },
-                cache: false,
-                contentType: false,
-                processData: false
-            });        
+        var dataString = $("form#main").serialize();
+
+        // alert(dataString);
+
+        $.ajax({
+            //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+            type: "POST",
+            //指定要連接的PHP位址
+            url: "../bin/staff_in.php",
+            //要傳送的資料內容
+            data: dataString,
+            //獲得正確回應時，要做的事情
+            success: function (response) {
+                // alert(response);
+                var json = $.parseJSON(response);
+                var msgIcon = 'success';
+                if (json.result != 'OK') msgIcon = 'error';
+
+                // document.getElementById("sqlText").value = json.message;
+
+                Swal.fire(
+                    '員工', //標題
+                    json.message, //訊息容
+                    msgIcon // 圖示 (success/info/warning/error/question)
+                );
+            },
+            //獲得不正確的回應時，要做的事情
+            error: function (response) {
+                alert ('錯誤');
+            },
         });
-    }
+
 
 
 
