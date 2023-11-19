@@ -1,21 +1,11 @@
-<?php
+﻿<?php
     session_start();
     include "../bin/conn.php";
 
-    //todo, 這是假的資料
-    //預設的資料來源，是從登入而來。登入、選擇店家後，就會把以下這兩個資訊，放進SESSION裡，保留在Server端
-    //讓同一個人的接續連線，可以直接拿來用
-    if (!isset($_SESSION["identity"])) {
-        $_SESSION["identity"] = "A231368272";
-    }
-    if (!isset($_SESSION["store_id"])) {
-        $_SESSION["store_id"] = "P35";
-    }
+    $boss = $_GET["boss_identity"];
+    $store = $_GET["store_id"];
 
-    //PHP是在後端(Server)運作的程式，Html與JavaScript則是在前端(Client)運作的程式
-    //在Server端，透過PHP將身份證與店代號，保留於隱藏欄位中，以傳到前端，做後續的應用
-    $boss = $_SESSION["identity"];
-    $store = $_SESSION["store_id"];
+    $data = array();
 
     //儲存
     if (isset($_POST["identity"])) {
@@ -51,12 +41,18 @@
             //執行
             mysqli_query($con, $sql);                            
         }
+
+        $data['result'] = 'OK';
+        $data['message'] = '店舖資訊已更新';        
+        echo json_encode($data);
+        return;
+        exit;
     }
 
     //打網址
-    if (isset($_GET["identity"])) {
+    if (isset($_GET["boss_identity"])) {
         //Step(1)透過queryString取得老闆身份證號($boss)以及店代號($store)
-        $boss = $_GET["identity"];
+        $boss = $_GET["boss_identity"];
         $store = $_GET["store_id"];    
         //Step(2)查出這個店舖的基本資料，以顯示在畫面上，供老闆修改
         //查詢語法
@@ -86,19 +82,25 @@
 
     <link href="../js/store_inf_edit.css" rel="stylesheet">
 
+    <script src="../js/jquery-3.6.4.min.js"></script>
+
+    <!--取代alert的工具-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- 若需相容 IE11，要加載 Promise Polyfill-->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>    
 </head>
 
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="goBack();">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
-            <span style="font-size: 10px;">返回</span>
+            <span style="font-size: 15px;">返回</span>
         </div>
     </div>
     <div class="container-wrapper">
-        <form action="store_info_edit.php" method="POST">
+        <form id="main">
             <div class="container1">
-                <font color="#e8a95b" size="6" style="align-items: center;">店鋪資料更改</font>
+                <font color="#000" size="15" style="align-items: center;">店鋪資料更改</font>
                 <div class="insidebox">
                     <div class="ininsidebox">
                         <div class="input-box">
@@ -187,11 +189,50 @@ echo "
                                 <input type="number" min="0" name="meal_price" id="meal_price" placeholder="請輸入正確價格" required>
 -->                                                                
                             </div>
-                        <input class="submit" type="submit" value="儲存" style="font-size: 5px;"></input>
-                    </div>
+                       </div>
                 </div>
+                <label class="submit" type="submit" style="font-size: 15px;" onclick="doSave();">儲存</label>
             </div>
         </form>
     </div>
 </body>
+
+<script>
+    function doSave() {
+        var dataString = $("form#main").serialize();
+        // alert('submiting: ' + dataString);
+        $.ajax({
+            //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+            type: "POST",
+            //指定要連接的PHP位址
+            url: "store_info_edit.php",
+            //要傳送的資料內容
+            data: dataString,
+            //獲得正確回應時，要做的事情
+            success: function (response) {
+                // alert(response);
+                var json = $.parseJSON(response);
+                var msgIcon = 'success';
+                if (json.result != 'OK') msgIcon = 'error';
+                Swal.fire(
+                    '店家資訊', //標題
+                    json.message, //訊息容
+                    msgIcon // 圖示 (success/info/warning/error/question)
+                );
+            },
+            //獲得不正確的回應時，要做的事情
+            error: function (response) {
+                alert ('錯誤');
+            },
+        });
+    }
+
+    function goBack() {
+        var urlParams = new URLSearchParams(window.location.search);        
+        var boss_identity = urlParams.get('boss_identity');
+        var boss_name = urlParams.get('boss_name');
+        var store_id = urlParams.get('store_id');
+        location.href="boss_management.html?boss_identity=" + boss_identity + "&boss_name=" + boss_name + "&store_id=" + store_id;;
+    }
+</script>
 </html>
