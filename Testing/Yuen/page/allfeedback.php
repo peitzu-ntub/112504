@@ -135,7 +135,7 @@ $datas_len = count($datas); //目前資料筆數
                         <input type=\"date\" name=\"date_s\" style=\"font-size: 15px;\">";
 ?>                        
                         <!-- <input type="date" name="date_s" style="font-size: 15px;"> -->
-                        ~
+                       
 <?php 
     if ($date_e != '') 
         echo "
@@ -149,8 +149,31 @@ $datas_len = count($datas); //目前資料筆數
                             查詢
                         </button>
                     </div>
-                    <br>
+         
                     <div>
+                    <?php
+
+                    echo "<font size='4';>來客數：";
+                    $sql = "SELECT sum(customer_count) customer_count FROM store_order_item as a
+                    left join store_order as b
+                        on a.boss_identity = b.boss_identity and a.store_id = b.store_id and a.order_no = b.order_no
+                    left join store_food as c
+                        on a.meal_id = c.meal_id
+                    where a.boss_identity = '$identity' 
+                    and a.store_id = '$store_id' 
+                    and b.boss_identity = '$identity' 
+                    and b.store_id = '$store_id'
+                    $dateS
+                    $dateE
+                    ;
+                    ";
+
+                    $result = mysqli_query($con, $sql); 
+
+                    while($row_result = mysqli_fetch_assoc($result)) {
+                        echo $row_result['customer_count'];}
+                    ?>
+<br>
 <?php 
     if ($ord == 'asc') 
         echo "

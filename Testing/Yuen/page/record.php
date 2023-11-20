@@ -91,7 +91,7 @@ $datas_len = count($datas); //目前資料筆數
     <div class="logout" type="button" name="按鈕名稱" onclick="goBack()">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
-            <span style="font-size: 10px;">返回</span>
+            <span style="font-size: 15px;">返回</span>
         </div>
     </div>
     <div class="container-wrapper">
@@ -138,7 +138,7 @@ $datas_len = count($datas); //目前資料筆數
                                 echo "<td>". $datas[$i]['date'] . "</span>";
                                 echo "<td>". $datas[$i]['table_number'] . "</span>";
                                 echo "<td>". $datas[$i]['start_time'] . "</span>";
-                                echo "<td>". $datas[$i]['start_time'] . "</span>";
+                                echo "<td>". $datas[$i]['customer_count'] . "</span>";
                                 echo "<td>". $datas[$i]['end_time'] . "</span>";
                                 echo "<td>". $datas[$i]['meal_name'] . "</span>";
                                 echo "</br>";
