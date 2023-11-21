@@ -15,7 +15,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>員工資料</title>
-
+<!--取代alert的工具-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- 若需相容 IE11，要加載 Promise Polyfill-->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>    
 	<link href="../js/employee.css" rel="stylesheet">
 </head>
 <?php
@@ -68,7 +71,20 @@ $datas_len = count($datas); //目前資料筆數
 		</div>
 	</div>
 	<div class="container-wrapper">
-        <form action="search.php" method="POST">
+        <form id="main">
+        <input type="hidden" id="boss_identity" name="boss_identity" 
+<?php      
+                //把老闆身份證號、店代號，放進隱藏欄位。供POST時使用
+                echo "value=\"$identity\">";
+?>                
+                <input type="hidden" id="store_id" name="store_id" 
+<?php                
+                //把老闆身份證號、店代號，放進隱藏欄位。供POST時使用
+                echo "value=\"$store_id\">";
+?>                
+                <input type="hidden" id="data_type" name="data_type" value="staff_in">
+
+                <input type="hidden" id="data_value" name="data_value" value="">
 			<div class="container1">
 				<div align="center">
 					<font size="19">員工資料管理</font>
@@ -96,18 +112,33 @@ $datas_len = count($datas); //目前資料筆數
                             <tbody>
                             <?php
                             for ($i = 0; $i < $datas_len; $i++) {
-                                echo "<tr>";
-                                echo "<td align='center'>		
-                                <a href='staff_del.php?staff_id=".$datas[$i]['staff_id']."'><img src=../images/trash1.png></img></a></td>";
-                                echo "<td style='font-size: 25px;' align='center'>"; 
-                                echo "<span style='font-size: 25px;' align='center' > " .  $datas[$i]['staff_id']. "</span>";
-                                
-                                echo "<td style='font-size: 25px;' align='center'>" ;
-                                echo "<span style='font-size: 25px;' text-align='center'> " . $datas[$i]['staff_name'] .  "</span>";
-            
-                                echo "<td align='center'>
-                                <a href='staff_edit.php?staff_id=".$datas[$i]['staff_id']."'><img src=../images/signature.png></img></a></td>";
-                            } 
+                                $staff_name = $datas[$i]['staff_name'];
+                                $staff_id = $datas[$i]['staff_id'];
+                                echo "
+                            <tr>
+                                <td align='center'>
+                                <img src=../images/trash1.png onclick='deleteData(\"$staff_id\");'></img>
+                                <!--
+                                <button id=\"btnSave\" name=\"btnSave\" class=\"checkbutton\" onclick='deleteData(\"$staff_name\");'>刪</button>
+                                <a href='type_del.php?boss_identity=$identity&store_id=$store_id&staff_name=$staff_name'>
+                                        <img src=../images/trash1.png></img>
+                                    </a>
+                                -->
+                                </td>
+                                <td style='font-size: 25px;' align='center'>
+                                    $staff_id
+                                </td>
+                                </td>
+                                <td style='font-size: 25px;' align='center'>
+                                    $staff_name
+                                </td>
+                                <td align='center'>
+                                    <a href='staff_edit.php?boss_identity=$identity&store_id=$store_id&staff_name=$staff_name'>
+                                        <img src=../images/signature.png></img>
+                                    </a>
+                                </td>
+                            </tr>";
+                            }
                             ?>
 
                         </tbody>						</table>
@@ -125,11 +156,65 @@ $datas_len = count($datas); //目前資料筆數
 	
 </body>
 <script>
+        function doSubmit() {
+        var dataString = $("form#main").serialize();
+        // alert('submiting: ' + dataString);
+        $.ajax({
+            //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+            type: "POST",
+            //指定要連接的PHP位址
+            url: "../bin/staff_in.php",
+            //要傳送的資料內容
+            data: dataString,
+            //獲得正確回應時，要做的事情
+            success: function (response) {
+                // alert(response);
+                var json = $.parseJSON(response);
+                var msgIcon = 'success';
+                if (json.result != 'OK') msgIcon = 'error';
+                Swal.fire(
+                    '餐點', //標題
+                    json.message, //訊息容
+                    msgIcon // 圖示 (success/info/warning/error/question)
+                ).then((result) => {
+                    location.reload();
+                });
+            },
+            //獲得不正確的回應時，要做的事情
+            error: function (response) {
+                alert ('錯誤');
+            },
+        });
+    }
+
+    function deleteData(staffName) {
+        document.getElementById("data_type").value = "staff_delete";
+        document.getElementById("data_value").value = staffName;
+
+        // alert(typeName);
+
+        Swal.fire({
+            title: "餐點類型",
+            text: "確定要刪除 " + staffName +" 嗎？",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "是",
+            cancelButtonText: "取消",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                doSubmit();
+            }
+        });
+
+    }
     function goBack() {
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');
         var boss_name = urlParams.get('boss_name');
-        location.href="boss_management.html?boss_identity=" + boss_identity + "&boss_name=" + boss_name;
+        var store_id = urlParams.get('store_id');
+        location.href="boss_management.html?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
     function goCreate() {
         var urlParams = new URLSearchParams(window.location.search);
