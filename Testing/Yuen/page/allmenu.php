@@ -100,9 +100,6 @@ $datas_len = count($datas); //目前資料筆數
                 <input type="hidden" id="data_value" name="data_value" value="">  
                 
                 <div class="input-box">
-                <input type="hidden" id="boss_identity" name="boss_identity" value="">
-                    <input type="hidden" id="store_id" name="store_id" value="">
-                    <input type="hidden" id="data_type" name="data_type" value="delete_menu">
                     <img src="../images/loupe.png" />
                     <font color="#bf6900" size="5">餐點類型：</font>
                     <select name="查詢" id="查詢">
@@ -136,6 +133,7 @@ $datas_len = count($datas); //目前資料筆數
                                 $type_name = $datas[$i]['type_name'];
                                 $meal_price = $datas[$i]['meal_price'];
                                 $meal_note = $datas[$i]['meal_note'];
+                                $meal_pic = $datas[$i]['meal_pic'];
                                 echo "
                             <tr>
                                 <td align='center'>

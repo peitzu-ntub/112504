@@ -17,8 +17,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>員工資料</title>
-<!--取代alert的工具-->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!--取代alert的工具-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!-- 若需相容 IE11，要加載 Promise Polyfill-->
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>    
 	<link href="../js/employee.css" rel="stylesheet">
