@@ -4,6 +4,8 @@
 
     $identity = $_GET["boss_identity"];
     $store_id = $_GET["store_id"];
+    $boss_name= $_GET["boss_name"];
+
 ?>
 
 <!DOCTYPE html>
@@ -21,13 +23,15 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!-- 若需相容 IE11，要加載 Promise Polyfill-->
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>    
+    <script src="../js/jquery-3.6.4.min.js"></script>
+
 </head>
 <?php
 
 // 設置一個空陣列來放資料
 $datas = array();
 
-$sql = "SELECT meal_name FROM store_food where boss_identity = '$identity' and store_id = '$store_id'";
+$sql = "SELECT * FROM store_food where boss_identity = '$identity' and store_id = '$store_id'";
 
 $result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
 
@@ -92,8 +96,9 @@ $datas_len = count($datas); //目前資料筆數
                 //把老闆身份證號、店代號，放進隱藏欄位。供POST時使用
                 echo "value=\"$store_id\">";
 ?>        
-<input type="hidden" id="data_type" name="data_type" value="newfood">
+                <input type="hidden" id="data_type" name="data_type" value="newfood">
                 <input type="hidden" id="data_value" name="data_value" value="">  
+                
                 <div class="input-box">
                 <input type="hidden" id="boss_identity" name="boss_identity" value="">
                     <input type="hidden" id="store_id" name="store_id" value="">
@@ -126,7 +131,11 @@ $datas_len = count($datas); //目前資料筆數
                         <tbody>
                         <?php
                             for ($i = 0; $i < $datas_len; $i++) {
+                                $meal_id = $datas[$i]['meal_id'];
                                 $meal_name = $datas[$i]['meal_name'];
+                                $type_name = $datas[$i]['type_name'];
+                                $meal_price = $datas[$i]['meal_price'];
+                                $meal_note = $datas[$i]['meal_note'];
                                 echo "
                             <tr>
                                 <td align='center'>
@@ -142,7 +151,7 @@ $datas_len = count($datas); //目前資料筆數
                                     $meal_name
                                 </td>
                                 <td align='center'>
-                                    <a href='type_edit.php?boss_identity=$identity&store_id=$store_id&type_name=$meal_name'>
+                                    <a href='menu_edit.php?boss_identity=$identity&store_id=$store_id&meal_id=$meal_id&boss_name=$boss_name'>
                                         <img src=../images/signature.png></img>
                                     </a>
                                 </td>
@@ -224,8 +233,9 @@ $datas_len = count($datas); //目前資料筆數
     function goBack() {
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
         var boss_name = urlParams.get('boss_name');
-        location.href="boss_management.html?boss_identity=" + boss_identity + "&boss_name=" + boss_name;
+        location.href="boss_management.html?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
     function goAllmenu() {
         var urlParams = new URLSearchParams(window.location.search);

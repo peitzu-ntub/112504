@@ -81,7 +81,7 @@ if (isset($_POST["boss_identity"])) {
         $due_date = '';
         $staff_psw = '';
 
-        //Step(2)查出這個店舖的基本資料，以顯示在畫面上，供老闆修改
+        //Step(2)查出這個員工的基本資料，以顯示在畫面上，供老闆修改
         //查詢語法
         $sql ="select * FROM store_staff 
                 WHERE boss_identity = '$boss_identity' 
@@ -89,7 +89,7 @@ if (isset($_POST["boss_identity"])) {
                 and staff_id = '$staff_id'"; // sql語法存在變數中
         //取得查詢結果
         $result = mysqli_query($con, $sql);
-        //個別取得欄位值，包含store_name, store_tel, store_address, table_count
+        //個別取得欄位值
         if (isset($result)) {
             $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
             $staff_name = $data['staff_name'];
