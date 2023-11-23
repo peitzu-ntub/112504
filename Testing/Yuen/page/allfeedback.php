@@ -116,7 +116,7 @@ $datas_len = count($datas); //目前資料筆數
             <nav>
                 <ul>
                     <li><a >全品項評價查詢</a></li>
-                    <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/onefeedback.php">單一品項評價查詢</a></li>
+                    <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goOne();">單一品項評價查詢</a></li>
                 </ul>
             </nav>
             <div class="insidebox">
@@ -225,6 +225,13 @@ $datas_len = count($datas); //目前資料筆數
         var store_id = '<?php echo $store_id; ?>';
         var boss_name = '<?php echo $boss_name; ?>';
         location.href="boss_management.html?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
+    }
+    function goOne() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = '<?php echo $identity; ?>'; 
+        var store_id = '<?php echo $store_id; ?>';
+        var boss_name = '<?php echo $boss_name; ?>';
+        location.href="onefeedback.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
 </script>
 
