@@ -17,14 +17,14 @@ if (isset($_POST["boss_identity"])) {
     $store_id = $_POST["store_id"];
     $staff_id = $_POST['staff_id'];
     $staff_name = $_POST['staff_name'];
+    $staff_gender = $_POST['staff_gender'];
     $staff_birth = $_POST['staff_birth'];
-    $staff_gender = $data['staff_gender'];
     $staff_tel = $_POST['staff_tel'];
     $staff_address = $_POST['staff_address'];
-    $due_date = $data['due_date'];
     $em_name = $_POST['em_name'];
     $em_tel = $_POST['em_tel'];
     $relation = $_POST['relation'];
+    $due_date = $_POST['due_date'];
     $staff_psw = $_POST['staff_psw'];
 
     // Check for duplicate name
@@ -47,10 +47,10 @@ if (isset($_POST["boss_identity"])) {
 
     // No duplicate, proceed with the update
     $sql = "UPDATE store_staff SET 
-    staff_name = '$staff_name',staff_birth = '$staff_birth', 
+    staff_name = '$staff_name', staff_gender = '$staff_gender', staff_birth = '$staff_birth', 
     staff_tel = '$staff_tel',  staff_address = '$staff_address', 
     em_name = '$em_name', em_tel = '$em_tel', relation = '$relation', 
-    staff_psw = '$staff_psw' 
+    due_date = '$due_date',  staff_psw = '$staff_psw' 
     WHERE boss_identity = '$boss_identity' AND store_id = '$store_id' AND staff_id = '$staff_id'";
     //執行
     mysqli_query($con, $sql);
@@ -70,8 +70,8 @@ if (isset($_POST["boss_identity"])) {
         $store_id = $_GET["store_id"];
         $staff_id = $_GET['staff_id'];
         $staff_name = '';
-        $staff_birth = '';
         $staff_gender = '';
+        $staff_birth = '';
         $staff_tel = '';
         $staff_address = '';
         $due_date = '';
@@ -93,14 +93,14 @@ if (isset($_POST["boss_identity"])) {
         if (isset($result)) {
             $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
             $staff_name = $data['staff_name'];
-            $staff_birth = $data['staff_birth'];
             $staff_gender = $data['staff_gender'];
+            $staff_birth = $data['staff_birth'];
             $staff_tel = $data['staff_tel'];
             $staff_address = $data['staff_address'];
-            $due_date = $data['due_date'];
             $em_name = $data['em_name'];
             $em_tel = $data['em_tel'];
             $relation = $data['relation'];
+            $due_date = $data['due_date'];
             $staff_psw = $data['staff_psw'];    
         }
     }
@@ -162,19 +162,20 @@ echo "
 
                         <div class="input-box">
                             <span class="details">密碼：</span>
-                            <?php                                
+                            <?php
 echo "
                             <input type='text' pattern='^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$' required='required' 
-                            oninput='setCustomValidity('');' oninvalid='setCustomValidity('請輸入正確的密碼格式：含英數至少六個字元');'
+                            oninput='setCustomValidity(\"\");' oninvalid='setCustomValidity(\"請輸入正確的密碼格式：含英數至少六個字元\");'
                             name='staff_psw' id='staff_psw' placeholder='格式：含英數至少六個字元' value='$staff_psw'>
 ";
-?> 
+?>
+
                         <br></div>
                         <div class="input-box">
                             <span class="details">姓名：</span>
                             <?php                                
 echo "
-                            <input type='text' oninput='value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')'
+                            <input type='text' oninput='value=this.value.replace(/[^\u4e00-\u9fa5]/g,\"\")'
                             placeholder=請輸入員工姓名 name='staff_name' id='staff_name' value='$staff_name' required>
 ";
 ?> 
@@ -182,20 +183,51 @@ echo "
 
                         <div class="input-box">
                             <span class="details">生日：</span>
-                            <?php                                
-echo "
-                            <input type='date' name='staff_birth' id='staff_birth' value='$staff_birth' disabled>
+                            <?php
+echo "         
+                    <input type='date' name='staff_birth' id='staff_birth' value='$staff_birth'>
 ";
-?> 
+?>
+                        <script>
+                            // 獲取日期選擇器
+                            var selectedDateInput = document.getElementById("staff_birth");
+
+                            // 獲取今天的日期
+                            var currentDate = new Date();
+
+                            // 把今天日期减去16年
+                            currentDate.setFullYear(currentDate.getFullYear() - 16);
+
+                            // 格式化為 yyyy-MM-dd，並設置為日期選擇器最小值
+                            var formattedMinDate = currentDate.toISOString().split('T')[0];
+                            selectedDateInput.setAttribute("max", formattedMinDate);
+                        </script>
+
+
+
                         <br></div>
 
                         <div class="input-box">
                             <span class="details">性別：</span>
-                            <?php                                
-echo "
-                            <input type='text' name='staff_gender' id='staff_gender' value='$staff_gender' disabled>
-";
-?> 
+                            <select name="staff_gender" id="staff_gender">
+                        <?php
+                        $sql = "
+                            SELECT staff_gender FROM store_staff 
+                            where boss_identity = '$boss_identity' and store_id = '$store_id' 
+                            ";
+
+                            echo "<option value='$staff_gender' $selected>$staff_gender</option>";
+           
+                            if ($staff_gender == '男') {
+                                echo "<option value='女'>女</option>";
+                            } else {
+                                echo "<option value='男'>男</option>";
+                            }
+                        
+                        
+                        ?> 
+                    </select>
+
                         <br></div>
 
                         <div class="input-box">
@@ -203,10 +235,11 @@ echo "
                             <?php                                
 echo "
                             <input type='text'  maxlength='11' pattern='09\d{2}-\d{6}' required='required' 
-                            oninput='setCustomValidity('');' oninvalid='setCustomValidity('請輸入正確的手機號瑪格式：09xx-xxxxxx');'
+                            oninput='setCustomValidity(\"\");' oninvalid='setCustomValidity(\"請輸入正確的手機號瑪格式：09xx-xxxxxx\");'
                             name='staff_tel' id='staff_tel' placeholder='09xx-xxxxxx' value='$staff_tel'>
 ";
-?> 
+?>
+
                         <br></div>
 
                         <div class="input-box">
@@ -224,20 +257,29 @@ echo "
                             <span class="details">到職日期：</span>
                             <?php                                
 echo "
-                            <input type='date' name='due_date' id='due_date' value='$due_date' disabled>
+                            <input type='date' name='due_date' id='due_date' value='$due_date'>
 ";
 ?> 
+                        <script>
+                            // 獲取今天的日期
+                            var today = new Date().toISOString().split('T')[0];
+
+                            // 設置最小日期為今天
+                            document.getElementById("due_date").max = today;
+                        </script>
+
                         <br></div>
 
                         
                         <div class="input-box">
                             <span class="details">緊急聯絡人：</span>
-                            <?php                                
+                            <?php
 echo "
-                            <input type='text' oninput='value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')'
+                            <input type='text' oninput='value=this.value.replace(/[^\u4e00-\u9fa5]/g,\"\")'
                             placeholder='請輸入員工的緊急聯絡人姓名' name='em_name' id='em_name' value='$em_name' required>
 ";
-?> 
+?>
+
                         <br></div>
 
                         <div class="input-box">
@@ -255,7 +297,7 @@ echo "
                             <span class="details">與緊急連絡人關係：</span>
                             <?php                                
 echo "
-                            <input type='text' oninput='value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')'
+                            <input type='text' oninput='value=this.value.replace(/[^\u4e00-\u9fa5]/g,\"\")'
                             placeholder='請輸入員工與緊急連絡人的關係' name='relation' id='relation' value='$relation' required>
 ";
 ?> 
