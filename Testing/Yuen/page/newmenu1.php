@@ -103,7 +103,7 @@ $datas_len = count($datas); //目前資料筆數
                     <div class="topinput" style="font-size: 15px;">
                         <img src="../images/edit.png" />
                         <font color="#bf6900" size="5">餐點類型：</font>
-                        <input name="type_name" id="type_name" placeholder="請輸入您欲新增的餐點類型" required>
+                        <input name="type_name" id="type_name" placeholder="請輸入您欲新增的餐點類型">
                         <label id="btnSave" name="btnSave" class="checkbutton" value="新增" onclick="saveData();">新增</label>
                     </div>
                 </div><br>
