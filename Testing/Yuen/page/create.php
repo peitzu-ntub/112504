@@ -8,10 +8,15 @@
     $staff_id=$_GET['staff_id'];
 
     $sql ="select count(staff_id)+1 staff_id FROM store_staff "; // sql語法存在變數中
+    //$sql ="select count(staff_id)+1 staff_id FROM store_staff where boss_identity = '$identity' and store_id = '$store_id'"; // sql語法存在變數中
+    //echo $sql;
+
     $result = mysqli_query($con,$sql);
     //下一個員工編號
     $row_result = mysqli_fetch_assoc($result);
     $emp_staff_id = $row_result['staff_id'];
+
+    //echo $emp_staff_id;
 ?>
 
 <!DOCTYPE html>
@@ -53,8 +58,7 @@
 
                         <div class="input-box">
                             <span class="details">員工編號：</span>
-                            <input type="text" class="form-control" value="<?php while($row_result = mysqli_fetch_assoc($result)) {
-    echo $row_result['staff_id'];};?>" name="staff_id" id="staff_id" disabled><br>                        </div>
+                            <input type="text" class="form-control" value="<?php echo $emp_staff_id ?>" name="staff_id" id="staff_id"><br>                        </div>
 
                         <div class="input-box">
                             <span class="details">密碼：</span>
@@ -158,7 +162,9 @@
             <div class="nextstep" type="next" name="按鈕名稱" onclick="location.href='employee.html'">
                 <span style="font-size: 15px;">下一步</span>
             </div> -->
-            <button class="submitbutton" onclick="saveData();" value="儲存" style="font-size: 16px;">儲存</button>
+            <label class="submitbutton" onclick="saveData();" style="font-size: 16px;">儲存</label>
+
+            <!-- <input id="sqlText"></input> -->
 
             <!-- <div class="checkbutton" type="check" name="按鈕名稱" onclick="location.href='employee.html'">
                 <span style="font-size: 14px;">查看全部員工資料</span>
@@ -208,6 +214,7 @@
             },
         });
 
+    }
 
 
 
