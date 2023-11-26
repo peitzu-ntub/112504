@@ -2,8 +2,23 @@
     session_start();
     include "../bin/conn.php";
 
-    $identity = $_GET["boss_identity"];
-    $store_id = $_GET["store_id"];
+    if (isset($_GET["boss_identity"]))
+        $identity = $_GET["boss_identity"];
+    if (isset($_GET['store_id']))
+        $store_id = $_GET["store_id"];
+    if (isset($_GET["boss_name"]))
+        $boss_name = $_GET["boss_name"];
+
+    if (isset($_POST["boss_identity"]))
+        $identity = $_POST["boss_identity"];
+    if (isset($_POST['store_id']))
+        $store_id = $_POST["store_id"];
+    if (isset($_POST["boss_name"]))
+        $boss_name = $_POST["boss_name"];
+
+
+    $selected = $_GET["selected_type"];
+
 ?>
 
 <!DOCTYPE html>
@@ -21,13 +36,24 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!-- 若需相容 IE11，要加載 Promise Polyfill-->
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>    
+    <script src="../js/jquery-3.6.4.min.js"></script>
+
 </head>
 <?php
 
 // 設置一個空陣列來放資料
 $datas = array();
 
-$sql = "SELECT meal_name FROM store_food where boss_identity = '$identity' and store_id = '$store_id'";
+$sql = "SELECT f.*, t.type_name
+FROM store_food f
+left join food_type t on t.boss_identity=f.boss_identity and t.store_id=f.store_id and t.type_id = f.type_id
+where f.boss_identity = '$identity' 
+and f.store_id = '$store_id' ";
+
+if (isset($selected)) {
+    $sql = $sql . " and f.type_id = '$selected' ";
+}
+
 
 $result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
 
@@ -92,28 +118,28 @@ $datas_len = count($datas); //目前資料筆數
                 //把老闆身份證號、店代號，放進隱藏欄位。供POST時使用
                 echo "value=\"$store_id\">";
 ?>        
-<input type="hidden" id="data_type" name="data_type" value="newfood">
+                <input type="hidden" id="boss_name" name="boss_name" value="<?php echo $boss_name; ?>" />
+
+                <input type="hidden" id="data_type" name="data_type" value="newfood">
                 <input type="hidden" id="data_value" name="data_value" value="">  
+                
                 <div class="input-box">
-                <input type="hidden" id="boss_identity" name="boss_identity" value="">
-                    <input type="hidden" id="store_id" name="store_id" value="">
-                    <input type="hidden" id="data_type" name="data_type" value="delete_menu">
                     <img src="../images/loupe.png" />
                     <font color="#bf6900" size="5">餐點類型：</font>
-                    <select name="查詢" id="查詢">
+                    <select name="selected_type" id="selected_type">
                                 <?php
                                     $sql = "
                                         select * from food_type
                                         where boss_identity = '$identity' and store_id = '$store_id'";
                                     $meal_type = mysqli_query($con, $sql);
                                     while ($cat = mysqli_fetch_array($meal_type,MYSQLI_ASSOC)) {
-
-                                        $type_name=$cat['type_name'];
-                                        echo "  <option value='$type_name'>$type_name</option>";
+                                        $type_id = $cat['type_id'];
+                                        $type_name = $cat['type_name'];
+                                        echo "  <option value='$type_id'>$type_name</option>";
                                     }
                                     ?> 
                                 </select>
-                    <button class="searchbutton" type="search">查詢</button>
+                    <button class="searchbutton" type="search" onclick="query();">查詢</button>
                 </div><br>
 
                 <div class="ininsidebox" style="width:700px;height:330px; overflow:auto;">
@@ -126,7 +152,13 @@ $datas_len = count($datas); //目前資料筆數
                         <tbody>
                         <?php
                             for ($i = 0; $i < $datas_len; $i++) {
+                                $meal_id = $datas[$i]['meal_id'];
                                 $meal_name = $datas[$i]['meal_name'];
+                                $type_id = $datas[$i]['type_id'];
+                                $type_name = $datas[$i]['type_name'];
+                                $meal_price = $datas[$i]['meal_price'];
+                                $meal_note = $datas[$i]['meal_note'];
+                                $meal_pic = $datas[$i]['meal_pic'];
                                 echo "
                             <tr>
                                 <td align='center'>
@@ -142,7 +174,7 @@ $datas_len = count($datas); //目前資料筆數
                                     $meal_name
                                 </td>
                                 <td align='center'>
-                                    <a href='type_edit.php?boss_identity=$identity&store_id=$store_id&type_name=$meal_name'>
+                                    <a href='menu_edit.php?boss_identity=$identity&store_id=$store_id&meal_id=$meal_id&menu_name=$menu_name&boss_name=$boss_name&type_id=$type_id&type_name=$type_name'>
                                         <img src=../images/signature.png></img>
                                     </a>
                                 </td>
@@ -159,7 +191,19 @@ $datas_len = count($datas); //目前資料筆數
     </div>
     </div>
 </body>
+
 <script>
+    //當網頁準備好的時候，做以下的動作
+    $(document).ready(function(){
+<?php
+    if (isset($selected)) {
+        echo "
+        document.getElementById(\"selected_type\").value = \"$selected\";  
+        ";
+    }
+?>                
+    });                
+
     function doSubmit() {
         var dataString = $("form#main").serialize();
         // alert('submiting: ' + dataString);
@@ -193,7 +237,7 @@ $datas_len = count($datas); //目前資料筆數
 
     //儲存餐點資料、圖檔
     function saveData() {
-        document.getElementById("data_type").value = "menu1";
+        document.getElementById("data_type").value = "menu2";
 
         doSubmit();
     }
@@ -220,12 +264,21 @@ $datas_len = count($datas); //目前資料筆數
         });
 
     }
+
+    function query() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var selected = document.getElementById("selected_type").value;
+        location.href="allmenu.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&type_id=" + selected; 
+    }
     
     function goBack() {
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
         var boss_name = urlParams.get('boss_name');
-        location.href="boss_management.html?boss_identity=" + boss_identity + "&boss_name=" + boss_name;
+        location.href="boss_management.html?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
     function goAllmenu() {
         var urlParams = new URLSearchParams(window.location.search);

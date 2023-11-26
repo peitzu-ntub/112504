@@ -4,6 +4,8 @@
 
     $identity = $_GET["boss_identity"];
     $store_id = $_GET["store_id"];
+    $boss_name= $_GET["boss_name"];
+
 ?>
 
 <!DOCTYPE html>
@@ -15,18 +17,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>員工資料</title>
-<!--取代alert的工具-->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!--取代alert的工具-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!-- 若需相容 IE11，要加載 Promise Polyfill-->
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>    
 	<link href="../js/employee.css" rel="stylesheet">
+    <script src="../js/jquery-3.6.4.min.js"></script>
+
 </head>
 <?php
 
 // 設置一個空陣列來放資料
 $datas = array();
 
-$sql = "SELECT staff_id, staff_name FROM store_staff where boss_identity = '$identity' and store_id = '$store_id'";
+$sql = "SELECT * FROM store_staff where boss_identity = '$identity' and store_id = '$store_id' 
+";
 
 
 $result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
@@ -67,7 +72,7 @@ $datas_len = count($datas); //目前資料筆數
 	<div class="logout" type="button" name="按鈕名稱" onclick="goBack()">
 		<div align="left">
 			<img src="../images/back.png" alt="返回icon" />
-			<span style="font-size: 13px;">返回</span>
+			<span style="font-size: 15px;">返回</span>
 		</div>
 	</div>
 	<div class="container-wrapper">
@@ -91,29 +96,40 @@ $datas_len = count($datas); //目前資料筆數
 				</div><br>
 
 				<div class="input-box">
-					<div class="details" style="font-size: 19px;">員工編號：</span>
-						<input type="search" name="查詢" id="查詢" placeholder="請輸入員工編號"
+					<div class="details" style="font-size: 19px;">員工查詢：</span>
+						<input type="search" name="查詢日期" class="light-table-filter" data-table="order-table" placeholder="請輸入員工編號或員工姓名"
 							style="font-size: 15px;">
-
-						<button class="searchbutton" type="search"
-							style="font-size: 17px; width: 68px; height: 34px; background-color: #8cb87c; border-radius: 20px; border: 3px solid #8cb87c;">搜尋</button>
+                            
+						
 					</div>
 				</div><br>
 
 				<div class="insidebox">
 					<div class="ininsidebox" style="width:680px;height:290px; overflow:auto;">
-                        <table width ="500" align="center" >
+                        <table width ="500" align="center" class='order-table'>
+                            <thead>
 							<tr>
 								<th><font size="5">刪除</th>
 								<th><font size="5">員工編號</th>
 								<th><font size="5">員工姓名</th>
 								<th><font size="5">編輯</th>
 							</tr>
+                        </thead>
                             <tbody>
                             <?php
                             for ($i = 0; $i < $datas_len; $i++) {
                                 $staff_name = $datas[$i]['staff_name'];
                                 $staff_id = $datas[$i]['staff_id'];
+                                $staff_gender = $datas[$i]['staff_gender'];
+                                $staff_birth = $datas[$i]['staff_birth'];
+                                $staff_tel = $datas[$i]['staff_tel'];
+                                $staff_address = $datas[$i]['staff_address'];
+                                $em_name = $datas[$i]['em_name'];
+                                $em_tel = $datas[$i]['em_tel'];
+                                $relation = $datas[$i]['relation'];
+                                $due_date = $datas[$i]['due_date'];
+                                $staff_psw = $datas[$i]['staff_psw'];
+
                                 echo "
                             <tr>
                                 <td align='center'>
@@ -133,7 +149,7 @@ $datas_len = count($datas); //目前資料筆數
                                     $staff_name
                                 </td>
                                 <td align='center'>
-                                    <a href='staff_edit.php?boss_identity=$identity&store_id=$store_id&staff_name=$staff_name'>
+                                    <a href='staff_edit.php?boss_identity=$identity&store_id=$store_id&staff_id=$staff_id&boss_name=$boss_name'>
                                         <img src=../images/signature.png></img>
                                     </a>
                                 </td>
@@ -209,6 +225,50 @@ $datas_len = count($datas); //目前資料筆數
         });
 
     }
+    (function (document) {
+        'use strict';
+
+        // 建立 LightTableFilter
+        var LightTableFilter = (function (Arr) {
+
+            var _input;
+
+            // 資料輸入事件處理函數
+            function _onInputEvent(e) {
+                _input = e.target;
+                var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                Arr.forEach.call(tables, function (table) {
+                    Arr.forEach.call(table.tBodies, function (tbody) {
+                        Arr.forEach.call(tbody.rows, _filter);
+                    });
+                });
+            }
+
+            // 資料篩選函數，顯示包含關鍵字的列，其餘隱藏
+            function _filter(row) {
+                var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+            }
+
+            return {
+                // 初始化函數
+                init: function () {
+                    var inputs = document.getElementsByClassName('light-table-filter');
+                    Arr.forEach.call(inputs, function (input) {
+                        input.oninput = _onInputEvent;
+                    });
+                }
+            };
+        })(Array.prototype);
+
+        // 網頁載入完成後，啟動 LightTableFilter
+        document.addEventListener('readystatechange', function () {
+            if (document.readyState === 'complete') {
+                LightTableFilter.init();
+            }
+        });
+
+    })(document);
     function goBack() {
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');

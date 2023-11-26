@@ -4,6 +4,8 @@
 
     $identity = $_GET["boss_identity"];
     $store_id = $_GET["store_id"];
+    $boss_name= $_GET["boss_name"];
+
 
 ?>
 
@@ -29,7 +31,7 @@
 // 設置一個空陣列來放資料
 $datas = array();
 
-$sql = "SELECT type_name FROM food_type where boss_identity = '$identity' and store_id = '$store_id'";
+$sql = "SELECT type_id, type_name FROM food_type where boss_identity = '$identity' and store_id = '$store_id'";
 
 $result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
 
@@ -117,23 +119,20 @@ $datas_len = count($datas); //目前資料筆數
 <?php
                             for ($i = 0; $i < $datas_len; $i++) {
                                 $type_name = $datas[$i]['type_name'];
+                                $type_id = $datas[$i]['type_id'];
                                 echo "
                             <tr>
                                 <td align='center'>
                                 <img src=../images/trash1.png onclick='deleteData(\"$type_name\");'></img>
-                                <!--
-                                <button id=\"btnSave\" name=\"btnSave\" class=\"checkbutton\" onclick='deleteData(\"$type_name\");'>刪</button>
-                                <a href='type_del.php?boss_identity=$identity&store_id=$store_id&type_name=$type_name'>
-                                        <img src=../images/trash1.png></img>
-                                    </a>
-                                -->
                                 </td>
                                 <td style='font-size: 25px;' align='center'>
                                     $type_name
                                 </td>
                                 <td align='center'>
-                                    <a href='type_edit.php?boss_identity=$identity&store_id=$store_id&type_name=$type_name'>
+                                <a href='type_edit.php?boss_identity=$identity&store_id=$store_id&type_id=$type_id&boss_name=$boss_name'>
                                         <img src=../images/signature.png></img>
+                                    </a>
+
                                     </a>
                                 </td>
                             </tr>";

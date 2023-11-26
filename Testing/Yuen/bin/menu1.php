@@ -23,7 +23,7 @@
                     INSERT INTO food_type (
                         boss_identity, store_id, type_id, type_name
                     ) VALUES (
-                        '$boss_identity', '$store_id', '$type_name', '$type_name'
+                        '$boss_identity', '$store_id', '$type_id', '$type_name'
                     )";
                     
                 $result = mysqli_query($con, $sql);
