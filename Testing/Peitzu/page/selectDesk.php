@@ -137,7 +137,7 @@
             "&order_no="+order_no+
             "&persons="+persons+
             "&emp="+emp;
-        alert(newUrl);
+        // alert(newUrl);
         window.location.replace(newUrl);
     }
 
