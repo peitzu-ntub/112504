@@ -55,7 +55,7 @@
     
     <link rel="stylesheet" href="../js/bootstrap.min.css" >
     <link rel="stylesheet" href="../js/bootstrap.min.4.6.2.css">
-    <link rel="stylesheet" href="../js/selectDesk.css" >
+    <link rel="stylesheet" href="../js/selectDesk2.css" >
     
     <!--取代alert的工具-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -157,7 +157,7 @@
                 //隱藏欄位：身份證號、店代號
                 var identity= $('input[name=identity]').val();
                 var store_id= $('input[name=store_id]').val();
-                var dataString = '?id=[bossid]&store=[storeid]&close_table=[tableid]';
+                var dataString = '?id=[bossid]&store=[storeid]&close_table=[tableid]&staff_id=<?php echo $_GET['staff_id']; ?>';
                 dataString = dataString.replace("[bossid]", identity);
                 dataString = dataString.replace("[storeid]", store_id);
                 dataString = dataString.replace("[tableid]", id);
