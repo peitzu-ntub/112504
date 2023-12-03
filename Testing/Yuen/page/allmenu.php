@@ -2,21 +2,25 @@
     session_start();
     include "../bin/conn.php";
 
-    //todo, 這是假的資料
-    //預設的資料來源，是從登入而來。登入、選擇店家後，就會把以下這兩個資訊，放進SESSION裡，保留在Server端
-    //讓同一個人的接續連線，可以直接拿來用
-    if (!isset($_SESSION["identity"])) {
-        $_SESSION["identity"] = "A123456789";
-    }
-    if (!isset($_SESSION["store_id"])) {
-        $_SESSION["store_id"] = "S01";
-    }
+    if (isset($_GET["boss_identity"]))
+        $identity = $_GET["boss_identity"];
+    if (isset($_GET['store_id']))
+        $store_id = $_GET["store_id"];
+    if (isset($_GET["boss_name"]))
+        $boss_name = $_GET["boss_name"];
 
-    //PHP是在後端(Server)運作的程式，Html與JavaScript則是在前端(Client)運作的程式
-    //在Server端，透過PHP將身份證與店代號，保留於隱藏欄位中，以傳到前端，做後續的應用
-    $boss = $_SESSION["identity"];
-    $store = $_SESSION["store_id"];
+    if (isset($_POST["boss_identity"]))
+        $identity = $_POST["boss_identity"];
+    if (isset($_POST['store_id']))
+        $store_id = $_POST["store_id"];
+    if (isset($_POST["boss_name"]))
+        $boss_name = $_POST["boss_name"];
+
+
+    $selected = $_GET["selected_type"];
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,15 +32,28 @@
     <title>查看全部餐點</title>
 
     <link href="../js/m.css" rel="stylesheet">
+    <!--取代alert的工具-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- 若需相容 IE11，要加載 Promise Polyfill-->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>    
+    <script src="../js/jquery-3.6.4.min.js"></script>
+
 </head>
 <?php
-
-include "../bin/conn.php";
 
 // 設置一個空陣列來放資料
 $datas = array();
 
-$sql = "SELECT meal_name FROM store_food";
+$sql = "SELECT f.*, t.type_name
+FROM store_food f
+left join food_type t on t.boss_identity=f.boss_identity and t.store_id=f.store_id and t.type_id = f.type_id
+where f.boss_identity = '$identity' 
+and f.store_id = '$store_id' ";
+
+if (isset($selected)) {
+    $sql = $sql . " and f.type_id = '$selected' ";
+}
+
 
 $result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
 
@@ -73,7 +90,7 @@ $datas_len = count($datas); //目前資料筆數
 
 ?>
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="goBack()">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
             <span style="font-size: 15px;">返回</span>
@@ -83,33 +100,46 @@ $datas_len = count($datas); //目前資料筆數
         <nav>
             <ul>
                 <li><a>全部餐點</a></li>
-                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/newmenu1.php">餐點類型</a></li>
-                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/newmenu2.php">新增餐點</a></li>
-                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
-                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
-                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/nm3.html">呈現方法</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goMenu1()">餐點類型</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goMenu2()">新增餐點</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goNM3();">菜單呈現設定</a></li>
             </ul>
         </nav>
 
         <div class="insidebox">
-            <form action="search_type.php" method="POST">
+            <form id="main">
+            <input type="hidden" id="boss_identity" name="boss_identity" 
+<?php      
+                //把老闆身份證號、店代號，放進隱藏欄位。供POST時使用
+                echo "value=\"$identity\">";
+?>                
+                <input type="hidden" id="store_id" name="store_id" 
+<?php                
+                //把老闆身份證號、店代號，放進隱藏欄位。供POST時使用
+                echo "value=\"$store_id\">";
+?>        
+                <input type="hidden" id="boss_name" name="boss_name" value="<?php echo $boss_name; ?>" />
+
+                <input type="hidden" id="data_type" name="data_type" value="newfood">
+                <input type="hidden" id="data_value" name="data_value" value="">  
+                
                 <div class="input-box">
                     <img src="../images/loupe.png" />
                     <font color="#bf6900" size="5">餐點類型：</font>
-                    <select name="查詢" id="查詢">
+                    <select name="selected_type" id="selected_type">
                                 <?php
                                     $sql = "
                                         select * from food_type
-                                        where boss_identity = '$boss' and store_id = '$store'";
+                                        where boss_identity = '$identity' and store_id = '$store_id'";
                                     $meal_type = mysqli_query($con, $sql);
                                     while ($cat = mysqli_fetch_array($meal_type,MYSQLI_ASSOC)) {
-
-                                        $type_name=$cat['type_name'];
-                                        echo "  <option value='$type_name'>$type_name</option>";
+                                        $type_id = $cat['type_id'];
+                                        $type_name = $cat['type_name'];
+                                        echo "  <option value='$type_id'>$type_name</option>";
                                     }
                                     ?> 
                                 </select>
-                    <button class="searchbutton" type="search">查詢</button>
+                    <button class="searchbutton" type="search" onclick="query();">查詢</button>
                 </div><br>
 
                 <div class="ininsidebox" style="width:700px;height:330px; overflow:auto;">
@@ -120,17 +150,37 @@ $datas_len = count($datas); //目前資料筆數
                             <th><font size="5">編輯</th>
                         </tr>
                         <tbody>
-                            <?php
+                        <?php
                             for ($i = 0; $i < $datas_len; $i++) {
-                                echo "<tr>";
-                                echo "<td align='center'>   
-                                <a href='menu_del.php?meal_name=".$datas[$i]['meal_name']."'><img src=../images/trash1.png></img></a></td>";
-                                echo "<td style='font-size: 25px;' align='center'>". $datas[$i]['meal_name'] . "</span>";
-                                echo "<td align='center'>
-                                <a href='menu_edit.php?meal_name=".$datas[$i]['meal_name']."'><img src=../images/signature.png></img></a></td>";
-                                echo "</br>";
+                                $meal_id = $datas[$i]['meal_id'];
+                                $meal_name = $datas[$i]['meal_name'];
+                                $type_id = $datas[$i]['type_id'];
+                                $type_name = $datas[$i]['type_name'];
+                                $meal_price = $datas[$i]['meal_price'];
+                                $meal_note = $datas[$i]['meal_note'];
+                                $meal_pic = $datas[$i]['meal_pic'];
+                                echo "
+                            <tr>
+                                <td align='center'>
+                                <img src=../images/trash1.png onclick='deleteData(\"$meal_name\");'></img>
+                                <!--
+                                <button id=\"btnSave\" name=\"btnSave\" class=\"checkbutton\" onclick='deleteData(\"$meal_name\");'>刪</button>
+                                <a href='type_del.php?boss_identity=$identity&store_id=$store_id&type_name=$meal_name'>
+                                        <img src=../images/trash1.png></img>
+                                    </a>
+                                -->
+                                </td>
+                                <td style='font-size: 25px;' align='center'>
+                                    $meal_name
+                                </td>
+                                <td align='center'>
+                                    <a href='menu_edit.php?boss_identity=$identity&store_id=$store_id&meal_id=$meal_id&menu_name=$menu_name&boss_name=$boss_name&type_id=$type_id&type_name=$type_name'>
+                                        <img src=../images/signature.png></img>
+                                    </a>
+                                </td>
+                            </tr>";
                             }
-                            ?>
+?>
 
                             </tbody>  
                     </table>
@@ -141,4 +191,128 @@ $datas_len = count($datas); //目前資料筆數
     </div>
     </div>
 </body>
+
+<script>
+    //當網頁準備好的時候，做以下的動作
+    $(document).ready(function(){
+<?php
+    if (isset($selected)) {
+        echo "
+        document.getElementById(\"selected_type\").value = \"$selected\";  
+        ";
+    }
+?>                
+    });                
+
+    function doSubmit() {
+        var dataString = $("form#main").serialize();
+        // alert('submiting: ' + dataString);
+        $.ajax({
+            //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+            type: "POST",
+            //指定要連接的PHP位址
+            url: "../bin/newfood.php",
+            //要傳送的資料內容
+            data: dataString,
+            //獲得正確回應時，要做的事情
+            success: function (response) {
+                // alert(response);
+                var json = $.parseJSON(response);
+                var msgIcon = 'success';
+                if (json.result != 'OK') msgIcon = 'error';
+                Swal.fire(
+                    '餐點', //標題
+                    json.message, //訊息容
+                    msgIcon // 圖示 (success/info/warning/error/question)
+                ).then((result) => {
+                    location.reload();
+                });
+            },
+            //獲得不正確的回應時，要做的事情
+            error: function (response) {
+                alert ('錯誤');
+            },
+        });
+    }
+
+    //儲存餐點資料、圖檔
+    function saveData() {
+        document.getElementById("data_type").value = "menu2";
+
+        doSubmit();
+    }
+
+    function deleteData(mealName) {
+        document.getElementById("data_type").value = "menu2_delete";
+        document.getElementById("data_value").value = mealName;
+
+        // alert(typeName);
+
+        Swal.fire({
+            title: "餐點類型",
+            text: "確定要刪除 " + mealName +" 嗎？",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "是",
+            cancelButtonText: "取消",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                doSubmit();
+            }
+        });
+
+    }
+
+    function query() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var selected = document.getElementById("selected_type").value;
+        location.href="allmenu.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&type_id=" + selected; 
+    }
+    
+    function goBack() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="boss_management.html?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
+    }
+    function goAllmenu() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="allmenu.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
+    }
+    function goMenu1() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="newmenu1.php?boss_identity=" + boss_identity + "&store_id=" + store_id+ "&boss_name=" + boss_name;
+    }
+    function goMenu2() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="newmenu2.php?boss_identity=" + boss_identity + "&store_id=" + store_id+ "&boss_name=" + boss_name;
+    }
+    function goNM3() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="nm3.php?boss_identity=" + boss_identity + "&store_id=" + store_id+ "&boss_name=" + boss_name;
+    }
+    function goSearch() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        location.href="search_type.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+    }
+</script>
 </html>

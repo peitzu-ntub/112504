@@ -1,3 +1,89 @@
+<?php
+session_start();
+include "../bin/conn.php";
+
+$boss_identity = $_GET["boss_identity"];
+$store_id = $_GET["store_id"];
+$meal_id = $_GET['meal_id'];
+$meal_name = $_GET['meal_name'];
+
+$data = array();
+
+//儲存
+if (isset($_POST["boss_identity"])) {
+    $boss_identity = $_POST["boss_identity"];
+    $store_id = $_POST["store_id"];
+    $meal_id = $_POST['meal_id'];
+    $type_name = $_POST['type_name'];
+    $meal_name = $_POST['meal_name'];
+    $meal_price = $_POST['meal_price'];
+    $meal_note = $_POST['meal_note'];
+
+    // Check for duplicate name
+    $duplicateCheckQuery = "SELECT COUNT(*) as count FROM store_food 
+                            WHERE boss_identity = '$boss_identity' 
+                            AND store_id = '$store_id' 
+                            AND meal_name = '$meal_name' 
+                            AND meal_id != '$meal_id'";
+    $duplicateCheckResult = mysqli_query($con, $duplicateCheckQuery);
+    $duplicateCheckData = mysqli_fetch_array($duplicateCheckResult);
+    $duplicateCount = $duplicateCheckData['count'];
+
+    if ($duplicateCount > 0) {
+        // Duplicate name found
+        $data['result'] = 'ERROR';
+        $data['message'] = '餐點名稱重複，請使用其他名稱';
+        echo json_encode($data);
+        return;
+    }
+
+    // No duplicate, proceed with the update
+    $sql = "UPDATE store_food SET 
+                type_name = '$type_name',
+                meal_name = '$meal_name', 
+                meal_price = '$meal_price',  
+                meal_note = '$meal_note' 
+                WHERE boss_identity = '$boss_identity' AND store_id = '$store_id' AND meal_id = '$meal_id'";
+    //執行
+    mysqli_query($con, $sql);
+
+    $data['result'] = 'OK';
+    $data['message'] = '餐點類型已更新';
+    echo json_encode($data);
+    return;
+}
+
+//打網址
+if (isset($_GET["boss_identity"])) {
+    //Step(1)透過queryString取得老闆身份證號($boss)以及店代號($store)
+    $boss_identity = $_GET["boss_identity"];
+    $store_id = $_GET["store_id"];
+    $meal_id = $_GET['meal_id'];
+    $type_name = '';
+    $meal_name = '';
+    $meal_price = '';
+    $meal_note = '';
+
+    //Step(2)查出這個餐點資料，以顯示在畫面上，供老闆修改
+    //查詢語法
+    $sql = "SELECT * FROM store_food 
+            WHERE boss_identity = '$boss_identity' 
+            and store_id = '$store_id' 
+            and meal_id = '$meal_id'";
+    // sql語法存在變數中
+    //取得查詢結果
+    $result = mysqli_query($con, $sql);
+    //個別取得欄位值
+    if (isset($result)) {
+        $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $type_name = $data['type_name'];
+        $meal_name = $data['meal_name'];
+        $meal_price = $data['meal_price'];
+        $meal_note = $data['meal_note'];
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,56 +93,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>新增餐點</title>
-
+    <script src="../js/jquery-3.6.4.min.js"></script>
     <link href="../js/edit.css" rel="stylesheet">
+    <!--取代alert的工具-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- 若需相容 IE11，要加載 Promise Polyfill-->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>    
 </head>
-<?php
-include "../bin/conn.php";
 
-$meal_name=$_GET['meal_name'];
-
-// 設置一個空陣列來放資料
-$datas = array();
-
-$sql ="select * FROM store_food WHERE meal_name = '".$meal_name."'"; // sql語法存在變數中
-
-$result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
-
-// 如果有資料
-if ($result) {
-    // mysqli_num_rows方法可以回傳我們結果總共有幾筆資料
-    if (mysqli_num_rows($result) > 0) {
-        // 取得大於0代表有資料
-        // while迴圈會根據資料數量，決定跑的次數
-        // mysqli_fetch_assoc方法可取得一筆值
-        while ($row = mysqli_fetch_assoc($result)) {
-            // 每跑一次迴圈就抓一筆值，最後放進data陣列中
-            $datas[] = $row;
-        }
-    }
-    // 釋放資料庫查到的記憶體
-    mysqli_free_result($result);
-} else {
-    echo "{$sql} 語法執行失敗，錯誤訊息: " . mysqli_error($link);
-}
-// 處理完後印出資料
-if (!empty($result)) {
-    // 如果結果不為空，就利用print_r方法印出資料
-    // print_r($datas);
-    //echo($datas[0]['adm_name']);
-} else {
-    // 為空表示沒資料
-    echo "查無資料";
-}
-echo "<br><br>";
-//echo $datas[0]['sf_name']; // 印出第0筆資料中的sf_name欄位值
-
-//使用表格排版用while印出
-$datas_len = count($datas); //目前資料筆數
-
-?>
 <body>
-    <div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
+    <div class="logout" type="button" name="按鈕名稱" onclick="goBack()">
         <div align="left">
             <img src="../images/back.png" alt="返回icon" />
             <span style="font-size: 15px;">返回</span>
@@ -65,17 +111,15 @@ $datas_len = count($datas); //目前資料筆數
     <div class="container-wrapper">
         <nav>
             <ul>
-                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/allmenu.php">全部餐點</a></li>
-                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/newmenu1.php">餐點類型</a></li>
-                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/newmenu2.php">新增餐點</a></li>
-                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
-                <li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li>
-                <li><a style="background-color: #f4eac2;color: #5e5e5e;" href="../page/nm3.html">呈現方法</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goAllmenu()">全部餐點</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goMenu1()">餐點類型</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goMenu2()">新增餐點</a></li>
+                <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goNM3();">菜單呈現設定</a></li>
             </ul>
         </nav>
 
         <div class="insidebox">
-            <form method="post" action="menu_up.php?meal_name=<?php echo $datas[0]['meal_name']?>">
+            <form id="main">
                 <div style="width:320px;">
                     <img src="../images/add.png" />
                     <font color="#bf6900" size="5" >修改餐點</font>
@@ -84,45 +128,64 @@ $datas_len = count($datas); //目前資料筆數
                 <div class="ininsidebox">
                     <div class="input-box">
                         <div class="input-row">
+                        <?php
+echo "
+                                <input type='hidden' id='boss_identity' name='boss_identity' value='$boss_identity'>
+                                <input type='hidden' id='store_id' name='store_id' value='$store_id'>
+                                <input type='hidden' id='meal_id' name='meal_id' value='$meal_id'>
+                                <input type='hidden' id='meal_name' name='meal_name' value='$meal_name'>
+                                
+
+";
+?>  
                             <?php
                                     echo "<font color=#bf6900 size='4';>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原餐點類型：";
-                                    echo $datas[0]['type_name'] ;
+                                    echo $type_name;
                                     echo "</br>";
-                                    $query = "SELECT type_name FROM food_type";
+                                    $query = "SELECT type_name FROM food_type where boss_identity = '$identity' and store_id = '$store_id'";
                                     $result = mysqli_query($con, $query);
                                 ?>
                             <span class="details">餐點類型：</span>
                             <select  name="type_name" >
 
-                                    <?php while($row = mysqli_fetch_array($result)):;?>
+                            <?php
+                                    $sql = "
+                                        select * from food_type
+                                        where boss_identity = '$boss_identity' and store_id = '$store_id'";
+                                    $meal_type = mysqli_query($con, $sql);
+                                    while ($cat = mysqli_fetch_array($meal_type,MYSQLI_ASSOC)) {
 
-                                        <!--下面 $row9['(資料表(add_role) 的欄位(STAFF_ROLE) )']; ---------->
-                                        <option value="<?php echo $row['type_name'];?>"  
-                                            <?PHP 
-                                            
-                                                if($value == $row['type_name']){echo "selected";} 
-                                            ?> 
-                                        >
-                                            <?php echo $row['type_name'];?>
-                                        </option>
-                                    <?php endwhile;?>
+                                        $type_name=$cat['type_name'];
+                                        echo "  <option value='$type_name'>$type_name</option>";
+                                    }
+                                    ?> 
 
                                 </select>
                         </div>
                         <div class="input-row">
                             <span class="details">餐點名稱：</span>
-                            <input type="text"  class="form-control" value="<?php echo $datas[0]['meal_name'] ?>" name="meal_name" >
-
+                            <?php                                
+echo "
+                        <input type='text' name='meal_name' id='meal_name' placeholder='請輸入餐點名稱' value='$meal_name'> 
+";
+?>   
                         </div>
                         <div class="input-row">
                             <span class="details">餐點介紹：</span>
-                            <input type="text" class="form-control" value="<?php echo $datas[0]['meal_note'] ?>" name="meal_note" >
-
+                            <?php                                
+echo "
+                        <input type='text' name='meal_note' id='meal_note' value='$meal_note'> 
+";
+?>                       
                         </div>
                         <div class="input-row">
                             <span class="details">餐點價格：</span>
-                            <input type="number" class="form-control" value="<?php echo $datas[0]['meal_price'] ?>" name="meal_price" >                                
+                            <?php                                
+echo "
+                        <input type='text' name='meal_price' id='meal_price' placeholder='請輸入餐點價格' value='$meal_price'> 
+";
+?>                                   
                         </div>
                         <div class="input-row">
                             <span class="details">餐點圖片：</span>
@@ -130,10 +193,76 @@ $datas_len = count($datas); //目前資料筆數
                            </div>
                     </div>
                 </div>
-                <input class="submitbutton" type="submit" value="儲存"></input>
+                <input class="submitbutton" onclick="doSave();" value="儲存"></input>
             </form>
         </div>
     </div>
 </body>
+<script>
+    function doSave() {
+        //alert('x');
+        var dataString = $("form#main").serialize();
+        //alert('submiting: ' + dataString);
+        $.ajax({
+            //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+            type: "POST",
+            //指定要連接的PHP位址
+            url: "menu_edit.php",
+            //要傳送的資料內容
+            data: dataString,
+            //獲得正確回應時，要做的事情
+            success: function (response) {
+                // alert(response);
+                var json = $.parseJSON(response);
+                var msgIcon = 'success';
+                if (json.result != 'OK') msgIcon = 'error';
+                Swal.fire(
+                    '餐點類型', //標題
+                    json.message, //訊息容
+                    msgIcon // 圖示 (success/info/warning/error/question)
+                );
+            },
+            //獲得不正確的回應時，要做的事情
+            error: function (response) {
+                alert ('錯誤');
+            },
+        });
+    }
 
+    function goBack() {
+        var urlParams = new URLSearchParams(window.location.search);        
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="allmenu.php?boss_identity=" + boss_identity + "&boss_name=" + boss_name + "&store_id=" + store_id;;
+    }
+    function goAllmenu() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="allmenu.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
+    }
+    function goMenu1() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="newmenu1.php?boss_identity=" + boss_identity + "&store_id=" + store_id+ "&boss_name=" + boss_name;
+    }
+    function goMenu2() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="newmenu2.php?boss_identity=" + boss_identity + "&store_id=" + store_id+ "&boss_name=" + boss_name;
+    }
+    function goNM3() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="nm3.php?boss_identity=" + boss_identity + "&store_id=" + store_id+ "&boss_name=" + boss_name;
+    }
+</script>
 </html>

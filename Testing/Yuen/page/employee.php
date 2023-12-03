@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    include "../bin/conn.php";
+
+    $identity = $_GET["boss_identity"];
+    $store_id = $_GET["store_id"];
+    $boss_name= $_GET["boss_name"];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,18 +17,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>員工資料</title>
-
+    <!--取代alert的工具-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- 若需相容 IE11，要加載 Promise Polyfill-->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>    
 	<link href="../js/employee.css" rel="stylesheet">
+    <script src="../js/jquery-3.6.4.min.js"></script>
+
 </head>
 <?php
 
-include "../bin/conn.php";
-$identity = $_GET["identity"];
-$store_id = $_GET["store_id"];
 // 設置一個空陣列來放資料
 $datas = array();
 
-$sql = "SELECT staff_id, staff_name FROM store_staff";
+$sql = "SELECT * FROM store_staff where boss_identity = '$identity' and store_id = '$store_id' 
+";
 
 
 $result = mysqli_query($con, $sql); // 用mysqli_query方法執行(sql語法)將結果存在變數中
@@ -56,60 +69,99 @@ $datas_len = count($datas); //目前資料筆數
 
 ?>
 <body>
-	<div class="logout" type="button" name="按鈕名稱" onclick="location.href='boss_management.html'">
+	<div class="logout" type="button" name="按鈕名稱" onclick="goBack()">
 		<div align="left">
 			<img src="../images/back.png" alt="返回icon" />
-			<span style="font-size: 13px;">返回</span>
+			<span style="font-size: 15px;">返回</span>
 		</div>
 	</div>
 	<div class="container-wrapper">
-        <form action="search.php" method="POST">
+        <form id="main">
+        <input type="hidden" id="boss_identity" name="boss_identity" 
+<?php      
+                //把老闆身份證號、店代號，放進隱藏欄位。供POST時使用
+                echo "value=\"$identity\">";
+?>                
+                <input type="hidden" id="store_id" name="store_id" 
+<?php                
+                //把老闆身份證號、店代號，放進隱藏欄位。供POST時使用
+                echo "value=\"$store_id\">";
+?>                
+                <input type="hidden" id="data_type" name="data_type" value="staff_in">
+
+                <input type="hidden" id="data_value" name="data_value" value="">
 			<div class="container1">
 				<div align="center">
 					<font size="19">員工資料管理</font>
 				</div><br>
 
 				<div class="input-box">
-					<div class="details" style="font-size: 19px;">員工編號：</span>
-						<input type="search" name="查詢" id="查詢" placeholder="請輸入員工編號"
+					<div class="details" style="font-size: 19px;">員工查詢：</span>
+						<input type="search" name="查詢日期" class="light-table-filter" data-table="order-table" placeholder="請輸入員工編號或員工姓名"
 							style="font-size: 15px;">
-
-						<button class="searchbutton" type="search"
-							style="font-size: 17px; width: 68px; height: 34px; background-color: #8cb87c; border-radius: 20px; border: 3px solid #8cb87c;">搜尋</button>
+                            
+						
 					</div>
 				</div><br>
 
 				<div class="insidebox">
 					<div class="ininsidebox" style="width:680px;height:290px; overflow:auto;">
-                        <table width ="500" align="center" >
+                        <table width ="500" align="center" class='order-table'>
+                            <thead>
 							<tr>
 								<th><font size="5">刪除</th>
 								<th><font size="5">員工編號</th>
 								<th><font size="5">員工姓名</th>
 								<th><font size="5">編輯</th>
 							</tr>
+                        </thead>
                             <tbody>
                             <?php
                             for ($i = 0; $i < $datas_len; $i++) {
-                                echo "<tr>";
-                                echo "<td align='center'>		
-                                <a href='staff_del.php?staff_id=".$datas[$i]['staff_id']."'><img src=../images/trash1.png></img></a></td>";
-                                echo "<td style='font-size: 25px;' align='center'>"; 
-                                echo "<span style='font-size: 25px;' align='center' > " .  $datas[$i]['staff_id']. "</span>";
-                                
-                                echo "<td style='font-size: 25px;' align='center'>" ;
-                                echo "<span style='font-size: 25px;' text-align='center'> " . $datas[$i]['staff_name'] .  "</span>";
-            
-                                echo "<td align='center'>
-                                <a href='staff_edit.php?staff_id=".$datas[$i]['staff_id']."'><img src=../images/signature.png></img></a></td>";
-                            } 
+                                $staff_name = $datas[$i]['staff_name'];
+                                $staff_id = $datas[$i]['staff_id'];
+                                $staff_gender = $datas[$i]['staff_gender'];
+                                $staff_birth = $datas[$i]['staff_birth'];
+                                $staff_tel = $datas[$i]['staff_tel'];
+                                $staff_address = $datas[$i]['staff_address'];
+                                $em_name = $datas[$i]['em_name'];
+                                $em_tel = $datas[$i]['em_tel'];
+                                $relation = $datas[$i]['relation'];
+                                $due_date = $datas[$i]['due_date'];
+                                $staff_psw = $datas[$i]['staff_psw'];
+
+                                echo "
+                            <tr>
+                                <td align='center'>
+                                <img src=../images/trash1.png onclick='deleteData(\"$staff_id\");'></img>
+                                <!--
+                                <button id=\"btnSave\" name=\"btnSave\" class=\"checkbutton\" onclick='deleteData(\"$staff_name\");'>刪</button>
+                                <a href='type_del.php?boss_identity=$identity&store_id=$store_id&staff_name=$staff_name'>
+                                        <img src=../images/trash1.png></img>
+                                    </a>
+                                -->
+                                </td>
+                                <td style='font-size: 25px;' align='center'>
+                                    $staff_id
+                                </td>
+                                </td>
+                                <td style='font-size: 25px;' align='center'>
+                                    $staff_name
+                                </td>
+                                <td align='center'>
+                                    <a href='staff_edit.php?boss_identity=$identity&store_id=$store_id&staff_id=$staff_id&boss_name=$boss_name'>
+                                        <img src=../images/signature.png></img>
+                                    </a>
+                                </td>
+                            </tr>";
+                            }
                             ?>
 
                         </tbody>						</table>
 					</div>
 				</div>
 			</div>
-			<div class="addemployee" type="button" name="按鈕名稱" onclick="location.href='create.php'">
+			<div class="addemployee" type="button" name="按鈕名稱" onclick="goCreate()">
 				<div align="right">
 					<!-- <img src="../images/employee.png" alt="新增員工icon" /> -->
 					<span style="font-size: 25px;">新增員工</span>
@@ -120,11 +172,116 @@ $datas_len = count($datas); //目前資料筆數
 	
 </body>
 <script>
+        function doSubmit() {
+        var dataString = $("form#main").serialize();
+        // alert('submiting: ' + dataString);
+        $.ajax({
+            //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
+            type: "POST",
+            //指定要連接的PHP位址
+            url: "../bin/staff_in.php",
+            //要傳送的資料內容
+            data: dataString,
+            //獲得正確回應時，要做的事情
+            success: function (response) {
+                // alert(response);
+                var json = $.parseJSON(response);
+                var msgIcon = 'success';
+                if (json.result != 'OK') msgIcon = 'error';
+                Swal.fire(
+                    '餐點', //標題
+                    json.message, //訊息容
+                    msgIcon // 圖示 (success/info/warning/error/question)
+                ).then((result) => {
+                    location.reload();
+                });
+            },
+            //獲得不正確的回應時，要做的事情
+            error: function (response) {
+                alert ('錯誤');
+            },
+        });
+    }
+
+    function deleteData(staffName) {
+        document.getElementById("data_type").value = "staff_delete";
+        document.getElementById("data_value").value = staffName;
+
+        // alert(typeName);
+
+        Swal.fire({
+            title: "餐點類型",
+            text: "確定要刪除 " + staffName +" 嗎？",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "是",
+            cancelButtonText: "取消",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                doSubmit();
+            }
+        });
+
+    }
+    (function (document) {
+        'use strict';
+
+        // 建立 LightTableFilter
+        var LightTableFilter = (function (Arr) {
+
+            var _input;
+
+            // 資料輸入事件處理函數
+            function _onInputEvent(e) {
+                _input = e.target;
+                var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                Arr.forEach.call(tables, function (table) {
+                    Arr.forEach.call(table.tBodies, function (tbody) {
+                        Arr.forEach.call(tbody.rows, _filter);
+                    });
+                });
+            }
+
+            // 資料篩選函數，顯示包含關鍵字的列，其餘隱藏
+            function _filter(row) {
+                var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+            }
+
+            return {
+                // 初始化函數
+                init: function () {
+                    var inputs = document.getElementsByClassName('light-table-filter');
+                    Arr.forEach.call(inputs, function (input) {
+                        input.oninput = _onInputEvent;
+                    });
+                }
+            };
+        })(Array.prototype);
+
+        // 網頁載入完成後，啟動 LightTableFilter
+        document.addEventListener('readystatechange', function () {
+            if (document.readyState === 'complete') {
+                LightTableFilter.init();
+            }
+        });
+
+    })(document);
+    function goBack() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var boss_name = urlParams.get('boss_name');
+        var store_id = urlParams.get('store_id');
+        location.href="boss_management.html?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
+    }
     function goCreate() {
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = urlParams.get('boss_identity');
         var store_id = urlParams.get('store_id');
-        location.href="create.php?boss_identity=" + boss_identity + "&store_id=" + store_id;
+        var boss_name = urlParams.get('boss_name');
+        location.href="create.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
 
 </script>

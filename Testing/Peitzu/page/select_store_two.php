@@ -76,29 +76,11 @@
         <a class=\"menu-item\" href=\"../page/boss_management.html?boss_identity=$identity&boss_name=$boss_name&store_id=$store_id\">$store_name</a>";
         echo $d;
     }
-?>                  <!--
-                    <a class="menu-item" href="../page/boss_management.html">好吃店家</a>
-                    <a class="menu-item" href="../page/boss_management.html">不好吃店家</a>
-                    <a class="menu-item" href="../page/boss_management.html">薩利YEAH</a>
-                    <a class="menu-item" href="../page/boss_management.html">水底撈</a>
-                    <a class="menu-item" href="../page/boss_management.html">九方雲集</a>
-                    <a class="menu-item" href="../page/boss_management.html">小豐牛肉麵</a>
-                    <a class="menu-item" href="../page/boss_management.html">池下便當</a>
-                    <a class="menu-item" href="../page/boss_management.html">起司馬鈴薯</a>
-                    <a class="menu-item" href="../page/boss_management.html">阿嬌滷味</a>
-                    <a class="menu-item" href="../page/boss_management.html">大GG鹹水G</a>
-                    <a class="menu-item" href="../page/boss_management.html">白糖早餐店</a>
-                    <a class="menu-item" href="../page/boss_management.html">SUKIYAKISI</a>
-                    <a class="menu-item" href="../page/boss_management.html">甕搖雞</a>
-                    <a class="menu-item" href="../page/boss_management.html">壽司狼</a>
-                    <a class="menu-item" href="../page/boss_management.html">葬壽司</a>
-                    -->
+?>              
                 </div>
             </div>
         </nav>
     </div>
-
-
         <div class="addstore" type="button" name="按鈕名稱" onclick="goRegister();">
             <div align="right">
                 <img src="../images/addstore.png" alt="新增店家icon" />
@@ -106,9 +88,7 @@
             </div>
         </div>
 </body>
-<!--
-<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
--->
+
 <script>
     function goRegister() {
         var urlParams = new URLSearchParams(window.location.search);
@@ -133,5 +113,4 @@
         $(".menu-inner-box").animate({scrollLeft: "+=700px"});
     });
 </script>
-
 </html>

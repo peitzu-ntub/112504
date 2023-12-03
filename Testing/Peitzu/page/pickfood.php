@@ -30,6 +30,28 @@
     $pick_qty = $_GET['pick_qty'];
     $cart = $_GET['cart'];
 
+    //--------------------------------------------------------
+    //2023.11.17 顯示店舖名稱、決定顯示的方式
+    $sql = "
+        select * from store_info
+        where boss_identity = '$identity' and store_id = '$store_id'";
+    $result = mysqli_query($con, $sql);
+    $cat = mysqli_fetch_array($result, MYSQLI_ASSOC);   
+    //店舖名稱
+    $store_name = $cat['store_name'];
+    //選單呈現方式
+    $menu_type = $cat['menu_type'];
+    //彈跳視窗呈現餐點的方式
+    $menu_food_type = $cat['food_type'];
+
+    //如果沒有設定，則都預設為1
+    if (!isset($menu_type)) { $menu_type = '1'; }
+    if (!isset($menu_food_type)) { $menu_food_type = '1'; }
+
+    //--------------------------------------------------------
+
+
+
     //如果是從自己pickFood.php過來，則
     //檢查「選好餐點」的資訊，包含餐點代號與數量。
     //如果有，就更新購物車的Table
@@ -148,11 +170,18 @@
 
     <title>點餐</title>
 
-    <meta name="description" content="Source code generated using layoutit.com">
+    <!-- <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
-
+ -->
     <link href="../js/bootstrap.min.css" rel="stylesheet">
-    <link href="../js/pick.css" rel="stylesheet">
+<?php    
+    if ($menu_type == "1") 
+        echo "
+    <link href=\"../js/pick.css\" rel=\"stylesheet\">";
+    else
+        echo "
+    <link href=\"../js/pick-square.css\" rel=\"stylesheet\">";    
+?>
 
 </head>
 
@@ -162,7 +191,13 @@
 
         <div class="header">
             <div align="center">
-                <font size="20"><b>港式飲茶店</b></font><br><br>  
+                <font size="20"><b>
+<?php 
+    //2023.11.17
+    //本來的港式燒臘，終於功成身退!!
+    echo $store_name;
+?>
+                </b></font><br><br>  
                 <!-- style="color: white; font-weight:bolder; font:25px;" -->
             </div>
         </div>
@@ -193,18 +228,32 @@
 <?php
     //查詢餐點內容，並逐一顯示出來
     $sql = "
-    select F.*, c.meal_qty
-    from store_food F
-    left join store_cart C 
-      on c.boss_identity = F.boss_identity 
-      and c.store_id = F.store_id 
-      and F.meal_id = C.meal_id
-      and C.meal_id = '$order_no'
-    where F.boss_identity = '$identity' and F.store_id = '$store_id'";
+    select m.*, s.star 
+    from (
+        select F.*, c.meal_qty
+        from store_food F
+        left join store_cart C 
+          on c.boss_identity = F.boss_identity 
+          and c.store_id = F.store_id 
+          and F.meal_id = C.meal_id
+        where F.boss_identity = '$identity' and F.store_id = '$store_id'
+        ) m
+        left join (
+            select meal_id, round(avg(score)) star
+            from store_order_item
+            where score > 0
+            and boss_identity = '$identity' and store_id = '$store_id'
+            group by meal_id
+        ) s on s.meal_id = m.meal_id
+    ";
+
+
     if (isset($food_type)) {
-        $sql = $sql . " and F.type_id = '$food_type'";
+        $sql = $sql . " where m.type_id = '$food_type'";
     }
     $foods = mysqli_query($con, $sql);
+
+    //echo $sql;
 
     $count = 1;
 
@@ -216,6 +265,10 @@
         $meal_note = $food['meal_note'];
         $meal_up = $food['meal_up'];
         $meal_qty = $food['meal_qty'];
+        $meal_star = $food['star'];
+        if (!isset($meal_star)) {
+            $meal_star = 0;
+        }
 
         if (!isset($meal_qty)) {
             $meal_qty = 1;
@@ -224,10 +277,51 @@
         $p = "";
         if ($count == 1) {
             $count == 2;
+
+            $p_img = '';
+            $p_name = '';
+            $p_price = '';
+            $p_desc = '';
+            $p_star = '';
+
+            //根據$food_type決定要呈現的內容            
+            //餐點圖檔
+            if ($menu_food_type == '3' or $menu_food_type == '4') {
+                $p_img = '<img src="../images/1-2.png" id="pop_food_img" alt="菜單" class="product-image">';
+            }
+
+            //餐點名稱
+            $p_name = '<h2 id="pop_food_name"></h2>';
+
+            //餐點價格
+            $p_price = '<h5 id="pop_price"></h5>';
+
+            //餐點說明
+            if ($menu_food_type == '2' or $menu_food_type == '3' or $menu_food_type == '4') {
+                $p_desc = '<h5 id="pop_desc"></h5>';
+            }
+
+            //星星
+            $p_star = "<h5 id=\"pop_star\"></h5>";
+            // if ($menu_food_type == '4') {
+            //     $p_star = "<h5 id=\"pop_star\"></h5>";
+            // }
+
+            //
             $p = "
             <div class=\"popup-container\" id=\"popup\">
                 <!-- @@關閉彈跳視窗 -->
                 <span class=\"close-button\" id=\"closePopup\" onclick=\"closePickingDialog();\">X</span>
+
+                $p_img
+                <div class=\"product-details\">
+                    $p_name
+                    $p_price
+                    $p_star
+                    $p_desc
+                </div>
+
+                <!--
                 <img src=\"../images/1-2.png\" id=\"pop_food_img\" alt=\"菜單\" class=\"product-image\">
 
                 <div class=\"product-details\">
@@ -235,6 +329,7 @@
                     <b><p id=\"pop_price\"></p></b>
                     <p id=\"pop_desc\"></p>
                 </div>
+                -->
 
                 <div class=\"cart-item\">
                     <!-- 必要的隱藏欄位 -->
@@ -244,34 +339,54 @@
                     <input type=\"hidden\" id=\"pick_meal_id\" name=\"pick_meal_id\" value=\"\">
 
                     <button class=\"button\" onclick=\"decrementItem()\">-</button>
-                    <span class=\"item-quantity\" id=\"quantity1\">1</span>
+                    <span class=\"item-quantity\" id=\"quantity1\" style=\"font-size: 18px;\">1</span>
                     <button class=\"button\" onclick=\"incrementItem()\">+</button>
                     <div class=\"add-item\">
-                    <button class=\"button\" onclick=\"addToCart()\">加入購物車</button>
+                        <button class=\"button\" onclick=\"addToCart()\">加入購物車</button>
                     </div>
                 </div>
             </div>
             ";
         }
+        if ($menu_type == '1') {
+            $d = "
+                <!--菜單-->
+                <div class='menu-item'>
+                    <div class='menu-item-img'>
+                        <img src='../images/$meal_name.upload.jpg' alt='菜單'>
+                    </div>
+                    <!--右側容器-->
+                    <div class='menu-item-center'>
+                        <h3> $meal_name </h3>
+                        <p>$ $meal_price </p>
+                    </div>
+                    <div class='menu-item-right'>
+                        <button onclick=\"openPickingDialog('$meal_id', '$meal_name', '../images/$meal_name.upload.jpg', $meal_qty, $meal_price, '$meal_note', $meal_star);\">點選</button>
+                        $p
+                    </div>
+                </div>
+            ";
+        } else {
+            $d = "
+                <!--菜單-->
+                <div class='menu-item'>
+                    <div class='menu-item-img'>
+                        <img src='../images/$meal_name.upload.jpg' alt='菜單'>
+                        <h3> $meal_name </h3>
+                        <p>$ $meal_price </p>
+                        <div align=\"center\">
+                            <button onclick=\"openPickingDialog('$meal_id', '$meal_name', '../images/$meal_name.upload.jpg', $meal_qty, $meal_price, '$meal_note', $meal_star);\">
+                                點選
+                            </button>
+                        </div>
+                    </div>
+                    <div class=\"menu-item-right\">
+                        $p
+                    </div>
+                </div>
+            ";
+        }
 
-        $d = "
-        <!--菜單-->
-        <div class='menu-item'>
-            <!--圖片容器-->
-            <div class='menu-item-img'>
-                <img src='../images/$meal_name.upload.jpg' alt='菜單'>
-            </div>
-            <!--右側容器-->
-            <div class='menu-item-center'>
-                <h3> $meal_name </h3>
-                <p>$ $meal_price </p>
-            </div>
-            <div class='menu-item-right'>
-                <button onclick=\"openPickingDialog('$meal_id', '$meal_name', '../images/$meal_name.upload.jpg', $meal_qty, $meal_price, '$meal_note');\">點選</button>
-                $p
-            </div>
-        </div>
-";
         echo $d;
     }
 
@@ -319,7 +434,7 @@
     //fPrice : 餐點價格
     //fDesc : 餐點介紹
     //---
-    function openPickingDialog(fid, fName, imgSrc, fqty, fPrice, fDesc) {
+    function openPickingDialog(fid, fName, imgSrc, fqty, fPrice, fDesc, fStar) {
         //將餐點代號記錄在隱藏欄位
         document.getElementById('pick_meal_id').value = fid;
 
@@ -333,16 +448,38 @@
         var img = document.getElementById('pop_food_img');
         var prc = document.getElementById('pop_price');
         var desc =  document.getElementById('pop_desc');
+        var star = document.getElementById('pop_star');
 
         //餐點名稱
         foodName.innerHTML = fName;
-        //餐點圖片
-        var imgSrc = img.setAttribute("src", imgSrc);
         //價格
         prc.innerHTML = "$ " + fPrice;
+<?php
+    if ($menu_food_type == '3' or $menu_food_type == '4') {
+        echo "
+        //餐點圖片
+        var imgSrc = img.setAttribute(\"src\", imgSrc);
+        ";
+    }
+    if ($menu_food_type == '2' or $menu_food_type == '3' or $menu_food_type == '4') {
+        echo "
         //介紹
         desc.innerHTML = fDesc;
-        
+        ";
+    }
+    if ($menu_food_type == '4') {
+        echo "
+        //星星
+        var s = '';
+        if (fStar > 0) {
+            for (var i = 1; i <= fStar; i++) {
+                s = s + '⭐';
+            }
+        }
+        star.innerHTML = s;
+        ";
+    }
+?>                
         //顯示視窗
         popup.style.display = 'block';
     }
