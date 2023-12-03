@@ -124,13 +124,13 @@ input[name="createOrder"] {
     width: 10%;
     border-radius: 15px;
     border: none;
-    color: green;
+    color: #35522b;
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: lightgreen;
+    background: #acce79;
     font-weight: bold;
     margin-left: 35px;
     padding: 5px;
@@ -181,4 +181,18 @@ input[name="createOrder"] {
     width: 70px;
     height: 45px;
     cursor: pointer;
+}
+
+.closetable{
+  width: 70px;
+  height: 43px;
+  border: 10px solid #f0dee0;
+  background-color:#f0dee0;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #a97d82;
+  font-weight:bold;
 }
