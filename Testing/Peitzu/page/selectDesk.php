@@ -83,7 +83,7 @@
 
         if ($is_open == 'Y') {
             echo "
-            document.getElementById('A$x').style.backgroundColor = 'pink';";
+            document.getElementById('A$x').style.backgroundColor = '#d998a0';";
         }
         
         else{
