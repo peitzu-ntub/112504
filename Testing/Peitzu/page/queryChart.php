@@ -29,7 +29,7 @@
 
     <title>消費總額月別統計</title>
 
-    <link href="../js/newrecord.css" rel="stylesheet">
+    <link href="../js/queryChart.css" rel="stylesheet">
 
 </head>
 <?php
