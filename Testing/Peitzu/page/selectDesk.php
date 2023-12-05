@@ -144,8 +144,8 @@
     //關桌
     function closeTable(id) {
         Swal.fire({
-            title: "關桌",
-            text: "確定要關閉 A" + id + " 嗎？",
+            title: "結帳",
+            text: "確定要幫 A" + id + " 結帳嗎？",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -160,7 +160,7 @@
                 var dataString = '?id=[bossid]&store=[storeid]&close_table=[tableid]&staff_id=<?php echo $_GET['staff_id']; ?>';
                 dataString = dataString.replace("[bossid]", identity);
                 dataString = dataString.replace("[storeid]", store_id);
-                dataString = dataString.replace("[tableid]", id);
+                dataString = dataString.replace("[tableid]", id);   
 
                 $.ajax({
                     //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
@@ -238,7 +238,7 @@
                     <br>
                     <center>
                     <button class=\"closetable\" type='button' onclick=\"closeTable($x);\">
-                        關桌
+                        結帳
                     </button>
                     </center>
                 </div>

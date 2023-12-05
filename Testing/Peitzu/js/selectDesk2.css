@@ -92,9 +92,9 @@ span{
 
 /* 輸入格樣式 */
 input[type="text"] , div.col-md-12.select{
-    margin-left: 5px;
+    margin-left: 2px;
     height: 45px;
-    width: 15%;
+    width: 20%;
     outline: none;
     font-size: 16px;
     border-radius: 15px;
@@ -120,9 +120,9 @@ label{
 }
 
 input[name="createOrder"] {
-    height: 45%;
+    height: 50%;
     width: 10%;
-    border-radius: 15px;
+    border-radius: 30px;
     border: none;
     color: #35522b;
     font-size: 18px;
@@ -186,13 +186,13 @@ input[name="createOrder"] {
 .closetable{
   width: 75px;
   height: 43px;
-  border: 10px solid #f0dee0;
+  border: 2px solid #f0dee0;
   background-color:#f0dee0;
   border-radius: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 17px;
   color: #a97d82;
   font-weight:bold;
 }
