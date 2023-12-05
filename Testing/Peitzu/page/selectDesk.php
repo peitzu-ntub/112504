@@ -28,6 +28,30 @@
     //複評老師的建議，讓員工可以關桌
     if (isset($_GET['close_table'])) {
         $tableNum = $_GET['close_table'];
+        //從桌號找到訂單單號
+        $sql = "
+            select * from store_order where boss_identity='$id' 
+            and store_id = '$storeid' 
+            and table_number = $tableNum 
+            and end_time is null
+            order by start_time desc
+            ";
+        $result = mysqli_query($con, $sql);
+        $ord = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $order_no = $ord['order_no'];
+        //從訂單單號找出訂單總金額
+        $sql = "
+            select sum(subtotal) as subtotal 
+            from store_order_item
+            where boss_identity = '$id'
+            and store_id = '$storeid'
+            and order_no = '$order_no'
+        ";
+        $result = mysqli_query($con, $sql);
+        $sum = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $sum_data = $sum['subtotal'];
+        
+        //關桌
         $sql = "
             update store_table 
             set is_open = 'N' 
@@ -37,9 +61,19 @@
         ";
         mysqli_query($con, $sql);
 
+        $sql = "
+            update store_order
+            set end_time = now()
+            where boss_identity = '$id' 
+            and store_id = '$storeid'
+            and order_no = '$order_no'
+        ";
+        mysqli_query($con, $sql);
+
         $data = array();
         $data['result'] = 'OK';
         $data['message'] = '儲存成功..';
+        $data['money'] = $sum_data;
         echo json_encode($data);
         return; exit;
     }
@@ -171,7 +205,21 @@
                     data: dataString,
                     //獲得正確回應時，要做的事情
                     success: function (response) {
-                        location.reload();
+                        var json = $.parseJSON(response);
+                        var money = json.money;
+
+                        Swal.fire({
+                            title: "關桌",
+                            text: "A" + id + " 的結帳金額為：" + money,
+                            icon: "info",
+                            showCancelButton: false,
+                            confirmButtonColor: "#3085d6",
+                            cancelButtonColor: "#d33",
+                            confirmButtonText: "結帳後關桌",
+                        }).then((result) => {
+                            location.reload();
+
+                        });
                     },
                     //獲得不正確的回應時，要做的事情
                     error: function (response) {

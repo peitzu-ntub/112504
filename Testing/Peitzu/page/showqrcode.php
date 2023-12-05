@@ -41,6 +41,7 @@
 
     $sql = "update store_table set is_open = 'Y'
     where boss_identity = '$identity' and store_id = '$store_id' and table_number = $desk";
+   
     mysqli_query($con, $sql);
 
 ?>
@@ -86,7 +87,7 @@
 <?php
     $decoded = urldecode($curQrcodeUrl);
     echo "模擬點餐  <a href=\"$decoded\">點餐功能</a><br>";
-    echo "回上一頁  <a href='selectdesk.php'>選擇桌號</a> <br><br>";
+    echo "回上一頁  <a href='selectdesk.php?staff_id=$emp'>選擇桌號</a> <br><br>";
 ?>
 </body>
 </html>
