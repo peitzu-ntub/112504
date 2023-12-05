@@ -25,21 +25,20 @@
                     <span>後台管理</span>
                 </div>
             </div>
-			<div class="section">
+	<div class="section">
                 <div class="col-md-4">
                     <input type="button" class="btn" value="員工資料" onclick="goEmployee();"><img src="../images/profile.png" /></input>
                     <input type="button" class="btn" value="顧客評價" onclick="goAllfeedback()"><img src="../images/chat.png" /></input>
-                    <input type="button" class="btn" value="消費紀錄" onclick="location.href='../page/record.php'"><img src="../images/record.png" /></input>
-                    <div class="dropdown"><img src="../images/menu (3).png" />
+                    <input type="button" class="btn" value="消費紀錄" onclick="goRecord()"><img src="../images/record.png" /></input>	                  
+		<div class="dropdown"><img src="../images/menu (3).png" />
                         <button class="dropbtn">店鋪管理</button>
                         <div class="dropdown-content">
                             <a onclick="goAllmenu();">菜單編輯</a>
                             <a onclick="goStoreEdit()">店家資訊編輯</a>
                             <a onclick="goChangePsw();">更改密碼</a>
                         </div>
-                    </div>
-                </div>
-			</div>
+		</div>
+		    <input type="button" class="btn" value="查看圖表" onclick="goqueryChart()"><img src="../images/bar-chart.png" /></input>  
 		</div>
 	</div>
 </body>
@@ -85,7 +84,20 @@
         var boss_name = urlParams.get('boss_name');
         location.href="store_info_edit.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
-
+    function goRecord() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="record.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
+    }
+    function goqueryChart() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var boss_identity = urlParams.get('boss_identity');
+        var store_id = urlParams.get('store_id');
+        var boss_name = urlParams.get('boss_name');
+        location.href="queryChart.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
+    }
 </script>
 
 </html>

@@ -116,9 +116,9 @@ $datas_len = count($datas); //目前資料筆數
                         <input type=\"date\" name=\"date_s\" style=\"font-size: 20px;\" value=\"$date_e\">";
                         else echo "
                         <input type=\"date\" name=\"date_s\" style=\"font-size: 20px;\">";
-?> 
-至&nbsp;
-<input type="date" name="date_e" style="font-size: 20px;">
+                ?> 
+                至&nbsp;
+                <input type="date" name="date_e" style="font-size: 20px;">
                             <input type="submit" value="查詢">
                         </p>
                         <div class="ininsidebox" style="width:900px;height:330px; overflow:auto;">
@@ -134,7 +134,7 @@ $datas_len = count($datas); //目前資料筆數
                                     </tr> -->
                                 </thead>
                                 <tbody>
-                             <?php
+                            <?php
                             for ($i = 0; $i < $datas_len; $i++) {
                                 echo "<tr>";
                                 echo "<td>". $datas[$i]['date'] . "</span>";
