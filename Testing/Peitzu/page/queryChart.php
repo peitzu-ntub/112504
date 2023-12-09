@@ -15,31 +15,38 @@
     if (isset($_POST["boss_name"]))
         $boss_name = $_POST["boss_name"];
 
+    $chartType = $_POST["chartType"];
+    //echo $chartType;
+    //echo "<br>";
+
+
     $date_s = '';
-    if (isset($_POST['date_s']) && $_POST['date_s'] != '')
+    $date_s_str = '';
+    if (isset($_POST['date_s']) && $_POST['date_s'] != '') {        
         $date_s = $_POST['date_s'];
+    }
+    if ($date_s != '') {
+        $date_s_str = " and o.start_time >= '$date_s'";
+    }
     
     $date_e = '';
-    if (isset($_POST['date_e']) && $_POST['date_e'] != '')
-            $date_e = $_POST['date_e'];
+    $date_e_str = '';
+    if (isset($_POST['date_e']) && $_POST['date_e'] != '') {
+        $date_e = $_POST['date_e'];
+    }
+    if ($date_e != '') {
+        $date_e_str = " and o.start_time <= '$date_e'";
+    }
 
     $sql = "
-    select 
-        date(b.start_time) as date, b.table_number, time(b.start_time) start_time, 
-        b.customer_count, time(b.end_time)end_time, c.meal_name
-    FROM store_order_item as a 
-    left join store_order as b 
-         on a.boss_identity = b.boss_identity 
-         and a.store_id = b.store_id and a.order_no = b.order_no
-    left join store_food as c
-         on a.meal_id = c.meal_id
-    where a.boss_identity = '$identity' 
-    and a.store_id = '$store_id' 
-    and b.boss_identity = '$identity' 
-    and b.store_id = '$store_id'
+    select f.meal_name, count(oi.score) as count, sum(oi.score) as sum, avg(oi.score) as avg
+    from store_order_item oi
+    join store_food f on f.boss_identity = oi.boss_identity and f.store_id = oi.store_id and f.meal_id = oi.meal_id
+    join store_order o on o.boss_identity = oi.boss_identity and o.store_id = oi.store_id and o.order_no = oi.order_no
+    where oi.boss_identity = '$identity' and oi.store_id = '$store_id' 
     $date_s_str
     $date_e_str
-    ";
+    group by f.meal_name";
 
     $result = mysqli_query($con, $sql);
 ?>
@@ -56,8 +63,10 @@
     <title>消費總額月別統計</title>
 
     <link href="../js/queryChart.css" rel="stylesheet">
+
     <!-- Chart.js v2.9.3 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="../js/jquery-3.6.4.min.js"></script>
 </head>
 
 <body>
@@ -68,7 +77,7 @@
         </div>
     </div>
     <div class="container-wrapper">
-    <form id="main" method="POST" action="record.php" >
+    <form id="main" method="POST" action="queryChart.php" >
                     <input type="hidden" id="boss_identity" name="boss_identity" value="<?php echo $identity; ?>" />
                     <input type="hidden" id="store_id" name="store_id" value="<?php echo $store_id; ?>" />
                     <input type="hidden" id="boss_name" name="boss_name" value="<?php echo $boss_name; ?>" />
@@ -76,7 +85,7 @@
                 <div class="title">
                     <div align="left">
                         <img src="../images/bar-chart.png" alt="icon圖片" />
-                        <span style="font-size: 28px;">星星排行榜</span>
+                        <span style="font-size: 28px;">報表</span>
                     </div>
                 </div>
                 <div class="twosmall">
@@ -98,17 +107,34 @@
         else echo "
                         <input type=\"date\" name=\"date_e\" style=\"font-size: 20px;\">";
 ?> 
-                        <button type="button"  onclick="createChart();">查詢</button>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                         <select id="chartType" name="chartType">
+                            <option value="0" >請選擇</option>
+                            <option value="1" <?php if ($chartType == "1") echo "selected=\"selected\""; ?>>點餐量統計</option>
+                            <!-- <option value="2" <?php if ($chartType == "2") echo "selected=\"selected\""; ?>>星星數統計</option> -->
+                            <option value="3" <?php if ($chartType == "3") echo "selected=\"selected\""; ?>>星星數平均</option>
+                        </select>
+                        <input type="submit" value="查詢">
                     </p>
-
+                    <!-- 要放置圖形的位置 -->
                     <canvas id="myChart" width="400" height="200"></canvas>                     
-
                 </div>
         </form>
     </div>
 </body>
 
 <script>
+    $(document).ready(function(){
+<?php 
+    if (isset($chartType)) {
+        echo "
+        createChart();
+        ";
+    }
+?>        
+    });                
+
+
      function goBack() {
         var urlParams = new URLSearchParams(window.location.search);
         var boss_identity = '<?php echo $identity; ?>'; 
@@ -117,40 +143,103 @@
         location.href="boss_management.html?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
 
+<?php
+    $backgroundColor = [
+        "rgba(255, 99, 132, 0.2)",
+        "rgba(54, 162, 235, 0.2)",
+        "rgba(255, 206, 86, 0.2)",
+        "rgba(75, 192, 192, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(255, 159, 64, 0.2)"
+    ];
+
+    $borderColor = [
+        "rgba(255,99,132,1)",
+        "rgba(54, 162, 235, 1)",
+        "rgba(255, 206, 86, 1)",
+        "rgba(75, 192, 192, 1)",
+        "rgba(153, 102, 255, 1)",
+        "rgba(255, 159, 64, 1)"
+    ];
+
+    $bgIndex = 0;
+    $bdIndex = 0;
+
+    $chartLabels = "";
+    $chartData = "";
+    $chartBackgroundColor = "";
+    $chartBorderColor = "";
+    $label = "";
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        // 每跑一次迴圈就抓一筆值
+        $chartLabels = $chartLabels . ', "' . $row['meal_name'] . '"';
+        $d = 0;
+        if ($chartType == "1") {
+            $d = $row['count'];
+            $label = "點餐量統計";
+        } else if ($chartType == "2") {
+            $d = $row['sum'];
+            $label = "星星數統計";
+        } else {
+            $d = $row['avg'];
+            $label = "星星數平均";
+        }
+        if (!isset($d) or $d == "") {
+            $d = "0";
+        }
+        $d = round($d);
+        $chartData = $chartData . ',' . $d;
+        $chartBackgroundColor = $chartBackgroundColor . ', "' . $backgroundColor[$bgIndex] . '"';
+        $bgIndex++;
+        if ($bgIndex == 5) { $bgIndex = 0; }
+        $chartBorderColor = $chartBorderColor . ', "' . $borderColor[$bdIndex] . '"';
+        $bdIndex++;
+        if ($bdIndex == 5) { $bdIndex = 0; }
+    }
+
+    $chartLabels = substr($chartLabels, 1);
+    $chartData = substr($chartData, 1);
+    $chartBackgroundColor = substr($chartBackgroundColor, 1);
+    $chartBorderColor = substr($chartBorderColor, 1);
+
+?>    
+
     function createChart() {
         var ctx = document.getElementById("myChart");
         var chart = new Chart(ctx, {
             type: "bar", // 圖表類型
             data: {
-                labels: ["漢堡", "雞排飯", "味噌湯", "肉包", "大腸包小腸", "紅茶拿鐵"], //顯示區間名稱
+                labels: [
+                    <?php echo $chartLabels; ?>
+                ], //顯示區間名稱
                 datasets: [
                 {
-                    label: "星星數", // tootip 出現的名稱
-                    data: [12, 19, 3, 5, 6, 3], // 資料
+                    label: "<?php echo $label; ?>", // tootip 出現的名稱
+                    data: [
+                        <?php echo $chartData; ?>
+                    ], // 資料
                     backgroundColor: [
-                    "rgba(255, 99, 132, 0.2)", // 第一個 bar 顏色
-                    "rgba(54, 162, 235, 0.2)",
-                    "rgba(255, 206, 86, 0.2)",
-                    "rgba(75, 192, 192, 0.2)",
-                    "rgba(153, 102, 255, 0.2)",
-                    "rgba(255, 159, 64, 0.2)"
+                        <?php echo $chartBackgroundColor; ?>
                     ],
                     borderColor: [
-                    "rgba(255,99,132,1)",
-                    "rgba(54, 162, 235, 1)",
-                    "rgba(255, 206, 86, 1)",
-                    "rgba(75, 192, 192, 1)",
-                    "rgba(153, 102, 255, 1)",
-                    "rgba(255, 159, 64, 1)"
+                        <?php echo $chartBorderColor; ?>
                     ],
                     borderWidth: 1
                 }
                 ]
             },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            },            
         });
     }
-
-
 </script>
 
 </html>

@@ -41,7 +41,7 @@ body{
   top: 8%; 
   left: 50%; 
   transform: translate(-50%, -50%); 
-  width: 330px;
+  width: 200px;
   height: 50px;
   border: 3px solid #acce79;
   background-color:#acce79;
@@ -83,8 +83,8 @@ body{
 ==============*/
 .submit {
   position: absolute; /* 設置為絕對定位 */
-  bottom: 25px; /* 距離視窗上方的位置 */
-  left: 60%; /* 距離視窗左側的位置 */
+  bottom: 10%; /* 距離視窗上方的位置 */
+  left: 75%; /* 距離視窗左側的位置 */
   transform: translate(-50%, -50%); /* 將容器水平垂直居中 */
   width: 70px;
   height: 37px;
@@ -145,27 +145,6 @@ body{
   cursor: pointer;
 }
 
-/*=============
-   消費紀錄表格
- =============*/
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-th, td {
-  padding: 13px;
-  text-align: center;
-}
-th {
-  background-color: #f2f2f2;
-  border: 1px solid #7297ce;
-}
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-/* tr:hover {
-  background-color: #e9e9e9;
-} */
 
 /*============
 消費紀錄 查詢
@@ -186,20 +165,25 @@ font-weight:bold
 }
 /* 確定按鈕 */
 .inline-form input[type="submit"]{
-height: 100%;
-width: 70px;
+position: absolute;
+/* 設置為絕對定位 */
+top: 8px;
+/* 距離視窗上方的位置 */
+left: 600px;
+width: 68px;
+height: 35px;
 border-radius: 20px;
 border: none;
-color: #fff;
+color: #857e60;
 font-size: 18px;
 font-weight: 500;
 letter-spacing: 1px;
 cursor: pointer;
 /* transition: all 0.3s ease; */
-background: #618ccc;
+background: #ffeea3;
 font-weight:bold
 }
 .inline-form input:hover{
-background: #7297ce;
-color: #f0e24c;
+background: #cbc196;
+color: #857e60;
 }
