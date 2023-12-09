@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     include "../bin/conn.php";
     
     if (isset($_GET["boss_identity"]))
@@ -15,10 +15,36 @@
     if (isset($_POST["boss_name"]))
         $boss_name = $_POST["boss_name"];
 
+    $date_s = '';
+    if (isset($_POST['date_s']) && $_POST['date_s'] != '')
+        $date_s = $_POST['date_s'];
+    
     $date_e = '';
     if (isset($_POST['date_e']) && $_POST['date_e'] != '')
             $date_e = $_POST['date_e'];
+
+    $sql = "
+    select 
+        date(b.start_time) as date, b.table_number, time(b.start_time) start_time, 
+        b.customer_count, time(b.end_time)end_time, c.meal_name
+    FROM store_order_item as a 
+    left join store_order as b 
+         on a.boss_identity = b.boss_identity 
+         and a.store_id = b.store_id and a.order_no = b.order_no
+    left join store_food as c
+         on a.meal_id = c.meal_id
+    where a.boss_identity = '$identity' 
+    and a.store_id = '$store_id' 
+    and b.boss_identity = '$identity' 
+    and b.store_id = '$store_id'
+    $date_s_str
+    $date_e_str
+    ";
+
+    $result = mysqli_query($con, $sql);
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,63 +56,10 @@
     <title>消費總額月別統計</title>
 
     <link href="../js/queryChart.css" rel="stylesheet">
-
+    <!-- Chart.js v2.9.3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </head>
-<?php
 
-
-// 設置一個空陣列來放資料
-$datas = array();
-$dateE = "";
-if (isset($_POST['date_e']) && $_POST['date_e'] != '')
-    $dateE = " and date(b.start_time) = '" . $_POST["date_e"] . "' ";
-
-$sql = "select date(b.start_time) as date, b.table_number, time(b.start_time) start_time, b.customer_count, time(b.end_time)end_time, c.meal_name
-FROM store_order_item as a 
-left join store_order as b
-on a.boss_identity = b.boss_identity and a.store_id = b.store_id and a.order_no = b.order_no
-left join store_food as c
-on a.meal_id = c.meal_id
-where a.boss_identity = '$identity' and a.store_id = '$store_id' and b.boss_identity = '$identity' and b.store_id = '$store_id'
-$dateE
-";
-
-
-$result = mysqli_query($con, $sql);
-
-
-// 如果有資料
-if ($result) {
-    // mysqli_num_rows方法可以回傳我們結果總共有幾筆資料
-    if (mysqli_num_rows($result) > 0) {
-        // 取得大於0代表有資料
-        // while迴圈會根據資料數量，決定跑的次數
-        // mysqli_fetch_assoc方法可取得一筆值
-        while ($row = mysqli_fetch_assoc($result)) {
-            // 每跑一次迴圈就抓一筆值，最後放進data陣列中
-            $datas[] = $row;
-        }
-    }
-    // 釋放資料庫查到的記憶體
-    mysqli_free_result($result);
-} else {
-    echo "{$sql} 語法執行失敗，錯誤訊息: " . mysqli_error($link);
-}
-// 處理完後印出資料
-if (!empty($result)) {
-    // 如果結果不為空，就利用print_r方法印出資料
-    //print_r($datas);
-} else {
-    // 為空表示沒資料
-    echo "查無資料";
-}
-echo "<br><br>";
-//echo $datas[0]['sf_name']; // 印出第0筆資料中的sf_name欄位值
-
-//使用表格排版用while印出
-$datas_len = count($datas); //目前資料筆數
-
-?>
 <body>
     <div class="logout" type="button" name="按鈕名稱" onclick="goBack()">
         <div align="left">
@@ -103,55 +76,38 @@ $datas_len = count($datas); //目前資料筆數
                 <div class="title">
                     <div align="left">
                         <img src="../images/bar-chart.png" alt="icon圖片" />
-                        <span style="font-size: 28px;">消費總額月別統計</span>
+                        <span style="font-size: 28px;">星星排行榜</span>
                     </div>
                 </div>
                 <div class="twosmall">
                     
-                        <p class="inline-form">
-                            日期區間：
-                            <?php 
-                        if ($date_e != '') 
-                        echo "
-                        <input type=\"date\" name=\"date_s\" style=\"font-size: 20px;\" value=\"$date_e\">";
-                        else echo "
+                    <p class="inline-form">
+                        日期區間：
+<?php 
+    if ($date_s != '') 
+        echo "
+                        <input type=\"date\" name=\"date_s\" style=\"font-size: 20px;\" value=\"$date_s\">";
+        else echo "
                         <input type=\"date\" name=\"date_s\" style=\"font-size: 20px;\">";
-                ?> 
-                至&nbsp;
-                <input type="date" name="date_e" style="font-size: 20px;">
-                            <input type="submit" value="查詢">
-                        </p>
-                        <div class="ininsidebox" style="width:900px;height:330px; overflow:auto;">
-                            <table border='1' align='center' class='order-table'>
-                                <thead>
-                                    <!-- <tr>
-                                        <th>日期</th>
-                                        <th>桌號</th>
-                                        <th>開桌時間</th>
-                                        <th>人數</th>
-                                        <th>關桌時間</th>
-                                        <th>餐點</th>
-                                    </tr> -->
-                                </thead>
-                                <tbody>
-                            <?php
-                            for ($i = 0; $i < $datas_len; $i++) {
-                                echo "<tr>";
-                                echo "<td>". $datas[$i]['date'] . "</span>";
-                                echo "<td>". $datas[$i]['table_number'] . "</span>";
-                                echo "<td>". $datas[$i]['start_time'] . "</span>";
-                                echo "<td>". $datas[$i]['customer_count'] . "</span>";
-                                echo "<td>". $datas[$i]['end_time'] . "</span>";
-                                echo "<td>". $datas[$i]['meal_name'] . "</span>";
-                                echo "</br>";
-                            }
-                            ?>
-                                </tbody>
-                            </table>
-                        </div>
+?> 
+                        &nbsp;至&nbsp;&nbsp;
+<?php 
+    if ($date_e != '') 
+        echo "
+                        <input type=\"date\" name=\"date_e\" style=\"font-size: 20px;\" value=\"$date_e\">";
+        else echo "
+                        <input type=\"date\" name=\"date_e\" style=\"font-size: 20px;\">";
+?> 
+                        <button type="button"  onclick="createChart();">查詢</button>
+                    </p>
+
+                    <canvas id="myChart" width="400" height="200"></canvas>                     
+
+                </div>
         </form>
     </div>
 </body>
+
 <script>
      function goBack() {
         var urlParams = new URLSearchParams(window.location.search);
@@ -160,6 +116,41 @@ $datas_len = count($datas); //目前資料筆數
         var boss_name = '<?php echo $boss_name; ?>';
         location.href="boss_management.html?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
+
+    function createChart() {
+        var ctx = document.getElementById("myChart");
+        var chart = new Chart(ctx, {
+            type: "bar", // 圖表類型
+            data: {
+                labels: ["漢堡", "雞排飯", "味噌湯", "肉包", "大腸包小腸", "紅茶拿鐵"], //顯示區間名稱
+                datasets: [
+                {
+                    label: "星星數", // tootip 出現的名稱
+                    data: [12, 19, 3, 5, 6, 3], // 資料
+                    backgroundColor: [
+                    "rgba(255, 99, 132, 0.2)", // 第一個 bar 顏色
+                    "rgba(54, 162, 235, 0.2)",
+                    "rgba(255, 206, 86, 0.2)",
+                    "rgba(75, 192, 192, 0.2)",
+                    "rgba(153, 102, 255, 0.2)",
+                    "rgba(255, 159, 64, 0.2)"
+                    ],
+                    borderColor: [
+                    "rgba(255,99,132,1)",
+                    "rgba(54, 162, 235, 1)",
+                    "rgba(255, 206, 86, 1)",
+                    "rgba(75, 192, 192, 1)",
+                    "rgba(153, 102, 255, 1)",
+                    "rgba(255, 159, 64, 1)"
+                    ],
+                    borderWidth: 1
+                }
+                ]
+            },
+        });
+    }
+
+
 </script>
 
 </html>
