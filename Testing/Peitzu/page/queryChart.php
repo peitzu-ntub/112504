@@ -109,7 +109,7 @@
 ?> 
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                          <select id="chartType" name="chartType">
-                            <option value="0" >請選擇</option>
+                            <!-- <option value="0" >請選擇</option> -->
                             <option value="1" <?php if ($chartType == "1") echo "selected=\"selected\""; ?>>點餐量統計</option>
                             <!-- <option value="2" <?php if ($chartType == "2") echo "selected=\"selected\""; ?>>星星數統計</option> -->
                             <option value="3" <?php if ($chartType == "3") echo "selected=\"selected\""; ?>>星星數平均</option>
