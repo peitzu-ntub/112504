@@ -38,15 +38,24 @@
         $date_e_str = " and o.start_time <= '$date_e'";
     }
 
+    $order_by = "";
+    if ($chartType == "1")
+        $order_by = " order by sum(oi.count) desc";
+    else if ($chartType == "2")
+        $order_by = " order by sum(oi.score) desc";
+    else if ($chartType == "3")
+        $order_by = " order by avg(oi.score) desc";
+
     $sql = "
-    select f.meal_name, count(oi.score) as count, sum(oi.score) as sum, avg(oi.score) as avg
+    select f.meal_name, sum(oi.count) as count, sum(oi.score) as sum, avg(oi.score) as avg
     from store_order_item oi
     join store_food f on f.boss_identity = oi.boss_identity and f.store_id = oi.store_id and f.meal_id = oi.meal_id
-    join store_order o on o.boss_identity = oi.boss_identity and o.store_id = oi.store_id and o.order_no = oi.order_no
     where oi.boss_identity = '$identity' and oi.store_id = '$store_id' 
     $date_s_str
     $date_e_str
-    group by f.meal_name";
+    group by f.meal_name
+    $order_by    
+    ";
 
     $result = mysqli_query($con, $sql);
 ?>
@@ -109,7 +118,7 @@
 ?> 
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                          <select id="chartType" name="chartType">
-                            <!-- <option value="0" >請選擇</option> -->
+                             <!--<option value="0" >請選擇</option>-->
                             <option value="1" <?php if ($chartType == "1") echo "selected=\"selected\""; ?>>點餐量統計</option>
                             <!-- <option value="2" <?php if ($chartType == "2") echo "selected=\"selected\""; ?>>星星數統計</option> -->
                             <option value="3" <?php if ($chartType == "3") echo "selected=\"selected\""; ?>>星星數平均</option>
@@ -168,12 +177,21 @@
     $chartLabels = "";
     $chartData = "";
     $chartBackgroundColor = "";
-    $chartBorderColor = "";
+    $chartBorderColor = "";    
     $label = "";
 
+    if ($chartType == "1") {
+        $label = "點餐量統計";
+    } else if ($chartType == "2") {
+        $label = "星星數統計";
+    } else {
+        $label = "星星數平均";
+    }
+
     while ($row = mysqli_fetch_assoc($result)) {
-        // 每跑一次迴圈就抓一筆值
+        //X軸的資料
         $chartLabels = $chartLabels . ', "' . $row['meal_name'] . '"';
+        //值
         $d = 0;
         if ($chartType == "1") {
             $d = $row['count'];
@@ -188,11 +206,14 @@
         if (!isset($d) or $d == "") {
             $d = "0";
         }
-        $d = round($d);
+        $d = round($d, 1);
+        //資料
         $chartData = $chartData . ',' . $d;
-        $chartBackgroundColor = $chartBackgroundColor . ', "' . $backgroundColor[$bgIndex] . '"';
+        //背景的顏色
+        $chartBackgroundColor = $chartBackgroundColor . ', "' . $backgroundColor[$bgIndex] . '"';        
         $bgIndex++;
         if ($bgIndex == 5) { $bgIndex = 0; }
+        //邊界的顏色
         $chartBorderColor = $chartBorderColor . ', "' . $borderColor[$bdIndex] . '"';
         $bdIndex++;
         if ($bdIndex == 5) { $bdIndex = 0; }
@@ -202,9 +223,7 @@
     $chartData = substr($chartData, 1);
     $chartBackgroundColor = substr($chartBackgroundColor, 1);
     $chartBorderColor = substr($chartBorderColor, 1);
-
 ?>    
-
     function createChart() {
         var ctx = document.getElementById("myChart");
         var chart = new Chart(ctx, {
@@ -233,7 +252,17 @@
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero:true
+                            //Y軸的值，從零開始顯示
+                            beginAtZero:true,
+                            //Y軸的間格，以1為單位
+<?php 
+    if ($chartType == '1')  
+        echo "                           
+                            stepSize: 1";
+    else
+        echo "
+                            stepSize: 0.5";                            
+?>
                         }
                     }]
                 }
