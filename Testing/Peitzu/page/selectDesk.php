@@ -209,8 +209,7 @@
                         var money = json.money;
 
                         Swal.fire({
-                            title: "關桌",
-                            text: "A" + id + " 的結帳金額為：" + money,
+                            title: id + " 桌的結帳金額為：" + money,                  
                             icon: "info",
                             showCancelButton: false,
                             confirmButtonColor: "#3085d6",
@@ -282,7 +281,7 @@
         <div class='col-md-2'>
             <div class='card' >
                 <div id='A$x' style='height: 80; background-color:#d998a0;'>
-                    A$x
+                    $x
                     <br>
                     <center>
                     <button class=\"closetable\" type='button' onclick=\"closeTable($x);\">
@@ -300,7 +299,7 @@
         echo "
         <div class='col-md-2'>
             <div class='card' >
-                <div id='A$x' style='height: 80;' onClick=change('$x')>A$x</div>
+                <div id='A$x' style='height: 80;' onClick=change('$x')>$x</div>
             </div>
         </div>
         ";
