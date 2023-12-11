@@ -28,6 +28,30 @@
     //複評老師的建議，讓員工可以關桌
     if (isset($_GET['close_table'])) {
         $tableNum = $_GET['close_table'];
+        //從桌號找到訂單單號
+        $sql = "
+            select * from store_order where boss_identity='$id' 
+            and store_id = '$storeid' 
+            and table_number = $tableNum 
+            and end_time is null
+            order by start_time desc
+            ";
+        $result = mysqli_query($con, $sql);
+        $ord = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $order_no = $ord['order_no'];
+        //從訂單單號找出訂單總金額
+        $sql = "
+            select sum(subtotal) as subtotal 
+            from store_order_item
+            where boss_identity = '$id'
+            and store_id = '$storeid'
+            and order_no = '$order_no'
+        ";
+        $result = mysqli_query($con, $sql);
+        $sum = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $sum_data = $sum['subtotal'];
+        
+        //關桌
         $sql = "
             update store_table 
             set is_open = 'N' 
@@ -37,9 +61,19 @@
         ";
         mysqli_query($con, $sql);
 
+        $sql = "
+            update store_order
+            set end_time = now()
+            where boss_identity = '$id' 
+            and store_id = '$storeid'
+            and order_no = '$order_no'
+        ";
+        mysqli_query($con, $sql);
+
         $data = array();
         $data['result'] = 'OK';
         $data['message'] = '儲存成功..';
+        $data['money'] = $sum_data;
         echo json_encode($data);
         return; exit;
     }
@@ -83,7 +117,7 @@
 
         if ($is_open == 'Y') {
             echo "
-            document.getElementById('A$x').style.backgroundColor = 'pink';";
+            document.getElementById('A$x').style.backgroundColor = '#d998a0';";
         }
         
         else{
@@ -137,15 +171,15 @@
             "&order_no="+order_no+
             "&persons="+persons+
             "&emp="+emp;
-        alert(newUrl);
+        // alert(newUrl);
         window.location.replace(newUrl);
     }
 
     //關桌
     function closeTable(id) {
         Swal.fire({
-            title: "關桌",
-            text: "確定要關閉 A" + id + " 嗎？",
+            title: "結帳",
+            text: "確定要幫 A" + id + " 結帳嗎？",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -160,7 +194,7 @@
                 var dataString = '?id=[bossid]&store=[storeid]&close_table=[tableid]&staff_id=<?php echo $_GET['staff_id']; ?>';
                 dataString = dataString.replace("[bossid]", identity);
                 dataString = dataString.replace("[storeid]", store_id);
-                dataString = dataString.replace("[tableid]", id);
+                dataString = dataString.replace("[tableid]", id);   
 
                 $.ajax({
                     //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
@@ -171,7 +205,20 @@
                     data: dataString,
                     //獲得正確回應時，要做的事情
                     success: function (response) {
-                        location.reload();
+                        var json = $.parseJSON(response);
+                        var money = json.money;
+
+                        Swal.fire({
+                            title: id + " 桌的結帳金額為：" + money,                  
+                            icon: "info",
+                            showCancelButton: false,
+                            confirmButtonColor: "#3085d6",
+                            cancelButtonColor: "#d33",
+                            confirmButtonText: "結帳後關桌",
+                        }).then((result) => {
+                            location.reload();
+
+                        });
                     },
                     //獲得不正確的回應時，要做的事情
                     error: function (response) {
@@ -234,11 +281,11 @@
         <div class='col-md-2'>
             <div class='card' >
                 <div id='A$x' style='height: 80; background-color:#d998a0;'>
-                    A$x
+                    $x
                     <br>
                     <center>
                     <button class=\"closetable\" type='button' onclick=\"closeTable($x);\">
-                        關桌
+                        結帳
                     </button>
                     </center>
                 </div>
@@ -252,7 +299,7 @@
         echo "
         <div class='col-md-2'>
             <div class='card' >
-                <div id='A$x' style='height: 80;' onClick=change('$x')>A$x</div>
+                <div id='A$x' style='height: 80;' onClick=change('$x')>$x</div>
             </div>
         </div>
         ";

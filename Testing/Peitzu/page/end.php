@@ -33,7 +33,9 @@
             mysqli_query($con, $sql);
         }
     }
-
+//2023.12.08因為要在結帳時才關桌
+//所以這兩段SQL就不要在給出評價的時候執行
+/*
     //關桌
     $sql = "
         update store_table
@@ -48,7 +50,8 @@
             )";
     mysqli_query($con, $sql);
 
-echo "<br>";
+// echo $sql;
+// echo "<br>";
 
     //更新訂單的關桌時間
     $sql = "
@@ -58,6 +61,8 @@ echo "<br>";
         and store_id = '$store_id' 
         and order_no = '$order_no'";
     mysqli_query($con, $sql);    
+// echo $sql;
+*/
 
 ?>                
 
