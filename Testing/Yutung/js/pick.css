@@ -269,6 +269,7 @@ body {
 }
 
 .centered-container {
+    padding-top: 15px;
     display: flex;
     justify-content: center;
     /* 水平居中 */
@@ -278,8 +279,7 @@ body {
 
 /* 購物車按鈕 */
 .cartbutton {
-    width: 90px;
-    margin-left: 30px;
+    width: 100px;
     height: 40px;
     border: 3px solid #DEB887;
     background-color: #DEB887;
