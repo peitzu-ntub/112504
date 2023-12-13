@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     include "../bin/conn.php";
     
     if (isset($_GET["boss_identity"]))
@@ -128,21 +128,31 @@ $datas_len = count($datas); //目前資料筆數
                     <div class="input-box">
                         <span class="details" style="font-size: 19px;">評價日期：</span>
 <?php 
-    if ($date_s != '') 
-        echo "
-                        <input type=\"date\" name=\"date_s\" style=\"font-size: 15px;\" value=\"$date_s\">";
-    else echo "
-                        <input type=\"date\" name=\"date_s\" style=\"font-size: 15px;\">";
-?>                        
+if ($date_s != '') {
+    $maxDate = date('Y-m-d'); // Get the current date
+    echo "
+        <input type=\"date\" name=\"date_s\" style=\"font-size: 15px;\" value=\"$date_s\" max=\"$maxDate\">";
+} else {
+    $maxDate = date('Y-m-d'); // Get the current date
+    echo "
+        <input type=\"date\" name=\"date_s\" style=\"font-size: 15px;\" max=\"$maxDate\">";
+}
+?>
+                
                         <!-- <input type="date" name="date_s" style="font-size: 15px;"> -->
                        
-<?php 
-    if ($date_e != '') 
-        echo "
-                        <input type=\"date\" name=\"date_e\" style=\"font-size: 15px;\" value=\"$date_e\">";
-    else echo "
-                        <input type=\"date\" name=\"date_e\" style=\"font-size: 15px;\">";
-?>                        
+                        <?php 
+if ($date_e != '') {
+    $maxDateEnd = date('Y-m-d', strtotime('+1 day')); // Get tomorrow's date
+    echo "
+        <input type=\"date\" name=\"date_e\" style=\"font-size: 15px;\" value=\"$date_e\" max=\"$maxDateEnd\">";
+} else {
+    $maxDateEnd = date('Y-m-d', strtotime('+1 day')); // Get tomorrow's date
+    echo "
+        <input type=\"date\" name=\"date_e\" style=\"font-size: 15px;\" max=\"$maxDateEnd\">";
+}
+?>
+                    
                         <!-- <input type="date" name="date_e" style="font-size: 15px;"> -->
                         <button class="searchbutton" type="submit"
                             style="font-size: 17px; width: 68px; height: 34px; background-color: #8cb87c; border-radius: 20px; border: 3px solid #8cb87c;"> 
@@ -154,6 +164,16 @@ $datas_len = count($datas); //目前資料筆數
                     <?php
 
                     echo "<font size='4';>來客數：";
+                    
+                    $sql = "
+                        select sum(customer_count) customer_count 
+                        from store_order
+                        where boss_identity = '$identity' 
+                        and store_id = '$store_id' 
+                        $dateS
+                        $dateE
+                        ";
+                    /*
                     $sql = "SELECT sum(customer_count) customer_count FROM store_order_item as a
                     left join store_order as b
                         on a.boss_identity = b.boss_identity and a.store_id = b.store_id and a.order_no = b.order_no
@@ -167,6 +187,7 @@ $datas_len = count($datas); //目前資料筆數
                     $dateE
                     ;
                     ";
+                    */
 
                     $result = mysqli_query($con, $sql); 
 
@@ -183,7 +204,7 @@ $datas_len = count($datas); //目前資料筆數
     else
         echo "
                         <input type=\"radio\" name=\"ord\" value=\"high\" style=\"font-size: 15px;\">由高到低&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <input type=\"radio\" name=\"ord\" value=\"low\" style=\"font-size: 15px;\" checked=\"checked\" >由低到高
+                        <input type=\"radio\" name=\"ord\" value=\"low\" style=\"font-size: 15px;\"  >由低到高
             ";
 ?>
                     </div><br>
@@ -224,7 +245,7 @@ $datas_len = count($datas); //目前資料筆數
         var boss_identity = '<?php echo $identity; ?>'; 
         var store_id = '<?php echo $store_id; ?>';
         var boss_name = '<?php echo $boss_name; ?>';
-        location.href="boss_management.html?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
+        location.href="boss_management.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
     function goOne() {
         var urlParams = new URLSearchParams(window.location.search);
