@@ -41,6 +41,7 @@
 
     $sql = "update store_table set is_open = 'Y'
     where boss_identity = '$identity' and store_id = '$store_id' and table_number = $desk";
+   
     mysqli_query($con, $sql);
 
 ?>
@@ -55,16 +56,16 @@
     </style>    
 </head>
 <body>
-    <h2>完成開桌</h2>
-    <table>
-        <tr><td width="330">訂單：<?php echo "$order_no"; ?></td></tr>
+    <!-- <h2>完成開桌</h2> -->
+    <table style="font-size: 25px;">
+        <tr><td width="480">訂單：<?php echo "$order_no"; ?></td></tr>
         <tr><td>桌號：<?php echo "$desk"; ?></td></tr>
         <tr><td>人數：<?php echo "$persons"; ?></td></tr>
         <tr><td>
             請掃描以下Qrcode，進入點餐畫面 <br>
             祝您用餐愉快～
             <center>
-                <?php echo "<img src='newqrcode.php?data=$curQrcodeUrl' />"; ?>
+                <?php echo "<img width='300' src='newqrcode.php?data=$curQrcodeUrl' />"; ?>
             </center>
         </td></tr>
 
@@ -82,11 +83,11 @@
     <br>
     <br>
     <br>
-    以下測試用<br>
+    <br>
 <?php
     $decoded = urldecode($curQrcodeUrl);
-    echo "模擬點餐  <a href=\"$decoded\">點餐功能</a><br>";
-    echo "回上一頁  <a href='selectdesk.php'>選擇桌號</a> <br><br>";
+    //echo "模擬點餐  <a href=\"$decoded\">點餐功能</a><br>";
+    //echo "回上一頁  <a href='selectdesk.php?staff_id=$emp'>選擇桌號</a> <br><br>";
 ?>
 </body>
 </html>

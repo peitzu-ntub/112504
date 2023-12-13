@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 
 <?php
     /*
@@ -10,20 +10,36 @@
 
     include "../bin/conn.php";
 
-    //老闆身份證號
-    $identity = $_GET["identity"];
-    //店代號
-    $store_id = $_GET['store_id'];
-    //訂單單號，用系統時間決定訂單單號，格式：yyyyMMddHHmmss
-    $order_no = $_GET["order_no"];
-    //餐點類型，用來呈現全部或者指定的餐點內容
-    $food_type=$_GET["food_type"];
+    $identity = "";
+    $store_id = "";
+    $order_no = "";
 
-    $result = mysqli_query($con, $sql);
-    $row_result = mysqli_fetch_assoc($result);
-    $_SESSION["boss_identity"] = $row_result['boss_identity'];
-    $_SESSION["store_id"] = $row_result['store_id'];
-    $_SESSION["order_no"] = $row_result['order_no'];
+    if (isset($_GET['staff_id'])) {
+        $staff_id = $_GET['staff_id'];
+        $sql = "SELECT * FROM store_staff where staff_id = '$staff_id' ";
+        $result = mysqli_query($con, $sql);
+        $row_result = mysqli_fetch_assoc($result);
+        $identity = $row_result['boss_identity'];
+        $store_id = $row_result['store_id'];
+        $order_no = "20231126";
+    }
+    else
+    {
+        //老闆身份證號
+        $identity = $_GET["identity"];
+        //店代號
+        $store_id = $_GET['store_id'];
+        //訂單單號，用系統時間決定訂單單號，格式：yyyyMMddHHmmss
+        $order_no = $_GET["order_no"];
+        //餐點類型，用來呈現全部或者指定的餐點內容
+        $food_type=$_GET["food_type"];
+    }
+
+    // $result = mysqli_query($con, $sql);
+    // $row_result = mysqli_fetch_assoc($result);
+    // $_SESSION["boss_identity"] = $row_result['boss_identity'];
+    // $_SESSION["store_id"] = $row_result['store_id'];
+    // $_SESSION["order_no"] = $row_result['order_no'];
     //--------------------------------------------------------
 
     $pick_meal_id = $_GET['pick_meal_id'];
@@ -208,17 +224,19 @@
             $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&order_no=$order_no\">全部</a></b> 
             ";
             echo $d;
-
-    //查詢餐點類協，並逐一顯示出來    
-    $sql = "select * from food_type where boss_identity = '$identity' and store_id = '$store_id'";
-    $types = mysqli_query($con, $sql);
-    //把整併後的資料重新寫入Store_order_item    
-    while ($type = mysqli_fetch_array($types, MYSQLI_ASSOC)) {
-        $type_id = $type['type_id'];
-        $type_name = $type['type_name'];
-        $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&food_type=$type_id&order_no=$order_no\">$type_name</a></b> 
-        ";
-        echo $d;
+            
+    if (!isset($staff_id)) {
+        //查詢餐點類協，並逐一顯示出來    
+        $sql = "select * from food_type where boss_identity = '$identity' and store_id = '$store_id'";
+        $types = mysqli_query($con, $sql);
+        //把整併後的資料重新寫入Store_order_item    
+        while ($type = mysqli_fetch_array($types, MYSQLI_ASSOC)) {
+            $type_id = $type['type_id'];
+            $type_name = $type['type_name'];
+            $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&food_type=$type_id&order_no=$order_no\">$type_name</a></b> 
+            ";
+            echo $d;
+        }
     }
 
 ?>
@@ -236,6 +254,7 @@
           on c.boss_identity = F.boss_identity 
           and c.store_id = F.store_id 
           and F.meal_id = C.meal_id
+   	  and c.order_no = '$order_no'
         where F.boss_identity = '$identity' and F.store_id = '$store_id'
         ) m
         left join (
@@ -247,6 +266,7 @@
         ) s on s.meal_id = m.meal_id
     ";
 
+	//echo $sql;
 
     if (isset($food_type)) {
         $sql = $sql . " where m.type_id = '$food_type'";
@@ -398,27 +418,37 @@
             <div class="centered-container">
 
 <?php
-    //顯示購物車畫面，顯示指定的訂單的購物車現況
-    $cart_url = "location.href='cart.php?identity=$identity&store_id=$store_id&order_no=$order_no'";
-    $cart_div = "
-                <button type='return' style='font-size: 18px; font-weight:bolder;' class='cartbutton' onclick=\"$cart_url\">
-                    購物車
-                </button>&emsp;";
-    echo $cart_div;
+    if (isset($staff_id)) {
+        $staff_url = "location.href='staff_management.html?staff_id=$staff_id'";
+        $staff_div = "
+                    <button type='return' style='font-size: 18px; font-weight:bolder;' class='cartbutton' onclick=\"$staff_url\">
+                        返回
+                    </button>&emsp;";
+        echo $staff_div;
+    }
+    else
+    {
+        //顯示購物車畫面，顯示指定的訂單的購物車現況
+        $cart_url = "location.href='cart.php?identity=$identity&store_id=$store_id&order_no=$order_no'";
+        $cart_div = "
+                    <button type='return' style='font-size: 18px; font-weight:bolder;' class='cartbutton' onclick=\"$cart_url\">
+                        購物車
+                    </button>&emsp;";
+        echo $cart_div;
 
-    $qr_url = "location.href='orderQuery.php?identity=$identity&store_id=$store_id&order_no=$order_no'";
-    $qr_div = "
-                <button type='return' style='font-size: 18px; font-weight:bolder;' class='allbutton' onclick=\"$qr_url\">
-                    我的訂單
-                </button>&emsp;";
-    echo $qr_div;
-    $fc_url = "location.href='cusfeedback.php?identity=$identity&store_id=$store_id&order_no=$order_no'";
-    $fc_div = "
-                <button type='return' style='font-size: 18px; font-weight:bolder;' class='feedbackbutton' onclick=\"$fc_url\">
-                    去評價
-                </button>";
-    echo $fc_div;
-
+        $qr_url = "location.href='orderQuery.php?identity=$identity&store_id=$store_id&order_no=$order_no'";
+        $qr_div = "
+                    <button type='return' style='font-size: 18px; font-weight:bolder;' class='allbutton' onclick=\"$qr_url\">
+                        我的訂單
+                    </button>&emsp;";
+        echo $qr_div;
+        $fc_url = "location.href='cusfeedback.php?identity=$identity&store_id=$store_id&order_no=$order_no'";
+        $fc_div = "
+                    <button type='return' style='font-size: 18px; font-weight:bolder;' class='feedbackbutton' onclick=\"$fc_url\">
+                        去評價
+                    </button>";
+        echo $fc_div;
+    }
 ?>  
             </div>      
         </div>
