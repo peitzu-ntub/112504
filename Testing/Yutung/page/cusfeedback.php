@@ -52,13 +52,9 @@
 
     <title>評價</title>
 
-    <meta name="description" content="Source code generated using layoutit.com">
-    <meta name="author" content="LayoutIt!">
-
     <link href="../js/bootstrap.min.css" rel="stylesheet">
     <link href="../js/cusfeedback.css" rel="stylesheet">
     <script src="../js/jquery-3.6.4.min.js"></script>
-
 </head>
 
 <body>
@@ -86,7 +82,7 @@
         <div class="content">            
             <form id="myForm" action="end.php" method="POST">
  
-            <!-- <div class="scrollable-content"> -->
+            <div class="scrollable-content">
                 <div class="menu">
 <?php
     while ($o = mysqli_fetch_array($ords, MYSQLI_ASSOC)) {
@@ -130,21 +126,21 @@
                 </div>
             </div>
 
-            <div class="footer">
-                <div class="centered-container">
-                    <button type='submit' style='font-size: 16px; font-weight:bolder; width: 140px;' class='button' onclick="goEnd('fb');">
-                        送出評價
-                    </button>&emsp;
-                    <button type='submit' style='font-size: 16px; font-weight:bolder; width: 140px;' class='button' onclick="goEnd('bye');">
-                        不用了，謝謝
-                    </button>
-                </div>
-            </div>
             <input type="hidden" id="action_type" name="action_type" value="">
             <input type="hidden" id="identity" name="identity" value="">
             <input type="hidden" id="store_id" name="store_id" value="">
             <input type="hidden" id="order_no" name="order_no" value="">
         </form>
+        </div>
+        <div class="footer">
+            <div class="centered-container">
+                <button type='submit' style='font-size: 16px; font-weight:bolder; width: 140px;' class='button' onclick="goEnd('fb');">
+                    送出評價
+                </button>&emsp;
+                <button type='submit' style='font-size: 16px; font-weight:bolder; width: 140px;' class='button' onclick="goEnd('bye');">
+                    不用了，謝謝
+                </button>
+            </div>
         </div>
 </body>
 

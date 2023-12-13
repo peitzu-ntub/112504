@@ -134,6 +134,7 @@ body {
 }
 
 .footer {           
+    padding-top: 8px;
     background-color: #ddb62a;
     flex-basis: 55px;
     flex-shrink: 0;
@@ -158,6 +159,23 @@ body {
     align-items: center;
     font-size: 16px;
     color: #000000;
+}
+
+.button div {
+    display: flex;
+    align-items: center;
+    color: #80a0e2;
+}
+
+.button img {
+    margin-right: 3px;
+}
+
+.button:hover {
+    color: #ffffff;
+    background-color: #DEB887;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 /* 返回的方框 */
