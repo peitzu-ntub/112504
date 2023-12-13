@@ -20,8 +20,8 @@ body{
 .myTitle{
     display: block;
     position: fixed;
-    top: 12px;
-    left: 38%;
+    top: 20px;
+    left: 38.5%;
     z-index: 100;
     align-items: center;
     text-align: center;
@@ -31,8 +31,8 @@ body{
     display: inline;
     color: #35522b;
     position: fixed;
-    top: 16px;
-    left: 45%;
+    top: 30px;
+    left: 46.5%;
     z-index: 100;
     font-size: 300%;
     align-items: center;
@@ -47,13 +47,30 @@ body{
     background-color: #acce79;
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
     position: fixed;
-    top: 20px;
-    left: 41%;
+    top: 32px;
+    left: 40%;
     z-index: 99;
     align-items: center;
     text-align: center;
 }
 
+@media screen and (min-width:768px) and (max-width:1024px){
+    .myTitle{
+        position: fixed;
+        left: 34%;
+    }
+    
+    .col-md-5 span{
+        position: fixed;
+        left: 43%;
+    }
+      
+    .caption{
+        position: fixed;
+        left: 38%;
+    }
+ }
+ 
 .container {
     background-color: #fff;
     opacity: 0.8;
