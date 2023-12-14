@@ -26,7 +26,7 @@
         $date_s = $_POST['date_s'];
     }
     if ($date_s != '') {
-        $date_s_str = " and o.start_time >= '$date_s'";
+        $date_s_str = " and oi.start_time >= '$date_s'";
     }
     
     $date_e = '';
@@ -35,7 +35,7 @@
         $date_e = $_POST['date_e'];
     }
     if ($date_e != '') {
-        $date_e_str = " and o.start_time <= '$date_e'";
+        $date_e_str = " and oi.start_time <= '$date_e'";
     }
 
     $order_by = "";
@@ -46,16 +46,17 @@
     else if ($chartType == "3")
         $order_by = " order by avg(oi.score) desc";
 
-    $sql = "
-    select f.meal_name, sum(oi.count) as count, sum(oi.score) as sum, avg(oi.score) as avg
-    from store_order_item oi
-    join store_food f on f.boss_identity = oi.boss_identity and f.store_id = oi.store_id and f.meal_id = oi.meal_id
-    where oi.boss_identity = '$identity' and oi.store_id = '$store_id' 
-    $date_s_str
-    $date_e_str
-    group by f.meal_name
-    $order_by    
-    ";
+        $sql = "
+        select f.meal_name, sum(oi.count) as count, sum(oi.score) as sum, avg(oi.score) as avg
+        from store_order_item oi
+        join store_food f on f.boss_identity = oi.boss_identity and f.store_id = oi.store_id and f.meal_id = oi.meal_id
+        left join store_order o on o.boss_identity = oi.boss_identity and o.store_id = oi.store_id and o.order_no = oi.order_no
+        where oi.boss_identity = '$identity' and oi.store_id = '$store_id' 
+        $date_s_str
+        $date_e_str
+        group by f.meal_name
+        $order_by
+        ";
 
     $result = mysqli_query($con, $sql);
 ?>

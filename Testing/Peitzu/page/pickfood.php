@@ -227,7 +227,7 @@
             
     if (!isset($staff_id)) {
         //查詢餐點類協，並逐一顯示出來    
-        $sql = "select * from food_type where boss_identity = '$identity' and store_id = '$store_id'";
+        $sql = "select * from food_type where boss_identity = '$identity' and store_id = '$store_id' order by type_id";
         $types = mysqli_query($con, $sql);
         //把整併後的資料重新寫入Store_order_item    
         while ($type = mysqli_fetch_array($types, MYSQLI_ASSOC)) {
