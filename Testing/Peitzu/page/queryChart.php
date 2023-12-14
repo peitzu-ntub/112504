@@ -26,7 +26,7 @@
         $date_s = $_POST['date_s'];
     }
     if ($date_s != '') {
-        $date_s_str = " and oi.start_time >= '$date_s'";
+        $date_s_str = " and date(o.start_time) >= '$date_s'";
     }
     
     $date_e = '';
@@ -35,7 +35,7 @@
         $date_e = $_POST['date_e'];
     }
     if ($date_e != '') {
-        $date_e_str = " and oi.start_time <= '$date_e'";
+        $date_e_str = " and date(o.start_time) <= '$date_e'";
     }
 
     $order_by = "";
@@ -58,7 +58,7 @@
         $order_by
         ";
 
-    $result = mysqli_query($con, $sql);
+    $result = mysqli_query($con, $sql);	
 ?>
 
 
@@ -105,20 +105,21 @@
 <?php 
     if ($date_s != '') 
         echo "
-                        <input type=\"date\" name=\"date_s\" style=\"font-size: 20px;\" value=\"$date_s\">";
+                        <input type=\"date\" name=\"date_s\" id=\"date_s\" style=\"font-size: 20px;\" value=\"$date_s\">";
         else echo "
-                        <input type=\"date\" name=\"date_s\" style=\"font-size: 20px;\">";
+                        <input type=\"date\" name=\"date_s\" id=\"date_s\" style=\"font-size: 20px;\">";
 ?> 
                         &nbsp;至&nbsp;&nbsp;
 <?php 
     if ($date_e != '') 
         echo "
-                        <input type=\"date\" name=\"date_e\" style=\"font-size: 20px;\" value=\"$date_e\">";
+                        <input type=\"date\" name=\"date_e\" id=\"date_e\" style=\"font-size: 20px;\" value=\"$date_e\">";
         else echo "
-                        <input type=\"date\" name=\"date_e\" style=\"font-size: 20px;\">";
+                        <input type=\"date\" name=\"date_e\" id=\"date_e\" style=\"font-size: 20px;\">";
 ?> 
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                          <select id="chartType" name="chartType">
+                            <!-- <select size = "5"> -->
                              <!--<option value="0" >請選擇</option>-->
                             <option value="1" <?php if ($chartType == "1") echo "selected=\"selected\""; ?>>點餐量統計</option>
                             <!-- <option value="2" <?php if ($chartType == "2") echo "selected=\"selected\""; ?>>星星數統計</option> -->
@@ -142,7 +143,23 @@
         ";
     }
 ?>        
-    });                
+    // 獲取日期選擇器
+    var selectedDateInput = document.getElementById("date_e");
+    var selectedDateInput2 = document.getElementById("date_s");
+
+    // 獲取今天的日期
+    var currentDate = new Date();
+
+    // 格式化為 yyyy-MM-dd，並設置為日期選擇器最小值
+    var formattedMinDate = currentDate.toISOString().split('T')[0];
+    selectedDateInput.setAttribute("max", formattedMinDate);
+    selectedDateInput2.setAttribute("max", formattedMinDate);
+
+
+    });
+    
+    
+
 
 
      function goBack() {
@@ -150,7 +167,7 @@
         var boss_identity = '<?php echo $identity; ?>'; 
         var store_id = '<?php echo $store_id; ?>';
         var boss_name = '<?php echo $boss_name; ?>';
-        location.href="boss_management.html?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
+        location.href="boss_management.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
 
 <?php
