@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 include "../bin/conn.php";
 
@@ -39,11 +39,12 @@ if (isset($_POST["boss_identity"])) {
 
     // No duplicate, proceed with the update
     $sql = "UPDATE store_food SET 
-                type_name = '$type_name',
                 meal_name = '$meal_name', 
-                meal_price = '$meal_price',  
+                meal_price = $meal_price,  
                 meal_note = '$meal_note' 
-                WHERE boss_identity = '$boss_identity' AND store_id = '$store_id' AND meal_id = '$meal_id'";
+                WHERE boss_identity = '$boss_identity' 
+                AND store_id = '$store_id' 
+                AND meal_id = '$meal_id'";
     //執行
     mysqli_query($con, $sql);
 
@@ -59,10 +60,12 @@ if (isset($_GET["boss_identity"])) {
     $boss_identity = $_GET["boss_identity"];
     $store_id = $_GET["store_id"];
     $meal_id = $_GET['meal_id'];
-    $type_name = '';
-    $meal_name = '';
+    $meal_name = $_GET['meal_name'];
     $meal_price = '';
     $meal_note = '';
+
+    $type_id = $_GET['type_id'];
+    
 
     //Step(2)查出這個餐點資料，以顯示在畫面上，供老闆修改
     //查詢語法
@@ -76,7 +79,6 @@ if (isset($_GET["boss_identity"])) {
     //個別取得欄位值
     if (isset($result)) {
         $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        $type_name = $data['type_name'];
         $meal_name = $data['meal_name'];
         $meal_price = $data['meal_price'];
         $meal_note = $data['meal_note'];
@@ -109,7 +111,7 @@ if (isset($_GET["boss_identity"])) {
         </div>
     </div>
     <div class="container-wrapper">
-        <nav>
+        <!-- <nav>
             <ul>
                 <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goAllmenu()">全部餐點</a></li>
                 <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goMenu1()">餐點類型</a></li>
@@ -117,9 +119,9 @@ if (isset($_GET["boss_identity"])) {
                 <li><a style="background-color: #f4eac2;color: #5e5e5e;" onclick="goNM3();">菜單呈現設定</a></li>
             </ul>
         </nav>
-
+ -->
         <div class="insidebox">
-            <form id="main">
+            <form id="main" method="POST" action="../bin/newfood.php" enctype="multipart/form-data" >
                 <div style="width:320px;">
                     <img src="../images/add.png" />
                     <font color="#bf6900" size="5" >修改餐點</font>
@@ -134,18 +136,17 @@ echo "
                                 <input type='hidden' id='store_id' name='store_id' value='$store_id'>
                                 <input type='hidden' id='meal_id' name='meal_id' value='$meal_id'>
                                 <input type='hidden' id='meal_name' name='meal_name' value='$meal_name'>
-                                
-
+                                <input type='hidden' id='data_type' name='data_type' value='menu2_edit'>
 ";
 ?>  
-                            <?php
+                            <!-- <?php
                                     echo "<font color=#bf6900 size='4';>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原餐點類型：";
                                     echo $type_name;
                                     echo "</br>";
                                     $query = "SELECT type_name FROM food_type where boss_identity = '$identity' and store_id = '$store_id'";
                                     $result = mysqli_query($con, $query);
-                                ?>
+                            ?> -->
                             <span class="details">餐點類型：</span>
                             <select  name="type_name" >
 
@@ -155,9 +156,13 @@ echo "
                                         where boss_identity = '$boss_identity' and store_id = '$store_id'";
                                     $meal_type = mysqli_query($con, $sql);
                                     while ($cat = mysqli_fetch_array($meal_type,MYSQLI_ASSOC)) {
+                                        $cat_type_name=$cat['type_name'];
+                                        $cat_type_id=$cat['type_id'];
+                                        if ($cat_type_id == $type_id)
+                                        echo "  <option value='$cat_type_id' selected=selected>$cat_type_name</option>";
+                                        else
+                                        echo "  <option value='$cat_type_id'>$cat_type_name</option>";
 
-                                        $type_name=$cat['type_name'];
-                                        echo "  <option value='$type_name'>$type_name</option>";
                                     }
                                     ?> 
 
@@ -183,7 +188,7 @@ echo "
                             <span class="details">餐點價格：</span>
                             <?php                                
 echo "
-                        <input type='text' name='meal_price' id='meal_price' placeholder='請輸入餐點價格' value='$meal_price'> 
+                        <input type='number' name='meal_price' id='meal_price' placeholder='請輸入餐點價格' value='$meal_price'> 
 ";
 ?>                                   
                         </div>
@@ -193,40 +198,50 @@ echo "
                            </div>
                     </div>
                 </div>
-                <input class="submitbutton" onclick="doSave();" value="儲存"></input>
+                <button class="submitbutton" onclick="doSave();" value="儲存">儲存</button>
             </form>
         </div>
     </div>
 </body>
 <script>
     function doSave() {
-        //alert('x');
-        var dataString = $("form#main").serialize();
-        //alert('submiting: ' + dataString);
-        $.ajax({
-            //HTTP的通訊模式有：GET、POST、DELETE。這次採用POST的模式，僅傳遞該傳遞的資料，不是整個網頁送回去
-            type: "POST",
-            //指定要連接的PHP位址
-            url: "menu_edit.php",
-            //要傳送的資料內容
-            data: dataString,
-            //獲得正確回應時，要做的事情
-            success: function (response) {
-                // alert(response);
-                var json = $.parseJSON(response);
-                var msgIcon = 'success';
-                if (json.result != 'OK') msgIcon = 'error';
-                Swal.fire(
-                    '餐點類型', //標題
-                    json.message, //訊息容
-                    msgIcon // 圖示 (success/info/warning/error/question)
-                );
-            },
-            //獲得不正確的回應時，要做的事情
-            error: function (response) {
-                alert ('錯誤');
-            },
+        // alert('x');
+
+        //透過 jQuery + ajax 進行 post 的動作
+        $("form#main").submit(function(e) {
+            e.preventDefault();    
+            var formData = new FormData(this);
+            $.ajax({
+                url: "../bin/newfood.php",
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    var json = $.parseJSON(response);
+                    if (json.result == 'OK') {
+                        //alert(json.message);
+                        Swal.fire(
+                            '餐點', //標題
+                            json.message, //訊息容
+                            'success' // 圖示 (success/info/warning/error/question)
+                        ).then((result) => {
+                            goBack();
+                        });
+                        // //成功後，清除畫面上所輸入的資料內容
+                        // document.getElementById("main").reset();
+                    } else {
+                        Swal.fire(
+                            '餐點', //標題
+                            json.message, //訊息容
+                            'error' // 圖示 (success/info/warning/error/question)
+                        );
+                    }
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });        
         });
+
     }
 
     function goBack() {

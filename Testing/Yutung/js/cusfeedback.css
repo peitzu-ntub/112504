@@ -23,6 +23,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/* 標題方框 */
 .main {
     /* position: relative; */
     /* 設置父容器為相對定位 */
@@ -33,24 +34,33 @@ body {
 }
 
 /* 最上方 */
-.header{
+.header {
     background-color: #ddb62a;
     height: 72px;
-    color: #786016; 
+    color: #786016;
     flex-basis: 40px;
     flex-shrink: 0;
 }
 
 .content {
+    /* width: auto; */
+    /* height: 200px; */
+    /* background-color: #ffffff; */
     flex-grow: 1;
     background-color: #ffedbb;
     overflow-y: auto;
     border: 1px solid #ffedbb;
 }
 
+.scrollable-content {
+    height: 1000px; 
+    overflow: auto;
+    border: 1px solid #ccc;
+}
+
 .menu {
-    width: 100%;
-    float: left;
+    width: 87%;
+    float:left;
     background-color: #ffedbb;
     display: flex;
     flex-wrap: wrap;
@@ -64,7 +74,7 @@ body {
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     padding: 5px;
-    width: 540px;
+    width: 550px;
     border-radius: 15px ;
 }
 
@@ -124,12 +134,14 @@ body {
 }
 
 .footer {           
+    padding-top: 8px;
     background-color: #ddb62a;
     flex-basis: 55px;
     flex-shrink: 0;
 }
 
 .centered-container {
+    padding-top: 15px;
     display: flex;
     justify-content: center; /* 水平居中 */
     align-items: center; /* 垂直居中 */
@@ -137,19 +149,7 @@ body {
 
 /* 按鈕 */
 .button {
-    /* height: auto;
-    width: auto;
-    padding: 5px 10px;
-    border-radius: 10px;
-    border: none;
-    color: #fff;
-    font-size: 18px;
-    letter-spacing: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: bold; */
-
-    width: 150px;
+    width: 190px;
     height: 40px;
     border: 3px solid #DEB887;
     background-color: #DEB887;
@@ -157,7 +157,25 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 16px;
     color: #000000;
+}
+
+.button div {
+    display: flex;
+    align-items: center;
+    color: #80a0e2;
+}
+
+.button img {
+    margin-right: 3px;
+}
+
+.button:hover {
+    color: #ffffff;
+    background-color: #DEB887;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 /* 返回的方框 */
@@ -166,7 +184,7 @@ body {
     /* 設置為絕對定位 */
     top: 35px;
     /* 距離視窗上方的位置 */
-    left: 40px;
+    left: 65px;
     /* 距離視窗左側的位置 */
     transform: translate(-50%, -50%);
     /* 將容器水平垂直居中 */
@@ -179,6 +197,7 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 18px;
+    font-weight: bold;
 }
 
 .logout div {
@@ -198,4 +217,99 @@ body {
     width: 70px;
     height: 45px;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .logout{
+        position: fixed;
+        top: 35px; 
+        left: 30px;
+        z-index: 99;
+        width: 40px;
+        height: 40px;
+    }
+
+    .logout:hover {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+    
+    .logout img{
+        display: none;
+    }
+
+    body {
+        font-size: 14px;
+      }
+
+    .menu{
+        width: 100%;
+    }
+    
+    .menu-item {
+        width: 100%;
+        margin: 5px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: smaller;
+        font-weight: bold;
+    }
+    
+    .menu-item-img img {
+        width: 80px; 
+    }
+
+    .menu-item-img {
+        flex: 0 0 100px;
+        margin-right: -10px;
+        margin-left: 0px;
+    }
+    
+    /* 右側容器的樣式 */
+    .menu-item-center {
+        flex-grow: 1;
+        margin-right: 15px;
+        margin-left: -5px;
+    }
+    
+    .menu-item h3 {
+        margin: 0;
+        font-size: 20px;
+    }
+    
+    .menu-item p {
+        margin: 0;
+    }
+    
+    textarea {
+        width: 90%; 
+        margin: 0 auto; 
+        display: block; 
+    }
+    
+    .footer {
+        height: 40px;
+        text-align: center;
+    }
+    
+    .button {
+        margin-right: -5px;
+        font-size: 12px;
+        font-weight: bold;
+        width: 110px;
+        height: 35px;
+        margin-top: -13px;
+        margin-left: 10px;
+    }
+
+    .center b{
+        font-size: 16px;
+    }
+
+    .header center{
+        font-size: 24px; 
+    }
+    
 }

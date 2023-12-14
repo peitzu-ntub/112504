@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     include "../bin/conn.php";
     
     if (isset($_GET["boss_identity"]))
@@ -116,6 +116,7 @@ $datas_len = count($datas); //目前資料筆數
                     <span class="details" style="font-size: 19px;">餐點名稱：</span>
                     <select name="date_s">
                         <?php
+                        //2023.12.13 sql 要增加 where 條件, 只顯示這一家店的訂單的餐點
                         $sql = "
                             SELECT c.meal_name
                             FROM `112504`.store_order_item as a
@@ -123,6 +124,7 @@ $datas_len = count($datas); //目前資料筆數
                             on a.boss_identity = b.boss_identity and a.store_id = b.store_id and a.order_no = b.order_no
                             left join `112504`.store_food as c
                             on a.meal_id= c.meal_id
+                            where a.boss_identity = '$identity' and a.store_id = '$store_id'
                             group by c.meal_name";
                         $meal = mysqli_query($con, $sql);
 
@@ -168,7 +170,7 @@ $datas_len = count($datas); //目前資料筆數
     else
         echo "
                         <input type=\"radio\" name=\"ord\" value=\"high\" style=\"font-size: 15px;\">由高到低&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <input type=\"radio\" name=\"ord\" value=\"low\" style=\"font-size: 15px;\" checked=\"checked\" >由低到高
+                        <input type=\"radio\" name=\"ord\" value=\"low\" style=\"font-size: 15px;\" >由低到高
                         <br>";
 ?>
                     <br>
@@ -206,7 +208,7 @@ function goBack() {
         var boss_identity = '<?php echo $identity; ?>'; 
         var store_id = '<?php echo $store_id; ?>';
         var boss_name = '<?php echo $boss_name; ?>';
-        location.href="boss_management.html?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
+        location.href="boss_management.php?boss_identity=" + boss_identity + "&store_id=" + store_id + "&boss_name=" + boss_name;
     }
     function goAll() {
         var urlParams = new URLSearchParams(window.location.search);
