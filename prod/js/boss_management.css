@@ -28,7 +28,7 @@ body{
   text-align: justify;
   position: relative;
   top: -2px;
-  left: 10px;
+  left: 5px;
   z-index: 100;
   font-size: 300%;
 }
@@ -43,8 +43,8 @@ body{
   padding-left: 50px;
   padding-right: 50px;
   position: relative;  /*此處使用relative整個才能夠隨螢幕移動!*/
-  top: 35px;
-  left: 150px;
+  top: 25px;
+  left: 140px;
   z-index: 99;
 }
 
@@ -53,11 +53,11 @@ body{
   text-align: center;
   display: inline-block;
   width: 550px;
-  height: 530px;
+  height: 510px;
   background-color: #fff;
   border: 2px solid #ccc;
   box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
-  margin-top: 80px;
+  margin-top: 70px;
   margin-left: -25px;
   padding-left: 30px;
   padding-right: 30px;
@@ -75,9 +75,9 @@ body{
   border: 2px solid #e5dbd8;
   border-radius: 30px;
   font-weight: bold;
-  margin-top: 35px;
+  margin-top: 32px;
   margin-left: 50px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   padding: 15px;
   width: 70%;
   color: green;
