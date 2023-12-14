@@ -21,7 +21,7 @@
         $row_result = mysqli_fetch_assoc($result);
         $identity = $row_result['boss_identity'];
         $store_id = $row_result['store_id'];
-        $order_no = "20231126";
+        $order_no = "20231215";
     }
     else
     {
@@ -202,7 +202,7 @@
 </head>
 
 <body>
-    <div class="container-wrapper">
+    <div class="main">
         <!-- <form action="staff_in.php" method="POST" enctype="multipart/form-data"> -->
 
         <div class="header">
@@ -219,13 +219,14 @@
         </div>
 
         <div class="content">
-            <div class="left">
 <?php
-            $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&order_no=$order_no\">全部</a></b> 
+    if (!isset($staff_id)) {
+        echo "<div class=\"left\">";
+
+        $d = "<b><a href=\"pickfood.php?identity=$identity&store_id=$store_id&order_no=$order_no\">全部</a></b> 
             ";
             echo $d;
             
-    if (!isset($staff_id)) {
         //查詢餐點類協，並逐一顯示出來    
         $sql = "select * from food_type where boss_identity = '$identity' and store_id = '$store_id' order by type_id";
         $types = mysqli_query($con, $sql);
@@ -237,14 +238,18 @@
             ";
             echo $d;
         }
+        echo "
+        </div>
+        ";
     }
 
 ?>
-            </div>
 
             <div class="menu">
 <?php
     //查詢餐點內容，並逐一顯示出來
+    //從store_food跟store_cart join再一起，查看在cart裡面的數量是多少
+    //再join store_order_item，查看星星數的平均值，四捨五入(所以畫面上看到的星星是整數)
     $sql = "
     select m.*, s.star 
     from (
